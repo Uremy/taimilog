@@ -4,7 +4,7 @@ import { lucideIconsPlugin } from 'fumadocs-core/source/lucide-icons';
 
 // See https://fumadocs.dev/docs/headless/source-api for more info
 export const source = loader({
-  baseUrl: '/docs',
+  baseUrl: '/medicina', // <--- CAMBIO 1: Aquí cambiamos la base a tu nueva carpeta
   source: docs.toFumadocsSource(),
   plugins: [lucideIconsPlugin()],
 });
@@ -14,7 +14,7 @@ export function getPageImage(page: InferPageType<typeof source>) {
 
   return {
     segments,
-    url: `/og/docs/${segments.join('/')}`,
+    url: `/og/medicina/${segments.join('/')}`, // <--- CAMBIO 2: Actualizamos también la ruta de imágenes
   };
 }
 

@@ -4,7 +4,7 @@ import { lucideIconsPlugin } from 'fumadocs-core/source/lucide-icons';
 
 // See https://fumadocs.dev/docs/headless/source-api for more info
 export const source = loader({
-  baseUrl: '/medicina', // <--- CAMBIO 1: Aquí cambiamos la base a tu nueva carpeta
+  baseUrl: '/medicina/',
   source: docs.toFumadocsSource(),
   plugins: [lucideIconsPlugin()],
 });

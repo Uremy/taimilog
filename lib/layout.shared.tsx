@@ -14,7 +14,7 @@ export function baseOptions(): BaseLayoutProps {
       },
       {
         text: 'Medicina',
-        url: '/medicina',
+        url: '/medicina/introduccion',
         active: 'nested-url',
       },
       {

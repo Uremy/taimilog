@@ -1,13 +1,21 @@
 import { getPageImage, source } from '@/lib/source';
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/layouts/docs/page';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { getMDXComponents } from '@/mdx-components';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { LLMCopyButton, ViewOptions } from '@/components/ai/page-actions';
 
-export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
+export default async function Page(props: PageProps<'/medicina/[[...slug]]'>) {
   const params = await props.params;
+
+  // --- AQUÍ ESTÁ EL CAMBIO ---
+  // Si no existe el slug O si la lista está vacía (length === 0), redirige.
+  if (!params.slug || params.slug.length === 0) {
+    redirect('/medicina/introduccion');
+  }
+  // ---------------------------
+
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
@@ -46,7 +54,7 @@ export async function generateStaticParams() {
   return source.generateParams();
 }
 
-export async function generateMetadata(props: PageProps<'/docs/[[...slug]]'>): Promise<Metadata> {
+export async function generateMetadata(props: PageProps<'/medicina/[[...slug]]'>): Promise<Metadata> {
   const params = await props.params;
   const page = source.getPage(params.slug);
   if (!page) notFound();

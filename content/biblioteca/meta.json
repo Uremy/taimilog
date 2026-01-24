@@ -1,0 +1,9 @@
+{
+  "title": "Biblioteca",
+  "pages": [
+    "index",      
+    "blog",
+    "escritos",
+    "bookmarks"
+  ]
+}

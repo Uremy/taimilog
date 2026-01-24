@@ -42,18 +42,8 @@ export function baseOptions(): BaseLayoutProps {
         active: 'nested-url',
       },
       {
-        text: 'Blog',
-        url: '/blog',
-        active: 'nested-url',
-      },
-      {
-        text: 'Escritos',
-        url: '/escritos',
-        active: 'nested-url',
-      },
-      {
-        text: 'Bookmarks',
-        url: '/bookmarks',
+        text: 'Biblioteca',
+        url: '/biblioteca/blog',
         active: 'nested-url',
       },
     ],

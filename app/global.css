@@ -13,8 +13,7 @@
   --color-fd-ring: hsl(345 60% 35%);
 
   /* --- FORMA DE LOS ELEMENTOS (GLOBAL) --- */
-  /* Lo ponemos aquí para que aplique a Light y Dark por igual */
-  --radius: 0.3rem; 
+  --radius: 0.5rem; /* Cambié de 0.3rem a 0.5rem para que coincida con rounded-lg */
 }
 
 .dark {
@@ -26,4 +25,9 @@
   --color-fd-accent-foreground: hsl(345 70% 80%);
   
   --color-fd-ring: hsl(345 70% 70%);
+}
+
+/* --- PERSONALIZACIÓN DEL BOTÓN DE BÚSQUEDA EN LA NAVBAR --- */
+button[data-search-full] {
+  border-radius: 0.5rem !important;
 }

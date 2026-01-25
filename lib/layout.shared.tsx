@@ -46,7 +46,7 @@ export const linkItems: LinkItemType[] = [
     type: 'icon',
     text: 'GitHub',
     label: 'GitHub',
-    url: 'https://github.com/TU-USUARIO',
+    url: 'https://github.com/Uremy',
     secondary: true,
     icon: (
       // SVG Oficial de GitHub (Octocat)

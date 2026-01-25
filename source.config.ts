@@ -1,11 +1,15 @@
 import { defineConfig, defineDocs, frontmatterSchema, metaSchema } from 'fumadocs-mdx/config';
+import { z } from 'zod'; // <--- 1. Importamos Zod para poder editar esquemas
 
-// You can customise Zod schemas for frontmatter and `meta.json` here
-// see https://fumadocs.dev/docs/mdx/collections
+// 1. Medicina
 export const medicina = defineDocs({
   dir: 'content/medicina',
   docs: {
-    schema: frontmatterSchema,
+    // 2. Extendemos el esquema por defecto
+    // Esto dice: "Usa todo lo normal (título, descripción...) Y ADEMÁS permite lastModified"
+    schema: frontmatterSchema.extend({
+      lastModified: z.string().or(z.date()).optional(),
+    }),
     postprocess: {
       includeProcessedMarkdown: true,
     },
@@ -15,11 +19,14 @@ export const medicina = defineDocs({
   },
 });
 
-// 2. Biblioteca (Nueva definición unificada)
+// 2. Biblioteca
 export const biblioteca = defineDocs({
-  dir: 'content/biblioteca', // <--- Apunta a la nueva carpeta padre
+  dir: 'content/biblioteca',
   docs: {
-    schema: frontmatterSchema,
+    // 3. Aplicamos la misma extensión aquí (donde tenías el error)
+    schema: frontmatterSchema.extend({
+      lastModified: z.string().or(z.date()).optional(),
+    }),
     postprocess: { includeProcessedMarkdown: true },
   },
   meta: { schema: metaSchema },

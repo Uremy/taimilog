@@ -1,26 +1,27 @@
 import { DocsLayout } from 'fumadocs-ui/layouts/notebook';
 import { baseOptions } from '@/lib/layout.shared';
-import { sourceBiblioteca } from '@/lib/source'; // <--- Usamos la nueva fuente
+import { sourceBiblioteca } from '@/lib/source'; // <--- Importante: Usamos tu fuente
 import type { ReactNode } from 'react';
 
 export default function Layout({ children }: { children: ReactNode }) {
-  // Extraemos nav para preservar tu logo
+  // 1. Extraemos 'nav' y lo renombramos a 'baseNav'
   const { nav: baseNav, ...baseRest } = baseOptions();
 
   return (
     <DocsLayout
-      tree={sourceBiblioteca.getPageTree()}
       {...baseRest}
       
-      // 1. Configuración de Navegación (Logo + Transparencia)
-      nav={{
-        ...baseNav,
-        transparentMode: 'top',
-        // mode: 'top' // Puedes descomentar esto si quieres que la barra se vea separada del contenido
+      // 2. CORRECCIÓN: Usamos 'baseNav' (el nombre nuevo)
+      nav={{ 
+        ...baseNav, 
+        mode: 'top',            // Estilo "separado" que querías
+        transparentMode: 'top'  // Mantenemos la transparencia inteligente
       }}
+      
+      // 3. CORRECCIÓN: Usamos 'sourceBiblioteca' (no 'source')
+      tree={sourceBiblioteca.getPageTree()}
 
-      // 2. LA MAGIA: Pestañas en la barra superior
-      // Esto tomará las carpetas 'blog', 'escritos', 'bookmarks' y las pondrá arriba
+      // 4. VITAL: No borres esto, o desaparecerán las pestañas (Blog/Escritos) de arriba
       tabMode="navbar"
     >
       {children}

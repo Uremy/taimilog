@@ -59,7 +59,7 @@ export const linkItems: LinkItemType[] = [
     type: 'icon',
     text: 'YouTube',
     label: 'YouTube',
-    url: 'https://youtube.com/@TU-CANAL',
+    url: 'https://www.youtube.com/@uremy',
     secondary: true,
     icon: (
       // SVG Oficial de YouTube (Play Sólido)
@@ -72,7 +72,7 @@ export const linkItems: LinkItemType[] = [
   type: 'icon',
   text: 'Instagram',
   label: 'Instagram',
-  url: 'https://instagram.com/TU-USUARIO',
+  url: 'https://instagram.com/ure.emy',
   secondary: true,
   icon: (
     <svg role="img" viewBox="0 0 24 24" fill="currentColor">

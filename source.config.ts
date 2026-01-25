@@ -1,12 +1,13 @@
 import { defineConfig, defineDocs, frontmatterSchema, metaSchema } from 'fumadocs-mdx/config';
-import { z } from 'zod'; // <--- 1. Importamos Zod para poder editar esquemas
+import { z } from 'zod';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+// 1. Importamos el plugin de mermaid
+import { remarkMdxMermaid } from 'fumadocs-core/mdx-plugins';
 
-// 1. Medicina
 export const medicina = defineDocs({
   dir: 'content/medicina',
   docs: {
-    // 2. Extendemos el esquema por defecto
-    // Esto dice: "Usa todo lo normal (título, descripción...) Y ADEMÁS permite lastModified"
     schema: frontmatterSchema.extend({
       lastModified: z.string().or(z.date()).optional(),
     }),
@@ -19,11 +20,9 @@ export const medicina = defineDocs({
   },
 });
 
-// 2. Biblioteca
 export const biblioteca = defineDocs({
   dir: 'content/biblioteca',
   docs: {
-    // 3. Aplicamos la misma extensión aquí (donde tenías el error)
     schema: frontmatterSchema.extend({
       lastModified: z.string().or(z.date()).optional(),
     }),
@@ -34,6 +33,9 @@ export const biblioteca = defineDocs({
 
 export default defineConfig({
   mdxOptions: {
-    // MDX options
+    // 2. Agregamos remarkMdxMermaid a la lista de plugins
+    remarkPlugins: [remarkMath, remarkMdxMermaid],
+    
+    rehypePlugins: (v) => [rehypeKatex, ...v],
   },
 });

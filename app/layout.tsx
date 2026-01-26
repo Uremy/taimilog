@@ -1,6 +1,7 @@
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import './global.css';
 import { Inter } from 'next/font/google';
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from 'next';
 import 'katex/dist/katex.css';
 
@@ -56,6 +57,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         >
           {children}
         </RootProvider>
+        <SpeedInsights />
       </body>
     </html>
   );

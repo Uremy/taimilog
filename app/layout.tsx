@@ -1,12 +1,16 @@
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import './global.css';
-import { Inter } from 'next/font/google';
+import { Chiron_GoRound_TC } from 'next/font/google';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from 'next';
 import 'katex/dist/katex.css';
 
-const inter = Inter({
-  subsets: ['latin'],
+// Configuración SEGURA de Chiron (Solo 2 pesos para no saturar la red)
+const chironGoRound = Chiron_GoRound_TC({
+  subsets: ['latin'], // Next.js optimizará el latín, el resto lo carga el navegador bajo demanda
+  weight: ['400', '500', '700', '800'], // Regular y Bold (Suficiente para un blog)
+  variable: '--font-chiron',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -33,26 +37,19 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={inter.className} suppressHydrationWarning>
+    // Aplicamos la clase directamente. Simple y efectivo.
+    <html lang="es" className={chironGoRound.className} suppressHydrationWarning>
       <body className="flex flex-col min-h-screen">
         <RootProvider
-          // --- CONFIGURACIÓN DE BÚSQUEDA ---
           search={{
             enabled: true,
-            
-            // 1. Preload: Carga instantánea (Esto lo hace muy rápido)
             preload: true, 
-            
-            // 2. Hot Key: Cambiamos Ctrl+K por la tecla "/"
             hotKey: [
               {
-                display: '/', // Lo que se ve en la cajita visualmente
-                key: '/',     // La tecla que activa la acción
+                display: '/',
+                key: '/',
               },
             ],
-            
-            // NOTA: Quitamos 'links' temporalmente para evitar el error de "iterable".
-            // Si esto compila bien, sabremos que el culpable eran los enlaces.
           }}
         >
           {children}

@@ -5,10 +5,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from 'next';
 import 'katex/dist/katex.css';
 
-// Configuración SEGURA de Chiron (Solo 2 pesos para no saturar la red)
 const chironGoRound = Chiron_GoRound_TC({
-  subsets: ['latin'], // Next.js optimizará el latín, el resto lo carga el navegador bajo demanda
-  weight: ['400', '500', '700', '800'], // Regular y Bold (Suficiente para un blog)
+  subsets: ['latin'],
+  weight: ['400', '500', '700', '800'],
   variable: '--font-chiron',
   display: 'swap',
 });
@@ -37,7 +36,6 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    // Aplicamos la clase directamente. Simple y efectivo.
     <html lang="es" className={chironGoRound.className} suppressHydrationWarning>
       <body className="flex flex-col min-h-screen">
         <RootProvider
@@ -50,6 +48,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 key: '/',
               },
             ],
+            // 👇 Removido temporalmente para diagnosticar
+            // links: [...],
           }}
         >
           {children}

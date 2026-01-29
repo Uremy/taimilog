@@ -69,15 +69,19 @@ export default function CustomSearchDialog(props: SharedProps) {
               className={buttonVariants({
                 size: 'sm',
                 color: 'ghost',
-                className: 'gap-2 px-2 text-fd-muted-foreground hover:text-fd-foreground',
+                className: 'gap-2 px-2', // Quitamos clases de texto globales para controlar por separado
               })}
             >
-              <Filter className="size-3.5" />
-              <span className="text-sm font-medium">
-                {/* Muestra el nombre del filtro actual o "Filtrar" */}
-                {filterItems.find((item) => item.value === tag)?.name || 'Filtrar'}
+              {/* 1. Etiqueta Estática "Filtro" (Gris) */}
+              <span className="text-fd-muted-foreground">Filtro</span>
+
+              {/* 2. Valor Dinámico (Color normal) */}
+              <span className="text-fd-accent-foreground font-medium">
+                {filterItems.find((item) => item.value === tag)?.name}
               </span>
-              <ChevronDown className="size-3.5 opacity-50" />
+
+              {/* 3. Flechita */}
+              <ChevronDown className="size-3.5 text-fd-muted-foreground opacity-50" />
             </PopoverTrigger>
             
             <PopoverContent className="flex flex-col p-1 w-[200px]" align="start" side="top">

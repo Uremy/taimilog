@@ -45,6 +45,7 @@ export default function CustomSearchDialog(props: SharedProps) {
   
   // 👇 2. Usamos tu configuración de búsqueda local (no orama-cloud)
   const { search, setSearch, query } = useDocsSearch({
+    type: 'fetch',
     tag,
     // Si necesitas forzar idioma: locale: 'es'
   });
@@ -85,6 +86,7 @@ export default function CustomSearchDialog(props: SharedProps) {
 
                 return (
                   <button
+                  type="button"
                     key={i}
                     onClick={() => {
                       setTag(item.value);

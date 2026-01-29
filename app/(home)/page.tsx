@@ -192,7 +192,7 @@ export default function HomePage() {
         <div className={outlineCardClass}>
           <h3 className="text-2xl font-bold mb-6 text-center">Preguntas Frecuentes</h3>
           
-          <Accordions>
+          <Accordions type="single" collapsible>
             <Accordion title="¿Qué es Taimilog?">
               PLACEHOLDER
             </Accordion>

@@ -1,13 +1,103 @@
 ---
-title: Hola mundo
-description: Your first document
+title: Introducción
+description: Mapa curricular y apuntes organizados por fases de formación.
+icon: BookOpen
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+import { Cards, Card } from 'fumadocs-ui/components/card';
+import { 
+  ScanSearch, 
+  FlaskConical, 
+  ShieldAlert, 
+  Stethoscope, 
+  HeartPulse, 
+  PersonStanding, 
+  BrainCircuit, 
+  Baby, 
+  Scale, 
+  Hospital 
+} from 'lucide-react';
 
-## What is Next?
+Bienvenido a **Taimilog: Medicina**. Este es mi "segundo cerebro", donde documento el viaje desde los fundamentos teóricos hasta la práctica clínica.
+
+Los apuntes están organizados cronológicamente, pero agrupados por las etapas formativas de la carrera.
+
+---
+
+## Ciencias Básicas
+Los cimientos teóricos. Aquí estudiamos la estructura, función y los mecanismos de agresión del cuerpo humano antes de tocar a un paciente.
 
 <Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.dev" />
+  <Card 
+    href="/medicina/semestre-1" 
+    title="Semestre 1" 
+    description="Anatomía y Embriología"
+    icon={<ScanSearch />}
+  />
+  <Card 
+    href="/medicina/semestre-2" 
+    title="Semestre 2" 
+    description="Fisiología y Bioquímica"
+    icon={<FlaskConical />}
+  />
+  <Card 
+    href="/medicina/semestre-3" 
+    title="Semestre 3" 
+    description="Patología y Microbiología"
+    icon={<ShieldAlert />}
+  />
+</Cards>
+
+## Ciencias Clínicas
+La transición al hospital. El enfoque cambia hacia el diagnóstico, la terapéutica y el estudio de sistemas específicos.
+
+<Cards>
+  <Card 
+    href="/medicina/semestre-4" 
+    title="Semestre 4" 
+    description="Terapéutica Quirúrgica"
+    icon={<Stethoscope />}
+  />
+  <Card 
+    href="/medicina/semestre-5" 
+    title="Semestre 5" 
+    description="Cardio, Neumo y Sentidos"
+    icon={<HeartPulse />}
+  />
+  <Card 
+    href="/medicina/semestre-6" 
+    title="Semestre 6" 
+    description="Endocrino y Metabólico"
+    icon={<PersonStanding />}
+  />
+  <Card 
+    href="/medicina/semestre-7" 
+    title="Semestre 7" 
+    description="Neurología y Psiquiatría"
+    icon={<BrainCircuit />}
+  />
+  <Card 
+    href="/medicina/semestre-8" 
+    title="Semestre 8" 
+    description="Gine, Pedia y Geriatría"
+    icon={<Baby />}
+  />
+</Cards>
+
+## Internado y Servicio
+La recta final. Integración total de conocimientos, medicina legal y la práctica profesional supervisada.
+
+<Cards>
+  <Card 
+    href="/medicina/semestre-9" 
+    title="Semestre 9" 
+    description="Medicina Legal y Social"
+    icon={<Scale />}
+  />
+  <Card 
+    href="/medicina/semestre-10" 
+    title="Semestre 10" 
+    description="Internado y Urgencias"
+    icon={<Hospital />}
+  />
 </Cards>

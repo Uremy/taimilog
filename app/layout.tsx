@@ -5,6 +5,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from 'next';
 import 'katex/dist/katex.css';
 
+// 👇 1. IMPORTA TU COMPONENTE PERSONALIZADO
+import CustomSearchDialog from '@/components/search';
+
 const chironGoRound = Chiron_GoRound_TC({
   subsets: ['latin'],
   weight: ['400', '500', '700', '800'],
@@ -41,6 +44,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <RootProvider
           search={{
             enabled: true,
+            // 👇 2. AQUÍ OCURRE EL REEMPLAZO
+            SearchDialog: CustomSearchDialog, 
             preload: true, 
             hotKey: [
               {
@@ -48,8 +53,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 key: '/',
               },
             ],
-            // 👇 Removido temporalmente para diagnosticar
-            // links: [...],
           }}
         >
           {children}

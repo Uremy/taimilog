@@ -2,12 +2,12 @@ import { source, sourceBiblioteca } from '@/lib/source';
 import { createSearchAPI } from 'fumadocs-core/search/server';
 
 export const { GET } = createSearchAPI('advanced', {
-  language: 'english',
+  // 👇 CAMBIO IMPORTANTE: Usar 'spanish' para mejorar la precisión
+  language: 'english', 
   
-  // 👇 NUEVO: Configuración de sensibilidad de búsqueda
   search: {
-    threshold: 0.8,  // 0-1: Qué tan similar debe ser (0.8 = 80% de coincidencia)
-    tolerance: 1,    // Permite 1 error tipográfico (ejm: "mediicna" encontrará "medicina")
+    threshold: 0.8,
+    tolerance: 1,
   },
   
   indexes: [
@@ -17,6 +17,7 @@ export const { GET } = createSearchAPI('advanced', {
       url: page.url,
       id: page.url,
       structuredData: page.data.structuredData,
+      // 🏷️ Etiqueta 1: Medicina (Mayúscula, importante recordar esto para el paso 2)
       tag: 'Medicina',
     })),
 
@@ -26,6 +27,7 @@ export const { GET } = createSearchAPI('advanced', {
       url: page.url,
       id: page.url,
       structuredData: page.data.structuredData,
+      // 🏷️ Etiqueta 2: Biblioteca
       tag: 'Biblioteca',
     })),
   ],

@@ -1,5 +1,6 @@
 {
   "title": "Semestre 4",
   "root": true, 
-  "description": "Herramientas del dx. y la técnica quirúrgica"
+  "description": "Herramientas del dx. y la técnica quirúrgica",
+  "icon": "SquareActivity"
 }

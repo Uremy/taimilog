@@ -1,5 +1,6 @@
 {
   "title": "Semestre 10",
   "root": true,
-  "description": "Integración del juicio clínico y el manejo de urgencias"
+  "description": "Integración del juicio clínico y el manejo de urgencias",
+  "icon": "Hospital"
 }

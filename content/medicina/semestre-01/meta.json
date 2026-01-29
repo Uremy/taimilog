@@ -1,5 +1,6 @@
 {
   "title": "Semestre 1",
   "root": true,
-  "description": "Fundamentos del cuerpo humano"
+  "description": "Fundamentos del cuerpo humano",
+  "icon": "ScanHeart"
 }

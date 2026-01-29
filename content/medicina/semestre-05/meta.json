@@ -1,5 +1,6 @@
 {
   "title": "Semestre 5",
   "root": true,
-  "description": "Estudio de los sistemas vitales y los sentidos"
+  "description": "Estudio de los sistemas vitales y los sentidos",
+  "icon": "HeartPulse"
 }

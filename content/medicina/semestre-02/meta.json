@@ -1,5 +1,6 @@
 {
   "title": "Semestre 2",
   "root": true,
-  "description": "Lógica funcional y química detrás de la vida"
+  "description": "Lógica funcional y química detrás de la vida",
+  "icon": "TestTubeDiagonal"
 }

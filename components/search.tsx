@@ -24,18 +24,33 @@ import { cn } from '@/lib/cn'; // Asegúrate que esta ruta a 'cn' sea correcta (
 const filterItems = [
   {
     name: 'Todo',
-    description: 'Buscar en todos los apuntes',
-    value: undefined, // undefined = sin filtro
+    description: 'Buscar en todo el sitio',
+    value: undefined,
   },
   {
     name: 'Medicina',
-    description: 'Apuntes de la carrera',
+    description: 'Apuntes de mi carrera por semestre',
     value: 'Medicina',
   },
   {
     name: 'Biblioteca',
-    description: 'Filosofía y pensamientos',
+    description: 'Un almacén personal de ideas',
     value: 'Biblioteca',
+  },
+  {
+    name: 'Blog',
+    description: 'Artículos y novedades',
+    value: 'Blog',
+  },
+  {
+    name: 'Escritos',
+    description: 'Ensayos y textos literarios',
+    value: 'Escritos',
+  },
+  {
+    name: 'Bookmarks',
+    description: 'Recursos curados de la web',
+    value: 'Bookmarks',
   },
 ];
 

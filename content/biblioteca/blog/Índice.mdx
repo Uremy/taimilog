@@ -1,0 +1,42 @@
+---
+title: Índice
+description: Mi jardín digital. Un espacio para lo que no es medicina.
+icon: LayoutTemplate
+---
+
+import { Cards, Card } from 'fumadocs-ui/components/card';
+import { PenTool, Feather, Bookmark, Hash } from 'lucide-react';
+
+Bienvenido a la sección "no-médica" de Taimilog. Aquí viven mis intereses periféricos, la tecnología que sostiene este sitio y las ideas que voy recolectando.
+
+---
+
+<Cards>
+  <Card 
+    href="/biblioteca/blog" 
+    title="Blog & Tech" 
+    description="Cómo está hecho este sitio, tutoriales y updates."
+    icon={<PenTool />}
+  />
+  <Card 
+    href="/biblioteca/escritos" 
+    title="Escritos" 
+    description="Ensayos sobre filosofía, nihilismo y cultura."
+    icon={<Feather />}
+  />
+  <Card 
+    href="/biblioteca/bookmarks" 
+    title="Bookmarks" 
+    description="Enlaces curados. La mejor manera de guardar internet."
+    icon={<Bookmark />}
+  />
+</Cards>
+
+## 🏷️ Etiquetas Populares
+Ideas recurrentes en este jardín.
+
+<Cards>
+  <Card href="/biblioteca/blog?tag=nextjs" title="Next.js" icon={<Hash />} />
+  <Card href="/biblioteca/escritos?tag=estoicismo" title="Estoicismo" icon={<Hash />} />
+  <Card href="/biblioteca/bookmarks?tag=design" title="Diseño UI" icon={<Hash />} />
+</Cards>

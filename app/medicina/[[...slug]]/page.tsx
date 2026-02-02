@@ -9,12 +9,10 @@ import { LLMCopyButton, ViewOptions } from '@/components/ai/page-actions';
 export default async function Page(props: PageProps<'/medicina/[[...slug]]'>) {
   const params = await props.params;
 
-  // --- AQUÍ ESTÁ EL CAMBIO ---
-  // Si no existe el slug O si la lista está vacía (length === 0), redirige.
+  // Redirect a introducción si no hay slug
   if (!params.slug || params.slug.length === 0) {
     redirect('/medicina/introduccion');
   }
-  // ---------------------------
 
   const page = source.getPage(params.slug);
   if (!page) notFound();
@@ -34,14 +32,12 @@ export default async function Page(props: PageProps<'/medicina/[[...slug]]'>) {
         <LLMCopyButton markdownUrl={`${page.url}.mdx`} />
         <ViewOptions
           markdownUrl={`${page.url}.mdx`}
-          // update it to match your repo
           githubUrl={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/docs/content/docs/${page.path}`}
         />
       </div>
       <DocsBody>
         <MDX
           components={getMDXComponents({
-            // this allows you to link to other pages with relative file paths
             a: createRelativeLink(source, page),
           })}
         />
@@ -54,16 +50,43 @@ export async function generateStaticParams() {
   return source.generateParams();
 }
 
+// 👇 ACTUALIZADO: Metadata completa con OG Image
 export async function generateMetadata(props: PageProps<'/medicina/[[...slug]]'>): Promise<Metadata> {
   const params = await props.params;
+  
+  // Protección: si no hay slug, retorna metadata básica
+  if (!params.slug || params.slug.length === 0) {
+    return {
+      title: 'Medicina',
+      description: 'Apuntes de medicina organizados',
+    };
+  }
+
   const page = source.getPage(params.slug);
   if (!page) notFound();
+
+  // Generar URL de la imagen OG
+  const imageUrl = getPageImage(page).url;
 
   return {
     title: page.data.title,
     description: page.data.description,
+    
+    // 👇 Open Graph completo (Facebook, LinkedIn, Discord)
     openGraph: {
-      images: getPageImage(page).url,
+      title: page.data.title,
+      description: page.data.description,
+      images: imageUrl,
+      siteName: 'Taimilog',
+      type: 'article',
+    },
+    
+    // 👇 Twitter Card
+    twitter: {
+      card: 'summary_large_image',
+      title: page.data.title,
+      description: page.data.description,
+      images: imageUrl,
     },
   };
 }

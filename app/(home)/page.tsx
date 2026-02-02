@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'; // 👈 Importamos el tipo
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
@@ -18,6 +19,24 @@ import {
 import { quotes } from '@/lib/quotes';
 import { QuoteClient } from '@/components/quote-client';
 import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+
+// --- METADATA PARA LA HOME ---
+export const metadata: Metadata = {
+  title: 'Taimilog',
+  description: 'Apuntes de medicina y jardín digital',
+  openGraph: {
+    title: 'Taimilog',
+    description: 'Apuntes de medicina y jardín digital',
+    images: '/og/home', // 👈 Apunta a la ruta que crearemos después
+    siteName: 'Taimilog',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Taimilog',
+    description: 'Apuntes de medicina y jardín digital',
+    images: '/og/home',
+  },
+};
 
 // --- CONSTANTES DE DISEÑO ---
 const AVATAR_SIZE = 112; 
@@ -226,6 +245,7 @@ function SocialCard({ href, icon, label, subLabel }: { href: string; icon: React
       className={`
         ${cardClass}
         ${brandHoverClass}
+        ${outlineCardClass ? '' : ''} 
         col-span-1 md:col-span-2 
         aspect-square md:aspect-auto md:h-20
         flex flex-col md:flex-row 

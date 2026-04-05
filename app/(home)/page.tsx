@@ -213,19 +213,19 @@ export default function HomePage() {
           
           <Accordions type="single" collapsible>
             <Accordion title="¿Qué es Taimilog?">
-              PLACEHOLDER
+              Taimilog es una idea que llevo mucho tiempo gestando, es un sitio personal donde pretendo almacenar todo lo que sé. Además de compartir información que puede ser útil para todos
             </Accordion>
             
             <Accordion title="¿Qué significa Taimilog?">
-              PLACEHOLDER
+              Taimi- lo saqué de Taimado, mientras que -log lo saqué de logbook. Mi idea es básicamente "registros de un Taimado"
             </Accordion>
             
             <Accordion title="¿Por qué TU deberías hacer un sitio personal?">
-              PLACEHOLDER
+              La web es un sitio efimero, las RRSS no nos ofrecen espacio alguno para poder personalizar un ricón en el internet. ¿No te gustaria tener algo propio, algo lejos de las megacorporaciones que lucran con tu contenido sin darte algo a cambio? Quizá deberías considerar hacer tu propio jardín, cultivarlo y dejar algo en internet
             </Accordion>
             
             <Accordion title="¿Quién es el personaje de la foto de perfil?">
-              PLACEHOLDER
+              ¡Es la Señora Herta! Madam Herta is a peerless gem. Madam Herta is an unrivaled genius. Madam Herta is an inimitable beauty
             </Accordion>
           </Accordions>
         </div>

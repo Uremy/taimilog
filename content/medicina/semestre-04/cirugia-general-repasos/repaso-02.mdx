@@ -3,8 +3,6 @@ title: Repaso 2 de Cirugía General
 description: Perspectiva general del segundo parcial
 ---
 
-Este segundo bloque de la asignatura es más del "hacer" técnico al **"pensar" clínico**.
-
 La visión general del bloque se divide en dos grandes ejes temáticos:
 
 ### 1. Clínica Quirúrgica
@@ -169,7 +167,7 @@ El cuerpo percibe el corte del bisturí y reacciona activando el sistema nervios
 Normalmente, el cuerpo usa la glucosa de lo que comes. En el postoperatorio (ayuno + estrés), las prioridades cambian:
 1.  **Carbohidratos (Hígado):** Las reservas de glucógeno hepático se agotan en 12 a 24 horas. El hígado empieza a hacer gluconeogénesis masiva.
 2.  **Lípidos (Tejido adiposo):** Se activa la lipólisis. Los triglicéridos se rompen en ácidos grasos libres (para darle energía a los músculos) y glicerol (para que el hígado haga más glucosa).
-3.  **Proteínas (Músculo):** **Esta es la clave.** El cuerpo canibaliza el músculo esquelético (proteólisis) para liberar aminoácidos, especialmente **alanina y glutamina**. La glutamina es el alimento principal de los enterocitos y del sistema inmune.
+3.  **Proteínas (Músculo):** El cuerpo canibaliza el músculo esquelético (proteólisis) para liberar aminoácidos, especialmente **alanina y glutamina**. La glutamina es el alimento principal de los enterocitos y del sistema inmune.
 
 ## Hipermetabolismo postraumático
 El metabolismo basal (Gasto Energético de Reposo) se dispara. 
@@ -208,3 +206,93 @@ La RMT se traduce en signos vitales y datos clínicos puros:
 *   **Fiebre leve (primeras 24-48h):** Por la IL-1, TNF-α y atelectasias pulmonares (no por infección de la herida, que tarda días en manifestarse).
 *   **Oliguria (poca orina):** Por la liberación de ADH y Aldosterona. El cuerpo retiene agua y sodio para defender la presión arterial.
 *   **Íleo paralítico:** Los intestinos dejan de moverse temporalmente por la descarga simpática extrema.
+
+Aquí tienes la segunda mitad, estructurada exactamente como la pediste y enfocada en lo que realmente te servirá tanto para el examen escrito como para entender por qué recetamos ciertos medicamentos en el postoperatorio.
+
+---
+
+### 3.2.1.4 Mediadores químicos de la inflamación
+
+Los mediadores químicos son las señales que encienden, amplifican o apagan la respuesta inflamatoria. Pueden derivar del plasma (como el sistema del complemento o la coagulación) o de las células (como los que veremos a continuación).
+
+#### 1. Metabolitos del Ácido Araquidónico (Eicosanoides)
+El ácido araquidónico es un ácido graso de 20 carbonos que vive "escondido" en los fosfolípidos de las membranas celulares. Cuando hay trauma, la enzima **Fosfolipasa A2** lo libera, y de ahí puede tomar dos caminos metabólicos.
+
+```mermaid
+graph TD
+    A[Fosfolípidos de Membrana] -->|Fosfolipasa A2 \n Inhibida por Corticoides| B(Ácido Araquidónico)
+    
+    B -->|Ciclooxigenasa COX-1 y COX-2 \n Inhibidas por AINEs| C[Vía de las Prostaglandinas]
+    B -->|Lipooxigenasa 5-LOX| D[Vía de los Leucotrienos]
+
+    C --> E[PGE2, PGD2, PGF2α]
+    C --> F[Prostaciclina PGI2]
+    C --> G[Tromboxano A2 TXA2]
+
+    D --> H[Leucotrieno B4 LTB4]
+    D --> I[Leucotrienos C4, D4, E4]
+    D --> J[Lipoxinas LXA4, LXB4]
+    
+    classDef enzima fill:#f9f,stroke:#333,stroke-width:2px;
+    class A,B,C,D enzima;
+```
+
+
+**Explicación clínica de los metabolitos:**
+*   **Vía de la Ciclooxigenasa (COX):**
+    *   **Prostaglandinas (PGE2, PGD2):** Son las reinas del **dolor y la fiebre**. Causan vasodilatación masiva. *Dato clave:* Por eso damos AINEs (Ketorolaco, Ibuprofeno), porque bloquean a la COX y apagan esta vía.
+    *   **Tromboxano A2 (TXA2):** Producido por las plaquetas. Hace vasoconstricción y promueve la **agregación plaquetaria** (forma el tapón inicial).
+    *   **Prostaciclina (PGI2):** Producida por el endotelio sano. Hace exactamente lo contrario al Tromboxano: vasodilata e impide que las plaquetas se peguen donde no deben.
+*   **Vía de la Lipooxigenasa (LOX):**
+    *   **LTB4:** Es un imán biológico. Hace **quimiotaxis** pura, atrayendo a los neutrófilos al sitio de la herida.
+    *   **LTC4, LTD4, LTE4:** Causan broncoconstricción extrema y aumentan la permeabilidad vascular mucho más que la histamina.
+    *   **Lipoxinas:** Son la excepción a la regla. Son **antiinflamatorias**; se activan tarde para detener a los neutrófilos y empezar a resolver la inflamación.
+
+#### 2. Factor Activador de Plaquetas (PAF)
+El PAF también deriva de los fosfolípidos de membrana, pero tiene un poder de 100 a 10,000 veces mayor que la histamina para causar dilatación vascular y fuga de líquidos.
+
+```mermaid
+graph TD
+    A[Fosfolípidos de Membrana] -->|Fosfolipasa A2| B(Precursor Inactivo)
+    B -->|Acetiltransferasa| C{PAF Activo}
+    
+    C --> D[Plaquetas: Agregación y degranulación]
+    C --> E[Vasos: Vasodilatación extrema y aumento de permeabilidad]
+    C --> F[Leucocitos: Quimiotaxis y estallido oxidativo]
+    C --> G[Pulmón: Broncoconstricción severa]
+```
+
+#### 3. Citocinas y Quimiocinas
+Las citocinas son proteínas secretadas por células (principalmente macrófagos y linfocitos) que modulan la función de otras células. Las quimiocinas son una subfamilia diseñada exclusivamente para atraer células (quimiotaxis).
+
+| Mediador | Fuente Principal | Función Principal (Enfoque Quirúrgico) |
+| :--- | :--- | :--- |
+| **TNF-α (Factor de Necrosis Tumoral)** | Macrófagos | Activación endotelial. Induce fiebre, anorexia y caquexia. Culpable del choque séptico. |
+| **IL-1 (Interleucina 1)** | Macrófagos | Hermana del TNF. Principal pirógeno endógeno (**Fiebre** postoperatoria). Activa fibroblastos. |
+| **IL-6 (Interleucina 6)** | Macrófagos, células T | Estimula al hígado para producir **Proteínas de Fase Aguda** (PCR, fibrinógeno). |
+| **IL-10 y TGF-β** | Macrófagos M2, Treg | **Antiinflamatorias.** Apagan la respuesta inmune y el TGF-β inicia la fibrosis/cicatrización. |
+| **IL-8 (CXCL8) - *Quimiocina*** | Macrófagos, Endotelio | El principal quimioatrayente exclusivo para **Neutrófilos**. |
+
+---
+
+### 3.2.2 Patrones morfológicos de la inflamación aguda/crónica
+
+La forma en que se ve el tejido al microscopio (y a simple vista) nos dice exactamente en qué fase del proceso estamos. 
+
+#### Patrones de Inflamación Aguda
+Se caracterizan por alteraciones vasculares, edema y predominio absoluto de neutrófilos.
+1.  **Serosa:** Acumulación de líquido pobre en células (transudado o exudado muy leve). Ejemplo: Ampollas cutáneas por quemaduras térmicas en cirugía de trauma.
+2.  **Fibrinosa:** Daño vascular severo que deja escapar fibrinógeno, formando una red de fibrina gruesa. Clínicamente relevante en cavidades (pleura, pericardio, peritoneo). Si no se limpia, los fibroblastos la colonizan y se forman **adherencias quirúrgicas** o bridas.
+3.  **Supurativa o Purulenta:** Presencia masiva de pus (neutrófilos muertos y bacterias). Ejemplo: Apendicitis aguda abscedada.
+4.  **Ulcerosa:** Excavación local en la superficie de un órgano o mucosa por necrosis y desprendimiento del tejido inflamado.
+
+#### Patrones de Inflamación Crónica
+Se caracteriza por tres elementos simultáneos: **Infiltrado mononuclear** (macrófagos, linfocitos, células plasmáticas), **Destrucción tisular** (por la inflamación prolongada) e **Intentos de reparación** (proliferación de vasos sanguíneos y fibrosis). Se divide en dos grandes subtipos:
+
+1.  **Crónica Inespecífica:**
+    *   No hay un patrón celular especial, solo una "sopa" de macrófagos y linfocitos destruyendo y reparando al mismo tiempo, lo que genera paredes engrosadas y duras por la fibrosis.
+    *   *Ejemplo quirúrgico:* La colecistitis crónica. La vesícula se vuelve una pared fibrosa y rígida por estar luchando contra los cálculos biliares durante años.
+2.  **Crónica Granulomatosa (El dato de oro):**
+    *   El cuerpo no puede fagocitar ni destruir al agresor, así que decide "encerrarlo".
+    *   Forma un **granuloma**: una muralla formada por macrófagos modificados (células epitelioides) que a menudo se fusionan creando **células gigantes multinucleadas** (tipo Langhans), rodeados por un collar de linfocitos T.
+    *   *Ejemplo quirúrgico:* Reacción a cuerpo extraño (cuando se deja un hilo de sutura de seda o catgut y el cuerpo forma un granuloma a su alrededor), o enfermedades infecciosas clásicas como la tuberculosis intestinal.

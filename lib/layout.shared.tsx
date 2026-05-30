@@ -13,7 +13,7 @@ export const translations = defineTranslations()
     search: 'Buscar',
     searchNoResult: 'Sin resultados',
     toc: 'En esta página',
-    tocNoHeading: 'Sin encabezados',
+    tocNoHeadings: 'Sin encabezados',
     lastUpdate: 'Última actualización',
     chooseLanguage: 'Idioma',
     nextPage: 'Siguiente',

@@ -1,9 +1,26 @@
 import type { BaseLayoutProps, LinkItemType } from 'fumadocs-ui/layouts/shared';
 import Image from 'next/image';
-// 1. Importamos tus iconos personalizados (limpios)
 import { GitHubIcon, YouTubeIcon, InstagramIcon } from '@/components/ui/icons';
-// 2. Importamos los iconos de Lucide (para el menú móvil)
 import { CircleUserRound, BookHeart, Album } from 'lucide-react';
+
+// --- TRADUCCIONES ---
+import { defineTranslations } from 'fumadocs-core/i18n';
+import { uiTranslations } from 'fumadocs-ui/i18n';
+
+export const translations = defineTranslations()
+  .extend(uiTranslations())
+  .add('ui', {
+    search: 'Buscar',
+    searchNoResult: 'Sin resultados',
+    toc: 'En esta página',
+    tocNoHeading: 'Sin encabezados',
+    lastUpdate: 'Última actualización',
+    chooseLanguage: 'Idioma',
+    nextPage: 'Siguiente',
+    previousPage: 'Anterior',
+    chooseTheme: 'Tema',
+    editOnGithub: 'Editar en GitHub',
+  });
 
 // --- LOGO ---
 export const logo = (

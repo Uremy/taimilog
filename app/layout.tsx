@@ -4,9 +4,11 @@ import { Chiron_GoRound_TC } from 'next/font/google';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from 'next';
 import 'katex/dist/katex.css';
-
-// 👇 1. IMPORTA TU COMPONENTE PERSONALIZADO
 import CustomSearchDialog from '@/components/search';
+
+// --- NUEVO ---
+import { i18nProvider } from 'fumadocs-ui/i18n';
+import { translations } from '@/lib/layout.shared';
 
 const chironGoRound = Chiron_GoRound_TC({
   subsets: ['latin'],
@@ -42,6 +44,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <html lang="es" className={chironGoRound.className} suppressHydrationWarning>
       <body className="flex flex-col min-h-screen">
         <RootProvider
+          i18n={i18nProvider(translations)}
           search={{
             enabled: true,
             // 👇 2. AQUÍ OCURRE EL REEMPLAZO

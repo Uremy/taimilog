@@ -19,8 +19,8 @@ export default async function Page(props: PageProps<'/medicina/[[...slug]]'>) {
 
   const MDX = page.data.body;
   const gitConfig = {
-    user: 'username',
-    repo: 'repo',
+    user: 'Uremy',
+    repo: 'taimilog',
     branch: 'main',
   };
 
@@ -32,7 +32,7 @@ export default async function Page(props: PageProps<'/medicina/[[...slug]]'>) {
         <LLMCopyButton markdownUrl={`${page.url}.mdx`} />
         <ViewOptions
           markdownUrl={`${page.url}.mdx`}
-          githubUrl={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/docs/content/docs/${page.path}`}
+          githubUrl={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/content/medicina/${page.path}`}
         />
       </div>
       <DocsBody>

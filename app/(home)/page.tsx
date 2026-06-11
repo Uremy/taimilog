@@ -1,4 +1,3 @@
-// page.tsx — Taimilog HomePage v5 — espacios laterales y superior corregidos
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -42,7 +41,7 @@ const brandHover = "hover:border-[#8F2439]/40 dark:hover:border-[#E87D95]/40 hov
 
 export default function HomePage() {
   return (
-    <main className="w-full px-3 sm:px-4 md:px-6 py-4 pb-24 max-w-[1280px] mx-auto space-y-3">
+    <main className="container mx-auto px-4 py-4 pb-24 space-y-3">
 
       {/* ══════════════════════════════════════════════
           LAYER 1 — Perfil + Cita + Navegación
@@ -233,7 +232,6 @@ export default function HomePage() {
         </div>
       </div>
 
-
       {/* ══════════════════════════════════════════════
           LAYER 2 — Jardín + Buscador + Redes
       ══════════════════════════════════════════════ */}
@@ -304,7 +302,6 @@ export default function HomePage() {
         </div>
 
       </div>
-
 
       {/* ══════════════════════════════════════════════
           FAQ

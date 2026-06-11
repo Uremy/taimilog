@@ -1,33 +1,24 @@
-import type { Metadata } from 'next'; // 👈 Importamos el tipo
+// page.tsx — HomePage rediseñada con bento Bento.me style
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { 
-  Stethoscope, 
-  Library, 
-  Brain, 
-  Github, 
-  Youtube, 
-  Instagram, 
-  Search, 
-  ArrowRight, 
-  Terminal, 
-  MapPin, 
-  HeartPulse, 
-  ExternalLink, 
-  Twitter 
+import {
+  Stethoscope, Brain, Github, Youtube,
+  Instagram, Search, ArrowRight, Terminal,
+  MapPin, HeartPulse, ExternalLink, Twitter,
+  BookOpen, Sparkles, Coffee
 } from 'lucide-react';
 import { quotes } from '@/lib/quotes';
 import { QuoteClient } from '@/components/quote-client';
 import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
 
-// --- METADATA PARA LA HOME ---
 export const metadata: Metadata = {
   title: 'Taimilog',
   description: 'Apuntes de medicina y jardín digital',
   openGraph: {
     title: 'Taimilog',
     description: 'Apuntes de medicina y jardín digital',
-    images: '/og/home', // 👈 Apunta a la ruta que crearemos después
+    images: '/og/home',
     siteName: 'Taimilog',
   },
   twitter: {
@@ -38,28 +29,36 @@ export const metadata: Metadata = {
   },
 };
 
-// --- CONSTANTES DE DISEÑO ---
-const AVATAR_SIZE = 112; 
+const AVATAR_SIZE = 112;
 
-// Clases base
-const cardClass = "relative overflow-hidden rounded-2xl border bg-fd-card transition-all duration-300 hover:shadow-lg";
-const brandHoverClass = "hover:border-[#8F2439]/30 dark:hover:border-[#E87D95]/30";
-const outlineCardClass = "rounded-2xl border border-fd-border p-6 md:p-8 bg-fd-card/30"; 
+// --- TOKENS DE DISEÑO ---
+const card = "relative overflow-hidden rounded-2xl border border-fd-border bg-fd-card transition-all duration-300";
+const brandRose = "text-[#8F2439] dark:text-[#E87D95]";
+const brandBg = "bg-[#8F2439]/10 dark:bg-[#E87D95]/10";
+const brandHover = "hover:border-[#8F2439]/40 dark:hover:border-[#E87D95]/40";
+const sectionWrap = "rounded-2xl border border-fd-border bg-fd-card/40 p-6 md:p-8";
 
 export default function HomePage() {
   return (
-    <main className="container mx-auto px-4 py-6 pb-24">
-      
-      {/* --- HERO SECTION --- */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-        {/* PERFIL */}
-        <div className={`${cardClass} ${brandHoverClass} col-span-1 md:col-span-2 p-8 bg-gradient-to-br from-fd-primary/10 via-fd-card to-fd-card`}>
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-            <div className="relative group">
-              <div className="h-28 w-28 overflow-hidden rounded-lg border-2 border-fd-background shadow-xl transition-transform group-hover:scale-105">
-                <Image 
-                  src="/avatar.webp" 
-                  alt="Uremy - Estudiante de medicina"
+    <main className="container mx-auto px-4 py-8 pb-24 max-w-5xl">
+
+      {/* ═══════════════════════════════════════
+          BENTO PRINCIPAL
+      ═══════════════════════════════════════ */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
+
+        {/* ── PERFIL (hero, col-span 2) ── */}
+        <div className={`${card} ${brandHover} col-span-2 p-7
+          bg-gradient-to-br from-[#8F2439]/8 via-fd-card to-fd-card`}>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+
+            {/* Avatar */}
+            <div className="relative shrink-0 group">
+              <div className="h-24 w-24 rounded-xl overflow-hidden border-2 border-fd-background shadow-lg
+                transition-transform duration-300 group-hover:scale-105">
+                <Image
+                  src="/avatar.webp"
+                  alt="Uremy"
                   width={AVATAR_SIZE}
                   height={AVATAR_SIZE}
                   className="object-cover"
@@ -67,208 +66,222 @@ export default function HomePage() {
                   unoptimized
                 />
               </div>
-              <div className="absolute -bottom-1 -right-1 h-6 w-6 rounded-full bg-[#8F2439] border-2 border-fd-background flex items-center justify-center" aria-hidden="true">
-                <HeartPulse className="h-3 w-3 text-white" />
-              </div>
+              <span className="absolute -bottom-1 -right-1 h-5 w-5 rounded-full
+                bg-[#8F2439] border-2 border-fd-background grid place-items-center"
+                aria-hidden="true">
+                <HeartPulse className="h-2.5 w-2.5 text-white" />
+              </span>
             </div>
 
-            <div className="flex-1">
-              <div className="flex items-center gap-2 mb-2">
-                <h1 className="text-3xl font-bold">Uremy</h1>
-                <span className="px-2 py-0.5 text-xs font-medium bg-[#8F2439]/10 text-[#8F2439] dark:bg-[#E87D95]/10 dark:text-[#E87D95] rounded-full">
+            {/* Info */}
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                <h1 className="text-2xl font-bold tracking-tight">Uremy</h1>
+                <span className={`px-2 py-0.5 text-[10px] font-semibold tracking-wide uppercase
+                  rounded-full ${brandBg} ${brandRose}`}>
                   taimilog
                 </span>
               </div>
-              <p className="text-fd-muted-foreground mb-2 leading-relaxed">
+              <p className="text-sm text-fd-muted-foreground mb-1.5 leading-relaxed">
                 Welcome, is always nice to see you here
               </p>
-              <p className="text-sm text-fd-muted-foreground/80 mb-3 font-light">
+              <p className="text-xs text-fd-muted-foreground/70 mb-3 font-light">
                 그냥 저예요. 한국어 연습할 때도 있고 그냥 방황할 때도 있고.
               </p>
-              <div className="flex items-center gap-1.5 text-sm text-fd-muted-foreground">
-                <MapPin className="h-4 w-4" aria-hidden="true" />
+              <div className="flex items-center gap-1.5 text-xs text-fd-muted-foreground">
+                <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
                 <span>우주</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* CITA */}
-        <div className={`${cardClass} p-6 bg-gradient-to-br from-indigo-500/5 to-transparent flex flex-col justify-center hover:border-indigo-500/30`}>
-          <QuoteClient 
-            initialQuote={quotes[Math.floor(Math.random() * quotes.length)]} 
-            allQuotes={quotes} 
+        {/* ── CITA (sin modificar, col-span 1, row-span 2) ── */}
+        <div className={`${card} col-span-1 row-span-2 p-5
+          bg-gradient-to-br from-indigo-500/8 to-transparent
+          hover:border-indigo-500/30 flex flex-col justify-center`}>
+          <QuoteClient
+            initialQuote={quotes[Math.floor(Math.random() * quotes.length)]}
+            allQuotes={quotes}
           />
         </div>
-      </div>
 
-      {/* --- GRID DE CONTENIDO PRINCIPAL --- */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {/* MEDICINA */}
-        <Link 
-          href="/medicina/introduccion" 
-          className={`${cardClass} ${brandHoverClass} col-span-2 row-span-2 p-6 group flex flex-col justify-between min-h-[200px] md:min-h-[300px]`}
-        >
-          <div>
-            <div className="inline-flex items-center justify-center p-3 bg-rose-100 dark:bg-rose-900/20 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
-              <Stethoscope className="h-6 w-6 text-[#8F2439] dark:text-[#E87D95]" />
-            </div>
-            <h2 className="text-2xl font-bold mb-2">Medicina</h2>
-            <p className="text-fd-muted-foreground text-sm leading-relaxed max-w-md">
-              Apuntes organizados de Fisiología, Patología y más. 
-              Mi segundo cerebro para sobrevivir a la carrera.
-            </p>
-          </div>
-          <div className="flex items-center gap-2 text-[#8F2439] dark:text-[#E87D95] font-medium mt-6">
-            <span>Explorar apuntes</span>
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </div>
-          <div className="absolute -right-8 -bottom-8 h-32 w-32 rounded-full bg-[#8F2439]/10 dark:bg-[#E87D95]/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
-        </Link>
-
-        {/* BUSCADOR (INFO) - Modificado */}
-        <div className={`${cardClass} col-span-1 p-4 flex flex-col items-center justify-center text-center aspect-square select-none`}>
-          <p className="text-[11px] font-semibold text-fd-muted-foreground mb-2 leading-tight">
-            ¿Quieres buscar algo específico?
-          </p>
-          <div className="p-2 bg-fd-primary/10 rounded-full mb-2">
-            <Search className="h-5 w-5 text-[#8F2439] dark:text-[#E87D95]" aria-hidden="true" />
-          </div>
-          <p className="text-[10px] text-fd-muted-foreground/80 leading-tight">
-            El botón siempre está a tu disposición
-          </p>
-        </div>
-
-        {/* TECH STACK */}
-        <div className={`${cardClass} col-span-1 p-4 flex flex-col justify-center aspect-square hover:border-blue-500/30`}>
+        {/* ── STACK (col-span 1) ── */}
+        <div className={`${card} col-span-1 p-4 flex flex-col justify-between
+          hover:border-blue-500/30 group`}>
           <div className="flex items-center gap-2 mb-3">
-            <Terminal className="h-5 w-5 text-fd-primary" aria-hidden="true" />
-            <h3 className="font-semibold text-sm">Stack</h3>
+            <Terminal className="h-4 w-4 text-blue-500" aria-hidden="true" />
+            <h3 className="font-semibold text-xs uppercase tracking-wide text-fd-muted-foreground">
+              Stack
+            </h3>
           </div>
           <div className="flex flex-wrap gap-1.5">
-            {['Next.js', 'React', 'MDX'].map((tech) => (
-              <span key={tech} className="px-2 py-1 rounded-md bg-fd-background text-[10px] font-medium border">
+            {['Next.js', 'MDX', 'Tailwind', 'Fumadocs'].map((tech) => (
+              <span key={tech}
+                className="px-2 py-0.5 rounded-md bg-fd-background border text-[10px] font-medium">
                 {tech}
               </span>
             ))}
           </div>
         </div>
 
-        {/* BIBLIOTECA */}
-        <Link 
-          href="/biblioteca/blog" 
-          className={`${cardClass} col-span-2 p-6 flex items-center justify-between group bg-gradient-to-r from-purple-500/5 to-transparent hover:border-purple-500/30`}
+        {/* ── MEDICINA (col-span 1, row-span 2, tall card) ── */}
+        <Link
+          href="/medicina/introduccion"
+          className={`${card} ${brandHover} col-span-1 row-span-2 p-5
+            flex flex-col justify-between group min-h-[200px]
+            bg-gradient-to-b from-[#8F2439]/5 to-transparent`}
         >
-          <div className="flex items-center gap-4">
-            <div className="p-2 bg-purple-100 dark:bg-purple-900/20 rounded-lg group-hover:scale-110 transition-transform">
-              <Brain className="h-5 w-5 text-purple-600" />
+          <div>
+            <div className={`inline-flex items-center justify-center p-2.5
+              ${brandBg} rounded-xl mb-3
+              transition-transform duration-300 group-hover:scale-110`}>
+              <Stethoscope className={`h-5 w-5 ${brandRose}`} />
             </div>
-            <div>
-              <h3 className="font-bold">Biblioteca & Blog</h3>
-              <p className="text-xs text-fd-muted-foreground">Reflexiones filosóficas y notas</p>
-            </div>
+            <h2 className="text-lg font-bold mb-1.5">Medicina</h2>
+            <p className="text-xs text-fd-muted-foreground leading-relaxed">
+              Apuntes de Fisiología, Patología y más. Mi segundo cerebro.
+            </p>
           </div>
-          <ArrowRight className="h-4 w-4 text-fd-muted-foreground transition-transform group-hover:translate-x-1" />
+          <div className={`flex items-center gap-1.5 text-xs font-semibold mt-4 ${brandRose}`}>
+            <span>Explorar</span>
+            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+          </div>
+          {/* decoración blur */}
+          <div className={`absolute -right-6 -bottom-6 h-24 w-24 rounded-full
+            ${brandBg} blur-2xl opacity-0 group-hover:opacity-100 transition-opacity`}
+            aria-hidden="true" />
         </Link>
-      </div>
 
-      {/* --- SECCIÓN REDES SOCIALES (ENCAPSULADA) --- */}
-      <div className="mt-8">
-        <div className={outlineCardClass}>
-          <h3 className="text-2xl font-bold mb-6 text-center">¡Sígueme!</h3>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <SocialCard 
-              href="https://github.com/uremy"
-              icon={<Github className="h-6 w-6 md:h-5 md:w-5" />}
-              label="GitHub"
-              subLabel="@uremy"
-            />
-            <SocialCard 
-              href="https://youtube.com/@uremy"
-              icon={<Youtube className="h-6 w-6 md:h-5 md:w-5" />}
-              label="YouTube"
-              subLabel="Suscríbete"
-            />
-            <SocialCard 
-              href="https://instagram.com/ure.emy"
-              icon={<Instagram className="h-6 w-6 md:h-5 md:w-5" />}
-              label="Instagram"
-              subLabel="Sígueme"
-            />
-            <SocialCard 
-              href="https://twitter.com/Taimilog"
-              icon={<Twitter className="h-6 w-6 md:h-5 md:w-5" />}
-              label="Twitter"
-              subLabel="@Taimilog"
-            />
+        {/* ── BIBLIOTECA (col-span 1) ── */}
+        <Link
+          href="/biblioteca/blog"
+          className={`${card} col-span-1 p-4 flex items-center gap-3 group
+            bg-gradient-to-br from-purple-500/5 to-transparent hover:border-purple-500/30`}
+        >
+          <div className="p-2 bg-purple-100 dark:bg-purple-900/20 rounded-lg
+            transition-transform group-hover:scale-110 shrink-0">
+            <Brain className="h-4 w-4 text-purple-600" />
           </div>
-        </div>
-      </div>
+          <div className="min-w-0">
+            <h3 className="font-bold text-sm leading-tight">Biblioteca</h3>
+            <p className="text-[10px] text-fd-muted-foreground truncate">Reflexiones & Blog</p>
+          </div>
+          <ArrowRight className="h-3.5 w-3.5 ml-auto text-fd-muted-foreground shrink-0
+            transition-transform group-hover:translate-x-1" />
+        </Link>
 
-      {/* --- SECCIÓN FAQ (ENCAPSULADA) --- */}
-      <div className="mt-8">
-        <div className={outlineCardClass}>
-          <h3 className="text-2xl font-bold mb-6 text-center">Preguntas Frecuentes</h3>
-          
-          <Accordions type="single" collapsible>
-            <Accordion title="¿Qué es Taimilog?">
-              Taimilog es una idea que llevo mucho tiempo gestando, es un sitio personal donde pretendo almacenar todo lo que sé. Además de compartir información que puede ser útil para todos
-            </Accordion>
-            
-            <Accordion title="¿Qué significa Taimilog?">
-              Taimi- lo saqué de Taimado, mientras que -log lo saqué de logbook. Mi idea es básicamente "registros de un Taimado"
-            </Accordion>
-            
-            <Accordion title="¿Por qué TU deberías hacer un sitio personal?">
-              La web es un sitio efimero, las RRSS no nos ofrecen espacio alguno para poder personalizar un ricón en el internet. ¿No te gustaria tener algo propio, algo lejos de las megacorporaciones que lucran con tu contenido sin darte algo a cambio? Quizá deberías considerar hacer tu propio jardín, cultivarlo y dejar algo en internet
-            </Accordion>
-            
-            <Accordion title="¿Quién es el personaje de la foto de perfil?">
-              ¡Es la Señora Herta! Madam Herta is a peerless gem. Madam Herta is an unrivaled genius. Madam Herta is an inimitable beauty
-            </Accordion>
-          </Accordions>
+        {/* ── SEARCH INFO (col-span 1) ── */}
+        <div className={`${card} col-span-1 p-4 flex flex-col items-center justify-center
+          text-center select-none aspect-square`}>
+          <div className={`p-2 ${brandBg} rounded-full mb-2`}>
+            <Search className={`h-4 w-4 ${brandRose}`} aria-hidden="true" />
+          </div>
+          <p className="text-[10px] font-medium text-fd-muted-foreground leading-tight">
+            Usa el buscador<br />siempre disponible
+          </p>
         </div>
-      </div>
+
+      </div>{/* fin bento principal */}
+
+
+      {/* ═══════════════════════════════════════
+          SECCIÓN: REDES SOCIALES
+      ═══════════════════════════════════════ */}
+      <section className={`${sectionWrap} mt-4`} aria-label="Redes sociales">
+        <h2 className="text-lg font-bold mb-1">¡Sígueme!</h2>
+        <p className="text-xs text-fd-muted-foreground mb-5">
+          Por si quieres mantenerte al tanto de lo que hago
+        </p>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <SocialCard href="https://github.com/uremy"
+            icon={<Github className="h-5 w-5" />}
+            label="GitHub" subLabel="@uremy"
+            color="hover:border-zinc-400/40 hover:bg-zinc-500/5" />
+          <SocialCard href="https://youtube.com/@uremy"
+            icon={<Youtube className="h-5 w-5" />}
+            label="YouTube" subLabel="Suscríbete"
+            color="hover:border-red-500/40 hover:bg-red-500/5" />
+          <SocialCard href="https://instagram.com/ure.emy"
+            icon={<Instagram className="h-5 w-5" />}
+            label="Instagram" subLabel="@ure.emy"
+            color="hover:border-pink-500/40 hover:bg-pink-500/5" />
+          <SocialCard href="https://twitter.com/Taimilog"
+            icon={<Twitter className="h-5 w-5" />}
+            label="Twitter" subLabel="@Taimilog"
+            color="hover:border-sky-500/40 hover:bg-sky-500/5" />
+        </div>
+      </section>
+
+
+      {/* ═══════════════════════════════════════
+          SECCIÓN: FAQ
+      ═══════════════════════════════════════ */}
+      <section className={`${sectionWrap} mt-4`} aria-label="Preguntas frecuentes">
+        <h2 className="text-lg font-bold mb-1">Preguntas Frecuentes</h2>
+        <p className="text-xs text-fd-muted-foreground mb-5">
+          Cosas que la gente suele preguntarme
+        </p>
+
+        <Accordions type="single" collapsible>
+          <Accordion title="¿Qué es Taimilog?">
+            Taimilog es una idea que llevo mucho tiempo gestando, es un sitio personal donde pretendo
+            almacenar todo lo que sé. Además de compartir información que puede ser útil para todos.
+          </Accordion>
+          <Accordion title="¿Qué significa Taimilog?">
+            Taimi- lo saqué de Taimado, mientras que -log lo saqué de logbook.
+            Mi idea es básicamente "registros de un Taimado".
+          </Accordion>
+          <Accordion title="¿Por qué TÚ deberías hacer un sitio personal?">
+            La web es un sitio efímero, las RRSS no nos ofrecen espacio alguno para personalizar
+            un rincón en internet. ¿No te gustaría tener algo propio, lejos de las megacorporaciones
+            que lucran con tu contenido? Quizá deberías considerar hacer tu propio jardín digital.
+          </Accordion>
+          <Accordion title="¿Quién es el personaje de la foto de perfil?">
+            ¡Es la Señora Herta! Madam Herta is a peerless gem.
+            Madam Herta is an unrivaled genius. Madam Herta is an inimitable beauty.
+          </Accordion>
+        </Accordions>
+      </section>
 
     </main>
   );
 }
 
-// --- COMPONENTE SOCIAL CARD ---
-function SocialCard({ href, icon, label, subLabel }: { href: string; icon: React.ReactNode; label: string; subLabel: string }) {
+
+// ═══════════════════════════════════════
+// COMPONENTE: SocialCard (rediseñado)
+// ═══════════════════════════════════════
+function SocialCard({
+  href, icon, label, subLabel, color
+}: {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+  subLabel: string;
+  color: string;
+}) {
   return (
-    <a 
-      href={href} 
-      target="_blank" 
+    <a
+      href={href}
+      target="_blank"
       rel="noopener noreferrer"
       className={`
-        ${cardClass}
-        ${brandHoverClass}
-        ${outlineCardClass ? '' : ''} 
-        col-span-1 md:col-span-2 
-        aspect-square md:aspect-auto md:h-20
-        flex flex-col md:flex-row 
-        items-center justify-center md:justify-start 
-        p-4 md:px-6 gap-2 md:gap-4
-        group
-        hover:bg-[#8F2439]/5 dark:hover:bg-[#E87D95]/5
+        ${card} ${color}
+        flex items-center gap-3 p-4 group
       `}
     >
-      <div className="mb-1 md:mb-0 transition-transform group-hover:scale-110 text-fd-foreground group-hover:text-[#8F2439] dark:group-hover:text-[#E87D95]">
+      <div className="text-fd-muted-foreground transition-all duration-200
+        group-hover:text-fd-foreground group-hover:scale-110 shrink-0">
         {icon}
       </div>
-      
-      <div className="text-center md:text-left">
-        <h3 className="font-bold text-sm md:text-base leading-none mb-1 group-hover:text-[#8F2439] dark:group-hover:text-[#E87D95] transition-colors">
-          {label}
-        </h3>
-        <p className="text-[10px] md:text-xs text-fd-muted-foreground">
-          {subLabel}
-        </p>
+      <div className="min-w-0">
+        <p className="font-semibold text-sm leading-tight">{label}</p>
+        <p className="text-[10px] text-fd-muted-foreground truncate">{subLabel}</p>
       </div>
-
-      <ExternalLink className="hidden md:block h-4 w-4 ml-auto text-fd-muted-foreground opacity-0 group-hover:opacity-100 transition-all group-hover:text-[#8F2439] dark:group-hover:text-[#E87D95]" aria-hidden="true" />
+      <ExternalLink className="h-3.5 w-3.5 ml-auto text-fd-muted-foreground shrink-0
+        opacity-0 group-hover:opacity-60 transition-opacity" aria-hidden="true" />
     </a>
   );
 }

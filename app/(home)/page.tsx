@@ -1,3 +1,4 @@
+// page.tsx — Taimilog HomePage v5 — espacios laterales y superior corregidos
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -41,14 +42,6 @@ const brandHover = "hover:border-[#8F2439]/40 dark:hover:border-[#E87D95]/40 hov
 
 export default function HomePage() {
   return (
-    {/*
-      ↓ CAMBIOS vs v4:
-        · Quitado "container" — ese class aplica el max-width del tema Fumadocs
-          que puede ser más estrecho que 1280px y deja márgenes automáticos
-        · w-full en su lugar + px más pequeño en desktop para pegar más a los bordes
-        · py-10 → py-4 para reducir el espacio superior marcado con "I"
-        · max-w-[1280px] se mantiene pero ahora sí aplica sobre el ancho real disponible
-    */}
     <main className="w-full px-3 sm:px-4 md:px-6 py-4 pb-24 max-w-[1280px] mx-auto space-y-3">
 
       {/* ══════════════════════════════════════════════
@@ -131,7 +124,7 @@ export default function HomePage() {
           />
         </div>
 
-        {/* SEGUNDA FILA — 3 nav cards */}
+        {/* SEGUNDA FILA — las 3 nav cards */}
         <div className="md:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-3">
 
           {/* MEDICINA */}
@@ -150,8 +143,7 @@ export default function HomePage() {
             <Stethoscope className={`h-7 w-7 shrink-0 ${brandRose}
               md:mb-4 md:h-6 md:w-6`} aria-hidden="true" />
 
-            <div className="flex-1 min-w-0 flex flex-col justify-center
-              md:flex-1 md:w-full">
+            <div className="flex-1 min-w-0 flex flex-col justify-center md:flex-1 md:w-full">
               <h2 className="text-sm font-bold leading-tight mb-0.5 md:mb-2">Medicina</h2>
               <p className="text-[12px] text-fd-muted-foreground leading-relaxed hidden md:block">
                 Fisiología, Patología y más.<br />Mi segundo cerebro.
@@ -161,8 +153,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className={`shrink-0 flex items-center gap-1 text-[12px] font-semibold ${brandRose}
-              md:mt-4`}>
+            <div className={`shrink-0 flex items-center gap-1 text-[12px] font-semibold ${brandRose} md:mt-4`}>
               <span className="hidden md:inline">Explorar</span>
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </div>
@@ -186,8 +177,7 @@ export default function HomePage() {
               hover:border-purple-500/30
             `}
           >
-            <Brain className="h-7 w-7 shrink-0 text-purple-500
-              md:mb-4 md:h-6 md:w-6" aria-hidden="true" />
+            <Brain className="h-7 w-7 shrink-0 text-purple-500 md:mb-4 md:h-6 md:w-6" aria-hidden="true" />
 
             <div className="flex-1 min-w-0 flex flex-col justify-center">
               <h3 className="text-sm font-bold leading-tight mb-0.5 md:mb-2">Biblioteca</h3>
@@ -199,8 +189,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="shrink-0 flex items-center gap-1 text-[12px] font-semibold text-purple-500
-              md:mt-4">
+            <div className="shrink-0 flex items-center gap-1 text-[12px] font-semibold text-purple-500 md:mt-4">
               <span className="hidden md:inline">Leer</span>
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </div>
@@ -250,6 +239,7 @@ export default function HomePage() {
       ══════════════════════════════════════════════ */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
 
+        {/* JARDÍN DIGITAL */}
         <div className={`
           ${card}
           md:col-span-5
@@ -279,6 +269,7 @@ export default function HomePage() {
           </p>
         </div>
 
+        {/* BUSCADOR */}
         <div className={`
           ${card} ${brandHover}
           md:col-span-3
@@ -296,6 +287,7 @@ export default function HomePage() {
           </p>
         </div>
 
+        {/* REDES 2×2 */}
         <div className="md:col-span-4 grid grid-cols-2 gap-3">
           <SocialCard href="https://github.com/uremy"
             icon={<Github className="h-5 w-5" />}

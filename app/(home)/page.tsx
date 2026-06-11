@@ -1,4 +1,4 @@
-// page.tsx — Taimilog HomePage v2 — FIXED: anchura + alturas bento
+// page.tsx — Taimilog HomePage v3 — FILLED: sin notas inventadas, cards más grandes
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -6,7 +6,7 @@ import {
   Stethoscope, Brain, Github, Youtube,
   Instagram, Search, ArrowRight, Terminal,
   MapPin, HeartPulse, Twitter, Flower2,
-  BookOpen, Pencil, Atom
+  BookOpen, Pencil, Sparkles, Coffee
 } from 'lucide-react';
 import { quotes } from '@/lib/quotes';
 import { QuoteClient } from '@/components/quote-client';
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
 };
 
-const AVATAR_SIZE = 112;
+const AVATAR_SIZE = 120;
 
 const card = [
   "relative overflow-hidden rounded-2xl",
@@ -41,37 +41,28 @@ const brandRose  = "text-[#8F2439] dark:text-[#E87D95]";
 const brandBg    = "bg-[#8F2439]/10 dark:bg-[#E87D95]/10";
 const brandHover = "hover:border-[#8F2439]/40 dark:hover:border-[#E87D95]/40 hover:shadow-[0_4px_20px_oklch(0.4_0.12_10/0.08)]";
 
-// Notas recientes hardcodeadas — reemplaza con source.getPages() cuando quieras
-const recentNotes = [
-  { title: "Sistema Nervioso Autónomo", tag: "Fisiología", href: "/medicina/fisiologia/sna" },
-  { title: "Insuficiencia Cardíaca", tag: "Patología", href: "/medicina/patologia/ic" },
-  { title: "Potencial de Acción", tag: "Fisiología", href: "/medicina/fisiologia/potencial" },
-  { title: "Por qué hacer un jardín digital", tag: "Blog", href: "/biblioteca/blog" },
-  { title: "Ciclo de Krebs", tag: "Bioquímica", href: "/medicina/bioquimica/krebs" },
-];
-
 export default function HomePage() {
   return (
-    // ↓ max-w-6xl en vez de max-w-5xl — da mucho más espacio horizontal
-    <main className="container mx-auto px-4 md:px-6 py-8 pb-24 max-w-6xl space-y-3">
+    // max-w-[1280px] = 1280px → ocupa casi toda la pantalla en escritorio
+    <main className="container mx-auto px-4 md:px-8 py-10 pb-24 max-w-[1280px] space-y-3">
 
       {/* ══════════════════════════════════════════════
           LAYER 1 — Perfil + Cita + Navegación
-          12 cols, dos rows con alturas fijas en md
       ══════════════════════════════════════════════ */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-3
-                      md:grid-rows-[auto_minmax(180px,auto)]">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
 
-        {/* PERFIL — col-span-7 */}
+        {/* PERFIL — col-span-7, más alto */}
         <div className={`
           ${card} ${brandHover}
           md:col-span-7
-          p-7
+          p-8
           bg-gradient-to-br from-[#8F2439]/8 via-fd-card to-fd-card
         `}>
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-7">
+
+            {/* Avatar más grande */}
             <div className="relative shrink-0 group/avatar">
-              <div className="h-[90px] w-[90px] rounded-xl overflow-hidden
+              <div className="h-[100px] w-[100px] rounded-xl overflow-hidden
                 border border-fd-border shadow-md
                 transition-transform duration-500 group-hover/avatar:scale-[1.04]">
                 <Image
@@ -84,36 +75,40 @@ export default function HomePage() {
                   unoptimized
                 />
               </div>
-              <span className="absolute -bottom-1 -right-1 h-[18px] w-[18px] rounded-full
+              <span className="absolute -bottom-1 -right-1 h-[20px] w-[20px] rounded-full
                 bg-[#8F2439] border-2 border-fd-card grid place-items-center"
                 aria-hidden="true">
-                <HeartPulse className="h-2.5 w-2.5 text-white" />
+                <HeartPulse className="h-3 w-3 text-white" />
               </span>
             </div>
 
+            {/* Texto */}
             <div className="flex-1 min-w-0">
-              <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                <h1 className="text-xl font-bold tracking-tight leading-none">Uremy</h1>
-                <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold
+              <div className="flex flex-wrap items-center gap-2 mb-2">
+                <h1 className="text-2xl font-bold tracking-tight leading-none">Uremy</h1>
+                <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold
                   tracking-widest uppercase ${brandBg} ${brandRose}`}>
                   taimilog
                 </span>
               </div>
-              <p className="text-sm text-fd-muted-foreground mb-1.5 leading-relaxed">
+
+              <p className="text-sm text-fd-muted-foreground mb-2 leading-relaxed">
                 Welcome, is always nice to see you here
               </p>
-              <p className="text-[11px] text-fd-muted-foreground/60 mb-4 font-light italic">
+
+              <p className="text-[12px] text-fd-muted-foreground/60 mb-5 font-light italic">
                 그냥 저예요. 한국어 연습할 때도 있고 그냥 방황할 때도 있고.
               </p>
-              <div className="flex flex-wrap items-center gap-3 text-[11px] text-fd-muted-foreground">
-                <span className="flex items-center gap-1">
-                  <MapPin className="h-3 w-3 shrink-0" aria-hidden="true" />우주
+
+              <div className="flex flex-wrap items-center gap-4 text-[12px] text-fd-muted-foreground">
+                <span className="flex items-center gap-1.5">
+                  <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />우주
                 </span>
-                <span className="flex items-center gap-1">
-                  <Flower2 className="h-3 w-3 shrink-0" aria-hidden="true" />jardín digital
+                <span className="flex items-center gap-1.5">
+                  <Flower2 className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />jardín digital
                 </span>
-                <span className="flex items-center gap-1">
-                  <Stethoscope className="h-3 w-3 shrink-0" aria-hidden="true" />estudiante de medicina
+                <span className="flex items-center gap-1.5">
+                  <Stethoscope className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />estudiante de medicina
                 </span>
               </div>
             </div>
@@ -124,11 +119,11 @@ export default function HomePage() {
         <div className={`
           ${card}
           md:col-span-5 md:row-span-2
-          p-6
+          p-7
           bg-gradient-to-br from-indigo-500/8 to-transparent
           hover:border-indigo-500/30
           flex flex-col justify-center
-          min-h-[260px]
+          min-h-[320px]
         `}>
           <QuoteClient
             initialQuote={quotes[Math.floor(Math.random() * quotes.length)]}
@@ -136,7 +131,7 @@ export default function HomePage() {
           />
         </div>
 
-        {/* SEGUNDA FILA izquierda — 7 cols, 3 cards */}
+        {/* SEGUNDA FILA izquierda — 7 cols, 3 cards más altas */}
         <div className="md:col-span-7 grid grid-cols-3 gap-3">
 
           {/* MEDICINA */}
@@ -145,23 +140,23 @@ export default function HomePage() {
             className={`
               ${card} ${brandHover}
               col-span-1
-              p-5 flex flex-col justify-between group
-              min-h-[180px]
+              p-6 flex flex-col justify-between group
+              min-h-[200px]
               bg-gradient-to-b from-[#8F2439]/6 to-transparent
             `}
           >
             <div>
-              <Stethoscope className={`h-5 w-5 mb-3 ${brandRose}`} aria-hidden="true" />
-              <h2 className="text-sm font-bold leading-tight mb-1.5">Medicina</h2>
-              <p className="text-[11px] text-fd-muted-foreground leading-relaxed">
+              <Stethoscope className={`h-6 w-6 mb-4 ${brandRose}`} aria-hidden="true" />
+              <h2 className="text-base font-bold leading-tight mb-2">Medicina</h2>
+              <p className="text-[12px] text-fd-muted-foreground leading-relaxed">
                 Fisiología, Patología y más.<br />Mi segundo cerebro.
               </p>
             </div>
-            <div className={`flex items-center gap-1 text-[11px] font-semibold ${brandRose}`}>
+            <div className={`flex items-center gap-1 text-[12px] font-semibold mt-4 ${brandRose}`}>
               Explorar
-              <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
             </div>
-            <div className={`absolute -right-8 -bottom-8 h-28 w-28 rounded-full
+            <div className={`absolute -right-8 -bottom-8 h-32 w-32 rounded-full
               ${brandBg} blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
               aria-hidden="true" />
           </Link>
@@ -172,22 +167,22 @@ export default function HomePage() {
             className={`
               ${card}
               col-span-1
-              p-5 flex flex-col justify-between group
-              min-h-[180px]
+              p-6 flex flex-col justify-between group
+              min-h-[200px]
               bg-gradient-to-br from-purple-500/5 to-transparent
               hover:border-purple-500/30
             `}
           >
             <div>
-              <Brain className="h-5 w-5 text-purple-500 mb-3" aria-hidden="true" />
-              <h3 className="text-sm font-bold leading-tight mb-1.5">Biblioteca</h3>
-              <p className="text-[11px] text-fd-muted-foreground">
+              <Brain className="h-6 w-6 text-purple-500 mb-4" aria-hidden="true" />
+              <h3 className="text-base font-bold leading-tight mb-2">Biblioteca</h3>
+              <p className="text-[12px] text-fd-muted-foreground leading-relaxed">
                 Reflexiones,<br />ensayos & blog
               </p>
             </div>
-            <div className="flex items-center gap-1 text-[11px] font-semibold text-purple-500">
+            <div className="flex items-center gap-1 text-[12px] font-semibold text-purple-500">
               Leer
-              <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
             </div>
           </Link>
 
@@ -195,13 +190,13 @@ export default function HomePage() {
           <div className={`
             ${card}
             col-span-1
-            p-5 flex flex-col justify-between
-            min-h-[180px]
+            p-6 flex flex-col justify-between
+            min-h-[200px]
             hover:border-blue-500/20
           `}>
             <div>
-              <div className="flex items-center gap-1.5 mb-3">
-                <Terminal className="h-3.5 w-3.5 text-blue-500" aria-hidden="true" />
+              <div className="flex items-center gap-2 mb-4">
+                <Terminal className="h-4 w-4 text-blue-500" aria-hidden="true" />
                 <span className="text-[10px] font-semibold uppercase tracking-widest text-fd-muted-foreground">
                   stack
                 </span>
@@ -209,14 +204,14 @@ export default function HomePage() {
               <div className="flex flex-wrap gap-1.5">
                 {['Next.js', 'MDX', 'Tailwind', 'Fumadocs', 'TypeScript'].map((t) => (
                   <span key={t}
-                    className="px-2 py-0.5 rounded-md bg-fd-background border border-fd-border
-                      text-[10px] font-medium">
+                    className="px-2 py-1 rounded-md bg-fd-background border border-fd-border
+                      text-[11px] font-medium">
                     {t}
                   </span>
                 ))}
               </div>
             </div>
-            <p className="text-[10px] text-fd-muted-foreground/50 mt-2 italic">
+            <p className="text-[11px] text-fd-muted-foreground/50 italic">
               este sitio fue hecho con ♡
             </p>
           </div>
@@ -224,59 +219,60 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ══════════════════════════════════════════════
-          ÚLTIMAS NOTAS — franja horizontal
-      ══════════════════════════════════════════════ */}
-      <div className={`${card} hover:border-fd-border/80 p-5`}>
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <Pencil className={`h-3.5 w-3.5 ${brandRose}`} aria-hidden="true" />
-            <span className="text-[10px] font-semibold uppercase tracking-widest text-fd-muted-foreground">
-              últimas notas
-            </span>
-          </div>
-          <Link
-            href="/medicina/introduccion"
-            className={`text-[10px] font-medium ${brandRose} flex items-center gap-1
-              hover:underline underline-offset-2`}
-          >
-            Ver todas <ArrowRight className="h-3 w-3" />
-          </Link>
-        </div>
-        {/* Scroll horizontal en mobile, grid en md */}
-        <div className="flex gap-3 overflow-x-auto pb-1 md:grid md:grid-cols-5 md:overflow-visible
-          scrollbar-none [-ms-overflow-style:none] [scrollbar-width:none]">
-          {recentNotes.map((note) => (
-            <Link
-              key={note.title}
-              href={note.href}
-              className={`
-                shrink-0 w-[200px] md:w-auto
-                rounded-xl border border-fd-border bg-fd-background
-                p-3.5 flex flex-col gap-2
-                hover:border-[#8F2439]/30 dark:hover:border-[#E87D95]/30
-                hover:bg-fd-card
-                transition-all duration-200 group
-              `}
-            >
-              <span className={`text-[9px] font-semibold uppercase tracking-widest
-                px-1.5 py-0.5 rounded-full ${brandBg} ${brandRose} self-start`}>
-                {note.tag}
-              </span>
-              <p className="text-xs font-medium leading-snug text-fd-foreground
-                group-hover:text-[#8F2439] dark:group-hover:text-[#E87D95]
-                transition-colors line-clamp-2">
-                {note.title}
-              </p>
-            </Link>
-          ))}
-        </div>
-      </div>
 
       {/* ══════════════════════════════════════════════
-          LAYER 2 — Redes + Jardín + Buscador
+          LAYER 2 — Jardín + Buscador + Redes
+          Orden cambiado: jardín ocupa más espacio
       ══════════════════════════════════════════════ */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
+
+        {/* JARDÍN DIGITAL — col-span-5, más alto y expresivo */}
+        <div className={`
+          ${card}
+          md:col-span-5
+          p-7 flex flex-col justify-between
+          bg-gradient-to-br from-emerald-500/6 to-transparent
+          hover:border-emerald-500/25
+          min-h-[200px]
+        `}>
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <Flower2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+              <span className="text-[10px] font-semibold uppercase tracking-widest text-fd-muted-foreground">
+                jardín digital
+              </span>
+            </div>
+            <p className="text-base font-semibold text-fd-foreground leading-relaxed mb-2.5">
+              Este sitio es un jardín digital.
+            </p>
+            <p className="text-[12px] text-fd-muted-foreground leading-relaxed">
+              No un blog, no un portafolio. Un espacio en constante crecimiento donde coexisten
+              apuntes a medio terminar, ideas en proceso y reflexiones personales.
+              Las plantas no crecen perfectas, y eso está bien.
+            </p>
+          </div>
+          <p className="text-[11px] text-fd-muted-foreground/50 mt-5 italic">
+            las plantas no crecen perfectas 🌱
+          </p>
+        </div>
+
+        {/* BUSCADOR — col-span-3 */}
+        <div className={`
+          ${card} ${brandHover}
+          md:col-span-3
+          p-7 flex flex-col items-center justify-center text-center
+          select-none min-h-[200px]
+        `}>
+          <div className={`p-3.5 ${brandBg} rounded-full mb-4`}>
+            <Search className={`h-6 w-6 ${brandRose}`} aria-hidden="true" />
+          </div>
+          <p className="text-sm font-bold mb-2">Buscador</p>
+          <p className="text-[12px] text-fd-muted-foreground leading-relaxed">
+            Disponible en todo momento con{' '}
+            <kbd className="px-1.5 py-0.5 rounded bg-fd-background border border-fd-border
+              text-[11px] font-mono">⌘K</kbd>
+          </p>
+        </div>
 
         {/* REDES 2×2 — col-span-4 */}
         <div className="md:col-span-4 grid grid-cols-2 gap-3">
@@ -294,64 +290,18 @@ export default function HomePage() {
             label="Twitter" sub="@Taimilog" hover="hover:border-sky-500/40" />
         </div>
 
-        {/* JARDÍN DIGITAL — col-span-5 */}
-        <div className={`
-          ${card}
-          md:col-span-5
-          p-6 flex flex-col justify-between
-          bg-gradient-to-br from-emerald-500/5 to-transparent
-          hover:border-emerald-500/25
-          min-h-[160px]
-        `}>
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <Flower2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
-              <span className="text-[10px] font-semibold uppercase tracking-widest text-fd-muted-foreground">
-                jardín digital
-              </span>
-            </div>
-            <p className="text-sm font-semibold text-fd-foreground leading-relaxed mb-2">
-              Este sitio es un jardín digital.
-            </p>
-            <p className="text-[11px] text-fd-muted-foreground leading-relaxed">
-              No un blog, no un portafolio. Un espacio en constante crecimiento donde coexisten
-              apuntes a medio terminar, ideas en proceso y reflexiones personales.
-            </p>
-          </div>
-          <p className="text-[10px] text-fd-muted-foreground/60 mt-4 italic">
-            las plantas no crecen perfectas 🌱
-          </p>
-        </div>
-
-        {/* BUSCADOR — col-span-3 */}
-        <div className={`
-          ${card} ${brandHover}
-          md:col-span-3
-          p-6 flex flex-col items-center justify-center text-center
-          select-none min-h-[160px]
-        `}>
-          <div className={`p-3 ${brandBg} rounded-full mb-3`}>
-            <Search className={`h-5 w-5 ${brandRose}`} aria-hidden="true" />
-          </div>
-          <p className="text-sm font-semibold mb-1.5">Buscador</p>
-          <p className="text-[11px] text-fd-muted-foreground leading-relaxed">
-            Disponible en todo momento con{' '}
-            <kbd className="px-1 py-0.5 rounded bg-fd-background border border-fd-border
-              text-[10px] font-mono">⌘K</kbd>
-          </p>
-        </div>
-
       </div>
 
+
       {/* ══════════════════════════════════════════════
-          FAQ
+          FAQ — más generoso
       ══════════════════════════════════════════════ */}
       <section
-        className="rounded-2xl border border-fd-border bg-fd-card/40 p-6 md:p-8"
+        className="rounded-2xl border border-fd-border bg-fd-card/40 p-7 md:p-10"
         aria-label="Preguntas frecuentes"
       >
-        <h2 className="text-base font-bold mb-0.5">Preguntas frecuentes</h2>
-        <p className="text-[11px] text-fd-muted-foreground mb-5">
+        <h2 className="text-base font-bold mb-1">Preguntas frecuentes</h2>
+        <p className="text-[12px] text-fd-muted-foreground mb-6">
           Cosas que la gente suele preguntarme
         </p>
         <Accordions type="single" collapsible>
@@ -379,20 +329,20 @@ export default function HomePage() {
   );
 }
 
-// ── SocialCard ──────────────────────────────────────────────────
+// ── SocialCard ───────────────────────────────────────────────────
 function SocialCard({ href, icon, label, sub, hover }: {
   href: string; icon: React.ReactNode;
   label: string; sub: string; hover: string;
 }) {
   return (
     <a href={href} target="_blank" rel="noopener noreferrer"
-      className={`${card} ${hover} flex flex-col justify-between p-4 min-h-[88px] group`}>
+      className={`${card} ${hover} flex flex-col justify-between p-5 min-h-[96px] group`}>
       <div className="text-fd-muted-foreground transition-colors group-hover:text-fd-foreground">
         {icon}
       </div>
       <div>
         <p className="text-xs font-semibold leading-tight">{label}</p>
-        <p className="text-[10px] text-fd-muted-foreground">{sub}</p>
+        <p className="text-[11px] text-fd-muted-foreground">{sub}</p>
       </div>
     </a>
   );

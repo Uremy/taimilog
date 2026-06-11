@@ -1,4 +1,4 @@
-// page.tsx — Taimilog HomePage v3 — FILLED: sin notas inventadas, cards más grandes
+// page.tsx — Taimilog HomePage v4 — desktop más lleno + mobile horizontal cards
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -6,7 +6,6 @@ import {
   Stethoscope, Brain, Github, Youtube,
   Instagram, Search, ArrowRight, Terminal,
   MapPin, HeartPulse, Twitter, Flower2,
-  BookOpen, Pencil, Sparkles, Coffee
 } from 'lucide-react';
 import { quotes } from '@/lib/quotes';
 import { QuoteClient } from '@/components/quote-client';
@@ -43,7 +42,6 @@ const brandHover = "hover:border-[#8F2439]/40 dark:hover:border-[#E87D95]/40 hov
 
 export default function HomePage() {
   return (
-    // max-w-[1280px] = 1280px → ocupa casi toda la pantalla en escritorio
     <main className="container mx-auto px-4 md:px-8 py-10 pb-24 max-w-[1280px] space-y-3">
 
       {/* ══════════════════════════════════════════════
@@ -51,7 +49,7 @@ export default function HomePage() {
       ══════════════════════════════════════════════ */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
 
-        {/* PERFIL — col-span-7, más alto */}
+        {/* PERFIL — col-span-7 */}
         <div className={`
           ${card} ${brandHover}
           md:col-span-7
@@ -60,7 +58,6 @@ export default function HomePage() {
         `}>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-7">
 
-            {/* Avatar más grande */}
             <div className="relative shrink-0 group/avatar">
               <div className="h-[100px] w-[100px] rounded-xl overflow-hidden
                 border border-fd-border shadow-md
@@ -82,7 +79,6 @@ export default function HomePage() {
               </span>
             </div>
 
-            {/* Texto */}
             <div className="flex-1 min-w-0">
               <div className="flex flex-wrap items-center gap-2 mb-2">
                 <h1 className="text-2xl font-bold tracking-tight leading-none">Uremy</h1>
@@ -91,15 +87,12 @@ export default function HomePage() {
                   taimilog
                 </span>
               </div>
-
               <p className="text-sm text-fd-muted-foreground mb-2 leading-relaxed">
                 Welcome, is always nice to see you here
               </p>
-
               <p className="text-[12px] text-fd-muted-foreground/60 mb-5 font-light italic">
                 그냥 저예요. 한국어 연습할 때도 있고 그냥 방황할 때도 있고.
               </p>
-
               <div className="flex flex-wrap items-center gap-4 text-[12px] text-fd-muted-foreground">
                 <span className="flex items-center gap-1.5">
                   <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />우주
@@ -115,7 +108,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* CITA — col-span-5, row-span-2 — INTOCABLE */}
+        {/* CITA — INTOCABLE — col-span-5, row-span-2 */}
         <div className={`
           ${card}
           md:col-span-5 md:row-span-2
@@ -123,7 +116,7 @@ export default function HomePage() {
           bg-gradient-to-br from-indigo-500/8 to-transparent
           hover:border-indigo-500/30
           flex flex-col justify-center
-          min-h-[320px]
+          min-h-[260px] md:min-h-0
         `}>
           <QuoteClient
             initialQuote={quotes[Math.floor(Math.random() * quotes.length)]}
@@ -131,33 +124,52 @@ export default function HomePage() {
           />
         </div>
 
-        {/* SEGUNDA FILA izquierda — 7 cols, 3 cards más altas */}
-        <div className="md:col-span-7 grid grid-cols-3 gap-3">
+        {/* ── SEGUNDA FILA — las 3 nav cards ─────────────────────
+            Mobile: columna de cards horizontales (1 col, full-width)
+            Desktop (md): 3 columnas verticales bento
+        ───────────────────────────────────────────────────────── */}
+        <div className="md:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-3">
 
           {/* MEDICINA */}
           <Link
             href="/medicina/introduccion"
             className={`
-              ${card} ${brandHover}
-              col-span-1
-              p-6 flex flex-col justify-between group
-              min-h-[200px]
-              bg-gradient-to-b from-[#8F2439]/6 to-transparent
+              ${card} ${brandHover} group
+              p-5 md:p-6
+              flex flex-row items-center gap-5
+              md:flex-col md:items-start md:justify-between
+              md:min-h-[240px]
+              bg-gradient-to-br from-[#8F2439]/6 to-transparent
+              md:bg-gradient-to-b
             `}
           >
-            <div>
-              <Stethoscope className={`h-6 w-6 mb-4 ${brandRose}`} aria-hidden="true" />
-              <h2 className="text-base font-bold leading-tight mb-2">Medicina</h2>
-              <p className="text-[12px] text-fd-muted-foreground leading-relaxed">
+            {/* ícono */}
+            <Stethoscope className={`h-7 w-7 shrink-0 ${brandRose}
+              md:mb-4 md:h-6 md:w-6`} aria-hidden="true" />
+
+            {/* texto + flecha */}
+            <div className="flex-1 min-w-0 flex flex-col justify-center
+              md:flex-1 md:w-full">
+              <h2 className="text-sm font-bold leading-tight mb-0.5 md:mb-2">Medicina</h2>
+              <p className="text-[12px] text-fd-muted-foreground leading-relaxed
+                hidden md:block">
                 Fisiología, Patología y más.<br />Mi segundo cerebro.
               </p>
+              <p className="text-[12px] text-fd-muted-foreground leading-relaxed md:hidden">
+                Fisiología, Patología y más.
+              </p>
             </div>
-            <div className={`flex items-center gap-1 text-[12px] font-semibold mt-4 ${brandRose}`}>
-              Explorar
-              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+
+            <div className={`shrink-0 flex items-center gap-1 text-[12px] font-semibold ${brandRose}
+              md:mt-4`}>
+              <span className="hidden md:inline">Explorar</span>
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </div>
+
+            {/* glow — solo desktop */}
             <div className={`absolute -right-8 -bottom-8 h-32 w-32 rounded-full
-              ${brandBg} blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+              ${brandBg} blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500
+              hidden md:block`}
               aria-hidden="true" />
           </Link>
 
@@ -165,42 +177,60 @@ export default function HomePage() {
           <Link
             href="/biblioteca/blog"
             className={`
-              ${card}
-              col-span-1
-              p-6 flex flex-col justify-between group
-              min-h-[200px]
+              ${card} group
+              p-5 md:p-6
+              flex flex-row items-center gap-5
+              md:flex-col md:items-start md:justify-between
+              md:min-h-[240px]
               bg-gradient-to-br from-purple-500/5 to-transparent
               hover:border-purple-500/30
             `}
           >
-            <div>
-              <Brain className="h-6 w-6 text-purple-500 mb-4" aria-hidden="true" />
-              <h3 className="text-base font-bold leading-tight mb-2">Biblioteca</h3>
-              <p className="text-[12px] text-fd-muted-foreground leading-relaxed">
+            <Brain className="h-7 w-7 shrink-0 text-purple-500
+              md:mb-4 md:h-6 md:w-6" aria-hidden="true" />
+
+            <div className="flex-1 min-w-0 flex flex-col justify-center">
+              <h3 className="text-sm font-bold leading-tight mb-0.5 md:mb-2">Biblioteca</h3>
+              <p className="text-[12px] text-fd-muted-foreground leading-relaxed
+                hidden md:block">
                 Reflexiones,<br />ensayos & blog
               </p>
+              <p className="text-[12px] text-fd-muted-foreground leading-relaxed md:hidden">
+                Reflexiones, ensayos & blog
+              </p>
             </div>
-            <div className="flex items-center gap-1 text-[12px] font-semibold text-purple-500">
-              Leer
-              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+
+            <div className="shrink-0 flex items-center gap-1 text-[12px] font-semibold text-purple-500
+              md:mt-4">
+              <span className="hidden md:inline">Leer</span>
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </div>
           </Link>
 
           {/* STACK */}
           <div className={`
             ${card}
-            col-span-1
-            p-6 flex flex-col justify-between
-            min-h-[200px]
+            p-5 md:p-6
+            flex flex-row items-center gap-5
+            md:flex-col md:items-start md:justify-between
+            md:min-h-[240px]
             hover:border-blue-500/20
           `}>
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Terminal className="h-4 w-4 text-blue-500" aria-hidden="true" />
-                <span className="text-[10px] font-semibold uppercase tracking-widest text-fd-muted-foreground">
-                  stack
-                </span>
-              </div>
+            {/* ícono fijo en mobile */}
+            <Terminal className="h-7 w-7 shrink-0 text-blue-500
+              md:hidden" aria-hidden="true" />
+
+            {/* header con ícono — solo desktop */}
+            <div className="hidden md:flex items-center gap-2 md:mb-4">
+              <Terminal className="h-4 w-4 text-blue-500" aria-hidden="true" />
+              <span className="text-[10px] font-semibold uppercase tracking-widest text-fd-muted-foreground">
+                stack
+              </span>
+            </div>
+
+            {/* chips */}
+            <div className="flex-1 min-w-0">
+              {/* mobile: solo nombre en badge horizontal scroll */}
               <div className="flex flex-wrap gap-1.5">
                 {['Next.js', 'MDX', 'Tailwind', 'Fumadocs', 'TypeScript'].map((t) => (
                   <span key={t}
@@ -211,7 +241,8 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
-            <p className="text-[11px] text-fd-muted-foreground/50 italic">
+
+            <p className="hidden md:block text-[11px] text-fd-muted-foreground/50 italic mt-2">
               este sitio fue hecho con ♡
             </p>
           </div>
@@ -222,11 +253,10 @@ export default function HomePage() {
 
       {/* ══════════════════════════════════════════════
           LAYER 2 — Jardín + Buscador + Redes
-          Orden cambiado: jardín ocupa más espacio
       ══════════════════════════════════════════════ */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
 
-        {/* JARDÍN DIGITAL — col-span-5, más alto y expresivo */}
+        {/* JARDÍN DIGITAL */}
         <div className={`
           ${card}
           md:col-span-5
@@ -256,7 +286,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        {/* BUSCADOR — col-span-3 */}
+        {/* BUSCADOR */}
         <div className={`
           ${card} ${brandHover}
           md:col-span-3
@@ -274,7 +304,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        {/* REDES 2×2 — col-span-4 */}
+        {/* REDES 2×2 */}
         <div className="md:col-span-4 grid grid-cols-2 gap-3">
           <SocialCard href="https://github.com/uremy"
             icon={<Github className="h-5 w-5" />}
@@ -294,7 +324,7 @@ export default function HomePage() {
 
 
       {/* ══════════════════════════════════════════════
-          FAQ — más generoso
+          FAQ
       ══════════════════════════════════════════════ */}
       <section
         className="rounded-2xl border border-fd-border bg-fd-card/40 p-7 md:p-10"

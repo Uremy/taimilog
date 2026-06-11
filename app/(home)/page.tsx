@@ -1,4 +1,3 @@
-// page.tsx — Taimilog HomePage v5 — espacios laterales y superior corregidos
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';

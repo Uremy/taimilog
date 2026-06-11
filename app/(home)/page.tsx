@@ -41,7 +41,7 @@ const brandHover = "hover:border-[#8F2439]/40 dark:hover:border-[#E87D95]/40 hov
 
 export default function HomePage() {
   return (
-    <main className="container mx-auto px-4 py-4 pb-24 space-y-3">
+    <main className="w-full max-w-[1400px] mx-auto px-4 md:px-8 lg:px-12 py-4 pb-24 space-y-3">
 
       {/* ══════════════════════════════════════════════
           LAYER 1 — Perfil + Cita + Navegación

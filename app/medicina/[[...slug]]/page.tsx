@@ -1,5 +1,5 @@
 import { getPageImage, source } from '@/lib/source';
-import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/layouts/docs/page';
+import { DocsBody, DocsDescription, DocsPage, DocsTitle, PageLastUpdate } from 'fumadocs-ui/layouts/docs/page';
 import { notFound, redirect } from 'next/navigation';
 import { getMDXComponents } from '@/mdx-components';
 import type { Metadata } from 'next';
@@ -16,6 +16,8 @@ export default async function Page(props: PageProps<'/medicina/[[...slug]]'>) {
 
   const page = source.getPage(params.slug);
   if (!page) notFound();
+
+  const lastModifiedTime = page.data.lastModified;
 
   const MDX = page.data.body;
   const gitConfig = {
@@ -37,6 +39,7 @@ export default async function Page(props: PageProps<'/medicina/[[...slug]]'>) {
     >
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription className="mb-0">{page.data.description}</DocsDescription>
+      {lastModifiedTime && <PageLastUpdate date={lastModifiedTime} />}
       <div className="flex flex-row gap-2 items-center border-b pb-6">
         <LLMCopyButton markdownUrl={`${page.url}.mdx`} />
         <ViewOptions
@@ -51,6 +54,7 @@ export default async function Page(props: PageProps<'/medicina/[[...slug]]'>) {
           })}
         />
       </DocsBody>
+
     </DocsPage>
   );
 }

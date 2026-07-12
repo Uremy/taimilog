@@ -2,7 +2,7 @@ import { defineConfig, defineDocs, frontmatterSchema, metaSchema } from 'fumadoc
 import { z } from 'zod';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
-// 1. Importamos el plugin de mermaid
+import lastModified from 'fumadocs-mdx/plugins/last-modified';
 import { remarkMdxMermaid } from 'fumadocs-core/mdx-plugins';
 
 export const medicina = defineDocs({
@@ -32,6 +32,7 @@ export const biblioteca = defineDocs({
 });
 
 export default defineConfig({
+  plugins: [lastModified()],
   mdxOptions: {
     // 2. Agregamos remarkMdxMermaid a la lista de plugins
     remarkPlugins: [remarkMath, remarkMdxMermaid],

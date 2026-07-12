@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   description: 'Apuntes de medicina y blog personal',
   verification: {
-    google: 07_BhVw9nuN9ODAwnv11fUrblO_KiyvCLZwSltFIPnE,
+    google: '07_BhVw9nuN9ODAwnv11fUrblO_KiyvCLZwSltFIPnE',
   icons: {
     icon: [
       { 

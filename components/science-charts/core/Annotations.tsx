@@ -4,18 +4,21 @@
 import type { ReactNode } from 'react';
 import { useChartContext } from './context';
 
-// --- INTERFACES ---
 export interface PhaseBandProps {
   start: number;
   end: number;
   label?: string;
   className?: string;
+  labelY?: number; // NUEVO: Permite cambiar el piso vertical del texto
 }
 
 export interface EventLineProps {
   x: number;
   label?: string;
   className?: string;
+  labelY?: number;                              // NUEVO: Altura del texto del evento
+  textAnchor?: 'start' | 'middle' | 'end';      // NUEVO: Hacia dónde crece el texto
+  dx?: number;                                  // NUEVO: Separación horizontal de la línea
 }
 
 export interface MarkerProps {
@@ -26,16 +29,16 @@ export interface MarkerProps {
   type?: 'circle' | 'intersection';
 }
 
-// --- 1. PHASE BAND (Bandas de sombreado de fondo) ---
+// --- 1. PHASE BAND ---
 export function PhaseBand({
   start,
   end,
   label,
   className = 'fill-neutral-500 dark:fill-neutral-400 opacity-10 transition-opacity hover:opacity-20',
+  labelY = 16,
 }: PhaseBandProps) {
   const { xScale, boundedHeight } = useChartContext();
 
-  // BLINDAJE TS: Agregamos ?? 0 para garantizar que siempre sean números puros
   const x1 = xScale(start) ?? 0;
   const x2 = xScale(end) ?? 0;
   const width = Math.max(0, x2 - x1);
@@ -46,7 +49,7 @@ export function PhaseBand({
       {label && (
         <text
           x={x1 + width / 2}
-          y={16}
+          y={labelY} // Usamos la altura dinámica (Piso 1 o Piso 2)
           textAnchor="middle"
           className="text-[10px] font-mono fill-neutral-600 dark:fill-neutral-300 uppercase tracking-wider select-none font-semibold opacity-90 group-hover:opacity-100"
         >
@@ -57,15 +60,17 @@ export function PhaseBand({
   );
 }
 
-// --- 2. EVENT LINE (Líneas verticales de eventos clínicos) ---
+// --- 2. EVENT LINE ---
 export function EventLine({
   x,
   label,
   className = 'stroke-rose-500/50 dark:stroke-rose-400/50 stroke-dashed stroke-1',
+  labelY = 24,
+  textAnchor = 'start',
+  dx = 4,
 }: EventLineProps) {
   const { xScale, boundedHeight } = useChartContext();
 
-  // BLINDAJE TS: ?? 0
   const xPos = xScale(x) ?? 0;
 
   return (
@@ -73,9 +78,9 @@ export function EventLine({
       <line x1={xPos} y1={0} x2={xPos} y2={boundedHeight} className={className} />
       {label && (
         <text
-          x={xPos + 4}
-          y={24}
-          textAnchor="start"
+          x={xPos + dx}        // Separación dinámica hacia izquierda (-4) o derecha (+4)
+          y={labelY}           // Altura dinámica (Piso 3)
+          textAnchor={textAnchor} // Dirección de escritura opuesta
           className="text-[11px] font-sans fill-rose-600 dark:fill-rose-400 font-medium select-none"
         >
           {label}
@@ -85,7 +90,7 @@ export function EventLine({
   );
 }
 
-// --- 3. MARKER (Puntos clínicos y leyendas de coordenadas) ---
+// --- 3. MARKER ---
 export function Marker({
   x,
   y,
@@ -95,7 +100,6 @@ export function Marker({
 }: MarkerProps) {
   const { xScale, yScale } = useChartContext();
 
-  // BLINDAJE TS: ?? 0 en ambas escalas
   const xPos = xScale(x) ?? 0;
   const yPos = yScale(y) ?? 0;
 

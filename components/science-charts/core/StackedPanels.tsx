@@ -1,34 +1,31 @@
 // components/science-charts/core/StackedPanels.tsx
 'use client';
 
-import React, { type ReactElement } from 'react';
+import React, { type ReactElement, type ReactNode } from 'react';
 import type { PanelProps } from './Panel';
 
 export interface StackedPanelsProps {
-  gap?: number; // Espacio en px entre cada panel apilado
-  children: ReactElement<PanelProps>[] | ReactElement<PanelProps>;
+  gap?: number;
+  children: ReactNode;
 }
 
-/**
- * Automagically gestiona el offset Y (prop `top`) de múltiples componentes <Panel>.
- * Evita tener que calcular coordenadas matemáticas en la Capa 4 clínica.
- */
-export function StackedPanels({ gap = 16, children }: StackedPanelsProps) {
-  const panels = React.Children.toArray(children) as ReactElement<PanelProps>[];
-  
+export function StackedPanels({ gap = 24, children }: StackedPanelsProps) {
   let currentTop = 0;
+
+  // Filtramos solo los elementos válidos para evitar errores tipográficos en React
+  const validChildren = React.Children.toArray(children).filter(React.isValidElement);
 
   return (
     <>
-      {panels.map((child, index) => {
-        const height = child.props.height || 100;
+      {validChildren.map((child, index) => {
+        const childElement = child as ReactElement<PanelProps>;
+        const height = childElement.props.height || 100;
         const topOffset = currentTop;
         
-        // Sumamos la altura del panel actual más el gap para el siguiente hermano
+        // Sumamos la altura de este panel más el espacio (gap) para el siguiente
         currentTop += height + gap;
 
-        // Clamos el elemento hijo inyectándole la coordenada top calculada
-        return React.cloneElement(child, {
+        return React.cloneElement(childElement, {
           key: index,
           top: topOffset,
         });

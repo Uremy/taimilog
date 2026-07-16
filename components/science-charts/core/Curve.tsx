@@ -1,4 +1,6 @@
-import { useMemo } from 'react';
+// components/science-charts/core/Curve.tsx
+'use client';
+
 import { useChartContext } from './context';
 import { createLinePath, createAreaPath, type CurveType } from './paths';
 
@@ -6,37 +8,53 @@ export interface CurveProps<T> {
   data: T[];
   x: (d: T) => number;
   y: (d: T) => number;
-  y0?: number | ((d: T) => number); // Si se provee, dibuja un área sombreada en lugar de solo línea
+  y0?: number | ((d: T) => number);
+  type?: 'line' | 'area';
   curve?: CurveType;
   className?: string;
-  type?: 'line' | 'area';
 }
 
 export function Curve<T>({
   data,
   x,
   y,
-  y0 = 0,
-  curve = 'monotone',
-  className = 'stroke-primary stroke-2 fill-none',
+  y0,
   type = 'line',
+  curve = 'monotone',
+  className = 'stroke-fd-primary stroke-2 fill-none',
 }: CurveProps<T>) {
   const { xScale, yScale, boundedHeight } = useChartContext();
 
-  const pathString = useMemo(() => {
-    if (!data || data.length === 0) return '';
+  // BLINDAJE TS: Garantizamos con ?? 0 que la función retorne estrictamente (d: T) => number
+  const scaledX = (d: T) => xScale(x(d)) ?? 0;
+  const scaledY = (d: T) => yScale(y(d)) ?? 0;
 
-    // Mapeamos los accesores de datos a las escalas del contexto activo
-    const scaledX = (d: T) => xScale(x(d));
-    const scaledY = (d: T) => yScale(y(d));
+  if (type === 'area') {
+    // Para áreas, calculamos dónde queda el piso (y0). 
+    // Si da undefined, caemos al fondo del lienzo (boundedHeight).
+    const scaledY0 = typeof y0 === 'number'
+      ? (yScale(y0) ?? boundedHeight)
+      : typeof y0 === 'function'
+        ? (d: T) => yScale(y0(d)) ?? boundedHeight
+        : boundedHeight;
 
-    if (type === 'area') {
-      const scaledY0 = typeof y0 === 'number' ? yScale(y0) : (d: T) => yScale(y0(d));
-      return createAreaPath({ data, x: scaledX, y0: typeof y0 === 'number' ? boundedHeight : scaledY0, y1: scaledY, curve });
-    }
+    const pathString = createAreaPath({
+      data,
+      x: scaledX,
+      y0: scaledY0,
+      y1: scaledY,
+      curve,
+    });
 
-    return createLinePath({ data, x: scaledX, y: scaledY, curve });
-  }, [data, x, y, y0, curve, type, xScale, yScale, boundedHeight]);
+    return <path d={pathString || ''} className={className} />;
+  }
 
-  return <path d={pathString} className={`transition-all duration-300 ${className}`} />;
+  const pathString = createLinePath({
+    data,
+    x: scaledX,
+    y: scaledY,
+    curve,
+  });
+
+  return <path d={pathString || ''} className={className} />;
 }

@@ -1,0 +1,22 @@
+---
+title: Sandbox de Gráficas
+description: Página interna para auditar la calidad visual de las gráficas D3 + React.
+---
+
+import { SandboxChart } from '@/components/science-charts';
+
+Aquí estamos probando que el motor de D3 funcione sin variables médicas.
+
+<SandboxChart />
+
+import { FlowVolumeLoop, normalSpirometry, obstructiveSpirometry } from '@/components/science-charts';
+
+La espirometría forzada nos permite graficar la relación entre el flujo de aire y el volumen pulmonar. En un paciente sano, alcanzamos el Flujo Espiratorio Pico (PEF) con rapidez al inicio del esfuerzo:
+
+<FlowVolumeLoop data={normalSpirometry} />
+
+### Colapso de la vía aérea en EPOC
+Cuando existe resistencia en la respiración, el flujo desciende de manera cóncava debido al colapso prematuro de las bronquiolos. Aquí comparamos el patrón obstructivo contra el normal:
+
+<FlowVolumeLoop data={obstructiveSpirometry} comparisonData={normalSpirometry} />
+

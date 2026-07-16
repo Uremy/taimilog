@@ -1,9 +1,13 @@
+// components/science-charts/core/context.tsx
 import { createContext, useContext, type ReactNode } from 'react';
+import type { AxisScale } from '@visx/axis'; // 1. IMPORTAMOS EL TIPO OFICIAL DE VISX
 import type { ChartMargins } from '../hooks/useChartDimensions';
 
 export interface ChartContextValue {
-  xScale: (value: any) => number;
-  yScale: (value: any) => number;
+  // 2. REEMPLAZAMOS EL (value: any) => number POR AxisScale<number>
+  // Esto le dice a TypeScript que la escala incluye .domain(), .range(), .ticks(), etc.
+  xScale: AxisScale<number>;
+  yScale: AxisScale<number>;
   width: number;
   height: number;
   boundedWidth: number;

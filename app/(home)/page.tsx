@@ -1,20 +1,20 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Unbounded, Manrope } from 'next/font/google';
 import {
-  Stethoscope, Brain, Github, Youtube,
-  Instagram, Search, ArrowRight, Terminal,
-  MapPin, HeartPulse, Twitter, Flower2,
-  Sparkles, Cpu, Command, Disc, Activity,
-  ShieldCheck, Zap, Radio, CornerDownRight
+  Stethoscope, BookOpenText, Github, Youtube,
+  Instagram, Search, ArrowUpRight,
+  Ruler, FlaskConical, Twitter, Radio,
+  Sparkles, Dna, MapPin, Orbit, Compass, Radar,
 } from 'lucide-react';
 import { quotes } from '@/lib/quotes';
 import { QuoteClient } from '@/components/quote-client';
 import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
 
 export const metadata: Metadata = {
-  title: 'Taimilog | Jardín Digital & Apuntes Médicos',
-  description: 'Arquitectura de conocimiento médico, cibernética y jardín digital.',
+  title: 'Taimilog | Consola de un Jardín Digital',
+  description: 'Terminal de apuntes médicos, ensayos y bitácora personal.',
   openGraph: {
     title: 'Taimilog',
     description: 'Apuntes de medicina y jardín digital',
@@ -29,547 +29,432 @@ export const metadata: Metadata = {
   },
 };
 
-const AVATAR_SIZE = 140;
+const AVATAR_SIZE = 160;
 
-/* ══════════════════════════════════════════════════════════════════════════════
-    SISTEMA DE DISEÑO: SORAYAMA CHROME / TITANIUM & VACUUM GLASS
-   ══════════════════════════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════════════════
+   SISTEMA DE DISEÑO: CONSOLA ORBITAL / STREAMLINE MODERNE FRÍO
+   Vacío + titanio + cromo, formas continuas, sin texturas de papel,
+   sin sombras duras. Precisión geométrica, un solo gesto de movimiento.
+   ══════════════════════════════════════════════════════════════════════ */
 
-// Panel Principal de Cromo Pulido con Reflejos Especulares (Specular Highlights)
-const chromePanel = [
-  "relative overflow-hidden rounded-[2rem] transition-all duration-700 ease-out",
-  "border border-zinc-300/80 dark:border-zinc-700/60",
-  "bg-gradient-to-br from-white/95 via-zinc-100/80 to-zinc-200/60 dark:from-[#18181f]/95 dark:via-[#101015]/90 dark:to-[#09090c]/95",
-  "shadow-[inset_0_1px_2px_rgba(255,255,255,1),0_15px_35px_-10px_rgba(0,0,0,0.08)]",
-  "dark:shadow-[inset_0_1px_2px_rgba(255,255,255,0.2),0_20px_40px_-15px_rgba(0,0,0,0.8)]",
-  "backdrop-blur-3xl group/panel hover:border-zinc-400 dark:hover:border-zinc-500",
-  "hover:shadow-[inset_0_1px_3px_rgba(255,255,255,1),0_25px_50px_-12px_rgba(0,0,0,0.15)] dark:hover:shadow-[inset_0_1px_3px_rgba(255,255,255,0.25),0_25px_50px_-12px_rgba(0,0,0,0.9)]"
+const unbounded = Unbounded({
+  subsets: ['latin'],
+  weight: ['500', '700', '800'],
+  variable: '--font-display',
+  display: 'swap',
+});
+const manrope = Manrope({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-body',
+  display: 'swap',
+});
+
+const fontDisplay = 'font-[family-name:var(--font-display)]';
+
+const ink = 'text-[#14171B] dark:text-[#E8EAED]';
+const inkDim = 'text-[#14171B]/55 dark:text-[#E8EAED]/45';
+const inkFaint = 'text-[#14171B]/35 dark:text-[#E8EAED]/28';
+
+const accentViolet = 'text-[#6D4FC7] dark:text-[#B8A6FF]';
+const accentCyan = 'text-[#0E8A96] dark:text-[#5EEAD4]';
+const accentAmber = 'text-[#A8710E] dark:text-[#F0B429]';
+
+// Panel "consola": forma continua, borde capilar, sin sombra dura
+const consolePanel = [
+  'relative rounded-[28px] border border-[#14171B]/10 dark:border-[#E8EAED]/12',
+  'bg-white dark:bg-[#101216]',
+  'transition-[transform,box-shadow,border-color] duration-500 ease-out',
 ].join(' ');
 
-// Caja Embutida al Vacío (Vacuum-Formed Recessed Panel)
-const vacuumBox = [
-  "rounded-2xl border border-zinc-300/70 dark:border-zinc-800/80",
-  "bg-gradient-to-b from-zinc-200/50 via-zinc-100/30 to-zinc-200/40 dark:from-[#0a0a0d] dark:via-[#0f0f13] dark:to-[#0a0a0d]",
-  "shadow-[inset_0_3px_6px_rgba(0,0,0,0.06)] dark:shadow-[inset_0_3px_8px_rgba(0,0,0,0.7)]"
+const consoleHover = [
+  'hover:-translate-y-1 hover:border-[#14171B]/25 dark:hover:border-[#E8EAED]/25',
+  'hover:shadow-[0_28px_60px_-32px_rgba(20,23,27,0.35)]',
+  'dark:hover:shadow-[0_28px_60px_-24px_rgba(94,234,212,0.16)]',
 ].join(' ');
 
-// Efectos de Metal Líquido (Liquid Chrome & Rubellite)
-const textChrome = "text-transparent bg-clip-text bg-gradient-to-r from-zinc-900 via-zinc-500 to-zinc-900 dark:from-white dark:via-zinc-300 dark:to-zinc-500";
-const textRubellite = "text-transparent bg-clip-text bg-gradient-to-r from-[#8F2439] via-rose-500 to-[#8F2439] dark:from-[#FF8AAA] dark:via-rose-300 dark:to-[#FF8AAA]";
-const textCyanMetal = "text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-teal-400 to-cyan-600 dark:from-cyan-400 dark:via-teal-200 dark:to-cyan-400";
+// Recuadro embutido de precisión (micro-grilla fría)
+const gridPanel = [
+  'relative rounded-2xl border border-[#14171B]/10 dark:border-[#E8EAED]/12',
+  'bg-[#F2F3F5] dark:bg-[#0B0C0F]',
+  'bg-[linear-gradient(#14171B08_1px,transparent_1px),linear-gradient(90deg,#14171B08_1px,transparent_1px)]',
+  'dark:bg-[linear-gradient(#E8EAED0D_1px,transparent_1px),linear-gradient(90deg,#E8EAED0D_1px,transparent_1px)]',
+  'bg-[size:12px_12px]',
+].join(' ');
+
+const pill = 'inline-flex items-center gap-1.5 rounded-full border border-[#14171B]/15 dark:border-[#E8EAED]/16 bg-[#F2F3F5] dark:bg-[#0B0C0F] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.18em]';
 
 export default function HomePage() {
   return (
-    <main className="relative w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 py-10 pb-32 font-sans text-fd-foreground selection:bg-zinc-300 dark:selection:bg-zinc-800">
-      
-      {/* Luz de Fondo Orbital Especular (Ambience Grid) */}
-      <div className="fixed inset-0 -z-10 flex items-center justify-center pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[300px] bg-gradient-to-br from-rose-500/5 via-purple-500/5 to-transparent blur-[120px] rounded-full" />
-        <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-cyan-500/5 via-emerald-500/5 to-transparent blur-[140px] rounded-full" />
+    <main
+      className={`${unbounded.variable} ${manrope.variable} font-[family-name:var(--font-body)] relative w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 py-10 pb-32 ${ink} bg-[#F2F3F5] dark:bg-[#08090B] selection:bg-[#5EEAD4]/30 dark:selection:bg-[#5EEAD4]/20`}
+    >
+      {/* Ambiente: vacío frío + resplandor + grilla mínima — 100% CSS, cero peso */}
+      <div aria-hidden className="fixed inset-0 -z-10 pointer-events-none">
+        <div className="absolute inset-0 opacity-[0.4] dark:opacity-[0.28] bg-[radial-gradient(ellipse_70%_45%_at_50%_-8%,rgba(184,166,255,0.14),transparent_62%)]" />
+        <div className="absolute inset-0 opacity-40 dark:opacity-25 bg-[linear-gradient(#14171B06_1px,transparent_1px),linear-gradient(90deg,#14171B06_1px,transparent_1px)] dark:bg-[linear-gradient(#E8EAED08_1px,transparent_1px),linear-gradient(90deg,#E8EAED08_1px,transparent_1px)] bg-[size:64px_64px]" />
       </div>
 
-      {/* ── BARRA DE TELEMETRÍA DE CABECERA (STREAMLINE MODERNE HUD) ── */}
-      <header className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-zinc-200/80 dark:border-zinc-800/80 font-mono text-[11px] tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-200/60 dark:bg-zinc-800/60 border border-zinc-300 dark:border-zinc-700">
-            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
-            <span className="h-2 w-2 rounded-full bg-emerald-500 -ml-4" />
-            <span className="font-bold text-zinc-700 dark:text-zinc-200 uppercase">BIOMECH_OS // v3.0</span>
-          </div>
-          <span className="hidden sm:inline text-zinc-400 dark:text-zinc-600">|</span>
-          <span className="hidden sm:inline uppercase tracking-widest text-[10px]">CYBER_GARDEN_PROTOCOL</span>
+      {/* ══════════════════════════════════════════════════════════════
+         BARRA DE ÍNDICE — navegación de sectores, estado del sistema
+         ══════════════════════════════════════════════════════════════ */}
+      <nav
+        aria-label="Índice de sectores"
+        className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-full border border-[#14171B]/10 dark:border-[#E8EAED]/12 bg-white/80 dark:bg-[#101216]/80 px-5 py-2.5 font-mono text-[10px] uppercase tracking-[0.22em]"
+      >
+        <div className={`flex flex-wrap items-center gap-3 sm:gap-4 ${inkDim}`}>
+          <a href="#identidad" className={`transition-colors hover:${ink}`}>00 · Identidad</a>
+          <span className={inkFaint}>/</span>
+          <a href="#sistemas" className="transition-colors hover:text-[#14171B] dark:hover:text-[#E8EAED]">01 · Sistemas</a>
+          <span className={inkFaint}>/</span>
+          <a href="#manifiesto" className="transition-colors hover:text-[#14171B] dark:hover:text-[#E8EAED]">02 · Manifiesto</a>
         </div>
-        
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1.5 text-xs text-zinc-600 dark:text-zinc-300">
-            <Activity className="h-3.5 w-3.5 text-[#8F2439] dark:text-[#FF8AAA] animate-pulse" />
-            <span className="font-bold">100%</span>
-            <span className="text-[10px] text-zinc-400">SYNC</span>
-          </div>
-          <div className="h-3 w-[1px] bg-zinc-300 dark:bg-zinc-700" />
-          <span className="font-mono text-[10px] uppercase text-zinc-400">LOC: MEX / LATAM</span>
+        <div className={`flex items-center gap-2 ${inkDim}`}>
+          <Orbit className="h-3 w-3 text-[#0E8A96] dark:text-[#5EEAD4] animate-[spin_9s_linear_infinite] motion-reduce:animate-none" />
+          <span>EN LÍNEA</span>
         </div>
-      </header>
+      </nav>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          CAPA 1 — COMANDO ORBITAL ASIMÉTRICO (SECTOR 00)
-         ══════════════════════════════════════════════════════════════════════ */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
-        
-        {/* NÚCLEO BIOMECÁNICO DEL PERFIL (Col-span-8 en LG) */}
-        <div className={`${chromePanel} lg:col-span-8 p-8 sm:p-10 md:p-12 flex flex-col justify-between min-h-[440px]`}>
-          <MechanicalRivets />
-          
-          {/* Top Ident Badge */}
-          <div className="flex items-center justify-between z-10 mb-8">
-            <div className="flex items-center gap-2">
-              <span className="font-mono text-[10px] font-black tracking-[0.3em] uppercase text-zinc-400 dark:text-zinc-500">
-                [ COMMAND_MODULE_01 ]
-              </span>
-            </div>
-            <span className={`font-mono text-xs font-black tracking-[0.25em] uppercase px-3.5 py-1.5 rounded-full border border-zinc-300/80 dark:border-zinc-700/80 bg-white/80 dark:bg-black/60 shadow-sm ${textRubellite}`}>
-              TAIMILOG // ARCHIVE
+      {/* ══════════════════════════════════════════════════════════════
+         SECTOR 00 — IDENTIDAD
+         ══════════════════════════════════════════════════════════════ */}
+      <section id="identidad" className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5 scroll-mt-24">
+        <div className={`${consolePanel} lg:col-span-7 p-8 sm:p-10 md:p-12 flex flex-col justify-between min-h-[460px]`}>
+          <ViewportBrackets />
+          <div className="flex items-center justify-between mb-8 font-mono text-[10px] uppercase tracking-[0.24em]">
+            <span className={inkFaint}>REGISTRO // 8F-2439</span>
+            <span className={pill}>
+              <span className="h-1.5 w-1.5 rounded-full bg-[#0E8A96] dark:bg-[#5EEAD4] animate-pulse" />
+              ARCHIVO ABIERTO
             </span>
           </div>
 
-          {/* Core Content: Avatar + Bio de Alta Precisión */}
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12 my-auto z-10">
-            
-            {/* Sorayama Specular Avatar Bezel */}
-            <div className="relative shrink-0 group/avatar">
-              <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-tr from-zinc-400 via-white to-zinc-500 dark:from-zinc-600 dark:via-zinc-300 dark:to-zinc-800 opacity-60 blur-md transition-all duration-700 group-hover/avatar:opacity-100 group-hover/avatar:scale-105" />
-              
-              <div className="relative p-1.5 rounded-[1.8rem] bg-gradient-to-b from-zinc-100 via-zinc-300 to-zinc-400 dark:from-zinc-700 dark:via-[#1a1a22] dark:to-black shadow-2xl border border-white/80 dark:border-zinc-600/50">
-                <div className="h-[130px] w-[130px] sm:h-[150px] sm:w-[150px] rounded-[1.4rem] overflow-hidden bg-black relative">
-                  <Image
-                    src="/avatar.webp"
-                    alt="Uremy — Señora Herta"
-                    width={AVATAR_SIZE}
-                    height={AVATAR_SIZE}
-                    className="object-cover w-full h-full opacity-90 transition-all duration-700 ease-out group-hover/avatar:opacity-100 group-hover/avatar:scale-110 filter contrast-[1.05]"
-                    priority
-                    unoptimized
-                  />
-                  {/* Escáner Visual Cyberpunk overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 pointer-events-none" />
-                </div>
-              </div>
-
-              {/* Status Pill Flotante */}
-              <div className="absolute -bottom-3 -right-3 px-3 py-1.5 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-black font-mono text-[10px] font-bold tracking-widest uppercase shadow-xl border border-white/20 dark:border-black/20 flex items-center gap-1.5">
-                <HeartPulse className="h-3.5 w-3.5 text-[#8F2439] dark:text-[#FF8AAA] animate-pulse" />
-                <span>ONLINE</span>
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-14 my-auto">
+            {/* Viewport orbital — elemento firma, reemplaza el retrato de obturador */}
+            <div className="relative shrink-0 mx-auto md:mx-0 h-[168px] w-[168px]">
+              <div
+                aria-hidden
+                className="absolute inset-0 rounded-full text-[#14171B]/25 dark:text-[#E8EAED]/22 animate-[spin_70s_linear_infinite] motion-reduce:animate-none [mask-image:radial-gradient(circle,transparent_63%,black_65%,black_100%)] bg-[repeating-conic-gradient(from_0deg,currentColor_0deg_1deg,transparent_1deg_9deg)]"
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0 rounded-full opacity-70 [mask-image:radial-gradient(circle,transparent_66%,black_68%,black_74%,transparent_76%)] bg-[conic-gradient(from_-30deg,#5EEAD4_0deg_64deg,transparent_64deg_360deg)] dark:opacity-80"
+              />
+              <div className="absolute inset-[9px] rounded-full border border-[#14171B]/15 dark:border-[#E8EAED]/15" />
+              <div className="absolute inset-[22px] rounded-full overflow-hidden border border-[#14171B]/20 dark:border-[#E8EAED]/20 bg-black">
+                <Image
+                  src="/avatar.webp"
+                  alt="Uremy — Señora Herta"
+                  width={AVATAR_SIZE}
+                  height={AVATAR_SIZE}
+                  className="object-cover w-full h-full grayscale-[10%] contrast-[1.05]"
+                  priority
+                  unoptimized
+                />
               </div>
             </div>
 
-            {/* Typography & Vacuum Quote Box */}
-            <div className="flex-1 min-w-0 space-y-4">
-              <div className="space-y-1">
-                <div className="flex items-center gap-2 font-mono text-[11px] text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">
-                  <Terminal className="h-3.5 w-3.5 text-cyan-500" />
-                  <span>MED_STUDENT & ARCHIVIST</span>
+            <div className="flex-1 min-w-0 space-y-4 text-center md:text-left">
+              <div className="space-y-1.5">
+                <div className={`flex items-center justify-center md:justify-start gap-2 font-mono text-[11px] uppercase tracking-[0.24em] ${inkDim}`}>
+                  <Dna className={`h-3.5 w-3.5 ${accentViolet}`} />
+                  <span>Estudiante de medicina & archivista</span>
                 </div>
-                <h1 className={`text-5xl sm:text-6xl font-black tracking-tighter leading-none ${textChrome}`}>
+                <h1 className={`${fontDisplay} text-5xl sm:text-6xl font-extrabold uppercase tracking-tight leading-[0.92] ${ink}`}>
                   Uremy
                 </h1>
               </div>
-
-              <p className="text-sm sm:text-base font-normal text-zinc-600 dark:text-zinc-300 leading-relaxed max-w-xl">
-                Welcome, it is always nice to see you here. Explora mis apuntes médicos, ensayos y reflexiones dentro de este ecosistema digital.
+              <p className={`text-sm sm:text-base ${inkDim} leading-relaxed max-w-xl mx-auto md:mx-0`}>
+                Bienvenido, siempre es grato verte por aquí. Explora mis apuntes médicos, ensayos y reflexiones dentro de este archivo en construcción permanente.
               </p>
-              
-              {/* Vacuum Formed Inset Quote */}
-              <div className={`${vacuumBox} p-4 relative overflow-hidden group/quote`}>
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#8F2439] to-rose-400 dark:from-[#FF8AAA] dark:to-rose-600" />
-                <p className="text-[13px] text-zinc-600 dark:text-zinc-300 font-mono italic pl-2">
+              <div className={`${gridPanel} p-4 text-left`}>
+                <div className={`text-[10px] font-mono uppercase tracking-[0.2em] mb-1 ${accentAmber}`}>TRANSMISIÓN REGISTRADA</div>
+                <p className="text-[13px] font-serif italic text-[#14171B]/85 dark:text-[#E8EAED]/80">
                   &quot;그냥 저예요. 한국어 연습할 때도 있고 그냥 방황할 때도 있고.&quot;
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Telemetry Footer Badges */}
-          <div className="flex flex-wrap items-center justify-between gap-3 pt-8 mt-8 border-t border-zinc-200/80 dark:border-zinc-800/80 z-10">
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-8 mt-8 border-t border-[#14171B]/10 dark:border-[#E8EAED]/10">
             <div className="flex flex-wrap items-center gap-2">
-              <TelemetryBadge icon={<MapPin className="h-3 w-3 text-rose-500" />} label="SECTOR: ESPECULAR / ESPACIO" />
-              <TelemetryBadge icon={<Flower2 className="h-3 w-3 text-emerald-500" />} label="MODELO: JARDÍN DIGITAL" />
-              <TelemetryBadge icon={<Stethoscope className="h-3 w-3 text-cyan-500" />} label="NÚCLEO: MEDICINA" />
+              <StatusChip icon={<MapPin className="h-3 w-3" />} label="Sector: archivo personal" />
+              <StatusChip icon={<Stethoscope className="h-3 w-3" />} label="Núcleo: medicina" />
+              <StatusChip icon={<BookOpenText className="h-3 w-3" />} label="Bitácora viva" />
             </div>
-            <span className="font-mono text-[10px] text-zinc-400 dark:text-zinc-600 uppercase tracking-widest">
-              ID: 0x8F2439
-            </span>
+            <span className={`font-mono text-[10px] uppercase tracking-[0.22em] ${inkFaint}`}>ID: 0x8F2439</span>
           </div>
         </div>
 
-        {/* COLUMNA VERTICAL DE CONTROL (Col-span-4 en LG) */}
-        <div className="lg:col-span-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-5">
-          
-          {/* PEDAL DE BÚSQUEDA RAPIDA (Streamline Moderne Command) */}
-          <div className={`${chromePanel} p-7 flex flex-col justify-between group cursor-pointer hover:border-rose-500/60 dark:hover:border-rose-400/60 transition-all duration-500 min-h-[190px]`}>
-            <MechanicalRivets />
-            <div className="flex items-center justify-between">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400 font-bold">
-                // CONTROL_PEDAL
-              </span>
-              <div className="flex items-center gap-1 font-mono text-[10px] font-bold text-zinc-500 bg-zinc-200/80 dark:bg-zinc-800/80 px-2 py-0.5 rounded border border-zinc-300 dark:border-zinc-700">
-                <Command className="h-3 w-3" /> <span>+ K</span>
-              </div>
+        {/* COLUMNA DE TERMINALES */}
+        <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-5">
+          <Link
+            href="#"
+            className={`${consolePanel} ${consoleHover} p-7 flex flex-col justify-between min-h-[190px] group`}
+          >
+            <ViewportBrackets />
+            <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em]">
+              <span className={`${inkFaint} font-bold`}>TERMINAL 01</span>
+              <span className={`${pill} py-0.5`}>⌘ + K</span>
             </div>
-
             <div className="my-4 flex items-center gap-4">
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-zinc-200 via-white to-zinc-300 dark:from-zinc-800 dark:via-[#1c1c24] dark:to-zinc-900 border border-zinc-300 dark:border-zinc-700 shadow-md group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
-                <Search className="h-6 w-6 text-zinc-700 dark:text-zinc-200 group-hover:text-[#8F2439] dark:group-hover:text-[#FF8AAA] transition-colors" />
+              <div className="p-3.5 rounded-2xl border border-[#14171B]/15 dark:border-[#E8EAED]/15 bg-[#F2F3F5] dark:bg-[#0B0C0F]">
+                <Search className={`h-6 w-6 ${ink}`} />
               </div>
               <div>
-                <h3 className="text-lg font-black tracking-tight text-zinc-900 dark:text-white">
-                  Búsqueda Global
-                </h3>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 font-mono">
-                  Indexando apuntes y logs...
-                </p>
+                <h3 className={`${fontDisplay} text-lg font-bold uppercase tracking-tight ${ink}`}>Búsqueda global</h3>
+                <p className={`text-xs font-mono ${inkDim}`}>Indexando apuntes…</p>
               </div>
             </div>
-
-            <div className="w-full h-1 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
-              <div className="w-1/3 h-full bg-gradient-to-r from-[#8F2439] to-rose-500 group-hover:w-full transition-all duration-700" />
+            <div className={`border-t border-[#14171B]/10 dark:border-[#E8EAED]/10 pt-2 font-mono text-[9px] uppercase tracking-[0.2em] ${inkFaint}`}>
+              válido en todo el archivo
             </div>
-          </div>
+          </Link>
 
-          {/* CHIP DE ARCHIVO & TECH STACK (Modular Tech Matrix) */}
-          <div className={`${chromePanel} p-7 flex flex-col justify-between min-h-[220px]`}>
-            <MechanicalRivets />
-            <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-zinc-400">
-              <span className="flex items-center gap-1.5 font-bold text-zinc-600 dark:text-zinc-300">
-                <Cpu className="h-3.5 w-3.5 text-cyan-500 animate-pulse" /> STACK_MATRIX
+          <div className={`${consolePanel} p-7 flex flex-col justify-between min-h-[220px]`}>
+            <ViewportBrackets />
+            <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em]">
+              <span className={`flex items-center gap-1.5 font-bold ${inkDim}`}>
+                <Ruler className={`h-3.5 w-3.5 ${accentCyan}`} /> STACK
               </span>
-              <span>// SYS_003</span>
+              <span className={inkFaint}>TERMINAL 02</span>
             </div>
-
             <div className="flex flex-wrap gap-1.5 my-auto py-2">
-              {['Next.js 15', 'MDX Arch', 'Tailwind', 'Fumadocs', 'TypeScript', 'Vercel'].map((tech) => (
-                <span
-                  key={tech}
-                  className="px-3 py-1 rounded-xl bg-white/80 dark:bg-zinc-900/90 border border-zinc-300/80 dark:border-zinc-700/80 text-[11px] font-mono font-semibold text-zinc-700 dark:text-zinc-300 shadow-2xs hover:border-cyan-500/50 transition-colors"
-                >
+              {['Next.js 15', 'MDX', 'Tailwind', 'Fumadocs', 'TypeScript', 'Vercel'].map((tech) => (
+                <span key={tech} className={pill}>
                   {tech}
                 </span>
               ))}
             </div>
-
-            <div className="flex items-center justify-between pt-3 border-t border-zinc-200/60 dark:border-zinc-800/60 text-[10px] font-mono text-zinc-400">
-              <span className="flex items-center gap-1"><ShieldCheck className="h-3 w-3 text-emerald-500" /> SYSTEM STABLE</span>
+            <div className={`flex items-center justify-between pt-3 border-t border-[#14171B]/10 dark:border-[#E8EAED]/10 text-[10px] font-mono ${inkFaint}`}>
+              <span>SISTEMA ESTABLE</span>
               <span className="italic">hecho con ♡</span>
             </div>
           </div>
-
         </div>
-
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          CAPA 2 — ALAS STREAMLINE DE CONOCIMIENTO & TRANSMISIÓN (SECTOR 01)
-         ══════════════════════════════════════════════════════════════════════ */}
-      <section className="grid grid-cols-1 md:grid-cols-12 gap-5 mb-5">
-        
-        {/* SECTOR 01: MEDICINA (Ala Izquierda - Col-span-4) */}
+      {/* ══════════════════════════════════════════════════════════════
+         SECTOR 01 — SISTEMAS DE CONTENIDO
+         ══════════════════════════════════════════════════════════════ */}
+      <section id="sistemas" className="grid grid-cols-1 md:grid-cols-12 gap-5 mb-5 scroll-mt-24">
         <Link
           href="/medicina/introduccion"
-          className={`${chromePanel} md:col-span-6 lg:col-span-4 p-8 flex flex-col justify-between min-h-[260px] group/med hover:border-[#8F2439]/60 dark:hover:border-[#FF8AAA]/60`}
+          className={`${consolePanel} ${consoleHover} md:col-span-6 lg:col-span-4 p-8 flex flex-col justify-between min-h-[260px] group/med`}
         >
-          <MechanicalRivets />
-          <div className="flex items-center justify-between z-10">
-            <div className="p-3.5 rounded-2xl bg-[#8F2439]/10 dark:bg-[#FF8AAA]/10 border border-[#8F2439]/20 dark:border-[#FF8AAA]/20 text-[#8F2439] dark:text-[#FF8AAA] group-hover/med:scale-110 transition-transform duration-500">
-              <Stethoscope className="h-7 w-7" />
+          <ViewportBrackets />
+          <div className="flex items-center justify-between">
+            <div className="p-3 rounded-2xl border border-[#6D4FC7]/40 dark:border-[#B8A6FF]/40">
+              <Stethoscope className={`h-6 w-6 ${accentViolet}`} />
             </div>
             <div className="text-right font-mono">
-              <span className="block text-[10px] font-bold tracking-[0.2em] text-zinc-400">SECTOR 01</span>
-              <span className={`text-xs font-black tracking-widest uppercase ${textRubellite}`}>MEDICINA</span>
+              <span className={`block text-[10px] font-bold tracking-[0.2em] ${inkFaint}`}>SISTEMA 01</span>
+              <span className={`text-xs font-black tracking-[0.18em] uppercase ${accentViolet}`}>MEDICINA</span>
             </div>
           </div>
-
-          <div className="space-y-2 my-6 z-10">
-            <h2 className={`text-3xl font-black tracking-tight ${textChrome}`}>
-              Apuntes Médicos
-            </h2>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
-              Fisiología, patología, farmacología y resúmenes clínicos. Mi segundo cerebro diseñado para la supervivencia hospitalaria.
+          <div className="space-y-2 my-6">
+            <h2 className={`${fontDisplay} text-2xl sm:text-3xl font-bold uppercase tracking-tight ${ink}`}>Apuntes médicos</h2>
+            <div className="h-px w-10 bg-[#6D4FC7] dark:bg-[#B8A6FF]" />
+            <p className={`text-sm ${inkDim} leading-relaxed`}>
+              Fisiología, patología, farmacología y resúmenes clínicos. Mi segundo cerebro para la vida hospitalaria.
             </p>
           </div>
-
-          <div className="flex items-center justify-between pt-4 border-t border-zinc-200/80 dark:border-zinc-800/80 font-mono text-xs font-bold text-[#8F2439] dark:text-[#FF8AAA] z-10">
-            <span className="tracking-widest uppercase flex items-center gap-1.5">
-              <Zap className="h-3.5 w-3.5" /> Explorar Sistema
-            </span>
-            <div className="p-1.5 rounded-full bg-zinc-200/50 dark:bg-zinc-800/50 group-hover/med:translate-x-1.5 transition-transform duration-300">
-              <ArrowRight className="h-4 w-4" />
-            </div>
+          <div className={`flex items-center justify-between pt-4 border-t border-[#14171B]/10 dark:border-[#E8EAED]/10 font-mono text-xs font-bold ${accentViolet}`}>
+            <span className="tracking-[0.18em] uppercase">Explorar sistema</span>
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover/med:translate-x-1 group-hover/med:-translate-y-1" />
           </div>
-
-          {/* Resplandor de Neón Trasero al Hover */}
-          <div className="absolute -right-16 -bottom-16 h-48 w-48 rounded-full bg-[#8F2439]/15 dark:bg-[#FF8AAA]/10 blur-3xl pointer-events-none transition-opacity duration-500 opacity-0 group-hover/med:opacity-100" />
         </Link>
 
-        {/* SECTOR 02: BIBLIOTECA (Ala Central - Col-span-4) */}
         <Link
           href="/biblioteca/blog"
-          className={`${chromePanel} md:col-span-6 lg:col-span-4 p-8 flex flex-col justify-between min-h-[260px] group/bib hover:border-cyan-500/60 dark:hover:border-cyan-400/60`}
+          className={`${consolePanel} ${consoleHover} md:col-span-6 lg:col-span-4 p-8 flex flex-col justify-between min-h-[260px] group/bib`}
         >
-          <MechanicalRivets />
-          <div className="flex items-center justify-between z-10">
-            <div className="p-3.5 rounded-2xl bg-cyan-500/10 dark:bg-cyan-400/10 border border-cyan-500/20 dark:border-cyan-400/20 text-cyan-600 dark:text-cyan-400 group-hover/bib:scale-110 transition-transform duration-500">
-              <Brain className="h-7 w-7" />
+          <ViewportBrackets />
+          <div className="flex items-center justify-between">
+            <div className="p-3 rounded-2xl border border-[#0E8A96]/40 dark:border-[#5EEAD4]/40">
+              <BookOpenText className={`h-6 w-6 ${accentCyan}`} />
             </div>
             <div className="text-right font-mono">
-              <span className="block text-[10px] font-bold tracking-[0.2em] text-zinc-400">SECTOR 02</span>
-              <span className={`text-xs font-black tracking-widest uppercase ${textCyanMetal}`}>BIBLIOTECA</span>
+              <span className={`block text-[10px] font-bold tracking-[0.2em] ${inkFaint}`}>SISTEMA 02</span>
+              <span className={`text-xs font-black tracking-[0.18em] uppercase ${accentCyan}`}>BIBLIOTECA</span>
             </div>
           </div>
-
-          <div className="space-y-2 my-6 z-10">
-            <h3 className={`text-3xl font-black tracking-tight ${textChrome}`}>
-              Archivo & Blog
-            </h3>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
-              Reflexiones, ensayos de filosofía, reseñas literarias y el registro evolutivo de un jardín digital en expansión.
+          <div className="space-y-2 my-6">
+            <h3 className={`${fontDisplay} text-2xl sm:text-3xl font-bold uppercase tracking-tight ${ink}`}>Archivo & blog</h3>
+            <div className="h-px w-10 bg-[#0E8A96] dark:bg-[#5EEAD4]" />
+            <p className={`text-sm ${inkDim} leading-relaxed`}>
+              Reflexiones, ensayos, reseñas literarias y el registro evolutivo de un jardín digital en expansión.
             </p>
           </div>
-
-          <div className="flex items-center justify-between pt-4 border-t border-zinc-200/80 dark:border-zinc-800/80 font-mono text-xs font-bold text-cyan-600 dark:text-cyan-400 z-10">
-            <span className="tracking-widest uppercase flex items-center gap-1.5">
-              <Disc className="h-3.5 w-3.5 animate-spin" /> Acceder al Archivo
-            </span>
-            <div className="p-1.5 rounded-full bg-zinc-200/50 dark:bg-zinc-800/50 group-hover/bib:translate-x-1.5 transition-transform duration-300">
-              <ArrowRight className="h-4 w-4" />
-            </div>
+          <div className={`flex items-center justify-between pt-4 border-t border-[#14171B]/10 dark:border-[#E8EAED]/10 font-mono text-xs font-bold ${accentCyan}`}>
+            <span className="tracking-[0.18em] uppercase">Acceder al archivo</span>
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover/bib:translate-x-1 group-hover/bib:-translate-y-1" />
           </div>
-
-          <div className="absolute -right-16 -bottom-16 h-48 w-48 rounded-full bg-cyan-500/15 dark:bg-cyan-400/10 blur-3xl pointer-events-none transition-opacity duration-500 opacity-0 group-hover/bib:opacity-100" />
         </Link>
 
-        {/* LOG DE TRANSMISIÓN EN VIVO (Quote Module - Col-span-4) */}
-        <div className={`${chromePanel} md:col-span-12 lg:col-span-4 p-8 flex flex-col justify-between min-h-[260px] bg-gradient-to-br from-zinc-100/90 via-white to-zinc-200/40 dark:from-[#14141c] dark:via-[#0e0e14] dark:to-[#09090d]`}>
-          <MechanicalRivets />
-          <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-400 border-b border-zinc-200/60 dark:border-zinc-800/60 pb-3">
-            <span className="flex items-center gap-1.5 text-rose-500 font-bold">
-              <Radio className="h-3.5 w-3.5 animate-pulse" /> BROADCAST_LOG
+        <div className={`${consolePanel} md:col-span-12 lg:col-span-4 p-8 flex flex-col justify-between min-h-[260px]`}>
+          <ViewportBrackets />
+          <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] border-b border-[#14171B]/10 dark:border-[#E8EAED]/10 pb-3">
+            <span className={`flex items-center gap-1.5 font-bold ${accentAmber}`}>
+              <Radio className="h-3.5 w-3.5" /> TRANSMISIÓN
             </span>
-            <span>// FREQ_89.4</span>
+            <span className={inkFaint}>SISTEMA 03</span>
           </div>
-
-          <div className="my-auto py-6 relative z-10 font-serif">
+          <div className="my-auto py-6 font-serif">
             <QuoteClient
               initialQuote={quotes[Math.floor(Math.random() * quotes.length)]}
               allQuotes={quotes}
             />
           </div>
-
-          <div className="flex items-center justify-between pt-3 border-t border-zinc-200/60 dark:border-zinc-800/60 font-mono text-[10px] text-zinc-400 uppercase tracking-widest">
-            <span>STATUS: RECEPTIVO</span>
-            <span className="flex items-center gap-1"><Sparkles className="h-3 w-3 text-amber-400" /> INSPIRATION</span>
+          <div className={`flex items-center justify-between pt-3 border-t border-[#14171B]/10 dark:border-[#E8EAED]/10 font-mono text-[10px] uppercase tracking-[0.2em] ${inkFaint}`}>
+            <span>ESTADO: RECEPTIVO</span>
+            <span className="flex items-center gap-1"><Sparkles className={`h-3 w-3 ${accentAmber}`} /> INSPIRACIÓN</span>
           </div>
         </div>
-
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          CAPA 3 — MATRIZ NEURAL SOCIAL & BASE DE CONOCIMIENTO (SECTOR 02)
-         ══════════════════════════════════════════════════════════════════════ */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-        
-        {/* COLUMNA IZQUIERDA: MANIFIESTO + REDES SOCIALES (Col-span-4) */}
+      {/* ══════════════════════════════════════════════════════════════
+         SECTOR 02 — MANIFIESTO, CONTACTOS Y FAQ
+         ══════════════════════════════════════════════════════════════ */}
+      <section id="manifiesto" className="grid grid-cols-1 lg:grid-cols-12 gap-5 scroll-mt-24">
         <div className="lg:col-span-4 space-y-5 flex flex-col justify-between">
-          
-          {/* Manifiesto Biomecánico del Jardín */}
-          <div className={`${chromePanel} p-8 bg-gradient-to-br from-emerald-500/5 via-transparent to-transparent border-l-4 border-l-emerald-500`}>
-            <MechanicalRivets />
-            <div className="flex items-center gap-2 mb-3 font-mono text-[11px] uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-black">
-              <Flower2 className="h-4 w-4" /> [ BIO_GARDEN // PROTOCOL ]
+          <div className={`${consolePanel} p-8 border-l-[3px]! border-l-[#0E8A96] dark:border-l-[#5EEAD4]`}>
+            <ViewportBrackets />
+            <div className={`flex items-center gap-2 mb-3 font-mono text-[11px] uppercase tracking-[0.2em] font-black ${accentCyan}`}>
+              <FlaskConical className="h-4 w-4" /> NOTA DE ARCHIVO
             </div>
-            <h4 className="text-xl font-black text-zinc-900 dark:text-white mb-2 tracking-tight">
+            <h4 className={`${fontDisplay} text-lg sm:text-xl font-bold uppercase tracking-tight mb-2 ${ink}`}>
               Este sitio es un jardín digital.
             </h4>
-            <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-light">
+            <p className={`text-xs sm:text-sm ${inkDim} leading-relaxed`}>
               No es un blog estático ni un portafolio rígido. Es un ecosistema vivo donde coexisten apuntes a medio terminar, ideas en germinación y reflexiones profundas.
             </p>
-            <div className="mt-4 pt-3 border-t border-zinc-200/60 dark:border-zinc-800/60 flex items-center justify-between font-mono text-[11px] text-zinc-500 dark:text-zinc-400 italic">
+            <div className={`mt-4 pt-3 border-t border-[#14171B]/10 dark:border-[#E8EAED]/10 flex items-center justify-between font-mono text-[11px] italic ${inkDim}`}>
               <span>las plantas no crecen perfectas</span>
-              <span className="text-emerald-500">🌱</span>
+              <span className={accentCyan}>🌱</span>
             </div>
           </div>
 
-          {/* Matriz Neural Social (Streamline Pill Buttons) */}
-          <div className={`${chromePanel} p-6 space-y-2.5`}>
-            <div className="font-mono text-[10px] uppercase tracking-widest text-zinc-400 font-bold mb-3 px-1 flex items-center justify-between">
-              <span>// NEURAL_FEED_LINKS</span>
-              <span>[ 4 NODES ]</span>
+          <div className={`${consolePanel} p-6`}>
+            <ViewportBrackets />
+            <div className={`font-mono text-[10px] uppercase tracking-[0.2em] font-bold mb-1 px-1 flex items-center justify-between ${inkDim}`}>
+              <span className="flex items-center gap-1.5"><Compass className="h-3.5 w-3.5" /> CONTACTO — TERMINAL</span>
+              <span>4 CANALES</span>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5">
-              <SocialAerodynamicPill
-                href="https://github.com/uremy"
-                icon={<Github className="h-4 w-4" />}
-                label="GitHub"
-                sub="CODE & REPOSITORY"
-                accent="hover:border-zinc-500 dark:hover:border-zinc-400"
-              />
-              <SocialAerodynamicPill
-                href="https://youtube.com/@uremy"
-                icon={<Youtube className="h-4 w-4 text-red-500" />}
-                label="YouTube"
-                sub="VIDEO BROADCASTS"
-                accent="hover:border-red-500/50"
-              />
-              <SocialAerodynamicPill
-                href="https://instagram.com/ure.emy"
-                icon={<Instagram className="h-4 w-4 text-pink-500" />}
-                label="Instagram"
-                sub="VISUAL LOGS"
-                accent="hover:border-pink-500/50"
-              />
-              <SocialAerodynamicPill
-                href="https://twitter.com/Taimilog"
-                icon={<Twitter className="h-4 w-4 text-sky-400" />}
-                label="Twitter / X"
-                sub="NETWORK STREAM"
-                accent="hover:border-sky-400/50"
-              />
+            <div className="divide-y divide-[#14171B]/10 dark:divide-[#E8EAED]/10">
+              <TerminalRow index="01" href="https://github.com/uremy" icon={<Github className="h-4 w-4" />} label="GitHub" sub="CÓDIGO" />
+              <TerminalRow index="02" href="https://youtube.com/@uremy" icon={<Youtube className="h-4 w-4" />} label="YouTube" sub="VIDEO" />
+              <TerminalRow index="03" href="https://instagram.com/ure.emy" icon={<Instagram className="h-4 w-4" />} label="Instagram" sub="VISUAL" />
+              <TerminalRow index="04" href="https://twitter.com/Taimilog" icon={<Twitter className="h-4 w-4" />} label="Twitter / X" sub="RED" />
             </div>
           </div>
-
         </div>
 
-        {/* COLUMNA DERECHA: PREGUNTAS FRECUENTES (COL-SPAN-8) */}
-        <section className={`${chromePanel} lg:col-span-8 p-8 sm:p-10 md:p-12 flex flex-col justify-between`} aria-label="Preguntas frecuentes">
-          <MechanicalRivets />
-          
+        <section className={`${consolePanel} lg:col-span-8 p-8 sm:p-10 md:p-12 flex flex-col justify-between`} aria-label="Preguntas frecuentes">
+          <ViewportBrackets />
           <div>
-            {/* Header Telemetry */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-8 pb-5 border-b border-zinc-200/80 dark:border-zinc-800/80">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-8 pb-5 border-b border-[#14171B]/10 dark:border-[#E8EAED]/10">
               <div>
-                <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-zinc-400 mb-1">
-                  <CornerDownRight className="h-3.5 w-3.5 text-[#8F2439] dark:text-[#FF8AAA]" />
-                  <span>KNOWLEDGE_BASE // ARCHIVE_QUERY</span>
+                <div className={`flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] mb-1 ${inkDim}`}>
+                  <Radar className="h-3.5 w-3.5" /> CONSULTA DE ARCHIVO
                 </div>
-                <h2 className={`text-3xl sm:text-4xl font-black tracking-tight ${textChrome}`}>
-                  Preguntas Frecuentes
+                <h2 className={`${fontDisplay} text-3xl sm:text-4xl font-bold uppercase tracking-tight ${ink}`}>
+                  Preguntas frecuentes
                 </h2>
               </div>
-              <span className="font-mono text-xs font-bold text-zinc-500 dark:text-zinc-400 tracking-widest uppercase px-3 py-1 rounded-lg bg-zinc-200/50 dark:bg-zinc-800/50 border border-zinc-300 dark:border-zinc-700 self-start sm:self-center">
-                SYS_FAQ // 005
-              </span>
+              <span className={pill}>FAQ · 005</span>
             </div>
-
-            {/* Accordion List con Estética de Lujo Frío */}
-            <Accordions type="single" collapsible className="space-y-3.5 font-sans">
-              <Accordion
-                title="¿Qué es exactamente Taimilog y cuál es su propósito?"
-                className={`${vacuumBox} px-5 py-1 transition-all duration-300 hover:border-zinc-400 dark:hover:border-zinc-600`}
-              >
-                <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed text-sm pt-2 pb-3 font-normal">
+            <Accordions type="single" collapsible className="space-y-3">
+              <Accordion title="¿Qué es exactamente Taimilog y cuál es su propósito?" className={`${gridPanel} px-5 py-1`}>
+                <p className="font-serif text-[#14171B]/80 dark:text-[#E8EAED]/75 leading-relaxed text-sm pt-2 pb-3">
                   Taimilog es un espacio digital personal y evolutivo donde almaceno y sistematizo todo lo que aprendo en mi camino por la medicina, además de ensayos personales. Funciona como un segundo cerebro público donde comparto apuntes estructurados que pueden servir tanto a estudiantes como a mentes curiosas.
                 </p>
               </Accordion>
-
-              <Accordion
-                title="¿Cuál es la etimología y significado detrás de 'Taimilog'?"
-                className={`${vacuumBox} px-5 py-1 transition-all duration-300 hover:border-zinc-400 dark:hover:border-zinc-600`}
-              >
-                <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed text-sm pt-2 pb-3 font-normal">
-                  El nombre es un acrónimo conceptual: <strong>Taimi-</strong> proviene de <em className="text-zinc-900 dark:text-white font-medium">&quot;Taimado&quot;</em> (astuto, sagaz o persistente), mientras que <strong>-log</strong> se deriva de <em className="text-zinc-900 dark:text-white font-medium">&quot;Logbook&quot;</em> (bitácora o registro de navegación). La filosofía general es mantener los <em>&quot;registros continuos de una mente taimada&quot;</em>.
+              <Accordion title="¿Cuál es la etimología y significado detrás de 'Taimilog'?" className={`${gridPanel} px-5 py-1`}>
+                <p className="font-serif text-[#14171B]/80 dark:text-[#E8EAED]/75 leading-relaxed text-sm pt-2 pb-3">
+                  El nombre es un acrónimo conceptual: <strong>Taimi-</strong> proviene de <em>&quot;Taimado&quot;</em> (astuto, sagaz o persistente), mientras que <strong>-log</strong> se deriva de <em>&quot;Logbook&quot;</em> (bitácora o registro de navegación). La filosofía es mantener los <em>&quot;registros continuos de una mente taimada&quot;</em>.
                 </p>
               </Accordion>
-
-              <Accordion
-                title="¿Por qué recomiendas crear un Jardín Digital o sitio personal propio?"
-                className={`${vacuumBox} px-5 py-1 transition-all duration-300 hover:border-zinc-400 dark:hover:border-zinc-600`}
-              >
-                <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed text-sm pt-2 pb-3 font-normal">
-                  La web moderna se ha vuelto efímera y algorítmica; las redes sociales tradicionales no ofrecen propiedad real ni un espacio para estructurar el pensamiento a largo plazo. Tener un rincón propio te aleja de la obsolescencia programada del feed, permitiéndote cultivar tus ideas, portafolio y conocimientos a tu propio ritmo, sin depender de megacorporaciones.
+              <Accordion title="¿Por qué recomiendas crear un Jardín Digital o sitio personal propio?" className={`${gridPanel} px-5 py-1`}>
+                <p className="font-serif text-[#14171B]/80 dark:text-[#E8EAED]/75 leading-relaxed text-sm pt-2 pb-3">
+                  La web moderna se ha vuelto efímera y algorítmica; las redes sociales no ofrecen propiedad real ni un espacio para estructurar el pensamiento a largo plazo. Tener un rincón propio te aleja del feed y te permite cultivar tus ideas, portafolio y conocimientos a tu propio ritmo.
                 </p>
               </Accordion>
-
-              <Accordion
-                title="¿Quién es el personaje que aparece en el avatar principal del sistema?"
-                className={`${vacuumBox} px-5 py-1 transition-all duration-300 hover:border-zinc-400 dark:hover:border-zinc-600`}
-              >
-                <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed text-sm pt-2 pb-3 font-normal">
-                  ¡Es la inigualable <strong>Señora Herta</strong> de <em>Honkai: Star Rail</em>! Como dice la célebre cita de la Estación Espacial: <em className="font-serif italic text-zinc-800 dark:text-zinc-200">&quot;Madam Herta is a peerless gem. Madam Herta is an unrivaled genius. Madam Herta is an inimitable beauty.&quot;</em> Un símbolo de intelecto analítico y elegancia eterna.
+              <Accordion title="¿Quién es el personaje que aparece en el avatar principal?" className={`${gridPanel} px-5 py-1`}>
+                <p className="font-serif text-[#14171B]/80 dark:text-[#E8EAED]/75 leading-relaxed text-sm pt-2 pb-3">
+                  ¡Es la inigualable <strong>Señora Herta</strong> de <em>Honkai: Star Rail</em>! Como dice la célebre cita de la Estación Espacial: <em>&quot;Madam Herta is a peerless gem. Madam Herta is an unrivaled genius. Madam Herta is an inimitable beauty.&quot;</em> Un símbolo de intelecto analítico y elegancia eterna.
                 </p>
               </Accordion>
             </Accordions>
           </div>
-
-          {/* Footer del Panel FAQ */}
-          <div className="mt-8 pt-6 border-t border-zinc-200/80 dark:border-zinc-800/80 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] text-zinc-400">
+          <div className={`mt-8 pt-6 border-t border-[#14171B]/10 dark:border-[#E8EAED]/10 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] ${inkFaint}`}>
             <div className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-cyan-500 animate-ping" />
-              <span>BASE DE DATOS EN LÍNEA // LATENCY: 12ms</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-[#0E8A96] dark:bg-[#5EEAD4] animate-pulse" />
+              <span>BASE DE DATOS EN LÍNEA</span>
             </div>
-            <span>© {new Date().getFullYear()} TAIMILOG SYSTEM</span>
+            <span>© {new Date().getFullYear()} TAIMILOG ARCHIVO</span>
           </div>
-
         </section>
-
       </section>
-
     </main>
   );
 }
 
-/* ══════════════════════════════════════════════════════════════════════════════
-    SUBCOMPONENTES DE ALTA PRECISIÓN & ESTÉTICA STREAMLINE
-   ══════════════════════════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════════════════
+   SUBCOMPONENTES
+   ══════════════════════════════════════════════════════════════════════ */
 
-/** Etiqueta de telemetría médica/espacial con bisel metálico */
-function TelemetryBadge({ icon, label }: { icon: React.ReactNode; label: string }) {
+/** Escuadras de visor tipo HUD en cada esquina — reemplazan las cruces de registro */
+function ViewportBrackets() {
+  const corners = [
+    { pos: 'top-3 left-3', rotate: '' },
+    { pos: 'top-3 right-3', rotate: 'rotate-90' },
+    { pos: 'bottom-3 right-3', rotate: 'rotate-180' },
+    { pos: 'bottom-3 left-3', rotate: '-rotate-90' },
+  ];
   return (
-    <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-zinc-200/60 dark:bg-zinc-800/70 border border-zinc-300 dark:border-zinc-700 font-mono text-[10px] font-bold tracking-wider uppercase text-zinc-700 dark:text-zinc-300 shadow-2xs">
-      {icon}
-      <span>{label}</span>
+    <div aria-hidden className="pointer-events-none absolute inset-0 text-[#14171B]/15 dark:text-[#E8EAED]/15">
+      {corners.map(({ pos, rotate }) => (
+        <span key={pos} className={`absolute ${pos} h-4 w-4 ${rotate}`}>
+          <span className="absolute top-0 left-0 h-full w-px bg-current" />
+          <span className="absolute top-0 left-0 w-full h-px bg-current" />
+        </span>
+      ))}
     </div>
   );
 }
 
-/** Píldora aerodinámica con reflejo de cromo para enlaces sociales */
-function SocialAerodynamicPill({
-  href,
-  icon,
-  label,
-  sub,
-  accent
-}: {
-  href: string;
-  icon: React.ReactNode;
-  label: string;
-  sub: string;
-  accent: string;
-}) {
+/** Cápsula de estado — pastilla redonda tipo indicador de panel */
+function StatusChip({ icon, label }: { icon: React.ReactNode; label: string }) {
+  return (
+    <span className="inline-flex items-center gap-2 rounded-full border border-[#14171B]/15 dark:border-[#E8EAED]/16 bg-[#F2F3F5] dark:bg-[#0B0C0F] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-[#14171B]/75 dark:text-[#E8EAED]/65">
+      {icon}
+      <span>{label}</span>
+    </span>
+  );
+}
+
+/** Fila de terminal de contacto con índice hexadecimal */
+function TerminalRow({
+  href, icon, label, sub, index,
+}: { href: string; icon: React.ReactNode; label: string; sub: string; index: string }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`flex items-center justify-between p-3.5 rounded-2xl border border-zinc-300/80 dark:border-zinc-800/80 bg-gradient-to-r from-white/90 via-zinc-100/60 to-white/40 dark:from-[#16161c]/90 dark:via-[#111116]/80 dark:to-transparent shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] transition-all duration-300 group ${accent}`}
+      className="group relative flex items-center justify-between gap-3 py-3 pl-3 -ml-3 transition-colors hover:bg-[#14171B]/[0.03] dark:hover:bg-[#E8EAED]/[0.04]"
     >
-      <div className="flex items-center gap-3.5 min-w-0">
-        <div className="p-2.5 rounded-xl bg-zinc-100 dark:bg-black shadow-inner border border-zinc-300/70 dark:border-zinc-800 transition-transform duration-300 group-hover:scale-110 shrink-0">
-          {icon}
-        </div>
-        <div className="truncate">
-          <p className="text-xs sm:text-sm font-bold leading-none text-zinc-900 dark:text-white group-hover:translate-x-0.5 transition-transform">
-            {label}
-          </p>
-          <p className="text-[9px] font-mono tracking-widest text-zinc-400 dark:text-zinc-500 mt-1 truncate font-semibold">
-            {sub}
-          </p>
-        </div>
+      <span className="absolute left-0 top-1/2 -translate-y-1/2 h-0 w-[2px] bg-[#0E8A96] dark:bg-[#5EEAD4] transition-all duration-300 group-hover:h-4/5" />
+      <div className="flex items-center gap-3 min-w-0">
+        <span className="font-mono text-[10px] text-[#14171B]/35 dark:text-[#E8EAED]/28">0x{index}</span>
+        <span className="shrink-0 text-[#14171B] dark:text-[#E8EAED]">{icon}</span>
+        <span className="min-w-0">
+          <span className="block truncate text-sm font-semibold text-[#14171B] dark:text-[#E8EAED]">{label}</span>
+          <span className="block truncate font-mono text-[9px] uppercase tracking-[0.16em] text-[#14171B]/40 dark:text-[#E8EAED]/32">{sub}</span>
+        </span>
       </div>
-      <div className="p-1 rounded-full bg-transparent group-hover:bg-zinc-200 dark:group-hover:bg-zinc-800 transition-colors shrink-0">
-        <ArrowRight className="h-3.5 w-3.5 text-zinc-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
-      </div>
+      <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-[#14171B]/35 dark:text-[#E8EAED]/30 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
     </a>
-  );
-}
-
-/** Remaches y tornillos mecánicos Sorayama con retícula de precisión */
-function MechanicalRivets() {
-  return (
-    <>
-      {/* Superior Izquierda */}
-      <div className="absolute top-3.5 left-3.5 flex items-center justify-center w-2.5 h-2.5 rounded-full border border-zinc-400/60 dark:border-zinc-600/60 pointer-events-none opacity-70">
-        <div className="w-1 h-[0.5px] bg-zinc-500 dark:bg-zinc-400" />
-      </div>
-      {/* Superior Derecha */}
-      <div className="absolute top-3.5 right-3.5 flex items-center justify-center w-2.5 h-2.5 rounded-full border border-zinc-400/60 dark:border-zinc-600/60 pointer-events-none opacity-70">
-        <div className="w-1 h-[0.5px] bg-zinc-500 dark:bg-zinc-400" />
-      </div>
-      {/* Inferior Izquierda */}
-      <div className="absolute bottom-3.5 left-3.5 flex items-center justify-center w-2.5 h-2.5 rounded-full border border-zinc-400/60 dark:border-zinc-600/60 pointer-events-none opacity-70">
-        <div className="w-1 h-[0.5px] bg-zinc-500 dark:bg-zinc-400" />
-      </div>
-      {/* Inferior Derecha */}
-      <div className="absolute bottom-3.5 right-3.5 flex items-center justify-center w-2.5 h-2.5 rounded-full border border-zinc-400/60 dark:border-zinc-600/60 pointer-events-none opacity-70">
-        <div className="w-1 h-[0.5px] bg-zinc-500 dark:bg-zinc-400" />
-      </div>
-    </>
   );
 }

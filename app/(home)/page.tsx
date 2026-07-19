@@ -4,20 +4,20 @@ import Image from 'next/image';
 import { Unbounded, Manrope } from 'next/font/google';
 import {
   Stethoscope, BookOpenText, Github, Youtube,
-  Instagram, Search, ArrowUpRight,
-  Ruler, FlaskConical, Twitter, Radio,
-  Sparkles, Dna, MapPin, Orbit, Compass, Radar,
+  Instagram, ArrowUpRight,
+  Twitter, Radio, Terminal,
+  ShieldCheck, ArrowRight, Cpu, Activity
 } from 'lucide-react';
 import { quotes } from '@/lib/quotes';
 import { QuoteClient } from '@/components/quote-client';
 import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
 
 export const metadata: Metadata = {
-  title: 'Taimilog | Consola de un Jardín Digital',
-  description: 'Terminal de apuntes médicos, ensayos y bitácora personal.',
+  title: 'Uremy',
+  description: 'Apuntes, ensayos y registros.',
   openGraph: {
     title: 'Taimilog',
-    description: 'Apuntes de medicina y jardín digital',
+    description: 'Jardín digital',
     images: '/og/home',
     siteName: 'Taimilog',
   },
@@ -29,432 +29,358 @@ export const metadata: Metadata = {
   },
 };
 
-const AVATAR_SIZE = 160;
-
-/* ══════════════════════════════════════════════════════════════════════
-   SISTEMA DE DISEÑO: CONSOLA ORBITAL / STREAMLINE MODERNE FRÍO
-   Vacío + titanio + cromo, formas continuas, sin texturas de papel,
-   sin sombras duras. Precisión geométrica, un solo gesto de movimiento.
-   ══════════════════════════════════════════════════════════════════════ */
+const AVATAR_SIZE = 140;
 
 const unbounded = Unbounded({
   subsets: ['latin'],
-  weight: ['500', '700', '800'],
+  weight: ['400', '600', '800', '900'],
   variable: '--font-display',
   display: 'swap',
 });
+
 const manrope = Manrope({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600'],
   variable: '--font-body',
   display: 'swap',
 });
 
 const fontDisplay = 'font-[family-name:var(--font-display)]';
-
-const ink = 'text-[#14171B] dark:text-[#E8EAED]';
-const inkDim = 'text-[#14171B]/55 dark:text-[#E8EAED]/45';
-const inkFaint = 'text-[#14171B]/35 dark:text-[#E8EAED]/28';
-
-const accentViolet = 'text-[#6D4FC7] dark:text-[#B8A6FF]';
-const accentCyan = 'text-[#0E8A96] dark:text-[#5EEAD4]';
-const accentAmber = 'text-[#A8710E] dark:text-[#F0B429]';
-
-// Panel "consola": forma continua, borde capilar, sin sombra dura
-const consolePanel = [
-  'relative rounded-[28px] border border-[#14171B]/10 dark:border-[#E8EAED]/12',
-  'bg-white dark:bg-[#101216]',
-  'transition-[transform,box-shadow,border-color] duration-500 ease-out',
-].join(' ');
-
-const consoleHover = [
-  'hover:-translate-y-1 hover:border-[#14171B]/25 dark:hover:border-[#E8EAED]/25',
-  'hover:shadow-[0_28px_60px_-32px_rgba(20,23,27,0.35)]',
-  'dark:hover:shadow-[0_28px_60px_-24px_rgba(94,234,212,0.16)]',
-].join(' ');
-
-// Recuadro embutido de precisión (micro-grilla fría)
-const gridPanel = [
-  'relative rounded-2xl border border-[#14171B]/10 dark:border-[#E8EAED]/12',
-  'bg-[#F2F3F5] dark:bg-[#0B0C0F]',
-  'bg-[linear-gradient(#14171B08_1px,transparent_1px),linear-gradient(90deg,#14171B08_1px,transparent_1px)]',
-  'dark:bg-[linear-gradient(#E8EAED0D_1px,transparent_1px),linear-gradient(90deg,#E8EAED0D_1px,transparent_1px)]',
-  'bg-[size:12px_12px]',
-].join(' ');
-
-const pill = 'inline-flex items-center gap-1.5 rounded-full border border-[#14171B]/15 dark:border-[#E8EAED]/16 bg-[#F2F3F5] dark:bg-[#0B0C0F] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.18em]';
+const fontBody = 'font-[family-name:var(--font-body)]';
 
 export default function HomePage() {
   return (
     <main
-      className={`${unbounded.variable} ${manrope.variable} font-[family-name:var(--font-body)] relative w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 py-10 pb-32 ${ink} bg-[#F2F3F5] dark:bg-[#08090B] selection:bg-[#5EEAD4]/30 dark:selection:bg-[#5EEAD4]/20`}
+      className={`${unbounded.variable} ${manrope.variable} ${fontBody} relative w-full bg-fd-background text-fd-foreground antialiased selection:bg-fd-primary selection:text-fd-primary-foreground overflow-x-hidden`}
     >
-      {/* Ambiente: vacío frío + resplandor + grilla mínima — 100% CSS, cero peso */}
-      <div aria-hidden className="fixed inset-0 -z-10 pointer-events-none">
-        <div className="absolute inset-0 opacity-[0.4] dark:opacity-[0.28] bg-[radial-gradient(ellipse_70%_45%_at_50%_-8%,rgba(184,166,255,0.14),transparent_62%)]" />
-        <div className="absolute inset-0 opacity-40 dark:opacity-25 bg-[linear-gradient(#14171B06_1px,transparent_1px),linear-gradient(90deg,#14171B06_1px,transparent_1px)] dark:bg-[linear-gradient(#E8EAED08_1px,transparent_1px),linear-gradient(90deg,#E8EAED08_1px,transparent_1px)] bg-[size:64px_64px]" />
+      {/* Fondo y grilla arquitectónica */}
+      <div aria-hidden className="fixed inset-0 -z-10 pointer-events-none flex justify-center">
+        <div className="absolute top-0 w-[80vw] h-[50vh] bg-gradient-to-b from-black/5 dark:from-white/5 to-transparent blur-3xl" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.06)_1px,transparent_1px)] bg-[size:2rem_2rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]" />
       </div>
 
-      {/* ══════════════════════════════════════════════════════════════
-         BARRA DE ÍNDICE — navegación de sectores, estado del sistema
-         ══════════════════════════════════════════════════════════════ */}
-      <nav
-        aria-label="Índice de sectores"
-        className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-full border border-[#14171B]/10 dark:border-[#E8EAED]/12 bg-white/80 dark:bg-[#101216]/80 px-5 py-2.5 font-mono text-[10px] uppercase tracking-[0.22em]"
-      >
-        <div className={`flex flex-wrap items-center gap-3 sm:gap-4 ${inkDim}`}>
-          <a href="#identidad" className={`transition-colors hover:${ink}`}>00 · Identidad</a>
-          <span className={inkFaint}>/</span>
-          <a href="#sistemas" className="transition-colors hover:text-[#14171B] dark:hover:text-[#E8EAED]">01 · Sistemas</a>
-          <span className={inkFaint}>/</span>
-          <a href="#manifiesto" className="transition-colors hover:text-[#14171B] dark:hover:text-[#E8EAED]">02 · Manifiesto</a>
-        </div>
-        <div className={`flex items-center gap-2 ${inkDim}`}>
-          <Orbit className="h-3 w-3 text-[#0E8A96] dark:text-[#5EEAD4] animate-[spin_9s_linear_infinite] motion-reduce:animate-none" />
-          <span>EN LÍNEA</span>
-        </div>
-      </nav>
-
-      {/* ══════════════════════════════════════════════════════════════
-         SECTOR 00 — IDENTIDAD
-         ══════════════════════════════════════════════════════════════ */}
-      <section id="identidad" className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5 scroll-mt-24">
-        <div className={`${consolePanel} lg:col-span-7 p-8 sm:p-10 md:p-12 flex flex-col justify-between min-h-[460px]`}>
-          <ViewportBrackets />
-          <div className="flex items-center justify-between mb-8 font-mono text-[10px] uppercase tracking-[0.24em]">
-            <span className={inkFaint}>REGISTRO // 8F-2439</span>
-            <span className={pill}>
-              <span className="h-1.5 w-1.5 rounded-full bg-[#0E8A96] dark:bg-[#5EEAD4] animate-pulse" />
-              ARCHIVO ABIERTO
-            </span>
-          </div>
-
-          <div className="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-14 my-auto">
-            {/* Viewport orbital — elemento firma, reemplaza el retrato de obturador */}
-            <div className="relative shrink-0 mx-auto md:mx-0 h-[168px] w-[168px]">
-              <div
-                aria-hidden
-                className="absolute inset-0 rounded-full text-[#14171B]/25 dark:text-[#E8EAED]/22 animate-[spin_70s_linear_infinite] motion-reduce:animate-none [mask-image:radial-gradient(circle,transparent_63%,black_65%,black_100%)] bg-[repeating-conic-gradient(from_0deg,currentColor_0deg_1deg,transparent_1deg_9deg)]"
-              />
-              <div
-                aria-hidden
-                className="absolute inset-0 rounded-full opacity-70 [mask-image:radial-gradient(circle,transparent_66%,black_68%,black_74%,transparent_76%)] bg-[conic-gradient(from_-30deg,#5EEAD4_0deg_64deg,transparent_64deg_360deg)] dark:opacity-80"
-              />
-              <div className="absolute inset-[9px] rounded-full border border-[#14171B]/15 dark:border-[#E8EAED]/15" />
-              <div className="absolute inset-[22px] rounded-full overflow-hidden border border-[#14171B]/20 dark:border-[#E8EAED]/20 bg-black">
-                <Image
-                  src="/avatar.webp"
-                  alt="Uremy — Señora Herta"
-                  width={AVATAR_SIZE}
-                  height={AVATAR_SIZE}
-                  className="object-cover w-full h-full grayscale-[10%] contrast-[1.05]"
-                  priority
-                  unoptimized
-                />
-              </div>
+      {/* Contenedor Principal: Paddings y espacios reducidos en móvil (pt-6 space-y-6) */}
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 pt-6 sm:pt-12 pb-12 space-y-6 sm:space-y-8 w-full">
+        
+        {/* Cabecera & Identidad */}
+        <section className="relative grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 items-end">
+          <div className="lg:col-span-8 space-y-4 sm:space-y-6">
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-fd-accent text-fd-accent-foreground font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em]">
+              <Terminal className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+              Jardín Digital & Archivo Clínico
             </div>
 
-            <div className="flex-1 min-w-0 space-y-4 text-center md:text-left">
-              <div className="space-y-1.5">
-                <div className={`flex items-center justify-center md:justify-start gap-2 font-mono text-[11px] uppercase tracking-[0.24em] ${inkDim}`}>
-                  <Dna className={`h-3.5 w-3.5 ${accentViolet}`} />
-                  <span>Estudiante de medicina & archivista</span>
-                </div>
-                <h1 className={`${fontDisplay} text-5xl sm:text-6xl font-extrabold uppercase tracking-tight leading-[0.92] ${ink}`}>
-                  Uremy
-                </h1>
-              </div>
-              <p className={`text-sm sm:text-base ${inkDim} leading-relaxed max-w-xl mx-auto md:mx-0`}>
-                Bienvenido, siempre es grato verte por aquí. Explora mis apuntes médicos, ensayos y reflexiones dentro de este archivo en construcción permanente.
+            {/* Titular escalado: text-5xl en móvil en lugar de 6xl */}
+            <h1 className={`${fontDisplay} text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-[0.8] text-fd-foreground -mt-1 sm:-mt-2`}>
+              Taimi<span className="text-fd-muted-foreground/30 font-light">log</span>
+            </h1>
+
+            <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 pt-3 sm:pt-4 border-t border-fd-border/60">
+              <p className="sm:col-span-8 text-sm sm:text-lg text-fd-muted-foreground font-light leading-relaxed">
+                Bitácora evolutiva de una mente taimada. Convergencia de <strong className="font-semibold text-fd-foreground">rigurosidad clínica hospitalaria</strong>, ensayos literarios y contemplación analítica del pensamiento vivo.
               </p>
-              <div className={`${gridPanel} p-4 text-left`}>
-                <div className={`text-[10px] font-mono uppercase tracking-[0.2em] mb-1 ${accentAmber}`}>TRANSMISIÓN REGISTRADA</div>
-                <p className="text-[13px] font-serif italic text-[#14171B]/85 dark:text-[#E8EAED]/80">
-                  &quot;그냥 저예요. 한국어 연습할 때도 있고 그냥 방황할 때도 있고.&quot;
-                </p>
+              
+              <div className="sm:col-span-4 flex flex-row sm:flex-col justify-between sm:justify-end sm:items-end font-mono text-[11px] sm:text-xs text-fd-muted-foreground uppercase tracking-wider pt-2 sm:pt-0">
+                <span>INDEX // REG: 8F-2439</span>
+                <span className="text-fd-foreground font-semibold">ESTADO: CONTINUO</span>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-3 pt-8 mt-8 border-t border-[#14171B]/10 dark:border-[#E8EAED]/10">
-            <div className="flex flex-wrap items-center gap-2">
-              <StatusChip icon={<MapPin className="h-3 w-3" />} label="Sector: archivo personal" />
-              <StatusChip icon={<Stethoscope className="h-3 w-3" />} label="Núcleo: medicina" />
-              <StatusChip icon={<BookOpenText className="h-3 w-3" />} label="Bitácora viva" />
-            </div>
-            <span className={`font-mono text-[10px] uppercase tracking-[0.22em] ${inkFaint}`}>ID: 0x8F2439</span>
-          </div>
-        </div>
-
-        {/* COLUMNA DE TERMINALES */}
-        <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-5">
-          <Link
-            href="#"
-            className={`${consolePanel} ${consoleHover} p-7 flex flex-col justify-between min-h-[190px] group`}
-          >
-            <ViewportBrackets />
-            <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em]">
-              <span className={`${inkFaint} font-bold`}>TERMINAL 01</span>
-              <span className={`${pill} py-0.5`}>⌘ + K</span>
-            </div>
-            <div className="my-4 flex items-center gap-4">
-              <div className="p-3.5 rounded-2xl border border-[#14171B]/15 dark:border-[#E8EAED]/15 bg-[#F2F3F5] dark:bg-[#0B0C0F]">
-                <Search className={`h-6 w-6 ${ink}`} />
-              </div>
-              <div>
-                <h3 className={`${fontDisplay} text-lg font-bold uppercase tracking-tight ${ink}`}>Búsqueda global</h3>
-                <p className={`text-xs font-mono ${inkDim}`}>Indexando apuntes…</p>
-              </div>
-            </div>
-            <div className={`border-t border-[#14171B]/10 dark:border-[#E8EAED]/10 pt-2 font-mono text-[9px] uppercase tracking-[0.2em] ${inkFaint}`}>
-              válido en todo el archivo
-            </div>
-          </Link>
-
-          <div className={`${consolePanel} p-7 flex flex-col justify-between min-h-[220px]`}>
-            <ViewportBrackets />
-            <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em]">
-              <span className={`flex items-center gap-1.5 font-bold ${inkDim}`}>
-                <Ruler className={`h-3.5 w-3.5 ${accentCyan}`} /> STACK
-              </span>
-              <span className={inkFaint}>TERMINAL 02</span>
-            </div>
-            <div className="flex flex-wrap gap-1.5 my-auto py-2">
-              {['Next.js 15', 'MDX', 'Tailwind', 'Fumadocs', 'TypeScript', 'Vercel'].map((tech) => (
-                <span key={tech} className={pill}>
-                  {tech}
-                </span>
-              ))}
-            </div>
-            <div className={`flex items-center justify-between pt-3 border-t border-[#14171B]/10 dark:border-[#E8EAED]/10 text-[10px] font-mono ${inkFaint}`}>
-              <span>SISTEMA ESTABLE</span>
-              <span className="italic">hecho con ♡</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════════
-         SECTOR 01 — SISTEMAS DE CONTENIDO
-         ══════════════════════════════════════════════════════════════ */}
-      <section id="sistemas" className="grid grid-cols-1 md:grid-cols-12 gap-5 mb-5 scroll-mt-24">
-        <Link
-          href="/medicina/introduccion"
-          className={`${consolePanel} ${consoleHover} md:col-span-6 lg:col-span-4 p-8 flex flex-col justify-between min-h-[260px] group/med`}
-        >
-          <ViewportBrackets />
-          <div className="flex items-center justify-between">
-            <div className="p-3 rounded-2xl border border-[#6D4FC7]/40 dark:border-[#B8A6FF]/40">
-              <Stethoscope className={`h-6 w-6 ${accentViolet}`} />
-            </div>
-            <div className="text-right font-mono">
-              <span className={`block text-[10px] font-bold tracking-[0.2em] ${inkFaint}`}>SISTEMA 01</span>
-              <span className={`text-xs font-black tracking-[0.18em] uppercase ${accentViolet}`}>MEDICINA</span>
-            </div>
-          </div>
-          <div className="space-y-2 my-6">
-            <h2 className={`${fontDisplay} text-2xl sm:text-3xl font-bold uppercase tracking-tight ${ink}`}>Apuntes médicos</h2>
-            <div className="h-px w-10 bg-[#6D4FC7] dark:bg-[#B8A6FF]" />
-            <p className={`text-sm ${inkDim} leading-relaxed`}>
-              Fisiología, patología, farmacología y resúmenes clínicos. Mi segundo cerebro para la vida hospitalaria.
-            </p>
-          </div>
-          <div className={`flex items-center justify-between pt-4 border-t border-[#14171B]/10 dark:border-[#E8EAED]/10 font-mono text-xs font-bold ${accentViolet}`}>
-            <span className="tracking-[0.18em] uppercase">Explorar sistema</span>
-            <ArrowUpRight className="h-4 w-4 transition-transform group-hover/med:translate-x-1 group-hover/med:-translate-y-1" />
-          </div>
-        </Link>
-
-        <Link
-          href="/biblioteca/blog"
-          className={`${consolePanel} ${consoleHover} md:col-span-6 lg:col-span-4 p-8 flex flex-col justify-between min-h-[260px] group/bib`}
-        >
-          <ViewportBrackets />
-          <div className="flex items-center justify-between">
-            <div className="p-3 rounded-2xl border border-[#0E8A96]/40 dark:border-[#5EEAD4]/40">
-              <BookOpenText className={`h-6 w-6 ${accentCyan}`} />
-            </div>
-            <div className="text-right font-mono">
-              <span className={`block text-[10px] font-bold tracking-[0.2em] ${inkFaint}`}>SISTEMA 02</span>
-              <span className={`text-xs font-black tracking-[0.18em] uppercase ${accentCyan}`}>BIBLIOTECA</span>
-            </div>
-          </div>
-          <div className="space-y-2 my-6">
-            <h3 className={`${fontDisplay} text-2xl sm:text-3xl font-bold uppercase tracking-tight ${ink}`}>Archivo & blog</h3>
-            <div className="h-px w-10 bg-[#0E8A96] dark:bg-[#5EEAD4]" />
-            <p className={`text-sm ${inkDim} leading-relaxed`}>
-              Reflexiones, ensayos, reseñas literarias y el registro evolutivo de un jardín digital en expansión.
-            </p>
-          </div>
-          <div className={`flex items-center justify-between pt-4 border-t border-[#14171B]/10 dark:border-[#E8EAED]/10 font-mono text-xs font-bold ${accentCyan}`}>
-            <span className="tracking-[0.18em] uppercase">Acceder al archivo</span>
-            <ArrowUpRight className="h-4 w-4 transition-transform group-hover/bib:translate-x-1 group-hover/bib:-translate-y-1" />
-          </div>
-        </Link>
-
-        <div className={`${consolePanel} md:col-span-12 lg:col-span-4 p-8 flex flex-col justify-between min-h-[260px]`}>
-          <ViewportBrackets />
-          <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] border-b border-[#14171B]/10 dark:border-[#E8EAED]/10 pb-3">
-            <span className={`flex items-center gap-1.5 font-bold ${accentAmber}`}>
-              <Radio className="h-3.5 w-3.5" /> TRANSMISIÓN
-            </span>
-            <span className={inkFaint}>SISTEMA 03</span>
-          </div>
-          <div className="my-auto py-6 font-serif">
-            <QuoteClient
-              initialQuote={quotes[Math.floor(Math.random() * quotes.length)]}
-              allQuotes={quotes}
-            />
-          </div>
-          <div className={`flex items-center justify-between pt-3 border-t border-[#14171B]/10 dark:border-[#E8EAED]/10 font-mono text-[10px] uppercase tracking-[0.2em] ${inkFaint}`}>
-            <span>ESTADO: RECEPTIVO</span>
-            <span className="flex items-center gap-1"><Sparkles className={`h-3 w-3 ${accentAmber}`} /> INSPIRACIÓN</span>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════════
-         SECTOR 02 — MANIFIESTO, CONTACTOS Y FAQ
-         ══════════════════════════════════════════════════════════════ */}
-      <section id="manifiesto" className="grid grid-cols-1 lg:grid-cols-12 gap-5 scroll-mt-24">
-        <div className="lg:col-span-4 space-y-5 flex flex-col justify-between">
-          <div className={`${consolePanel} p-8 border-l-[3px]! border-l-[#0E8A96] dark:border-l-[#5EEAD4]`}>
-            <ViewportBrackets />
-            <div className={`flex items-center gap-2 mb-3 font-mono text-[11px] uppercase tracking-[0.2em] font-black ${accentCyan}`}>
-              <FlaskConical className="h-4 w-4" /> NOTA DE ARCHIVO
-            </div>
-            <h4 className={`${fontDisplay} text-lg sm:text-xl font-bold uppercase tracking-tight mb-2 ${ink}`}>
-              Este sitio es un jardín digital.
-            </h4>
-            <p className={`text-xs sm:text-sm ${inkDim} leading-relaxed`}>
-              No es un blog estático ni un portafolio rígido. Es un ecosistema vivo donde coexisten apuntes a medio terminar, ideas en germinación y reflexiones profundas.
-            </p>
-            <div className={`mt-4 pt-3 border-t border-[#14171B]/10 dark:border-[#E8EAED]/10 flex items-center justify-between font-mono text-[11px] italic ${inkDim}`}>
-              <span>las plantas no crecen perfectas</span>
-              <span className={accentCyan}>🌱</span>
-            </div>
-          </div>
-
-          <div className={`${consolePanel} p-6`}>
-            <ViewportBrackets />
-            <div className={`font-mono text-[10px] uppercase tracking-[0.2em] font-bold mb-1 px-1 flex items-center justify-between ${inkDim}`}>
-              <span className="flex items-center gap-1.5"><Compass className="h-3.5 w-3.5" /> CONTACTO — TERMINAL</span>
-              <span>4 CANALES</span>
-            </div>
-            <div className="divide-y divide-[#14171B]/10 dark:divide-[#E8EAED]/10">
-              <TerminalRow index="01" href="https://github.com/uremy" icon={<Github className="h-4 w-4" />} label="GitHub" sub="CÓDIGO" />
-              <TerminalRow index="02" href="https://youtube.com/@uremy" icon={<Youtube className="h-4 w-4" />} label="YouTube" sub="VIDEO" />
-              <TerminalRow index="03" href="https://instagram.com/ure.emy" icon={<Instagram className="h-4 w-4" />} label="Instagram" sub="VISUAL" />
-              <TerminalRow index="04" href="https://twitter.com/Taimilog" icon={<Twitter className="h-4 w-4" />} label="Twitter / X" sub="RED" />
-            </div>
-          </div>
-        </div>
-
-        <section className={`${consolePanel} lg:col-span-8 p-8 sm:p-10 md:p-12 flex flex-col justify-between`} aria-label="Preguntas frecuentes">
-          <ViewportBrackets />
-          <div>
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-8 pb-5 border-b border-[#14171B]/10 dark:border-[#E8EAED]/10">
-              <div>
-                <div className={`flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] mb-1 ${inkDim}`}>
-                  <Radar className="h-3.5 w-3.5" /> CONSULTA DE ARCHIVO
+          {/* Avatar Madam Herta: Tarjeta y avatar más compactos en móvil */}
+          <div className="lg:col-span-4 flex flex-col justify-end pt-2 sm:pt-0">
+            <div className="bg-fd-card border border-fd-border p-3.5 sm:p-5 relative group transition-all duration-500 hover:border-fd-foreground/40">
+              <div className="flex items-center gap-3.5 sm:gap-5">
+                <div className="relative w-16 h-16 sm:w-24 sm:h-24 shrink-0 overflow-hidden bg-fd-muted border border-fd-border">
+                  <Image
+                    src="/avatar.webp"
+                    alt="Uremy — Señora Herta"
+                    width={AVATAR_SIZE}
+                    height={AVATAR_SIZE}
+                    className="object-cover w-full h-full grayscale contrast-125 transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                    priority
+                    unoptimized
+                  />
                 </div>
-                <h2 className={`${fontDisplay} text-3xl sm:text-4xl font-bold uppercase tracking-tight ${ink}`}>
-                  Preguntas frecuentes
-                </h2>
+                <div className="space-y-1">
+                  <div className="font-mono text-[9px] sm:text-[10px] tracking-widest text-fd-muted-foreground uppercase">
+                    FIG. 01 — AVATAR
+                  </div>
+                  <h3 className={`${fontDisplay} text-base sm:text-lg font-bold tracking-tight text-fd-foreground leading-snug`}>
+                    Madam Herta
+                  </h3>
+                  <p className="font-mono text-[11px] sm:text-xs text-fd-muted-foreground line-clamp-2 italic">
+                    &quot;An unrivaled genius. An inimitable beauty.&quot;
+                  </p>
+                </div>
               </div>
-              <span className={pill}>FAQ · 005</span>
             </div>
-            <Accordions type="single" collapsible className="space-y-3">
-              <Accordion title="¿Qué es exactamente Taimilog y cuál es su propósito?" className={`${gridPanel} px-5 py-1`}>
-                <p className="font-serif text-[#14171B]/80 dark:text-[#E8EAED]/75 leading-relaxed text-sm pt-2 pb-3">
-                  Taimilog es un espacio digital personal y evolutivo donde almaceno y sistematizo todo lo que aprendo en mi camino por la medicina, además de ensayos personales. Funciona como un segundo cerebro público donde comparto apuntes estructurados que pueden servir tanto a estudiantes como a mentes curiosas.
+          </div>
+        </section>
+
+        {/* Núcleos de Conocimiento: min-h-[auto] en móvil para no estirar tarjetas innecesariamente */}
+        <section className="space-y-3 sm:space-y-4 pt-2">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-1.5 sm:gap-3 border-b border-fd-border/80 pb-2.5 sm:pb-3">
+            <div>
+              <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.3em] text-fd-muted-foreground uppercase block mb-0.5 sm:mb-1">
+                // COMPENDIOS Y ARCHIVOS
+              </span>
+              <h2 className={`${fontDisplay} text-xl sm:text-3xl font-extrabold uppercase tracking-tight text-fd-foreground`}>
+                Sistemas de Conocimiento
+              </h2>
+            </div>
+            <span className="font-mono text-[10px] sm:text-xs text-fd-muted-foreground uppercase">
+              SELECCIONA UN VECTOR DE LECTURA
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6">
+            <Link
+              href="/medicina/introduccion"
+              className="md:col-span-7 group relative bg-fd-card border border-fd-border p-5 sm:p-8 flex flex-col justify-between min-h-[auto] sm:min-h-[300px] transition-all duration-500 hover:border-fd-foreground"
+            >
+              <div className="flex justify-between items-start">
+                <div className="inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 bg-fd-muted border border-fd-border text-fd-foreground font-mono text-[10px] sm:text-[11px] uppercase tracking-widest">
+                  <Stethoscope className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> SISTEMA 01
+                </div>
+                <span className={`${fontDisplay} text-3xl sm:text-4xl font-black text-fd-muted/30 group-hover:text-fd-foreground/20 transition-colors`}>
+                  M-01
+                </span>
+              </div>
+
+              <div className="space-y-2 sm:space-y-3 my-4 sm:my-4">
+                <h3 className={`${fontDisplay} text-2xl sm:text-4xl font-black uppercase tracking-tight text-fd-foreground group-hover:translate-x-1.5 transition-transform duration-300`}>
+                  Medicina
+                </h3>
+                <p className="text-xs sm:text-base text-fd-muted-foreground font-light leading-relaxed max-w-xl">
+                  Estructuración sistemática del conocimiento médico. Apuntes de fisiología, farmacología clínica y guías de supervivencia hospitalaria organizadas con rigor científico.
+                </p>
+              </div>
+
+              <div className="pt-3 border-t border-fd-border/60 flex items-center justify-between font-mono text-[11px] sm:text-xs uppercase tracking-widest text-fd-foreground">
+                <span className="flex items-center gap-1.5 group-hover:underline font-semibold">
+                  Ingresar al compendio <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-1" />
+                </span>
+                <span className="text-fd-muted-foreground">CRÍTICO</span>
+              </div>
+            </Link>
+
+            <Link
+              href="/biblioteca/blog"
+              className="md:col-span-5 group relative bg-fd-card border border-fd-border p-5 sm:p-8 flex flex-col justify-between min-h-[auto] sm:min-h-[300px] transition-all duration-500 hover:border-fd-foreground"
+            >
+              <div className="flex justify-between items-start">
+                <div className="inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 bg-fd-muted border border-fd-border text-fd-foreground font-mono text-[10px] sm:text-[11px] uppercase tracking-widest">
+                  <BookOpenText className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> SISTEMA 02
+                </div>
+                <span className={`${fontDisplay} text-3xl sm:text-4xl font-black text-fd-muted/30 group-hover:text-fd-foreground/20 transition-colors`}>
+                  H-02
+                </span>
+              </div>
+
+              <div className="space-y-2 sm:space-y-3 my-4 sm:my-4">
+                <h3 className={`${fontDisplay} text-2xl sm:text-4xl font-black uppercase tracking-tight text-fd-foreground group-hover:translate-x-1.5 transition-transform duration-300`}>
+                  Biblioteca
+                </h3>
+                <p className="text-xs sm:text-base text-fd-muted-foreground font-light leading-relaxed">
+                  El jardín en estado puro. Crítica literaria, filosofía, ensayos y reflexiones sobre el mundo, el código y la vida que transcurre en los márgenes.
+                </p>
+              </div>
+
+              <div className="pt-3 border-t border-fd-border/60 flex items-center justify-between font-mono text-[11px] sm:text-xs uppercase tracking-widest text-fd-foreground">
+                <span className="flex items-center gap-1.5 group-hover:underline font-semibold">
+                  Leer ensayos <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-1" />
+                </span>
+                <span className="text-fd-muted-foreground">EN EXPANSIÓN</span>
+              </div>
+            </Link>
+          </div>
+        </section>
+
+        {/* Telemetría, Citas & Stack */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch">
+          <div className="lg:col-span-7 bg-fd-card border border-fd-border p-5 sm:p-8 flex flex-col justify-between relative overflow-hidden">
+            <div className="flex items-center justify-between font-mono text-[11px] sm:text-xs uppercase tracking-[0.25em] text-fd-muted-foreground">
+              <span className="flex items-center gap-2 text-fd-foreground font-bold">
+                <Radio className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-fd-foreground animate-pulse" />
+                PENSAMIENTO INTERCEPTADO
+              </span>
+              <span>FRECUENCIA_01</span>
+            </div>
+
+            <div className="my-4 font-serif text-base sm:text-xl md:text-2xl italic text-fd-foreground leading-relaxed pl-4 sm:pl-5 border-l-2 border-fd-foreground/40">
+              <QuoteClient
+                initialQuote={quotes[Math.floor(Math.random() * quotes.length)]}
+                allQuotes={quotes}
+              />
+            </div>
+
+            <div className="pt-3 border-t border-fd-border/60 flex items-center justify-between font-mono text-[10px] sm:text-[11px] text-fd-muted-foreground uppercase tracking-widest">
+              <span>ARCHIVO GENERAL DE CITAS</span>
+              <span className="font-semibold text-fd-foreground">TRANSMISIÓN CONTINUA</span>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 bg-fd-card border border-fd-border p-5 sm:p-8 flex flex-col justify-between space-y-4">
+            <div>
+              <div className="font-mono text-[11px] sm:text-xs tracking-[0.25em] text-fd-muted-foreground uppercase font-bold mb-1.5 sm:mb-2 flex items-center gap-2">
+                <ShieldCheck className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-fd-foreground" /> ARQUITECTURA DIGITAL
+              </div>
+              <h3 className={`${fontDisplay} text-base sm:text-lg font-bold tracking-tight text-fd-foreground mb-1 sm:mb-1.5`}>
+                Rendimiento sin compromisos.
+              </h3>
+              <p className="text-xs sm:text-sm text-fd-muted-foreground font-light leading-relaxed">
+                Construido como un monolito estático ultrarrápido sin dependencias superfluas. Cada byte es renderizado con el único propósito de transferir ideas sin latencia.
+              </p>
+            </div>
+
+            <div className="space-y-1.5 sm:space-y-2 pt-3 border-t border-fd-border/60">
+              <div className="font-mono text-[9px] sm:text-[10px] text-fd-muted-foreground uppercase tracking-wider">
+                TECNOLOGÍA EN EJECUCIÓN:
+              </div>
+              <div className="flex flex-wrap gap-1 sm:gap-1.5 font-mono text-[10px] sm:text-[11px]">
+                {['Next.js 15', 'Tailwind v4', 'Fumadocs', 'MDX', 'TypeScript'].map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-1.5 py-0.5 sm:px-2 sm:py-1 bg-fd-muted border border-fd-border text-fd-foreground font-medium uppercase tracking-wider"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Manifiesto, Redes & FAQ */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 pt-4 border-t border-fd-border">
+          <div className="lg:col-span-5 space-y-4 sm:space-y-6">
+            <div className="space-y-2 sm:space-y-2.5">
+              <span className="font-mono text-[11px] sm:text-xs tracking-[0.3em] text-fd-muted-foreground uppercase block">
+                // MANIFIESTO
+              </span>
+              <h2 className={`${fontDisplay} text-lg sm:text-2xl font-extrabold uppercase tracking-tight text-fd-foreground`}>
+                Esto no es un blog, es un jardín.
+              </h2>
+              <p className="text-xs sm:text-base text-fd-muted-foreground font-light leading-relaxed">
+                Un espacio no lineal donde las ideas germinan en público y crecen orgánicamente. Sin algoritmos, sin la urgencia de las redes sociales. Las plantas no crecen en líneas rectas, el pensamiento tampoco.
+              </p>
+            </div>
+
+            <div className="space-y-2 sm:space-y-2.5">
+              <span className="font-mono text-[11px] sm:text-xs tracking-[0.3em] text-fd-muted-foreground uppercase block">
+                // NODOS DE ENLACE EXTERNO
+              </span>
+              <div className="grid grid-cols-2 gap-2 sm:gap-2.5">
+                <SocialNode href="https://github.com/uremy" icon={<Github className="h-3.5 w-3.5 sm:h-4 sm:w-4" />} label="GitHub" />
+                <SocialNode href="https://youtube.com/@uremy" icon={<Youtube className="h-3.5 w-3.5 sm:h-4 sm:w-4" />} label="YouTube" />
+                <SocialNode href="https://instagram.com/ure.emy" icon={<Instagram className="h-3.5 w-3.5 sm:h-4 sm:w-4" />} label="Instagram" />
+                <SocialNode href="https://twitter.com/Taimilog" icon={<Twitter className="h-3.5 w-3.5 sm:h-4 sm:w-4" />} label="Twitter / X" />
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-7 space-y-3 sm:space-y-4">
+            <div className="flex items-center justify-between border-b border-fd-border pb-2 sm:pb-2.5">
+              <h3 className={`${fontDisplay} text-base sm:text-lg font-bold uppercase tracking-tight text-fd-foreground`}>
+                Interrogatorio del Sistema (FAQ)
+              </h3>
+              <span className="font-mono text-[11px] sm:text-xs text-fd-muted-foreground">REF: 004</span>
+            </div>
+
+            <Accordions type="single" collapsible className="space-y-1.5 sm:space-y-2">
+              <Accordion 
+                title="¿Qué es exactamente Taimilog y cuál es su propósito?" 
+                className="border border-fd-border px-4 py-2 sm:px-5 sm:py-2.5 bg-fd-card hover:border-fd-foreground/40 transition-colors rounded-none text-xs sm:text-sm font-semibold text-fd-foreground"
+              >
+                <p className="font-sans text-fd-muted-foreground leading-relaxed text-xs sm:text-sm pt-1 pb-2 sm:pb-3 font-light">
+                  Taimilog es un espacio digital personal y evolutivo donde almaceno y sistematizo todo lo que aprendo en mi camino por la medicina, además de ensayos personales. Funciona como un segundo cerebro público donde comparto apuntes structuredos que pueden servir tanto a estudiantes como a mentes curiosas.
                 </p>
               </Accordion>
-              <Accordion title="¿Cuál es la etimología y significado detrás de 'Taimilog'?" className={`${gridPanel} px-5 py-1`}>
-                <p className="font-serif text-[#14171B]/80 dark:text-[#E8EAED]/75 leading-relaxed text-sm pt-2 pb-3">
-                  El nombre es un acrónimo conceptual: <strong>Taimi-</strong> proviene de <em>&quot;Taimado&quot;</em> (astuto, sagaz o persistente), mientras que <strong>-log</strong> se deriva de <em>&quot;Logbook&quot;</em> (bitácora o registro de navegación). La filosofía es mantener los <em>&quot;registros continuos de una mente taimada&quot;</em>.
+
+              <Accordion 
+                title="¿Cuál es la etimología y significado detrás de 'Taimilog'?" 
+                className="border border-fd-border px-4 py-2 sm:px-5 sm:py-2.5 bg-fd-card hover:border-fd-foreground/40 transition-colors rounded-none text-xs sm:text-sm font-semibold text-fd-foreground"
+              >
+                <p className="font-sans text-fd-muted-foreground leading-relaxed text-xs sm:text-sm pt-1 pb-2 sm:pb-3 font-light">
+                  El nombre es un acrónimo conceptual: <strong className="text-fd-foreground font-semibold">Taimi-</strong> proviene de <em>&quot;Taimado&quot;</em> (astuto, sagaz o persistente), mientras que <strong className="text-fd-foreground font-semibold">-log</strong> se deriva de <em>&quot;Logbook&quot;</em> (bitácora o registro de navegación). La filosofía es mantener los <em>&quot;registros continuos de una mente taimada&quot;</em>.
                 </p>
               </Accordion>
-              <Accordion title="¿Por qué recomiendas crear un Jardín Digital o sitio personal propio?" className={`${gridPanel} px-5 py-1`}>
-                <p className="font-serif text-[#14171B]/80 dark:text-[#E8EAED]/75 leading-relaxed text-sm pt-2 pb-3">
+
+              <Accordion 
+                title="¿Por qué recomiendas crear un Jardín Digital propio?" 
+                className="border border-fd-border px-4 py-2 sm:px-5 sm:py-2.5 bg-fd-card hover:border-fd-foreground/40 transition-colors rounded-none text-xs sm:text-sm font-semibold text-fd-foreground"
+              >
+                <p className="font-sans text-fd-muted-foreground leading-relaxed text-xs sm:text-sm pt-1 pb-2 sm:pb-3 font-light">
                   La web moderna se ha vuelto efímera y algorítmica; las redes sociales no ofrecen propiedad real ni un espacio para estructurar el pensamiento a largo plazo. Tener un rincón propio te aleja del feed y te permite cultivar tus ideas, portafolio y conocimientos a tu propio ritmo.
                 </p>
               </Accordion>
-              <Accordion title="¿Quién es el personaje que aparece en el avatar principal?" className={`${gridPanel} px-5 py-1`}>
-                <p className="font-serif text-[#14171B]/80 dark:text-[#E8EAED]/75 leading-relaxed text-sm pt-2 pb-3">
-                  ¡Es la inigualable <strong>Señora Herta</strong> de <em>Honkai: Star Rail</em>! Como dice la célebre cita de la Estación Espacial: <em>&quot;Madam Herta is a peerless gem. Madam Herta is an unrivaled genius. Madam Herta is an inimitable beauty.&quot;</em> Un símbolo de intelecto analítico y elegancia eterna.
+
+              <Accordion 
+                title="¿Quién es el personaje que aparece en el avatar principal?" 
+                className="border border-fd-border px-4 py-2 sm:px-5 sm:py-2.5 bg-fd-card hover:border-fd-foreground/40 transition-colors rounded-none text-xs sm:text-sm font-semibold text-fd-foreground"
+              >
+                <p className="font-sans text-fd-muted-foreground leading-relaxed text-xs sm:text-sm pt-1 pb-2 sm:pb-3 font-light">
+                  ¡Es la inigualable <strong className="text-fd-foreground font-semibold">Señora Herta</strong> de <em>Honkai: Star Rail</em>! Como dice la célebre cita de la Estación Espacial: <em>&quot;Madam Herta is a peerless gem. Madam Herta is an unrivaled genius. Madam Herta is an inimitable beauty.&quot;</em> Un símbolo de intelecto analítico y elegancia eterna.
                 </p>
               </Accordion>
             </Accordions>
           </div>
-          <div className={`mt-8 pt-6 border-t border-[#14171B]/10 dark:border-[#E8EAED]/10 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] ${inkFaint}`}>
-            <div className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#0E8A96] dark:bg-[#5EEAD4] animate-pulse" />
-              <span>BASE DE DATOS EN LÍNEA</span>
-            </div>
-            <span>© {new Date().getFullYear()} TAIMILOG ARCHIVO</span>
-          </div>
         </section>
-      </section>
+      </div>
+
+      {/* Footer: tipografía micro en móvil (9px) y un padding inferior generoso de 6rem (pb-24) para escapar de cualquier barra de navegador */}
+      <footer className="border-t border-fd-border/80 bg-fd-card/50 backdrop-blur-md w-full">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 pt-6 pb-24 sm:pb-8 flex flex-col md:flex-row items-center justify-between gap-3 font-mono text-[9px] sm:text-[11px] tracking-widest text-fd-muted-foreground uppercase">
+          
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-6">
+            <div className="flex items-center gap-1.5 sm:gap-2 text-fd-foreground font-semibold">
+              <span className="flex h-1.5 w-1.5 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-fd-foreground opacity-75" />
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-fd-foreground" />
+              </span>
+              <span className="flex items-center gap-1 sm:gap-1.5">
+                <Cpu className="h-3 w-3 text-fd-muted-foreground" /> SYS.TAIMILOG // v2.4
+              </span>
+            </div>
+            <span className="flex items-center gap-1 border-l border-fd-border/60 pl-3 sm:pl-6">
+              <Activity className="h-3 w-3 text-fd-muted-foreground" /> NÚCLEO: ACTIVO
+            </span>
+            <span className="hidden sm:inline border-l border-fd-border/60 pl-6">
+              MODO: LECTURA_PROFUNDA
+            </span>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-center">
+            <span className="text-fd-foreground font-bold hidden sm:inline">
+              LATENCIA: 0.0ms
+            </span>
+            <span className="sm:border-l sm:border-fd-border/60 sm:pl-6">
+              © 20XX TAIMILOG — CÓDIGO ABIERTO (OPEN SOURCE)
+            </span>
+          </div>
+
+        </div>
+      </footer>
     </main>
   );
 }
 
-/* ══════════════════════════════════════════════════════════════════════
-   SUBCOMPONENTES
-   ══════════════════════════════════════════════════════════════════════ */
-
-/** Escuadras de visor tipo HUD en cada esquina — reemplazan las cruces de registro */
-function ViewportBrackets() {
-  const corners = [
-    { pos: 'top-3 left-3', rotate: '' },
-    { pos: 'top-3 right-3', rotate: 'rotate-90' },
-    { pos: 'bottom-3 right-3', rotate: 'rotate-180' },
-    { pos: 'bottom-3 left-3', rotate: '-rotate-90' },
-  ];
-  return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 text-[#14171B]/15 dark:text-[#E8EAED]/15">
-      {corners.map(({ pos, rotate }) => (
-        <span key={pos} className={`absolute ${pos} h-4 w-4 ${rotate}`}>
-          <span className="absolute top-0 left-0 h-full w-px bg-current" />
-          <span className="absolute top-0 left-0 w-full h-px bg-current" />
-        </span>
-      ))}
-    </div>
-  );
-}
-
-/** Cápsula de estado — pastilla redonda tipo indicador de panel */
-function StatusChip({ icon, label }: { icon: React.ReactNode; label: string }) {
-  return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-[#14171B]/15 dark:border-[#E8EAED]/16 bg-[#F2F3F5] dark:bg-[#0B0C0F] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-[#14171B]/75 dark:text-[#E8EAED]/65">
-      {icon}
-      <span>{label}</span>
-    </span>
-  );
-}
-
-/** Fila de terminal de contacto con índice hexadecimal */
-function TerminalRow({
-  href, icon, label, sub, index,
-}: { href: string; icon: React.ReactNode; label: string; sub: string; index: string }) {
+function SocialNode({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative flex items-center justify-between gap-3 py-3 pl-3 -ml-3 transition-colors hover:bg-[#14171B]/[0.03] dark:hover:bg-[#E8EAED]/[0.04]"
+      className="group bg-fd-card border border-fd-border p-2.5 sm:p-3 flex items-center justify-between transition-all hover:bg-fd-foreground hover:text-fd-background hover:border-fd-foreground"
     >
-      <span className="absolute left-0 top-1/2 -translate-y-1/2 h-0 w-[2px] bg-[#0E8A96] dark:bg-[#5EEAD4] transition-all duration-300 group-hover:h-4/5" />
-      <div className="flex items-center gap-3 min-w-0">
-        <span className="font-mono text-[10px] text-[#14171B]/35 dark:text-[#E8EAED]/28">0x{index}</span>
-        <span className="shrink-0 text-[#14171B] dark:text-[#E8EAED]">{icon}</span>
-        <span className="min-w-0">
-          <span className="block truncate text-sm font-semibold text-[#14171B] dark:text-[#E8EAED]">{label}</span>
-          <span className="block truncate font-mono text-[9px] uppercase tracking-[0.16em] text-[#14171B]/40 dark:text-[#E8EAED]/32">{sub}</span>
+      <div className="flex items-center gap-2 sm:gap-2.5">
+        <span className="text-fd-muted-foreground group-hover:text-inherit transition-colors">
+          {icon}
         </span>
+        <span className="font-mono text-[11px] sm:text-xs font-semibold uppercase tracking-wider">{label}</span>
       </div>
-      <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-[#14171B]/35 dark:text-[#E8EAED]/30 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+      <ArrowUpRight className="h-3 w-3 sm:h-3.5 sm:w-3.5 opacity-40 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
     </a>
   );
 }

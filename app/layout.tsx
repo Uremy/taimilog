@@ -1,19 +1,18 @@
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import './global.css';
-import { Chiron_GoRound_TC } from 'next/font/google';
+import { Manrope } from 'next/font/google'; // Reemplazo optimizado (100% latina y ligera)
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from 'next';
 import 'katex/dist/katex.css';
 import CustomSearchDialog from '@/components/search';
-
-// --- NUEVO ---
 import { i18nProvider } from 'fumadocs-ui/i18n';
 import { translations } from '@/lib/layout.shared';
 
-const chironGoRound = Chiron_GoRound_TC({
+// 1. OPTIMIZACIÓN DE FUENTE: Enlazamos a --font-sans para que Tailwind v4 la adopte globalmente
+const manrope = Manrope({
   subsets: ['latin'],
-  weight: ['400', '500', '700', '800'],
-  variable: '--font-chiron',
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-sans',
   display: 'swap',
 });
 
@@ -27,16 +26,15 @@ export const metadata: Metadata = {
     google: '07_BhVw9nuN9ODAwnv11fUrblO_KiyvCLZwSltFIPnE',
   },
   icons: {
+    // Limpieza de redundancias en los iconos
     icon: [
       { 
         media: '(prefers-color-scheme: light)', 
         url: '/logo-light.svg', 
-        href: '/logo-light.svg' 
       },
       { 
         media: '(prefers-color-scheme: dark)', 
         url: '/logo-dark.svg', 
-        href: '/logo-dark.svg' 
       },
     ],
   },
@@ -44,21 +42,17 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={chironGoRound.className} suppressHydrationWarning>
-      <body className="flex flex-col min-h-screen">
+    // Inyectamos la variable tipográfica y mantenemos suppressHydrationWarning para next-themes
+    <html lang="es" className={manrope.variable} suppressHydrationWarning>
+      {/* Añadimos font-sans y antialiased para un renderizado de texto perfecto en Mac/Windows */}
+      <body className="font-sans flex flex-col min-h-screen antialiased">
         <RootProvider
           i18n={i18nProvider(translations)}
           search={{
             enabled: true,
-            // 👇 2. AQUÍ OCURRE EL REEMPLAZO
             SearchDialog: CustomSearchDialog, 
             preload: true, 
-            hotKey: [
-              {
-                display: '/',
-                key: '/',
-              },
-            ],
+            hotKey: [{ display: '/', key: '/' }], // Sintaxis simplificada
           }}
         >
           {children}

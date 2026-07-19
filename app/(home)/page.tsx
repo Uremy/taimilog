@@ -6,7 +6,7 @@ import {
   Stethoscope, BookOpenText, Github, Youtube,
   Instagram, ArrowUpRight,
   Twitter, Radio, Terminal,
-  ShieldCheck, ArrowRight, Cpu, Activity
+  ShieldCheck, ArrowRight, Activity, Cpu
 } from 'lucide-react';
 import { quotes } from '@/lib/quotes';
 import { QuoteClient } from '@/components/quote-client';
@@ -50,16 +50,17 @@ const fontBody = 'font-[family-name:var(--font-body)]';
 
 export default function HomePage() {
   return (
-    <main
+    /* CORRECCIÓN 1: Cambiado de <main> a <div> para evitar landmarks duplicados con Fumadocs (#nd-home-layout) */
+    <div
       className={`${unbounded.variable} ${manrope.variable} ${fontBody} relative w-full bg-fd-background text-fd-foreground antialiased selection:bg-fd-primary selection:text-fd-primary-foreground overflow-x-hidden`}
     >
-      {/* Fondo y grilla arquitectónica */}
-      <div aria-hidden className="fixed inset-0 -z-10 pointer-events-none flex justify-center">
+      {/* Fondo y grilla arquitectónica (Oculto estrictamente para lectores de pantalla) */}
+      <div aria-hidden="true" role="presentation" className="fixed inset-0 -z-10 pointer-events-none flex justify-center select-none">
         <div className="absolute top-0 w-[80vw] h-[50vh] bg-gradient-to-b from-black/5 dark:from-white/5 to-transparent blur-3xl" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.06)_1px,transparent_1px)] bg-[size:2rem_2rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]" />
       </div>
 
-      {/* Contenedor Principal: Paddings y espacios reducidos en móvil (pt-6 space-y-6) */}
+      {/* Contenedor Principal */}
       <div className="max-w-[1440px] mx-auto px-4 sm:px-8 pt-6 sm:pt-12 pb-12 space-y-6 sm:space-y-8 w-full">
         
         {/* Cabecera & Identidad */}
@@ -70,9 +71,9 @@ export default function HomePage() {
               Jardín Digital & Archivo Clínico
             </div>
 
-            {/* Titular escalado: text-5xl en móvil en lugar de 6xl */}
+            {/* CORRECCIÓN 3a: Cambiado /30 por text-fd-muted-foreground para cumplir contraste WCAG AA (>4.5:1) */}
             <h1 className={`${fontDisplay} text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-[0.8] text-fd-foreground -mt-1 sm:-mt-2`}>
-              Taimi<span className="text-fd-muted-foreground/30 font-light">log</span>
+              Taimi<span className="text-fd-muted-foreground font-normal">log</span>
             </h1>
 
             <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 pt-3 sm:pt-4 border-t border-fd-border/60">
@@ -87,7 +88,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Avatar Madam Herta: Tarjeta y avatar más compactos en móvil */}
+          {/* Avatar Madam Herta */}
           <div className="lg:col-span-4 flex flex-col justify-end pt-2 sm:pt-0">
             <div className="bg-fd-card border border-fd-border p-3.5 sm:p-5 relative group transition-all duration-500 hover:border-fd-foreground/40">
               <div className="flex items-center gap-3.5 sm:gap-5">
@@ -118,7 +119,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Núcleos de Conocimiento: min-h-[auto] en móvil para no estirar tarjetas innecesariamente */}
+        {/* Núcleos de Conocimiento */}
         <section className="space-y-3 sm:space-y-4 pt-2">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-1.5 sm:gap-3 border-b border-fd-border/80 pb-2.5 sm:pb-3">
             <div>
@@ -143,7 +144,8 @@ export default function HomePage() {
                 <div className="inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 bg-fd-muted border border-fd-border text-fd-foreground font-mono text-[10px] sm:text-[11px] uppercase tracking-widest">
                   <Stethoscope className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> SISTEMA 01
                 </div>
-                <span className={`${fontDisplay} text-3xl sm:text-4xl font-black text-fd-muted/30 group-hover:text-fd-foreground/20 transition-colors`}>
+                {/* CORRECCIÓN 3b: aria-hidden agregado y opacidad subida a /60 para superar el ratio WCAG AA 3:1 */}
+                <span aria-hidden="true" className={`${fontDisplay} text-3xl sm:text-4xl font-black text-fd-muted-foreground/60 group-hover:text-fd-foreground transition-colors select-none`}>
                   M-01
                 </span>
               </div>
@@ -173,7 +175,8 @@ export default function HomePage() {
                 <div className="inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 bg-fd-muted border border-fd-border text-fd-foreground font-mono text-[10px] sm:text-[11px] uppercase tracking-widest">
                   <BookOpenText className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> SISTEMA 02
                 </div>
-                <span className={`${fontDisplay} text-3xl sm:text-4xl font-black text-fd-muted/30 group-hover:text-fd-foreground/20 transition-colors`}>
+                {/* CORRECCIÓN 3c: aria-hidden agregado y opacidad subida a /60 para superar el ratio WCAG AA 3:1 */}
+                <span aria-hidden="true" className={`${fontDisplay} text-3xl sm:text-4xl font-black text-fd-muted-foreground/60 group-hover:text-fd-foreground transition-colors select-none`}>
                   H-02
                 </span>
               </div>
@@ -329,7 +332,7 @@ export default function HomePage() {
         </section>
       </div>
 
-      {/* Footer: tipografía micro en móvil (9px) y un padding inferior generoso de 6rem (pb-24) para escapar de cualquier barra de navegador */}
+      {/* Footer (Con padding pb-24 en móvil para evitar corte con la barra inferior del navegador) */}
       <footer className="border-t border-fd-border/80 bg-fd-card/50 backdrop-blur-md w-full">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-8 pt-6 pb-24 sm:pb-8 flex flex-col md:flex-row items-center justify-between gap-3 font-mono text-[9px] sm:text-[11px] tracking-widest text-fd-muted-foreground uppercase">
           
@@ -362,7 +365,7 @@ export default function HomePage() {
 
         </div>
       </footer>
-    </main>
+    </div>
   );
 }
 

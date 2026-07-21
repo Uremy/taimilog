@@ -45,7 +45,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     // Inyectamos la variable tipográfica y mantenemos suppressHydrationWarning para next-themes
     <html lang="es" className={manrope.variable} suppressHydrationWarning>
       {/* Añadimos font-sans y antialiased para un renderizado de texto perfecto en Mac/Windows */}
-      <body className="font-sans flex flex-col min-h-screen antialiased">
+      <body className="font-sans flex flex-col min-h-screen antialiased" suppressHydrationWarning>
         <RootProvider
           i18n={i18nProvider(translations)}
           search={{

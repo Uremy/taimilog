@@ -1,0 +1,59 @@
+/* Giscus - Dark theme para Taimilog */
+
+.gsc-homepage-bg {
+  background-color: hsl(240 10% 8%);
+}
+
+body {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  color: hsl(240 5% 90%);
+  background-color: hsl(240 10% 8%);
+}
+
+/* Enlaces y acentos -> tu rosa luminoso para dark mode */
+a,
+.gsc-comment-author,
+.gsc-reactions-count {
+  color: hsl(345 80% 65%) !important;
+}
+
+a:hover {
+  color: hsl(345 80% 72%) !important;
+}
+
+.gsc-comment,
+.gsc-comment-box,
+.gsc-timeline {
+  border-color: hsl(240 5% 20%) !important;
+  border-radius: 0.5rem !important;
+}
+
+.gsc-comment-box-buttons button.btn-primary,
+.gsc-loading-image + button {
+  background-color: hsl(345 70% 45%) !important;
+  border-color: hsl(345 70% 40%) !important;
+  color: #ffffff !important;
+  border-radius: 0.5rem !important;
+}
+
+.gsc-comment-box-buttons button.btn-primary:hover {
+  background-color: hsl(345 70% 38%) !important;
+}
+
+.gsc-comment-box-textarea {
+  background-color: hsl(240 10% 12%);
+  color: hsl(240 5% 90%);
+  border-color: hsl(240 5% 20%) !important;
+  border-radius: 0.5rem !important;
+  font-family: 'Manrope', sans-serif !important;
+}
+
+.gsc-comment-box-tabs .gsc-comment-box-tabs-mask {
+  border-color: hsl(240 5% 20%) !important;
+}
+
+.gsc-reactions-menu,
+.gsc-social-reaction-summary-item {
+  background-color: hsl(240 10% 12%) !important;
+  border-radius: 0.5rem !important;
+}

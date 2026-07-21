@@ -3,13 +3,17 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Unbounded, Manrope } from 'next/font/google';
 import {
-  Stethoscope, BookOpenText, Github, Youtube,
-  Instagram, ArrowUpRight,
-  Twitter, Radio, Terminal,
-  ShieldCheck, ArrowRight, Activity, Cpu,
+  Stethoscope, BookOpenText, ArrowUpRight,
+  Radio, Terminal, ShieldCheck, ArrowRight, Activity, Cpu,
   Fingerprint, Layers3, Hash, CircuitBoard,
   Signal, ScanLine,
 } from 'lucide-react';
+import {
+  SiGithub as Github,
+  SiYoutube as Youtube,
+  SiInstagram as Instagram,
+  SiX as Twitter,
+} from 'react-icons/si';
 import { quotes } from '@/lib/quotes';
 import { QuoteClient } from '@/components/quote-client';
 import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';

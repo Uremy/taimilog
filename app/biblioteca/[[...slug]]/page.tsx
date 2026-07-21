@@ -1,14 +1,16 @@
-import { sourceBiblioteca, getBibliotecaPageImage } from '@/lib/source'; // 👈 Importamos helper
+import { sourceBiblioteca, getBibliotecaPageImage } from '@/lib/source';
 import { DocsPage, DocsBody, DocsDescription, DocsTitle, PageLastUpdate } from 'fumadocs-ui/layouts/notebook/page';
 import { notFound, redirect } from 'next/navigation';
 import { getMDXComponents } from '@/mdx-components';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import type { Metadata } from 'next';
+import Comments from '@/components/Comments';
+// 👇 Reemplazamos el import roto del CLI por el componente manual inmune a fallos
+import { PageFooter } from '@/components/PageFooter';
 
 export default async function Page(props: { params: Promise<{ slug?: string[] }> }) {
   const params = await props.params;
 
-  // Redirect a blog si no hay slug
   if (!params.slug) {
     redirect('/biblioteca/blog');
   }
@@ -24,7 +26,7 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
       toc={page.data.toc} 
       full={page.data.full}
       tableOfContent={{ style: 'clerk', enabled: true }}
-      footer={{ enabled: true }}
+      footer={{ enabled: false }} // 👈 Mantenemos apagado el footer automático de Fumadocs
       breadcrumb={{ enabled: true }}
     >
       <DocsTitle>{page.data.title}</DocsTitle>
@@ -39,6 +41,12 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
            </div>
         )}
       </DocsBody>
+
+      {/* 👇 1. Navegación manual infalible (Sin dependencias ocultas del CLI) */}
+      <PageFooter url={page.url} />
+
+      {/* 👇 2. Comentarios de Giscus cerrando el flujo visualmente */}
+      <Comments />
     </DocsPage>
   );
 }
@@ -47,11 +55,9 @@ export async function generateStaticParams() {
   return sourceBiblioteca.generateParams();
 }
 
-// 👇 ACTUALIZADO: Metadata con OG Image
 export async function generateMetadata(props: { params: Promise<{ slug?: string[] }> }): Promise<Metadata> {
   const params = await props.params;
   
-  // Protección: si no hay slug, retorna metadata básica
   if (!params.slug) {
     return {
       title: 'Biblioteca',
@@ -60,17 +66,13 @@ export async function generateMetadata(props: { params: Promise<{ slug?: string[
   }
 
   const page = sourceBiblioteca.getPage(params.slug);
-  
   if (!page) return {};
 
-  // 👇 Generar URL de la imagen OG
   const imageUrl = getBibliotecaPageImage(page).url;
 
   return {
     title: page.data.title,
     description: page.data.description,
-    
-    // 👇 Open Graph (Facebook, LinkedIn, Discord)
     openGraph: {
       title: page.data.title,
       description: page.data.description,
@@ -78,8 +80,6 @@ export async function generateMetadata(props: { params: Promise<{ slug?: string[
       siteName: 'Taimilog',
       type: 'article',
     },
-    
-    // 👇 Twitter Card
     twitter: {
       card: 'summary_large_image',
       title: page.data.title,

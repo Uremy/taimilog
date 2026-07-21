@@ -102,7 +102,7 @@ export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
       title: logo,
-      transparentMode: 'always'
+      transparentMode: 'none'
     },
     links: linkItems,
   };

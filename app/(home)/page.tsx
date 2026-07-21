@@ -8,7 +8,7 @@ import {
   Twitter, Radio, Terminal,
   ShieldCheck, ArrowRight, Activity, Cpu,
   Fingerprint, Layers3, Hash, CircuitBoard,
-  Signal, ScanLine,
+  Signal, ScanLine, Sparkles,
 } from 'lucide-react';
 import { quotes } from '@/lib/quotes';
 import { QuoteClient } from '@/components/quote-client';
@@ -88,6 +88,9 @@ export default function HomePage() {
               >
                 <Fingerprint className="h-3 w-3 text-fd-primary" /> COORD: 42
               </span>
+              <span className="hidden md:inline-flex items-center gap-1 font-mono text-[10px] text-fd-muted-foreground/60 select-none">
+                // <span className="hover:text-fd-foreground transition-colors cursor-default">KURU KURU~ ( ◡‿◡ *)</span>
+              </span>
             </div>
             <h1 className={`${fontDisplay} text-balance text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-[0.8] text-fd-foreground -mt-1 sm:-mt-2`}>
               Taimi<span className="text-fd-muted-foreground font-normal">log</span>
@@ -98,9 +101,11 @@ export default function HomePage() {
               </p>
               <div className="sm:col-span-4 flex flex-row sm:flex-col justify-between sm:justify-end sm:items-end font-mono text-[11px] sm:text-xs text-fd-muted-foreground uppercase tracking-wider pt-2 sm:pt-0 gap-1">
                 <span>INDEX // REG: 42</span>
-                <span className="text-fd-foreground font-semibold">ESTADO: CONTINUO</span>
+                <span className="text-fd-foreground font-semibold flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> ESTADO: CONTINUO
+                </span>
                 <span className="flex items-center gap-1">
-                  <Hash className="h-3 w-3" /> REV. 04
+                  <Hash className="h-3 w-3" /> REV. 04 <span className="text-[10px] opacity-60">(★ω★)/</span>
                 </span>
               </div>
             </div>
@@ -110,7 +115,9 @@ export default function HomePage() {
           <div className="lg:col-span-4 flex flex-col justify-end pt-2 sm:pt-0">
             <div className="flex items-center justify-end gap-3 mb-2.5 sm:mb-3">
               <div className="text-right">
-                <div className="font-mono text-[9px] text-fd-muted-foreground uppercase tracking-widest">Homenaje numérico</div>
+                <div className="font-mono text-[9px] text-fd-muted-foreground uppercase tracking-widest flex items-center justify-end gap-1">
+                  <Sparkles className="h-2.5 w-2.5 text-fd-primary" /> Homenaje numérico
+                </div>
                 <div className="font-mono text-[10px] text-fd-foreground uppercase tracking-wide font-semibold">
                   42 · Guía del Autoestopista
                 </div>
@@ -132,13 +139,19 @@ export default function HomePage() {
                       priority
                       unoptimized
                     />
+                    {/* Overlay mecha HUD en hover sobre el avatar */}
+                    <div className="absolute inset-0 bg-fd-primary/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-end p-1 font-mono text-[8px] text-fd-foreground uppercase tracking-tighter bg-[linear-gradient(to_bottom,transparent_80%,rgba(0,0,0,0.6)_100%)]">
+                      <span>[HERTA_SYS]</span>
+                    </div>
                   </div>
                   <div className="space-y-1">
-                    <div className="font-mono text-[9px] sm:text-[10px] tracking-widest text-fd-muted-foreground uppercase">
-                      FIG. 01 — AVATAR
+                    <div className="font-mono text-[9px] sm:text-[10px] tracking-widest text-fd-muted-foreground uppercase flex items-center justify-between">
+                      <span>FIG. 01 — AVATAR</span>
+                      <span className="text-[9px] text-fd-primary/70 font-bold opacity-0 group-hover:opacity-100 transition-opacity">✦ INT_MAX</span>
                     </div>
-                    <h3 className={`${fontDisplay} text-base sm:text-lg font-bold tracking-tight text-fd-foreground leading-snug`}>
+                    <h3 className={`${fontDisplay} text-base sm:text-lg font-bold tracking-tight text-fd-foreground leading-snug flex items-center gap-1.5`}>
                       Madam Herta
+                      <span className="text-[10px] font-mono text-fd-muted-foreground font-normal hidden group-hover:inline-block transition-all">// マダム</span>
                     </h3>
                     <p className="font-mono text-[11px] sm:text-xs text-fd-muted-foreground line-clamp-2 italic">
                       &quot;An unrivaled genius. An inimitable beauty.&quot;
@@ -167,7 +180,7 @@ export default function HomePage() {
               </h2>
             </div>
             <span className="font-mono text-[10px] sm:text-xs text-fd-muted-foreground uppercase">
-              SELECCIONA UN VECTOR DE LECTURA
+              SELECCIONA UN VECTOR DE LECTURA [▼∀▼]†
             </span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6">
@@ -179,21 +192,23 @@ export default function HomePage() {
               <span
                 aria-hidden="true"
                 title="Clasificación Decimal Dewey — Enfermería, cuidado clínico y medicina interna"
-                className="absolute top-2 left-2 font-mono text-[9px] text-fd-muted-foreground/50 group-hover:text-fd-primary transition-colors tracking-widest"
+                className="absolute top-2 left-2 font-mono text-[9px] text-fd-muted-foreground/50 group-hover:text-fd-primary transition-colors tracking-widest flex items-center gap-1.5"
               >
-                DEWEY 610.73
+                <span>DEWEY 610.73</span>
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity">[SYS_MED // 臨床]</span>
               </span>
               <div className="flex justify-between items-start">
                 <div className="inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 bg-fd-muted border border-fd-border text-fd-foreground font-mono text-[10px] sm:text-[11px] uppercase tracking-widest">
-                  <Stethoscope className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> SISTEMA 01
+                  <Stethoscope className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-rose-500/80" /> SISTEMA 01
                 </div>
                 <span aria-hidden="true" className={`${fontDisplay} text-3xl sm:text-4xl font-black text-fd-muted-foreground/60 group-hover:text-fd-foreground transition-colors select-none`}>
                   M-01
                 </span>
               </div>
               <div className="space-y-2 sm:space-y-3 my-4 sm:my-4">
-                <h3 className={`${fontDisplay} text-2xl sm:text-4xl font-black uppercase tracking-tight text-fd-foreground group-hover:translate-x-1.5 transition-transform duration-300`}>
+                <h3 className={`${fontDisplay} text-2xl sm:text-4xl font-black uppercase tracking-tight text-fd-foreground group-hover:translate-x-1.5 transition-transform duration-300 flex items-baseline gap-2`}>
                   Medicina
+                  <span className="text-xs font-mono font-normal text-fd-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">// CLINICAL_LOGS</span>
                 </h3>
                 <p className="text-xs sm:text-base text-fd-muted-foreground font-light leading-relaxed max-w-xl">
                   Estructuración sistemática del conocimiento médico. Apuntes de fisiología, farmacología clínica y guías de supervivencia hospitalaria organizadas con rigor científico.
@@ -203,7 +218,7 @@ export default function HomePage() {
                 <span className="flex items-center gap-1.5 group-hover:underline font-semibold">
                   Ingresar al compendio <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-1" />
                 </span>
-                <span className="text-fd-muted-foreground">CRÍTICO</span>
+                <span className="text-fd-muted-foreground group-hover:text-rose-500/80 transition-colors">CRÍTICO ( ˘▽˘)っ♨</span>
               </div>
             </Link>
 
@@ -215,21 +230,23 @@ export default function HomePage() {
               <span
                 aria-hidden="true"
                 title="Clasificación Decimal Dewey — Historia, descripción y crítica literaria"
-                className="absolute top-2 left-2 font-mono text-[9px] text-fd-muted-foreground/50 group-hover:text-fd-primary transition-colors tracking-widest"
+                className="absolute top-2 left-2 font-mono text-[9px] text-fd-muted-foreground/50 group-hover:text-fd-primary transition-colors tracking-widest flex items-center gap-1.5"
               >
-                DEWEY 809
+                <span>DEWEY 809</span>
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity">[SYS_LIT // 思想]</span>
               </span>
               <div className="flex justify-between items-start">
                 <div className="inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 bg-fd-muted border border-fd-border text-fd-foreground font-mono text-[10px] sm:text-[11px] uppercase tracking-widest">
-                  <BookOpenText className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> SISTEMA 02
+                  <BookOpenText className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-amber-500/80" /> SISTEMA 02
                 </div>
                 <span aria-hidden="true" className={`${fontDisplay} text-3xl sm:text-4xl font-black text-fd-muted-foreground/60 group-hover:text-fd-foreground transition-colors select-none`}>
                   H-02
                 </span>
               </div>
               <div className="space-y-2 sm:space-y-3 my-4 sm:my-4">
-                <h3 className={`${fontDisplay} text-2xl sm:text-4xl font-black uppercase tracking-tight text-fd-foreground group-hover:translate-x-1.5 transition-transform duration-300`}>
+                <h3 className={`${fontDisplay} text-2xl sm:text-4xl font-black uppercase tracking-tight text-fd-foreground group-hover:translate-x-1.5 transition-transform duration-300 flex items-baseline gap-2`}>
                   Biblioteca
+                  <span className="text-xs font-mono font-normal text-fd-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">// ESSAYS</span>
                 </h3>
                 <p className="text-xs sm:text-base text-fd-muted-foreground font-light leading-relaxed">
                   El jardín en estado puro. Crítica literaria, filosofía, ensayos y reflexiones sobre el mundo, el código y la vida que transcurre en los márgenes.
@@ -239,7 +256,7 @@ export default function HomePage() {
                 <span className="flex items-center gap-1.5 group-hover:underline font-semibold">
                   Leer ensayos <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-1" />
                 </span>
-                <span className="text-fd-muted-foreground">EN EXPANSIÓN</span>
+                <span className="text-fd-muted-foreground">EN EXPANSIÓN (✧ω✧)</span>
               </div>
             </Link>
           </div>
@@ -275,15 +292,20 @@ export default function HomePage() {
             </div>
             <div className="pt-3 border-t border-fd-border/60 flex items-center justify-between font-mono text-[10px] sm:text-[11px] text-fd-muted-foreground uppercase tracking-widest">
               <span>ARCHIVO GENERAL DE CITAS</span>
-              <span className="text-fd-foreground font-semibold">TRANSMISIÓN CONTINUA</span>
+              <span className="text-fd-foreground font-semibold flex items-center gap-1">
+                TRANSMISIÓN CONTINUA <span className="text-fd-primary">// [ ◉ _ ◉ ]</span>
+              </span>
             </div>
           </div>
 
           <div className={`lg:col-span-5 bg-fd-card border border-fd-border p-5 sm:p-8 flex flex-col justify-between space-y-4 relative ${NOTCH_LG} ${GLOW_HOVER} transition-shadow duration-500`}>
             <CornerMarks />
             <div>
-              <div className="font-mono text-[11px] sm:text-xs tracking-[0.25em] text-fd-muted-foreground uppercase font-bold mb-1.5 sm:mb-2 flex items-center gap-2">
-                <ShieldCheck className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-fd-foreground" /> ARQUITECTURA DIGITAL
+              <div className="font-mono text-[11px] sm:text-xs tracking-[0.25em] text-fd-muted-foreground uppercase font-bold mb-1.5 sm:mb-2 flex items-center justify-between">
+                <span className="flex items-center gap-2">
+                  <ShieldCheck className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-fd-foreground" /> ARQUITECTURA DIGITAL
+                </span>
+                <span className="text-[9px] opacity-70">NERV_STYLE</span>
               </div>
               <h3 className={`${fontDisplay} text-base sm:text-lg font-bold tracking-tight text-fd-foreground mb-1 sm:mb-1.5`}>
                 Rendimiento sin compromisos.
@@ -294,14 +316,17 @@ export default function HomePage() {
             </div>
             {/* @container: los chips se reflowan según el ancho de ESTE bloque, no del viewport */}
             <div className="space-y-1.5 sm:space-y-2 pt-3 border-t border-fd-border/60 [container-type:inline-size]">
-              <div className="font-mono text-[9px] sm:text-[10px] text-fd-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
-                <CircuitBoard className="h-3 w-3" /> TECNOLOGÍA EN EJECUCIÓN:
+              <div className="font-mono text-[9px] sm:text-[10px] text-fd-muted-foreground uppercase tracking-wider flex items-center justify-between">
+                <span className="flex items-center gap-1.5">
+                  <CircuitBoard className="h-3 w-3" /> TECNOLOGÍA EN EJECUCIÓN:
+                </span>
+                <span className="text-fd-foreground font-semibold">// 100% SYNC</span>
               </div>
               <div className="flex flex-wrap gap-1 sm:gap-1.5 font-mono text-[10px] sm:text-[11px]">
                 {['Next.js 15', 'Tailwind v4', 'Fumadocs', 'MDX', 'TypeScript'].map((tech) => (
                   <span
                     key={tech}
-                    className={`px-1.5 py-0.5 sm:px-2 sm:py-1 bg-fd-muted border border-fd-border text-fd-foreground font-medium uppercase tracking-wider transition-colors hover:border-fd-primary/50 ${NOTCH_SM}`}
+                    className={`px-1.5 py-0.5 sm:px-2 sm:py-1 bg-fd-muted border border-fd-border text-fd-foreground font-medium uppercase tracking-wider transition-colors hover:border-fd-primary/50 hover:bg-fd-foreground hover:text-fd-background ${NOTCH_SM}`}
                   >
                     {tech}
                   </span>
@@ -315,8 +340,9 @@ export default function HomePage() {
         <section className="enter [animation-delay:200ms] grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 pt-4 border-t border-fd-border">
           <div className="lg:col-span-5 space-y-4 sm:space-y-6">
             <div className="space-y-2 sm:space-y-2.5">
-              <span className="font-mono text-[11px] sm:text-xs tracking-[0.3em] text-fd-muted-foreground uppercase flex items-center gap-1.5">
-                <Layers3 className="h-3.5 w-3.5" /> // MANIFIESTO
+              <span className="font-mono text-[11px] sm:text-xs tracking-[0.3em] text-fd-muted-foreground uppercase flex items-center justify-between">
+                <span className="flex items-center gap-1.5"><Layers3 className="h-3.5 w-3.5" /> // MANIFIESTO</span>
+                <span className="text-[10px] opacity-60">( ╥﹏╥)</span>
               </span>
               <h2 className={`${fontDisplay} text-balance text-lg sm:text-2xl font-extrabold uppercase tracking-tight text-fd-foreground`}>
                 Esto no es un blog, es un jardín.
@@ -330,18 +356,19 @@ export default function HomePage() {
                 // NODOS DE ENLACE EXTERNO
               </span>
               <div className="grid grid-cols-2 gap-2 sm:gap-2.5">
-                <SocialNode href="https://github.com/uremy" icon={<Github className="h-3.5 w-3.5 sm:h-4 sm:w-4" />} label="GitHub" />
-                <SocialNode href="https://youtube.com/@uremy" icon={<Youtube className="h-3.5 w-3.5 sm:h-4 sm:w-4" />} label="YouTube" />
-                <SocialNode href="https://instagram.com/ure.emy" icon={<Instagram className="h-3.5 w-3.5 sm:h-4 sm:w-4" />} label="Instagram" />
-                <SocialNode href="https://twitter.com/Taimilog" icon={<Twitter className="h-3.5 w-3.5 sm:h-4 sm:w-4" />} label="Twitter / X" />
+                <SocialNode href="https://github.com/uremy" icon={<Github className="h-3.5 w-3.5 sm:h-4 sm:w-4" />} label="GitHub" sublabel="[CODE]" />
+                <SocialNode href="https://youtube.com/@uremy" icon={<Youtube className="h-3.5 w-3.5 sm:h-4 sm:w-4" />} label="YouTube" sublabel="[VIDEO]" />
+                <SocialNode href="https://instagram.com/ure.emy" icon={<Instagram className="h-3.5 w-3.5 sm:h-4 sm:w-4" />} label="Instagram" sublabel="[LOGS]" />
+                <SocialNode href="https://twitter.com/Taimilog" icon={<Twitter className="h-3.5 w-3.5 sm:h-4 sm:w-4" />} label="Twitter / X" sublabel="[FEED]" />
               </div>
             </div>
           </div>
 
           <div className="lg:col-span-7 space-y-3 sm:space-y-4">
             <div className="flex items-center justify-between border-b border-fd-border pb-2 sm:pb-2.5">
-              <h3 className={`${fontDisplay} text-base sm:text-lg font-bold uppercase tracking-tight text-fd-foreground`}>
+              <h3 className={`${fontDisplay} text-base sm:text-lg font-bold uppercase tracking-tight text-fd-foreground flex items-center gap-2`}>
                 Interrogatorio del Sistema (FAQ)
+                <span className="text-[10px] font-mono text-fd-muted-foreground font-normal">// 質問</span>
               </h3>
               <span className="font-mono text-[11px] sm:text-xs text-fd-muted-foreground">REF: 004</span>
             </div>
@@ -400,15 +427,15 @@ export default function HomePage() {
               <Activity className="h-3 w-3 text-fd-muted-foreground" /> NÚCLEO: ACTIVO
             </span>
             <span className="hidden sm:inline border-l border-fd-border/60 pl-6">
-              MODO: LECTURA_PROFUNDA
+              MODO: LECTURA_PROFUNDA (￣▽￣)ノ
             </span>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-center">
             <span className="text-fd-foreground font-bold hidden sm:inline">
               RENDER: SSG · EDGE
             </span>
-            <span className="sm:border-l sm:border-fd-border/60 sm:pl-6">
-              © 20XX TAIMILOG — OPEN SOURCE
+            <span className="sm:border-l sm:border-fd-border/60 sm:pl-6 hover:text-fd-foreground transition-colors">
+              © 20XX TAIMILOG — SEE YOU SPACE COWBOY...
             </span>
           </div>
         </div>
@@ -447,19 +474,21 @@ function StatusTicker() {
     'INDEXNOW · SYNC ACTIVO',
     'BUILD: NEXT.JS 15 · SSG',
     'ESTADO: LECTURA_PROFUNDA',
-    'REG: 42 · REV.04',
+    'REG: 42 · REV.04 (★ω★)/',
+    'STATUS: CHILLING~',
+    'SYS_VER // 2.0.4',
   ];
   return (
     <div className="relative border-y border-fd-border/70 bg-fd-card/40 overflow-hidden select-none">
       <div className="flex items-center gap-3 px-3 py-1.5 sm:py-2 font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-fd-muted-foreground">
         <span className="flex items-center gap-1.5 shrink-0 text-fd-foreground font-semibold pr-3 border-r border-fd-border/60">
-          <Signal className="h-3 w-3 text-fd-primary" /> STATUS
+          <Signal className="h-3 w-3 text-fd-primary animate-pulse" /> STATUS
         </span>
         <div className="overflow-hidden flex-1 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
           <div className="flex w-max gap-8 marquee-track">
             {[...items, ...items].map((t, i) => (
-              <span key={i} className="flex items-center gap-2 whitespace-nowrap">
-                <ScanLine className="h-3 w-3 opacity-50" /> {t}
+              <span key={i} className="flex items-center gap-2 whitespace-nowrap hover:text-fd-foreground transition-colors">
+                <ScanLine className="h-3 w-3 opacity-50 text-fd-primary" /> {t}
               </span>
             ))}
           </div>
@@ -485,12 +514,12 @@ function OrbitalDial() {
   });
   return (
     <div
-      className="relative w-14 h-14 sm:w-16 sm:h-16 shrink-0 ring-pulse rounded-full"
+      className="relative w-14 h-14 sm:w-16 sm:h-16 shrink-0 ring-pulse rounded-full group cursor-pointer"
       title="42 — homenaje a La Guía del Autoestopista Galáctico"
     >
       <svg
         viewBox="0 0 100 100"
-        className="w-full h-full text-fd-foreground animate-[spin_60s_linear_infinite] motion-reduce:animate-none"
+        className="w-full h-full text-fd-foreground animate-[spin_60s_linear_infinite] motion-reduce:animate-none group-hover:text-fd-primary transition-colors"
       >
         <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" strokeOpacity="0.12" strokeWidth="1" />
         {ticks.map((t, i) => (
@@ -504,14 +533,14 @@ function OrbitalDial() {
         ))}
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className={`${fontDisplay} text-sm sm:text-base font-black text-fd-foreground`}>42</span>
+        <span className={`${fontDisplay} text-sm sm:text-base font-black text-fd-foreground group-hover:scale-110 transition-transform`}>42</span>
       </div>
-      <div aria-hidden="true" className="absolute inset-0 rounded-full bg-fd-primary/10 blur-md -z-10" />
+      <div aria-hidden="true" className="absolute inset-0 rounded-full bg-fd-primary/10 blur-md -z-10 group-hover:bg-fd-primary/25 transition-colors" />
     </div>
   );
 }
 
-function SocialNode({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
+function SocialNode({ href, icon, label, sublabel }: { href: string; icon: React.ReactNode; label: string; sublabel?: string }) {
   return (
     <a
       href={href}
@@ -523,7 +552,14 @@ function SocialNode({ href, icon, label }: { href: string; icon: React.ReactNode
         <span className="text-fd-muted-foreground group-hover:text-inherit transition-colors">
           {icon}
         </span>
-        <span className="font-mono text-[11px] sm:text-xs font-semibold uppercase tracking-wider">{label}</span>
+        <div className="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-1.5">
+          <span className="font-mono text-[11px] sm:text-xs font-semibold uppercase tracking-wider">{label}</span>
+          {sublabel && (
+            <span className="font-mono text-[9px] text-fd-muted-foreground/60 group-hover:text-inherit/70 transition-colors">
+              {sublabel}
+            </span>
+          )}
+        </div>
       </div>
       <ArrowUpRight className="h-3 w-3 sm:h-3.5 sm:w-3.5 opacity-40 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
     </a>

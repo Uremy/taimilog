@@ -1,5 +1,4 @@
 // components/PageFooter.tsx
-import { getPageTreePeers } from 'fumadocs-core/page-tree';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import type * as PageTree from 'fumadocs-core/page-tree';
@@ -8,12 +7,41 @@ type Item = Pick<PageTree.Item, 'name' | 'description' | 'url'>;
 
 interface PageFooterProps {
   url: string;
-  pageTree: PageTree.Root; // 👈 Recibe cualquier árbol de páginas (Biblioteca, Medicina, etc.)
+  pageTree: PageTree.Root;
+}
+
+// 👇 1. Creamos una función infalible que aplana el árbol en un orden de lectura lineal
+function getFlatPages(nodes: PageTree.Node[]): Item[] {
+  const result: Item[] = [];
+
+  for (const node of nodes) {
+    if (node.type === 'page') {
+      result.push({ name: node.name, description: node.description, url: node.url });
+    } else if (node.type === 'folder') {
+      // Si la carpeta funciona como una página principal (tiene index), la añadimos
+      if (node.index) {
+        result.push({ name: node.index.name, description: node.index.description, url: node.index.url });
+      }
+      // Entramos a la carpeta y extraemos sus hijos en orden
+      result.push(...getFlatPages(node.children));
+    }
+  }
+  return result;
 }
 
 export function PageFooter({ url, pageTree }: PageFooterProps) {
-  // ✅ Usamos el árbol que nos pasen por props
-  const [previous, next] = getPageTreePeers(pageTree, url);
+  // 👇 2. Obtenemos el "libro completo" de la sección (Biblioteca o Medicina)
+  const allPages = getFlatPages(pageTree.children);
+
+  // 👇 3. Buscamos en qué número de página estamos
+  const currentIndex = allPages.findIndex((page) => page.url === url);
+
+  // Protección: Si por algo no estamos en el árbol, no mostramos nada
+  if (currentIndex === -1) return null;
+
+  // 👇 4. Matemáticas puras de Fumadocs: anterior y siguiente
+  const previous = currentIndex > 0 ? allPages[currentIndex - 1] : undefined;
+  const next = currentIndex < allPages.length - 1 ? allPages[currentIndex + 1] : undefined;
 
   if (!previous && !next) return null;
 

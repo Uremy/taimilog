@@ -1,6 +1,6 @@
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import './global.css';
-import { Manrope } from 'next/font/google'; // Reemplazo optimizado (100% latina y ligera)
+import { Atkinson_Hyperlegible } from 'next/font/google'; // Reemplazo optimizado (Legibilidad extrema)
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from 'next';
 import 'katex/dist/katex.css';
@@ -8,10 +8,11 @@ import CustomSearchDialog from '@/components/search';
 import { i18nProvider } from 'fumadocs-ui/i18n';
 import { translations } from '@/lib/layout.shared';
 
-// 1. OPTIMIZACIÓN DE FUENTE: Enlazamos a --font-sans para que Tailwind v4 la adopte globalmente
-const manrope = Manrope({
+// 1. OPTIMIZACIÓN DE FUENTE: Configuración de Atkinson Hyperlegible mapeada a --font-sans
+const atkinson = Atkinson_Hyperlegible({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '700'], // Pesos soportados nativamente por esta tipografía
+  style: ['normal', 'italic'], // Indispensable para citas literarias o términos en cursiva
   variable: '--font-sans',
   display: 'swap',
 });
@@ -42,8 +43,8 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    // Inyectamos la variable tipográfica y mantenemos suppressHydrationWarning para next-themes
-    <html lang="es" className={manrope.variable} suppressHydrationWarning>
+    // Inyectamos la variable tipográfica de Atkinson y mantenemos suppressHydrationWarning para next-themes
+    <html lang="es" className={atkinson.variable} suppressHydrationWarning>
       {/* Añadimos font-sans y antialiased para un renderizado de texto perfecto en Mac/Windows */}
       <body className="font-sans flex flex-col min-h-screen antialiased" suppressHydrationWarning>
         <RootProvider

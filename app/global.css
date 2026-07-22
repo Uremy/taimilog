@@ -13,7 +13,7 @@
   --color-fd-ring: hsl(345 60% 35%);
 
   /* --- FORMA DE LOS ELEMENTOS (GLOBAL) --- */
-  --radius: 0.5rem; /* Cambié de 0.3rem a 0.5rem para que coincida con rounded-lg */
+  --radius: 0.5rem; /* Alineado a rounded-lg (0.5rem en lugar de 0.3rem) */
 }
 
 .dark {
@@ -29,8 +29,48 @@
 
 /* --- PERSONALIZACIÓN DEL BOTÓN DE BÚSQUEDA EN LA NAVBAR --- */
 button[data-search-full] {
-  border-radius: 0.5rem !important;
+  border-radius: 0.5rem;
 }
+
+/* ==========================================================================
+   DOMANDO A LOS ELEFANTES: Blindaje Tipográfico para SVGs, D3 y Motores
+   ========================================================================== */
+
+/* 1. Mermaid.js (El verdadero rebelde):
+      En lugar de usar !important y romper las reglas de Biome, aumentamos
+      la especificidad del selector para ganarle limpiamente a los estilos
+      que Mermaid inyecta por defecto. */
+div .mermaid svg text,
+div .mermaid svg tspan {
+  font-family: var(--font-sans), sans-serif;
+}
+
+/* 2. Red de seguridad general para SVGs (Sin pisar tus font-mono en D3):
+      Le decimos a los SVGs que usen Atkinson por defecto, EXCEPTO si son
+      matemáticas de KaTeX o si tu componente D3 ya les asignó la clase
+      .font-mono o una familia monoespaciada en línea. */
+svg text:not(.katex *):not([class*="font-mono"]):not([style*="monospace"]),
+svg tspan:not(.katex *):not([class*="font-mono"]):not([style*="monospace"]) {
+  font-family: var(--font-sans), sans-serif;
+}
+
+/* 3. Modo Oscuro/Claro automático para D3 y SVGs:
+      Garantiza que el texto sea visible en pantallas OLED oscuras sin que tengas
+      que escribir fill="currentColor" en cada <text> manual. */
+svg text:not(.katex *) {
+  fill: currentColor;
+}
+
+/* 4. KaTeX (Protección Sagrada):
+      Preserva la tipografía Serif matemática formal. */
+.katex,
+.katex * {
+  font-family: inherit;
+}
+
+/* ==========================================================================
+   ANIMACIONES CUSTOM (Taimilog)
+   ========================================================================== */
 
 @keyframes scan {
   0%   { transform: translateY(-10vh); opacity: 0; }
@@ -38,23 +78,25 @@ button[data-search-full] {
   90%  { opacity: 1; }
   100% { transform: translateY(110vh); opacity: 0; }
 }
+
 @keyframes wave {
   from { transform: scaleY(0.4); }
   to   { transform: scaleY(1); }
 }
-/* --- NUEVO: ticker de estado --- */
+
+/* --- Ticker de estado --- */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
 
-/* --- NUEVO: entrada escalonada de secciones --- */
+/* --- Entrada escalonada de secciones --- */
 @keyframes enter {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* --- NUEVO: pulso sutil para el dial orbital / indicadores en vivo --- */
+/* --- Pulso sutil para el dial orbital / indicadores en vivo --- */
 @keyframes ring-pulse {
   0%, 100% {
     box-shadow: 0 0 0 0 color-mix(in oklch, var(--color-fd-primary) 35%, transparent);
@@ -76,6 +118,7 @@ button[data-search-full] {
   }
 }
 
+/* --- Accesibilidad: Respeto por reducción de movimiento --- */
 @media (prefers-reduced-motion: reduce) {
   .enter,
   .marquee-track,

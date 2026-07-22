@@ -1,37 +1,49 @@
 'use client';
-import { useMemo, useState } from 'react';
-import { Check, ChevronDown, Copy, ExternalLinkIcon, MessageCircleIcon } from 'lucide-react';
-import { cn } from '@/lib/cn';
-import { useCopyButton } from 'fumadocs-ui/utils/use-copy-button';
+
+import { usePathname } from 'fumadocs-core/framework';
 import { buttonVariants } from 'fumadocs-ui/components/ui/button';
-import { Popover, PopoverContent, PopoverTrigger } from 'fumadocs-ui/components/ui/popover';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from 'fumadocs-ui/components/ui/popover';
+import { useCopyButton } from 'fumadocs-ui/utils/use-copy-button';
+import {
+  Check,
+  ChevronDown,
+  Copy,
+  ExternalLinkIcon,
+  MessageCircleIcon,
+  TextIcon,
+} from 'lucide-react';
+import { type ComponentProps, useMemo, useState } from 'react';
+import { cn } from '@/lib/cn';
 
-const cache = new Map<string, string>();
+const cache = new Map<string, Promise<string>>();
 
+/**
+ * Botón para copiar el contenido raw en Markdown/MDX del apunte.
+ */
 export function LLMCopyButton({
-  /**
-   * A URL to fetch the raw Markdown/MDX content of page
-   */
   markdownUrl,
-}: {
+  className,
+  ...props
+}: ComponentProps<'button'> & {
   markdownUrl: string;
 }) {
   const [isLoading, setLoading] = useState(false);
   const [checked, onClick] = useCopyButton(async () => {
     const cached = cache.get(markdownUrl);
-    if (cached) return navigator.clipboard.writeText(cached);
+    if (cached) return navigator.clipboard.writeText(await cached);
 
     setLoading(true);
 
     try {
+      const promise = fetch(withBasePath(markdownUrl)).then((res) => res.text());
+      cache.set(markdownUrl, promise);
       await navigator.clipboard.write([
         new ClipboardItem({
-          'text/plain': fetch(markdownUrl).then(async (res) => {
-            const content = await res.text();
-            cache.set(markdownUrl, content);
-
-            return content;
-          }),
+          'text/plain': promise,
         }),
       ]);
     } finally {
@@ -41,15 +53,18 @@ export function LLMCopyButton({
 
   return (
     <button
+      type="button"
       disabled={isLoading}
+      onClick={onClick}
+      {...props}
       className={cn(
         buttonVariants({
           color: 'secondary',
           size: 'sm',
           className: 'gap-2 [&_svg]:size-3.5 [&_svg]:text-fd-muted-foreground',
         }),
+        className,
       )}
-      onClick={onClick}
     >
       {checked ? <Check /> : <Copy />}
       Copy Markdown
@@ -57,27 +72,27 @@ export function LLMCopyButton({
   );
 }
 
+/**
+ * Popover que permite enviar el apunte actual a diferentes motores de IA.
+ */
 export function ViewOptions({
   markdownUrl,
   githubUrl,
-}: {
-  /**
-   * A URL to the raw Markdown/MDX content of page
-   */
-  markdownUrl: string;
-
-  /**
-   * Source file URL on GitHub
-   */
-  githubUrl: string;
+  className,
+  ...props
+}: ComponentProps<typeof PopoverTrigger> & {
+  markdownUrl?: string;
+  githubUrl?: string;
 }) {
+  const pathname = usePathname();
+
   const items = useMemo(() => {
-    const fullMarkdownUrl =
-      typeof window !== 'undefined' ? new URL(markdownUrl, window.location.origin) : 'loading';
-    const q = `Read ${fullMarkdownUrl}, I want to ask questions about it.`;
+    const pageUrl =
+      typeof window === 'undefined' ? pathname : new URL(pathname, window.location.origin);
+    const q = `Read ${String(pageUrl)}, I want to ask questions about it.`;
 
     return [
-      {
+      githubUrl && {
         title: 'Open in GitHub',
         href: githubUrl,
         icon: (
@@ -86,6 +101,11 @@ export function ViewOptions({
             <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
           </svg>
         ),
+      },
+      markdownUrl && {
+        title: 'View as Markdown',
+        href: withBasePath(markdownUrl),
+        icon: <TextIcon />,
       },
       {
         title: 'Open in Scira AI',
@@ -154,8 +174,8 @@ export function ViewOptions({
       {
         title: 'Open in ChatGPT',
         href: `https://chatgpt.com/?${new URLSearchParams({
+          prompt: q,
           hints: 'search',
-          q,
         })}`,
         icon: (
           <svg
@@ -193,18 +213,39 @@ export function ViewOptions({
         })}`,
         icon: <MessageCircleIcon />,
       },
-    ];
-  }, [githubUrl, markdownUrl]);
+      {
+        title: 'Open in Cursor',
+        href: `https://cursor.com/link/prompt?${new URLSearchParams({
+          text: q,
+        })}`,
+        icon: (
+          <svg
+            fill="currentColor"
+            role="img"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Cursor</title>
+            <path d="M11.503.131 1.891 5.678a.84.84 0 0 0-.42.726v11.188c0 .3.162.575.42.724l9.609 5.55a1 1 0 0 0 .998 0l9.61-5.55a.84.84 0 0 0 .42-.724V6.404a.84.84 0 0 0-.42-.726L12.497.131a1.01 1.01 0 0 0-.996 0M2.657 6.338h18.55c.263 0 .43.287.297.515L12.23 22.918c-.062.107-.229.064-.229-.06V12.335a.59.59 0 0 0-.295-.51l-9.11-5.257c-.109-.063-.064-.23.061-.23" />
+          </svg>
+        ),
+      },
+    ].filter((v) => !!v);
+  }, [githubUrl, markdownUrl, pathname]);
 
   return (
     <Popover>
+      {/* Solución al error rojo: pasamos un string limpio con cn(...) */}
       <PopoverTrigger
+        {...props}
         className={cn(
           buttonVariants({
             color: 'secondary',
             size: 'sm',
             className: 'gap-2',
           }),
+          'data-[state=open]:bg-fd-accent data-[state=open]:text-fd-accent-foreground data-[popup-open]:bg-fd-accent data-[popup-open]:text-fd-accent-foreground',
+          className,
         )}
       >
         Open
@@ -227,4 +268,16 @@ export function ViewOptions({
       </PopoverContent>
     </Popover>
   );
+}
+
+function withBasePath(href: string) {
+  if (href.match(/^\w+:/) || href.startsWith('//')) return href;
+
+  const basePath =
+    typeof process !== 'undefined' &&
+    typeof process.env.NEXT_PUBLIC_BASE_PATH === 'string'
+      ? process.env.NEXT_PUBLIC_BASE_PATH.replace(/\/$/, '')
+      : '';
+
+  return basePath + href;
 }

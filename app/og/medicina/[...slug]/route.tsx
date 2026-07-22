@@ -1,9 +1,7 @@
-import { getPageImage, source } from '@/lib/source';
 import { notFound } from 'next/navigation';
 import { ImageResponse } from 'next/og';
 
-// 👇 CAMBIO: Remover edge runtime
-// export const runtime = 'edge'; ❌ QUITAR ESTA LÍNEA
+import { getPageImage, source } from '@/lib/source';
 
 const primaryColor = '#8F2439';
 const primaryColorLight = '#E87D95';
@@ -82,7 +80,10 @@ export async function GET(
               />
             </div>
 
+            {/* Solución Biome/a11y: Título interno y atributos de presentación */}
             <svg
+              aria-hidden="true"
+              role="presentation"
               width="64"
               height="64"
               viewBox="0 0 24 24"
@@ -92,6 +93,7 @@ export async function GET(
               strokeLinecap="round"
               strokeLinejoin="round"
             >
+              <title>Icono de Medicina</title>
               <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
             </svg>
           </div>

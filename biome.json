@@ -31,6 +31,11 @@
       "react": "recommended"
     }
   },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
   "assist": {
     "actions": {
       "source": {

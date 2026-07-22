@@ -1,4 +1,4 @@
-/* Giscus - Dark theme transparente para Taimilog */
+/* Giscus - Dark theme transparente y estilizado para Taimilog */
 
 .gsc-homepage-bg {
   background-color: transparent !important;
@@ -21,10 +21,11 @@ a:hover {
   color: hsl(345 80% 72%) !important;
 }
 
-/* Contenedores principales con fondo transparente o semitransparente si lo prefieres */
+/* Bordes unificados y discretos para todos los contenedores y comentarios */
 .gsc-comment,
 .gsc-comment-box,
-.gsc-timeline {
+.gsc-timeline,
+.gsc-reply-box {
   background-color: transparent !important;
   border-color: hsl(240 5% 20%) !important;
   border-radius: 0.5rem !important;
@@ -43,7 +44,7 @@ a:hover {
 }
 
 .gsc-comment-box-textarea {
-  background-color: hsl(240 10% 12% / 0.8); /* Opcional: un toque semitransparente para la caja de texto */
+  background-color: hsl(240 10% 12% / 0.8);
   color: hsl(240 5% 90%);
   border-color: hsl(240 5% 20%) !important;
   border-radius: 0.5rem !important;

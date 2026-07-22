@@ -1,55 +1,42 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
-import Giscus from "@giscus/react";
-import { useTheme } from "next-themes";
+import { useTheme } from 'next-themes';
+import Giscus from '@giscus/react';
+import { useEffect, useState } from 'react';
 
 export default function Comments() {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Evitamos errores de hidratación asegurando que el componente esté montado en el cliente
+  // Evitamos errores de hidratación en SSR esperando al montaje en el cliente
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  // 👇 Mapeamos el tema de tu web a un tema visualmente atractivo de Giscus
+  const giscusTheme = resolvedTheme === 'dark' ? 'transparent_dark' : 'light';
 
-  // 1. Detectamos si estamos en producción (tu dominio real)
-  const isProduction =
-    typeof window !== "undefined" &&
-    !window.location.hostname.includes("localhost");
-
-  // 2. Construimos la URL absoluta sumando una variable de versión (?v=1) por si actualizas el CSS luego
-  const customThemeUrl =
-    resolvedTheme === "dark"
-      ? `https://${window.location.host}/giscus-dark.css?v=1`
-      : `https://${window.location.host}/giscus-light.css?v=1`;
-
-  // 3. Si es local, usamos los noborder; si es producción, mandamos tu URL absoluta de Vercel
-  const theme = isProduction
-    ? customThemeUrl
-    : resolvedTheme === "dark"
-    ? "noborder_dark"
-    : "noborder_light";
+  // Si aún no está montado, mostramos un contenedor vacío para que el layout no salte
+  if (!mounted) {
+    return <div className="mt-12 w-full min-h-[250px]" />;
+  }
 
   return (
-    <section className="mt-16 pt-8 border-t border-neutral-200 dark:border-neutral-800 enter">
+    <div className="mt-12 pt-6 border-t border-fd-border">
       <Giscus
         id="comments"
-        repo="Uremy/taimilog"
-        repoId="R_kgDOQ7RWuQ"
-        category="Comentarios"
-        categoryId="DIC_kwDOQ7RWuc4DBr0_"
+        repo="Uremy/taimilog"       // 👈 Reemplaza por tu repo
+        repoId="TU_REPO_ID"         // 👈 Mantén tus IDs generados en giscus.app
+        category="General"          // 👈 Mantén tu categoría
+        categoryId="TU_CATEGORY_ID" // 👈 Mantén tu ID de categoría
         mapping="pathname"
-        strict="1"
         reactionsEnabled="1"
         emitMetadata="0"
-        inputPosition="bottom"
-        theme={theme}
+        inputPosition="top"
+        theme={giscusTheme}         // 👈 ¡AQUÍ ESTÁ LA MAGIA REACTIVA!
         lang="es"
         loading="lazy"
       />
-    </section>
+    </div>
   );
 }

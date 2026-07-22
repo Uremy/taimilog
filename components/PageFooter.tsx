@@ -10,7 +10,16 @@ interface PageFooterProps {
   pageTree: PageTree.Root;
 }
 
-// 👇 1. Creamos una función infalible que aplana el árbol en un orden de lectura lineal
+// 👇 1. NUEVO: Un radar que busca si una carpeta contiene nuestra página actual
+function containsUrl(folder: PageTree.Folder, targetUrl: string): boolean {
+  if (folder.index?.url === targetUrl) return true;
+  return folder.children.some((child) => {
+    if (child.type === 'page') return child.url === targetUrl;
+    if (child.type === 'folder') return containsUrl(child, targetUrl);
+    return false;
+  });
+}
+
 function getFlatPages(nodes: PageTree.Node[]): Item[] {
   const result: Item[] = [];
 
@@ -18,11 +27,9 @@ function getFlatPages(nodes: PageTree.Node[]): Item[] {
     if (node.type === 'page') {
       result.push({ name: node.name, description: node.description, url: node.url });
     } else if (node.type === 'folder') {
-      // Si la carpeta funciona como una página principal (tiene index), la añadimos
       if (node.index) {
         result.push({ name: node.index.name, description: node.index.description, url: node.index.url });
       }
-      // Entramos a la carpeta y extraemos sus hijos en orden
       result.push(...getFlatPages(node.children));
     }
   }
@@ -30,16 +37,25 @@ function getFlatPages(nodes: PageTree.Node[]): Item[] {
 }
 
 export function PageFooter({ url, pageTree }: PageFooterProps) {
-  // 👇 2. Obtenemos el "libro completo" de la sección (Biblioteca o Medicina)
-  const allPages = getFlatPages(pageTree.children);
+  // 👇 2. MAGIA: Empezamos asumiendo todo el árbol
+  let scopedNodes = pageTree.children;
 
-  // 👇 3. Buscamos en qué número de página estamos
+  // 👇 3. Buscamos el Semestre (o carpeta principal) activo
+  for (const node of pageTree.children) {
+    if (node.type === 'folder' && containsUrl(node, url)) {
+      // ¡Lo encontramos! Aislamos la navegación ÚNICAMENTE a esta carpeta
+      scopedNodes = [node];
+      break;
+    }
+  }
+
+  // 👇 4. Aplanamos solo la carpeta aislada, garantizando que no se crucen semestres
+  const allPages = getFlatPages(scopedNodes);
+
   const currentIndex = allPages.findIndex((page) => page.url === url);
 
-  // Protección: Si por algo no estamos en el árbol, no mostramos nada
   if (currentIndex === -1) return null;
 
-  // 👇 4. Matemáticas puras de Fumadocs: anterior y siguiente
   const previous = currentIndex > 0 ? allPages[currentIndex - 1] : undefined;
   const next = currentIndex < allPages.length - 1 ? allPages[currentIndex + 1] : undefined;
 

@@ -81,8 +81,21 @@ a:hover {
 .gsc-sorting button,
 .gsc-sorting-button,
 .gsc-comment-box-tabs button {
-  font-weight: 500 !important; /* Elimina el salto agresivo a negritas */
+  font-weight: 500 !important; 
   color: hsl(240 5% 70%) !important;
+  background-color: transparent !important;
+}
+
+/* Estado seleccionado -> Solo el texto iluminado con rosa luminoso, sin caja de fondo */
+.gsc-sorting button[aria-selected="true"],
+.gsc-sorting-button[aria-selected="true"],
+.gsc-sorting button.selected,
+.gsc-sorting-button.selected,
+.gsc-comment-box-tabs button[aria-selected="true"] {
+  color: hsl(345 80% 65%) !important; /* Tu rosa luminoso */
+  border-color: hsl(240 5% 20%) !important; /* Mantiene el borde sutil normal */
+  background-color: transparent !important; /* Elimina el fondo tintado */
+  font-weight: 600 !important; /* Un poco más de peso para que el color destaque */
 }
 
 /* Estado seleccionado -> Iluminado con rosa luminoso y fondo tintado sutil */

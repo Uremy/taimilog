@@ -1,5 +1,17 @@
-/* Giscus - Dark theme transparente y con bordes sutiles para Taimilog */
+/* =========================================================
+   Giscus - Dark theme transparente y estilizado para Taimilog
+   ========================================================= */
 
+/* 1. Normalización universal: Suaviza TODAS las líneas divisorias,
+      separadores (hr), botones secundarios, badges y contenedores */
+*,
+*::before,
+*::after,
+hr {
+  border-color: hsl(240 5% 20%) !important;
+}
+
+/* 2. Fondo principal y tipografía */
 .gsc-homepage-bg {
   background-color: transparent !important;
 }
@@ -10,7 +22,7 @@ body {
   background-color: transparent !important;
 }
 
-/* Enlaces y acentos -> tu rosa luminoso para dark mode */
+/* 3. Enlaces y acentos -> Rosa luminoso para dark mode */
 a,
 .gsc-comment-author,
 .gsc-reactions-count {
@@ -21,16 +33,30 @@ a:hover {
   color: hsl(345 80% 72%) !important;
 }
 
-/* Bordes sutiles y translúcidos idénticos al estilo de la caja principal */
+/* 4. Bordes unificados y discretos para tarjetas y contenedores */
 .gsc-comment,
 .gsc-comment-box,
 .gsc-timeline,
 .gsc-reply-box {
   background-color: transparent !important;
-  border-color: hsl(240 5% 90% / 0.15) !important;
+  border-color: hsl(240 5% 20%) !important;
   border-radius: 0.5rem !important;
 }
 
+/* 5. Área de texto y pestañas (misma línea suave de la caja "Aa") */
+.gsc-comment-box-textarea {
+  background-color: hsl(240 10% 12% / 0.8) !important;
+  color: hsl(240 5% 90%) !important;
+  border-color: hsl(240 5% 20%) !important;
+  border-radius: 0.5rem !important;
+  font-family: 'Manrope', sans-serif !important;
+}
+
+.gsc-comment-box-tabs .gsc-comment-box-tabs-mask {
+  border-color: hsl(240 5% 20%) !important;
+}
+
+/* 6. Botón principal (Comentar / Cargar más) */
 .gsc-comment-box-buttons button.btn-primary,
 .gsc-loading-image + button {
   background-color: hsl(345 70% 45%) !important;
@@ -43,20 +69,10 @@ a:hover {
   background-color: hsl(345 70% 38%) !important;
 }
 
-.gsc-comment-box-textarea {
-  background-color: hsl(240 10% 12% / 0.8);
-  color: hsl(240 5% 90%);
-  border-color: hsl(240 5% 90% / 0.15) !important;
-  border-radius: 0.5rem !important;
-  font-family: 'Manrope', sans-serif !important;
-}
-
-.gsc-comment-box-tabs .gsc-comment-box-tabs-mask {
-  border-color: hsl(240 5% 90% / 0.15) !important;
-}
-
+/* 7. Reacciones y menús emergentes */
 .gsc-reactions-menu,
 .gsc-social-reaction-summary-item {
   background-color: hsl(240 10% 12% / 0.9) !important;
+  border-color: hsl(240 5% 20%) !important;
   border-radius: 0.5rem !important;
 }

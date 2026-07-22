@@ -1,5 +1,17 @@
-/* Giscus - Light theme transparente y con bordes sutiles para Taimilog */
+/* =========================================================
+   Giscus - Light theme transparente y con bordes sutiles
+   ========================================================= */
 
+/* 1. Normalización universal: Suaviza TODAS las líneas divisorias,
+      separadores (hr), botones secundarios, badges y contenedores */
+*,
+*::before,
+*::after,
+hr {
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+/* 2. Fondo principal y tipografía */
 .gsc-homepage-bg {
   background-color: transparent !important;
 }
@@ -10,7 +22,7 @@ body {
   background-color: transparent !important;
 }
 
-/* Enlaces y acentos -> tu granate */
+/* 3. Enlaces y acentos -> Granate */
 a,
 .gsc-comment-author,
 .gsc-reactions-count {
@@ -21,7 +33,7 @@ a:hover {
   color: hsl(345 60% 28%) !important;
 }
 
-/* Bordes sutiles y translúcidos para tarjetas de comentarios y respuestas */
+/* 4. Bordes sutiles y translúcidos para tarjetas y contenedores */
 .gsc-comment,
 .gsc-comment-box,
 .gsc-timeline,
@@ -31,7 +43,20 @@ a:hover {
   border-radius: 0.5rem !important;
 }
 
-/* Botón principal (Comentar / Cargar más) */
+/* 5. Área de texto y pestañas (misma línea suave de la caja "Aa") */
+.gsc-comment-box-textarea {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  color: hsl(240 10% 15%) !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  border-radius: 0.5rem !important;
+  font-family: 'Manrope', sans-serif !important;
+}
+
+.gsc-comment-box-tabs .gsc-comment-box-tabs-mask {
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+/* 6. Botón principal (Comentar / Cargar más) */
 .gsc-comment-box-buttons button.btn-primary,
 .gsc-loading-image + button {
   background-color: hsl(345 60% 35%) !important;
@@ -44,21 +69,10 @@ a:hover {
   background-color: hsl(345 60% 28%) !important;
 }
 
-/* Área de texto */
-.gsc-comment-box-textarea {
-  background-color: rgba(255, 255, 255, 0.8) !important;
-  border-color: rgba(0, 0, 0, 0.12) !important;
-  border-radius: 0.5rem !important;
-  font-family: 'Manrope', sans-serif !important;
-}
-
-.gsc-comment-box-tabs .gsc-comment-box-tabs-mask {
-  border-color: rgba(0, 0, 0, 0.12) !important;
-}
-
-/* Reacciones */
+/* 7. Reacciones y menús emergentes */
 .gsc-reactions-menu,
 .gsc-social-reaction-summary-item {
   background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
   border-radius: 0.5rem !important;
 }

@@ -5,7 +5,8 @@ import { getMDXComponents } from '@/mdx-components';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { LLMCopyButton, ViewOptions } from '@/components/ai/page-actions';
-import Comments from '@/components/Comments'; // 👇 NUEVO: Importamos el componente de Giscus
+import Comments from '@/components/Comments';
+import { PageFooter } from '@/components/PageFooter';
 
 export default async function Page(props: PageProps<'/medicina/[[...slug]]'>) {
   const params = await props.params;
@@ -31,6 +32,7 @@ export default async function Page(props: PageProps<'/medicina/[[...slug]]'>) {
     <DocsPage
       toc={page.data.toc}
       full={page.data.full}
+      footer={{ enabled: false }}
       tableOfContent={{
         style: 'clerk',
       }}
@@ -55,6 +57,8 @@ export default async function Page(props: PageProps<'/medicina/[[...slug]]'>) {
           })}
         />
       </DocsBody>
+
+      <PageFooter url={page.url} pageTree={source.pageTree} />
 
       {/* 👇 NUEVO: Inyectamos la sección de comentarios al final del artículo */}
       <Comments />

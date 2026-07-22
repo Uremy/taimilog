@@ -5,7 +5,6 @@ import { getMDXComponents } from '@/mdx-components';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import type { Metadata } from 'next';
 import Comments from '@/components/Comments';
-// 👇 Reemplazamos el import roto del CLI por el componente manual inmune a fallos
 import { PageFooter } from '@/components/PageFooter';
 
 export default async function Page(props: { params: Promise<{ slug?: string[] }> }) {
@@ -43,7 +42,7 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
       </DocsBody>
 
       {/* 👇 1. Navegación manual infalible (Sin dependencias ocultas del CLI) */}
-      <PageFooter url={page.url} />
+      <PageFooter url={page.url} pageTree={sourceBiblioteca.pageTree} />
 
       {/* 👇 2. Comentarios de Giscus cerrando el flujo visualmente */}
       <Comments />

@@ -20,12 +20,22 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
   const MDX = page.data.body;
   const lastModified = page.data.lastModified ? new Date(page.data.lastModified) : undefined;
 
+  // Lista de rutas exactas donde los comentarios estaran deshabilitados
+  const disabledCommentsUrls = [
+    '/biblioteca/blog',
+    '/biblioteca/escritos',
+    '/biblioteca/bookmarks'
+  ];
+
+  // Verifica si la URL actual NO esta en la lista negra (coincidencia exacta, no hereda a subrutas)
+  const showComments = !disabledCommentsUrls.includes(page.url);
+
   return (
     <DocsPage 
       toc={page.data.toc} 
       full={page.data.full}
       tableOfContent={{ style: 'clerk', enabled: true }}
-      footer={{ enabled: false }} // 👈 Mantenemos apagado el footer automático de Fumadocs
+      footer={{ enabled: false }} // Mantenemos apagado el footer automatico de Fumadocs
       breadcrumb={{ enabled: true }}
     >
       <DocsTitle>{page.data.title}</DocsTitle>
@@ -41,11 +51,11 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
         )}
       </DocsBody>
 
-      {/* 👇 1. Navegación manual infalible (Sin dependencias ocultas del CLI) */}
+      {/* Navegacion manual infalible (Sin dependencias ocultas del CLI) */}
       <PageFooter url={page.url} pageTree={sourceBiblioteca.pageTree} />
 
-      {/* 👇 2. Comentarios de Giscus cerrando el flujo visualmente */}
-      <Comments />
+      {/* Comentarios de Giscus renderizados condicionalmente */}
+      {showComments && <Comments />}
     </DocsPage>
   );
 }

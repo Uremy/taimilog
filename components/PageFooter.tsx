@@ -3,11 +3,13 @@ import { getPageTreePeers } from 'fumadocs-core/page-tree';
 import { sourceBiblioteca } from '@/lib/source';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+// 👇 1. Importamos los tipos oficiales del árbol de Fumadocs
+import type * as PageTree from 'fumadocs-core/page-tree';
 
-type Item = { name: string; description?: string; url: string };
+// 👇 2. Extraemos exactamente los tipos nativos para no pelear con ReactNode vs string
+type Item = Pick<PageTree.Item, 'name' | 'description' | 'url'>;
 
 export function PageFooter({ url }: { url: string }) {
-  // ✅ LA MAGIA REAL: Fumadocs devuelve exactamente [anterior, siguiente]
   const [previous, next] = getPageTreePeers(sourceBiblioteca.pageTree, url);
 
   if (!previous && !next) return null;

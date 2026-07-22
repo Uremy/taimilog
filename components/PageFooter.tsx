@@ -8,7 +8,7 @@ type Item = Pick<PageTree.Item, 'name' | 'description' | 'url'>;
 
 interface PageFooterProps {
   url: string;
-  pageTree: PageTree.Node; // 👈 Recibe cualquier árbol de páginas (Biblioteca, Medicina, etc.)
+  pageTree: PageTree.Root; // 👈 Recibe cualquier árbol de páginas (Biblioteca, Medicina, etc.)
 }
 
 export function PageFooter({ url, pageTree }: PageFooterProps) {

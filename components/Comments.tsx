@@ -25,15 +25,15 @@ export default function Comments() {
     <div className="mt-12 pt-6 border-t border-fd-border">
       <Giscus
         id="comments"
-        repo="Uremy/taimilog"       // 👈 Reemplaza por tu repo
-        repoId="TU_REPO_ID"         // 👈 Mantén tus IDs generados en giscus.app
-        category="General"          // 👈 Mantén tu categoría
-        categoryId="TU_CATEGORY_ID" // 👈 Mantén tu ID de categoría
+        repo="Uremy/taimilog"       
+        repoId="R_kgDOQ7RWuQ"         
+        category="Comentarios"          
+        categoryId="DIC_kwDOQ7RWuc4DBr0_" 
         mapping="pathname"
         reactionsEnabled="1"
         emitMetadata="0"
         inputPosition="top"
-        theme={giscusTheme}         // 👈 ¡AQUÍ ESTÁ LA MAGIA REACTIVA!
+        theme={giscusTheme}         
         lang="es"
         loading="lazy"
       />

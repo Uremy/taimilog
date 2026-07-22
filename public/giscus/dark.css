@@ -1,4 +1,4 @@
-/* Giscus - Dark theme transparente y estilizado para Taimilog */
+/* Giscus - Dark theme transparente y con bordes sutiles para Taimilog */
 
 .gsc-homepage-bg {
   background-color: transparent !important;
@@ -21,13 +21,13 @@ a:hover {
   color: hsl(345 80% 72%) !important;
 }
 
-/* Bordes unificados y discretos para todos los contenedores y comentarios */
+/* Bordes sutiles y translúcidos idénticos al estilo de la caja principal */
 .gsc-comment,
 .gsc-comment-box,
 .gsc-timeline,
 .gsc-reply-box {
   background-color: transparent !important;
-  border-color: hsl(240 5% 20%) !important;
+  border-color: hsl(240 5% 90% / 0.15) !important;
   border-radius: 0.5rem !important;
 }
 
@@ -46,13 +46,13 @@ a:hover {
 .gsc-comment-box-textarea {
   background-color: hsl(240 10% 12% / 0.8);
   color: hsl(240 5% 90%);
-  border-color: hsl(240 5% 20%) !important;
+  border-color: hsl(240 5% 90% / 0.15) !important;
   border-radius: 0.5rem !important;
   font-family: 'Manrope', sans-serif !important;
 }
 
 .gsc-comment-box-tabs .gsc-comment-box-tabs-mask {
-  border-color: hsl(240 5% 20%) !important;
+  border-color: hsl(240 5% 90% / 0.15) !important;
 }
 
 .gsc-reactions-menu,

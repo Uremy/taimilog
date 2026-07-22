@@ -43,7 +43,7 @@ a:hover {
   border-radius: 0.5rem !important;
 }
 
-/* 5. Área de texto y pestañas (misma línea suave de la caja "Aa") */
+/* 5. Área de texto y pestañas */
 .gsc-comment-box-textarea {
   background-color: hsl(240 10% 12% / 0.8) !important;
   color: hsl(240 5% 90%) !important;
@@ -75,4 +75,24 @@ a:hover {
   background-color: hsl(240 10% 12% / 0.9) !important;
   border-color: hsl(240 5% 20%) !important;
   border-radius: 0.5rem !important;
+}
+
+/* 8. Botones de ordenamiento (Antiguo/Nuevo) y Pestañas (Escribir/Previsualizar) */
+.gsc-sorting button,
+.gsc-sorting-button,
+.gsc-comment-box-tabs button {
+  font-weight: 500 !important; /* Elimina el salto agresivo a negritas */
+  color: hsl(240 5% 70%) !important;
+}
+
+/* Estado seleccionado -> Iluminado con rosa luminoso y fondo tintado sutil */
+.gsc-sorting button[aria-selected="true"],
+.gsc-sorting-button[aria-selected="true"],
+.gsc-sorting button.selected,
+.gsc-sorting-button.selected,
+.gsc-comment-box-tabs button[aria-selected="true"] {
+  color: hsl(345 80% 65%) !important;
+  border-color: hsl(345 80% 65%) !important;
+  background-color: hsl(345 80% 65% / 0.15) !important;
+  font-weight: 500 !important;
 }

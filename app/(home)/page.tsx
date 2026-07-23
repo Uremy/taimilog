@@ -572,7 +572,7 @@ export default function HomePage() {
               RENDER: SSG · EDGE
             </span>
             <span className="sm:border-l sm:border-fd-border/60 sm:pl-6 hover:text-fd-foreground transition-colors">
-              © 20XX TAIMILOG — SEE YOU SPACE COWBOY...
+              © 2026 TAIMILOG — SEE YOU SPACE COWBOY...
             </span>
           </div>
         </div>
@@ -615,6 +615,13 @@ function StatusTicker() {
     'STATUS: CHILLING~',
     'SYS_VER // 2.0.4',
   ];
+
+  // Pre-generamos la pista duplicada asignando un ID estático y único a cada nodo
+  const marqueeTrack = [...items, ...items].map((text, index) => ({
+    id: `ticker-node-${index}`,
+    text,
+  }));
+
   return (
     <div className="relative border-y border-fd-border/70 bg-fd-card/40 overflow-hidden select-none">
       <div className="flex items-center gap-3 px-3 py-1.5 sm:py-2 font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-fd-muted-foreground">
@@ -623,12 +630,12 @@ function StatusTicker() {
         </span>
         <div className="overflow-hidden flex-1 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
           <div className="flex w-max gap-8 marquee-track">
-            {[...items, ...items].map((text) => (
+            {marqueeTrack.map((node) => (
               <span
-                key={text}
+                key={node.id}
                 className="flex items-center gap-2 whitespace-nowrap hover:text-fd-foreground transition-colors"
               >
-                <ScanLine className="h-3 w-3 opacity-50 text-fd-primary" /> {text}
+                <ScanLine className="h-3 w-3 opacity-50 text-fd-primary" /> {node.text}
               </span>
             ))}
           </div>

@@ -3,9 +3,14 @@ title: Repaso 3 de Reumatología
 description: Perspectiva general del tercer parcial
 ---
 
-# Resumen general de las patologias
-### 1. Miopatías Inflamatorias (Dermatomiositis y Polimiositis)
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 
+# Resumen general de las patologías
+
+<Accordions type="single">
+<Accordion title="Miopatías Inflamatorias (Dermatomiositis y Polimiositis)">
 El punto clave aquí es entender que, aunque ambas causan debilidad muscular proximal, el **mecanismo de daño es fundamentalmente distinto**.
 
 * **Bases Genéticas:** Fuerte asociación con haplotipos del Complejo Mayor de Histocompatibilidad (MHC), específicamente **HLA-DRB1** y **HLA-DQA1**. Existen factores ambientales desencadenantes (infecciones virales, fármacos, o neoplasias ocultas, especialmente en dermatomiositis).
@@ -24,72 +29,60 @@ El punto clave aquí es entender que, aunque ambas causan debilidad muscular pro
 * **Anti-Jo-1 (Anti-sintetasa):** Asociado a enfermedad pulmonar intersticial, manos de mecánico y artritis (Síndrome Antisintetasa).
 * **Anti-Mi-2:** Asociado a Dermatomiositis clásica con buena respuesta a tratamiento.
 * **Anti-SRP:** Miositis necrotizante de inicio rápido y mal pronóstico.
+</Accordion>
 
----
-
-### 2. Síndrome Antifosfolípido (SAF)
-
+<Accordion title="Síndrome Antifosfolípido (SAF)">
 Es una trombofilia adquirida impulsada por autoanticuerpos. Puede ser primario o secundario (típicamente asociado a Lupus Eritematoso Sistémico).
 
 * **Bases Genéticas:** Se ha ligado a alelos **HLA-DR4, HLA-DR7** y **HLA-DQB1**. También hay mutaciones asociadas a déficits en proteínas reguladoras del complemento.
-* **Fisiopatología:** El nombre es un poco engañoso. Los anticuerpos no atacan los fosfolípidos directamente, sino a las **proteínas de unión a fosfolípidos** en las membranas celulares (la más importante es la **$\beta$2-glicoproteína I**).
+* **Fisiopatología:** El nombre es un poco engañoso. Los anticuerpos no atacan los fosfolípidos directamente, sino a las **proteínas de unión a fosfolípidos** en las membranas celulares (la más importante es la **β2-glicoproteína I**).
 * **Estado Protrombótico:** La unión de estos anticuerpos activa células endoteliales, plaquetas y monocitos. Esto induce la expresión del Factor Tisular, inhibe la proteína C activada y altera la fibrinólisis.
 * **Morbilidad Obstétrica:** Los anticuerpos atacan el trofoblasto, interfiriendo con la invasión trofoblástica, causando inflamación placentaria mediada por complemento y trombosis, lo que lleva a abortos recurrentes o eclampsia.
 * **Teoría del "Doble Golpe" (Two-Hit):** La presencia de anticuerpos (primer golpe) no siempre causa trombosis. Se necesita un "segundo golpe" (infección, cirugía, embarazo, tabaquismo) que desencadene el evento agudo.
+</Accordion>
 
-
-
----
-
-### 3. Esclerosis Sistémica (Esclerodermia)
-
+<Accordion title="Esclerosis Sistémica (Esclerodermia)">
 Una de las enfermedades reumatológicas más complejas. Es una tríada destructiva: Vasculopatía + Desregulación Inmune + Fibrosis Progresiva.
 
 * **Bases Genéticas:** Asociación con **HLA-DRB1, HLA-DQB1, HLA-DPB1**. Alteraciones epigenéticas (metilación del ADN) en fibroblastos explican por qué mantienen un fenotipo profibrótico incluso fuera del cuerpo.
 * **Fisiopatología:**
-1. **Daño Endotelial (El inicio):** Hay una lesión vascular microcirculatoria temprana (por virus, toxinas o isquemia). Esto causa apoptosis endotelial, reducción de capilares y remodelación vascular compensatoria hipertrófica (vasos rígidos con luz estrecha = Hipertensión Pulmonar, Crisis Renal).
-2. **Activación Inmune:** El daño libera antígenos. Los linfocitos Th2 y Th17 se activan y secretan citocinas profibróticas y proinflamatorias.
-3. **Fibrosis Descontrolada:** Los fibroblastos son sobreestimulados (principalmente por el **TGF-$\beta$** y PDGF). Se transforman en miofibroblastos y depositan cantidades masivas de colágeno tipo I y III y matriz extracelular en la piel y órganos internos.
-
-
+    1. **Daño Endotelial (El inicio):** Hay una lesión vascular microcirculatoria temprana (por virus, toxinas o isquemia). Esto causa apoptosis endotelial, reducción de capilares y remodelación vascular compensatoria hipertrófica (vasos rígidos con luz estrecha = Hipertensión Pulmonar, Crisis Renal).
+    2. **Activación Inmune:** El daño libera antígenos. Los linfocitos Th2 y Th17 se activan y secretan citocinas profibróticas y proinflamatorias.
+    3. **Fibrosis Descontrolada:** Los fibroblastos son sobreestimulados (principalmente por el **TGF-β** y PDGF). Se transforman en miofibroblastos y depositan cantidades masivas de colágeno tipo I y III y matriz extracelular en la piel y órganos internos.
 
 **Perfiles de Autoanticuerpos:**
 
 * **Anti-Centrómero:** Forma cutánea limitada (síndrome CREST), mayor riesgo de hipertensión arterial pulmonar.
 * **Anti-Scl-70 (Topoisomerasa I):** Forma cutánea difusa, alto riesgo de enfermedad pulmonar intersticial.
 * **Anti-RNA Polimerasa III:** Forma difusa, altísimo riesgo de **Crisis Renal Esclerodérmica**.
+</Accordion>
 
----
-
-### 4. Vasculitis Sistémicas (Visión General)
-
+<Accordion title="Vasculitis Sistémicas (Visión General)">
 Las vasculitis se clasifican según el tamaño del vaso afectado (Consenso de Chapel Hill), ya que el mecanismo inmunológico varía con la histología del vaso.
 
-* **Bases Genéticas:** Para las asociadas a ANCA, el **HLA-DP** es crítico. Polimorfismos en genes de proteasas (como la $\alpha$1-antitripsina) aumentan el riesgo.
+* **Bases Genéticas:** Para las asociadas a ANCA, el **HLA-DP** es crítico. Polimorfismos en genes de proteasas (como la α1-antitripsina) aumentan el riesgo.
 
 **Mecanismos Fisiopatológicos por Tamaño:**
 
 1. **Vasos Grandes (Células Gigantes, Takayasu):**
-* Mecanismo **mediado por células T (Granulomatoso)**. Las células dendríticas en la adventicia activan linfocitos Th1 y Th17. Los macrófagos forman células gigantes multinucleadas que destruyen la lámina elástica, causando estenosis, aneurismas o isquemia pura.
-
-
+    * Mecanismo **mediado por células T (Granulomatoso)**. Las células dendríticas en la adventicia activan linfocitos Th1 y Th17. Los macrófagos forman células gigantes multinucleadas que destruyen la lámina elástica, causando estenosis, aneurismas o isquemia pura.
 2. **Vasos Medianos (Poliarteritis Nodosa - PAN, Kawasaki):**
-* Inflamación **necrotizante** de la pared arterial. En PAN, a menudo mediada por inmunocomplejos (muy asociada a Hepatitis B y C). La inflamación transmural causa microaneurismas que pueden romperse.
-
-
+    * Inflamación **necrotizante** de la pared arterial. En PAN, a menudo mediada por inmunocomplejos (muy asociada a Hepatitis B y C). La inflamación transmural causa microaneurismas que pueden romperse.
 3. **Vasos Pequeños (Asociadas a ANCA vs. Inmunocomplejos):**
-* **Por Inmunocomplejos (IgA, Crioglobulinemia):** Depósito pasivo de antígeno-anticuerpo en vénulas y capilares, activando el complemento por vía clásica (vasculitis leucocitoclástica).
-* **Asociadas a ANCA (GPA, MPA, EGPA):** Fisiopatología fascinante. Una infección "prepara" (primes) a los neutrófilos, haciéndolos expresar MPO (Mieloperoxidasa) o PR3 (Proteinasa 3) en su superficie. Los autoanticuerpos (ANCA) se unen a estos antígenos y activan violentamente al neutrófilo. Este degranula enzimas destructivas, libera trampas extracelulares (NETosis) y activa el complemento (vía alternativa), causando necrosis fibrinoide *pauciinmune* (sin depósitos de anticuerpos en la biopsia).
+    * **Por Inmunocomplejos (IgA, Crioglobulinemia):** Depósito pasivo de antígeno-anticuerpo en vénulas y capilares, activando el complemento por vía clásica (vasculitis leucocitoclástica).
+    * **Asociadas a ANCA (GPA, MPA, EGPA):** Fisiopatología fascinante. Una infección "prepara" (primes) a los neutrófilos, haciéndolos expresar MPO (Mieloperoxidasa) o PR3 (Proteinasa 3) en su superficie. Los autoanticuerpos (ANCA) se unen a estos antígenos y activan violentamente al neutrófilo. Este degranula enzimas destructivas, libera trampas extracelulares (NETosis) y activa el complemento (vía alternativa), causando necrosis fibrinoide *pauciinmune* (sin depósitos de anticuerpos en la biopsia).
+</Accordion>
+</Accordions>
 
 ---
 
-# Miopatías Inflamatorias (Miopatías Inflamatorias Idiopáticas)
+# Miopatías Inflamatorias
 
-## 1. Definición
+## Definición
 
 Las miopatías inflamatorias son un grupo heterogéneo de enfermedades autoinmunes adquiridas que se caracterizan por una inflamación crónica del tejido muscular estriado. Clínicamente se manifiestan con debilidad muscular de predominio proximal, elevación sérica de enzimas musculares y, de forma concurrente, afectación extramuscular que puede incluir fiebre, pérdida de peso y lesiones cutáneas específicas.
 
-## 2. Epidemiología
+## Epidemiología
 
 * **Antigüedad:** Fueron descritas por primera vez hace aproximadamente un siglo.
 * **Incidencia:** Varía de 1.16 a 19 casos por millón de habitantes por año.
@@ -98,37 +91,47 @@ Las miopatías inflamatorias son un grupo heterogéneo de enfermedades autoinmun
 * **Edad de Inicio:** La PM y la DM tienen un pico de aparición entre los 52 y 56 años de edad. La IBM es una patología de la tercera edad, con un inicio promedio a los 67 años.
 * **Etnia:** Las poblaciones de origen africano y latino presentan un riesgo aumentado de desarrollar la enfermedad, así como un peor pronóstico a largo plazo.
 
-## 3. Etiología y Bases Genéticas
+## Etiología y Bases Genéticas
 
 La etiología es multifactorial, producto de la intersección entre susceptibilidad genética, desencadenantes ambientales y una pérdida de la tolerancia inmunológica.
 
 * **Factores Genéticos:** Existe una fuerte asociación con el Complejo Mayor de Histocompatibilidad. Los alelos más documentados son el HLA DQA1*0501 y el HLA DRB1*0301. Adicionalmente, se han identificado polimorfismos en el gen del Factor de Necrosis Tumoral alfa (TNF alfa) que alteran la respuesta inflamatoria.
 * **Factores Ambientales:** La infección por el virus Coxsackie B ha sido implicada como uno de los principales gatillos ambientales capaces de iniciar la disregulación del sistema inmune que culmina en el ataque al tejido muscular.
 
-## 4. Fisiopatología a Detalle
+## Fisiopatología a Detalle
 
-### 4.1 Inmunidad Celular y Molecular General
+### Inmunidad Celular y Molecular General
 
 El daño patológico inicia con la activación de Células Dendríticas Plasmocitoides (pDCs), las cuales producen grandes cantidades de interferones de tipo I (INF alfa y beta). Esta vía regula al alza la expresión de genes estimulados por INF (como MxA e ISGF-15) tanto en el tejido muscular como en el torrente sanguíneo.
 
 Simultáneamente, las células T CD4+ se polarizan hacia fenotipos Th1 (mediado por INF gamma) y Th17 (mediado por IL-17). Las células Th1 activan a los macrófagos para invadir el músculo, mientras que la vía general de linfocitos T auxiliares estimula a las células B y células plasmáticas para la producción masiva de autoanticuerpos. Además, las citocinas proinflamatorias regulan al alza el inmunoproteasoma, un complejo proteolítico encargado de procesar antígenos, lo que promueve la sobreexpresión aberrante de moléculas de MHC de clase I en la superficie de las fibras musculares, marcándolas para la destrucción.
 
-### 4.2 Fisiopatología por Subtipo
+### Fisiopatología por Subtipo
 
-* **Dermatomiositis (DM):** Es fundamentalmente una vasculopatía mediada por la activación de la cascada del complemento. Se genera el depósito del complejo de ataque a la membrana (MAC o C5b-9) en la microvasculatura del músculo, lo que desencadena lisis endotelial e isquemia. Histológicamente, hay infiltrados mononucleares (células B, T CD4+ y dendríticas) que se agrupan en el tejido conectivo perimisial y en áreas perivasculares. La hipoperfusión resultante causa la clásica "atrofia perifascicular", patognomónica de la DM.
-* **Polimiositis (PM):** Es un proceso citotóxico directo mediado por células T CD8+ y macrófagos que reconocen antígenos en el MHC-I del músculo. El infiltrado celular es endomisial; los linfocitos rodean e invaden fibras musculares individuales no necróticas. A diferencia de la DM, en la PM no hay involucro primario de la vasculatura ni participación significativa de células B o complemento.
-* **Miositis por Cuerpos de Inclusión (IBM):** Ocurre una degeneración progresiva debida tanto a citotoxicidad mediada por T CD8+ y macrófagos, como a un proceso degenerativo intracelular que forma vacuolas ribeteadas ("rimmed vacuoles") e inclusiones tanto nucleares como citoplasmáticas de proteínas mal plegadas (ej. amiloide).
-* **Miopatía Necrotizante Inmunomediada (IMNM):** Se caracteriza por una necrosis masiva de las fibras musculares con una inflamación primaria muy escasa (infiltrado mínimo de macrófagos CD68 y escasos linfocitos CD3). Es frecuentemente impulsada por autoanticuerpos específicos como el anti-HMGCR.
+<Accordions type="multiple">
+<Accordion title="Dermatomiositis (DM)">
+Es fundamentalmente una vasculopatía mediada por la activación de la cascada del complemento. Se genera el depósito del complejo de ataque a la membrana (MAC o C5b-9) en la microvasculatura del músculo, lo que desencadena lisis endotelial e isquemia. Histológicamente, hay infiltrados mononucleares (células B, T CD4+ y dendríticas) que se agrupan en el tejido conectivo perimisial y en áreas perivasculares. La hipoperfusión resultante causa la clásica "atrofia perifascicular", patognomónica de la DM.
+</Accordion>
+<Accordion title="Polimiositis (PM)">
+Es un proceso citotóxico directo mediado por células T CD8+ y macrófagos que reconocen antígenos en el MHC-I del músculo. El infiltrado celular es endomisial; los linfocitos rodean e invaden fibras musculares individuales no necróticas. A diferencia de la DM, en la PM no hay involucro primario de la vasculatura ni participación significativa de células B o complemento.
+</Accordion>
+<Accordion title="Miositis por Cuerpos de Inclusión (IBM)">
+Ocurre una degeneración progresiva debida tanto a citotoxicidad mediada por T CD8+ y macrófagos, como a un proceso degenerativo intracelular que forma vacuolas ribeteadas ("rimmed vacuoles") e inclusiones tanto nucleares como citoplasmáticas de proteínas mal plegadas (ej. amiloide).
+</Accordion>
+<Accordion title="Miopatía Necrotizante Inmunomediada (IMNM)">
+Se caracteriza por una necrosis masiva de las fibras musculares con una inflamación primaria muy escasa (infiltrado mínimo de macrófagos CD68 y escasos linfocitos CD3). Es frecuentemente impulsada por autoanticuerpos específicos como el anti-HMGCR.
+</Accordion>
+</Accordions>
 
-## 5. Cuadro Clínico
+## Cuadro Clínico
 
-### 5.1 Manifestaciones Musculares
+### Manifestaciones Musculares
 
 * **Patrón Clásico:** Debilidad predominantemente proximal y simétrica, que puede tener un inicio agudo o insidioso. Afecta primariamente los músculos de la cintura escapular (cuello, brazos) y la cintura pélvica (piernas).
 * **Gravedad:** En casos severos, la debilidad se extiende a la musculatura bulbar y respiratoria, provocando disartria, disfagia y debilidad facial.
 * **Excepción (IBM):** En la Miositis por Cuerpos de Inclusión, la atrofia suele ser asimétrica y de localización más distal, afectando selectivamente a los flexores de los dedos y el cuádriceps, causando atrofia visible del antebrazo.
 
-### 5.2 Manifestaciones Cutáneas (Exclusivas de DM)
+### Manifestaciones Cutáneas (Exclusivas de DM)
 
 * **Rash en Heliotropo:** Erupción eritematosa y de coloración púrpura/violácea alrededor de los párpados, frecuentemente acompañada de marcado edema periorbitario.
 * **Pápulas de Gottron:** Placas eritematosas y descamativas que se localizan clásicamente sobre las articulaciones metacarpofalángicas, así como en las interfalángicas proximales y distales.
@@ -139,18 +142,16 @@ Simultáneamente, las células T CD4+ se polarizan hacia fenotipos Th1 (mediado 
 * **Cambios en el lecho ungueal:** Eritema periungueal, engrosamiento cuticular, infartos hemorrágicos cuticulares y telangiectasias claramente visibles.
 * **Calcinosis Subcutánea:** Depósitos de calcio que ocurren sobre puntos de presión (glúteos, rodillas, codos). Son mucho más comunes en la variante juvenil de la DM y en adultos con enfermedad crónicamente subtratada.
 
-### 5.3 Manifestaciones Extramusculares (Órganos Blanco)
+### Manifestaciones Extramusculares (Órganos Blanco)
 
 * **Esqueleto:** Artralgias, contracturas articulares, osteoporosis, e incluso necrosis avascular.
 * **Pulmonar:** Disfonía, hipertensión arterial pulmonar, derrame pleural y, de manera crítica, Enfermedad Pulmonar Intersticial (asociada fuertemente a anticuerpos antisintetasa).
 * **Cardiovascular:** Fenómeno de Raynaud, claudicación vascular, miocarditis, arritmias, angina o infarto.
 * **Gastrointestinal:** Dismotilidad esofágica e infartos intestinales por isquemia microvascular.
 
-## 6. Clasificación y Escalas Diagnósticas
+## Clasificación y Escalas Diagnósticas
 
-A lo largo de la historia, las miopatías han sufrido de múltiples revisiones debido a la extrema variabilidad de su presentación.
-
-### 6.1 Criterios Diagnósticos de Bohan y Peter (1975)
+### Criterios Diagnósticos de Bohan y Peter (1975)
 
 Establecen 5 pilares clínicos e imagenológicos:
 
@@ -169,16 +170,16 @@ Establecen 5 pilares clínicos e imagenológicos:
 * **Polimiositis Posible:** Cumple 2 de los primeros 4.
 * **Dermatomiositis Posible:** Cumple el criterio cutáneo más 1 muscular.
 
-### 6.2 Criterios Diagnósticos de Dalakas (2003)
+### Criterios Diagnósticos de Dalakas (2003)
 
 Fueron diseñados para solucionar la falta de especificidad histológica de Bohan y Peter. Incluyen debilidad, hallazgos en EMG y elevación de enzimas, pero son sumamente estrictos en los hallazgos de biopsia:
 
 * **Para PM Definitiva:** Requiere inflamación endomisial primaria en la biopsia con evidencia directa del complejo CD8/MHC-I invadiendo las fibras musculares, y obliga a la ausencia total de vacuolas (para excluir IBM).
 * **Para DM Definitiva:** Requiere confirmación de atrofia perifascicular, infiltrados perimisiales o perivasculares.
 
-## 7. Diagnóstico e Investigaciones
+## Diagnóstico e Investigaciones
 
-### 7.1 Abordaje y Exámenes Iniciales
+### Abordaje y Exámenes Iniciales
 
 * **Historia y Exploración:** Búsqueda activa de fatiga, debilidad proximal, antecedentes farmacológicos (ej. uso de estatinas) y signos cutáneos ocultos.
 * **Enzimas Musculares:** Enzimas como CK, LDH, AST, ALT y Aldolasa se elevan en el 70 por ciento de los pacientes con DM y PM. En IBM, pueden ser normales o levemente elevadas; mientras que en la miopatía necrotizante (NM), la CK se eleva de manera masiva, más de 10 veces su límite normal superior.
@@ -186,7 +187,7 @@ Fueron diseñados para solucionar la falta de especificidad histológica de Boha
 * **Resonancia Magnética (RM):** La RM de músculos (T1 y T2/STIR) visualiza edema (inflamación activa en T2/STIR) y grasa (atrofia en T1). Su utilidad principal es localizar el área de mayor inflamación para guiar el sitio exacto de la biopsia y evitar falsos negativos.
 * **Biopsia Muscular:** Sigue siendo un pilar. Se evalúan tinciones histológicas y de inmunohistoquímica para la observación de la sobreexpresión de MHC-I en el sarcolema y el tipo de infiltrado inflamatorio.
 
-### 7.2 Anticuerpos Específicos de Miositis (MSA) y Asociaciones Clínicas
+### Anticuerpos Específicos de Miositis (MSA) y Asociaciones Clínicas
 
 Identificar el anticuerpo permite predecir complicaciones sistémicas y la respuesta a los esteroides.
 
@@ -197,7 +198,7 @@ Identificar el anticuerpo permite predecir complicaciones sistémicas y la respu
 * **Anti-SRP y Anti-HMGCR:** Exclusivos de la Miopatía Necrotizante Inmunomediada. Resistencia al tratamiento. El HMGCR se asocia a la exposición previa a estatinas.
 * **Anti-cN-1A:** Altamente específico para la Miositis por Cuerpos de Inclusión.
 
-### 7.3 Tamizaje Oncológico Obligatorio
+### Tamizaje Oncológico Obligatorio
 
 Las miopatías inflamatorias son síndromes paraneoplásicos frecuentes.
 
@@ -206,9 +207,9 @@ Las miopatías inflamatorias son síndromes paraneoplásicos frecuentes.
 * Los tumores más frecuentes son cáncer de ovario, páncreas, estómago, colorrectal, vejiga y linfomas no Hodgkin.
 * El tamizaje debe incluir: Biometría hemática, química sanguínea, electroforesis de proteínas séricas y urinarias, cadenas ligeras, sangre oculta en heces, y estudios de imagen guiados por sexo y edad (ultrasonido pélvico, mastografía, TAC de tórax/abdomen).
 
-## 8. Tratamiento
+## Tratamiento
 
-### 8.1 Medidas No Farmacológicas
+### Medidas No Farmacológicas
 
 El objetivo principal es prevenir o limitar la discapacidad funcional.
 
@@ -216,7 +217,7 @@ El objetivo principal es prevenir o limitar la discapacidad funcional.
 * **Terapia de Lenguaje y Deglución:** Fundamental si hay debilidad bulbar que predisponga a broncoaspiración.
 * **Protección UV estricta:** Para pacientes con afectación cutánea por DM.
 
-### 8.2 Terapia Cutánea Específica (DM)
+### Terapia Cutánea Específica (DM)
 
 Para controlar las lesiones cutáneas recalcitrantes de la dermatomiositis, se requiere:
 
@@ -226,45 +227,59 @@ Para controlar las lesiones cutáneas recalcitrantes de la dermatomiositis, se r
 4. Fármacos tópicos: Tacrolimus al 0.1 por ciento.
 5. Terapia sistémica adyuvante: Hidroxicloroquina 200 mg administrada cada 12 horas.
 
-### 8.3 Tratamiento Farmacológico Inmunosupresor
+### Tratamiento Farmacológico Inmunosupresor
 
-* **Primera Línea:**
+<Tabs items={['Primera Línea', 'Segunda Línea', 'Casos Refractarios']}>
+<Tab value="Primera Línea">
 * Glucocorticoides sistémicos a dosis altas de inducción: Prednisona 0.5 a 1 mg/kg/día.
 * De forma concurrente, iniciar agentes ahorradores de esteroides para mantener la remisión a largo plazo: Metotrexato (15 mg/semana con escalamiento hasta 25 mg), Azatioprina (2 mg/kg/día), o Micofenolato de Mofetilo (500 mg hasta llegar a 1000 mg dos veces al día).
 * Esquema de Tapering (Reducción): Posterior a la estabilización, reducir la dosis de prednisona cada 2 semanas de manera escalonada (ej. de 60 mg a 40 mg, luego 30, 25, 20...) para evitar insuficiencia suprarrenal y minimizar toxicidad metabólica.
+</Tab>
 
-
-* **Segunda Línea (Rescate o Severidad Alta):**
-* Casos con disfagia grave, miocarditis o fallo ventilatorio inminente.
+<Tab value="Segunda Línea">
+Reservada para casos con disfagia grave, miocarditis o fallo ventilatorio inminente.
 * Pulsos intravenosos de Metilprednisolona (500-1000 mg/día por 1 a 3 días).
 * Inmunoglobulina Intravenosa (IGIV) a 2 g/kg dividida en varios días, repetida cada mes.
 * Fármacos citotóxicos potentes: Ciclofosfamida, Rituximab, o Ciclosporina A.
+</Tab>
 
+<Tab value="Casos Refractarios">
+Para pacientes que no responden a líneas previas o cursan con IBM (que es notoriamente resistente a esteroides), se utilizan terapias experimentales o agentes biológicos como:
+* Globulina anti-linfocitos T.
+* Interferón beta 1a.
+* Alentuzumab.
+</Tab>
+</Tabs>
 
-* **Terapias Experimentales / Casos Refractarios:**
-* Para pacientes que no responden a líneas previas o cursan con IBM (que es notoriamente resistente a esteroides), se utilizan agentes biológicos como la globulina anti-linfocitos T, interferón beta 1a, o alentuzumab.
-
-
-
-## 9. Pronóstico y Secuelas
+## Pronóstico y Secuelas
 
 Las miopatías inflamatorias muestran una progresión altamente variable entre individuos y, en el contexto biológico actual, se consideran padecimientos incurables que requieren control de por vida.
 
 La morbimortalidad y las secuelas están íntimamente ligadas al fenotipo de los autoanticuerpos:
 
-* **Pronóstico Favorable:** Pacientes positivos al anticuerpo Anti-Mi2 desarrollan una enfermedad inflamatoria confinada y leve en el músculo, mostrando una excelente y sostenida respuesta a la terapia con prednisona.
-* **Pronóstico Moderado/Grave:** La presencia de anticuerpos antisintetasa (como el Jo-1) confiere mayor gravedad clínica multiorgánica. La respuesta a los fármacos inmunosupresores es apenas moderada y a menudo experimentan secuelas funcionales pulmonares a largo plazo debido a la alveolitis fibrosante.
-* **Pronóstico Pobre:** El riesgo de mortalidad o discapacidad permanente aumenta exponencialmente si existe retraso en el inicio del tratamiento farmacológico, o si el fenotipo clínico inicial involucra agresivamente a órganos internos vitales, debutando con miocarditis, enfermedad pulmonar intersticial de rápida progresión, dismotilidad esofágica o infartos gastrointestinales isquémicos.
+<Tabs items={['Favorable', 'Moderado / Grave', 'Pobre']}>
+<Tab value="Favorable">
+**Anti-Mi2:** Pacientes positivos a este anticuerpo desarrollan una enfermedad inflamatoria confinada y leve en el músculo, mostrando una excelente y sostenida respuesta a la terapia con prednisona.
+</Tab>
+
+<Tab value="Moderado / Grave">
+**Antisintetasa (ej. Jo-1):** Confiere mayor gravedad clínica multiorgánica. La respuesta a los fármacos inmunosupresores es apenas moderada y a menudo experimentan secuelas funcionales pulmonares a largo plazo debido a la alveolitis fibrosante.
+</Tab>
+
+<Tab value="Pobre">
+El riesgo de mortalidad o discapacidad permanente aumenta exponencialmente si existe retraso en el inicio del tratamiento farmacológico, o si el fenotipo clínico inicial involucra agresivamente a órganos internos vitales (debutando con miocarditis, enfermedad pulmonar intersticial de rápida progresión, dismotilidad esofágica o infartos gastrointestinales isquémicos).
+</Tab>
+</Tabs>
 
 ---
 
 # Síndrome Antifosfolípido (SAF)
 
-## 1. Definición y Conceptos Generales
+## Definición y Conceptos Generales
 
 El Síndrome Antifosfolípido es un síndrome autoinmune que se caracteriza clínicamente por la presencia de trombosis o complicaciones obstétricas, mediadas por la presencia de anticuerpos antifosfolípidos circulantes durante un periodo mayor que 12 semanas. Puede presentarse de forma primaria (aislado) o secundaria (asociado a otras enfermedades, comúnmente Lupus Eritematoso Sistémico).
 
-## 2. Bases Fisiológicas y Fisiopatología
+## Bases Fisiológicas y Fisiopatología
 
 Para entender la patogenia, primero hay que entender la fisiología de sus blancos.
 
@@ -277,7 +292,7 @@ Para entender la patogenia, primero hay que entender la fisiología de sus blanc
 * Fisiopatológicamente, es un conjunto de anticuerpos IgG o IgM que bloquean los fosfolípidos aniónicos in vitro, impidiendo la formación del complejo protrombinasa y evitando la formación de trombina.
 * Sin embargo, in vivo, el mecanismo de acción de estos anticuerpos antifosfolípidos activa de forma aberrante la respuesta inmune a través de monocitos, células endoteliales y promueve la agregación plaquetaria, resultando en un estado altamente protrombótico.
 
-## 3. Cuadro Clínico y Manifestaciones de Órgano Blanco
+## Cuadro Clínico y Manifestaciones de Órgano Blanco
 
 El SAF es una enfermedad sistémica. Aunque la trombosis y la morbilidad obstétrica son los pilares, existen múltiples manifestaciones asociadas:
 
@@ -289,31 +304,31 @@ El SAF es una enfermedad sistémica. Aunque la trombosis y la morbilidad obstét
 * **Dermatológicas:** Isquemia digital, livedo racemosa, livedo reticularis, fenómeno de Raynaud y hemorragias en astilla.
 * **Nota de exclusión:** Es de suma importancia clínica recordar que manifestaciones como la trombocitopenia, enfermedad de la válvula cardíaca, livedo reticularis, nefropatía, y las manifestaciones neurológicas están *excluidas* de los criterios formales de clasificación diagnóstica, aunque acompañen frecuentemente al síndrome.
 
-## 4. Diagnóstico, Escalas y Clasificaciones
+## Diagnóstico, Escalas y Clasificaciones
 
 El diagnóstico exige una rigurosa correlación entre eventos clínicos y persistencia de laboratorio.
 
-### 4.1 Criterios de Clasificación de Sydney
+### Criterios de Clasificación de Sydney
 
 Se requiere el cumplimiento de al menos un criterio clínico y un criterio de laboratorio.
 
-**Criterios Clínicos Incluidos:**
-
+<Accordions type="multiple">
+<Accordion title="Criterios Clínicos Incluidos">
 1. **Trombosis Vascular:** Uno o más episodios de trombosis arterial, venosa o de vasos pequeños (demostrada por imagen o histopatología sin inflamación de la pared vascular).
 2. **Morbilidad Obstétrica:**
-* Una o más muertes inexplicables de un feto morfológicamente normal a partir de la semana 10 de gestación.
-* Uno o más nacimientos prematuros de un neonato morfológicamente normal menor que 34 semanas de gestación debido a eclampsia, preeclampsia severa o insuficiencia placentaria.
-* Tres o más abortos recurrentes consecutivos e inexplicables antes de la semana 10 de gestación (excluyendo causas anatómicas, hormonales o cromosómicas).
+    * Una o más muertes inexplicables de un feto morfológicamente normal a partir de la semana 10 de gestación.
+    * Uno o más nacimientos prematuros de un neonato morfológicamente normal menor que 34 semanas de gestación debido a eclampsia, preeclampsia severa o insuficiencia placentaria.
+    * Tres o más abortos recurrentes consecutivos e inexplicables antes de la semana 10 de gestación (excluyendo causas anatómicas, hormonales o cromosómicas).
+</Accordion>
 
-
-
-**Criterios de Laboratorio Incluidos:**
-
-* Presencia de anticuerpos anticardiolipina (IgG o IgM), anticuerpos anti-$\beta$2GPI (IgG o IgM), o Anticoagulante lúpico.
+<Accordion title="Criterios de Laboratorio Incluidos">
+* Presencia de anticuerpos anticardiolipina (IgG o IgM), anticuerpos anti-β2GPI (IgG o IgM), o Anticoagulante lúpico.
 * Deben estar presentes y ser persistentes en dos o más ocasiones con un intervalo de separación mayor que 12 semanas.
 * *Valores de Referencia:* La anticardiolipina se considera positiva moderada si se encuentra entre 20 a 79 unidades (GPL/MPL), y fuertemente positiva si es mayor que 80 unidades. Para la prueba confirmatoria del Anticoagulante Lúpico (Relación PS/PC), un nivel de 1.2 a 1.49 es débil, 1.5 a 2.0 es moderado, y mayor que 2.0 es fuerte.
+</Accordion>
+</Accordions>
 
-### 4.2 Criterios ACR/EULAR 2023
+### Criterios ACR/EULAR 2023
 
 Es un sistema de puntuación aditivo más moderno y complejo.
 
@@ -321,7 +336,7 @@ Es un sistema de puntuación aditivo más moderno y complejo.
 * **Dominios Clínicos:** Se dividen con diferentes pesos en dominios Macrovascular (Trombosis venosa y arterial), Microvascular, Obstétrico, Válvula Cardíaca y Hematológico.
 * **Clasificación:** Para clasificar a un paciente con SAF definitivo, se requiere sumar 3 o más puntos en los dominios clínicos, de forma conjunta con 3 o más puntos en los dominios de laboratorio.
 
-### 4.3 Síndrome Catastrófico de Anticuerpos Antifosfolípidos (CAPS)
+### Síndrome Catastrófico de Anticuerpos Antifosfolípidos (CAPS)
 
 Es la presentación más letal, caracterizada por trombosis microvascular masiva y disfunción multiorgánica rápida. Se define por 4 criterios:
 
@@ -332,43 +347,44 @@ Es la presentación más letal, caracterizada por trombosis microvascular masiva
 
 * **Clasificación:** El *APS definitivamente catastrófico* requiere cumplir los 4 criterios exactos. El *APS probable* se dictamina cuando se cumplen los 4 criterios pero solo afecta a 2 órganos, o si se cumplen los requisitos clínicos pero falta la confirmación de laboratorio con 6 semanas de diferencia debido a la muerte prematura del paciente, entre otras variaciones menores de tiempo.
 
-## 5. Tratamiento y Prevención
+## Tratamiento y Prevención
 
 El pilar del tratamiento es el manejo de la cascada de coagulación, adaptado al escenario clínico del paciente.
 
-### 5.1 Paciente Asintomático
-
+<Tabs items={['Asintomático', 'Trombosis Establecida', 'Manejo Obstétrico', 'Riesgos del Tratamiento']}>
+<Tab value="Asintomático">
 * Para pacientes asintomáticos con anticuerpos antifosfolípidos positivos, se repite la prueba en 12 semanas.
 * Si persiste positivo y existen otros factores de riesgo cardiovascular moderados a altos (Grado A), se indica profilaxis primaria con aspirina a dosis bajas (75 a 100 mg/día).
 * En pacientes que padecen simultáneamente de Lupus Eritematoso Sistémico y SAF asintomático, se debe evaluar la administración de aspirina a dosis bajas combinada con hidroxicloroquina.
+</Tab>
 
-### 5.2 Paciente con Trombosis Establecida
-
+<Tab value="Trombosis Establecida">
 El riesgo de recurrencia es altísimo, por lo que la anticoagulación suele ser intensiva.
-
 * **Trombosis Venosa Previa:** Se indica anticoagulación con Warfarina, con un objetivo de INR entre 2 y 3. Los Anticoagulantes Orales Directos (DOAC) solo se reservan para circunstancias excepcionales.
 * **Trombosis Arterial Previa:** Requiere una anticoagulación más estricta. Las opciones son Warfarina con un objetivo de INR mayor (entre 3 y 4), o la combinación de Warfarina (INR 2 a 3) junto con aspirina a dosis bajas.
 * **Trombosis Recurrente:** En pacientes que presentan trombosis a pesar de estar anticoagulados, el régimen se escala a una terapia triple: Aspirina a dosis bajas + Clopidogrel + Warfarina.
+</Tab>
 
-### 5.3 Manejo Obstétrico en Mujeres Positivas a aPL
-
-* **Sin trombosis previa:** Se maneja profilácticamente con aspirina a dosis bajas $\pm$ Heparina de Bajo Peso Molecular (HBPM) a dosis profilácticas si el perfil de riesgo es alto.
+<Tab value="Manejo Obstétrico">
+* **Sin trombosis previa:** Se maneja profilácticamente con aspirina a dosis bajas ± Heparina de Bajo Peso Molecular (HBPM) a dosis profilácticas si el perfil de riesgo es alto.
 * **Con trombosis previa:** Se requiere una cobertura intensiva con aspirina a dosis bajas combinada con HBPM a dosis terapéuticas.
 * **Pérdida fetal tardía, preeclampsia severa o aborto temprano recurrente:** Se indica aspirina a dosis bajas sumado a HBPM en dosis profilácticas.
+</Tab>
 
-### 5.4 Riesgos del Tratamiento
-
+<Tab value="Riesgos del Tratamiento">
 Dado que el tratamiento base es la Warfarina, se debe vigilar estrechamente el riesgo de hemorragia. Los factores de riesgo de sangrado incluyen: pacientes con edad mayor que 65 años, patologías cardíacas (infarto reciente, fibrilación auricular, hipertensión arterial grave), alteraciones gastrointestinales (úlcera péptica activa, falla hepática), anomalías hematológicas u oncológicas (anemia, trombocitopenia, neoplasias), antecedentes neurológicos (historia de infarto cerebral), y el uso concomitante de AINEs o ingesta excesiva de alcohol.
+</Tab>
+</Tabs>
 
 ---
 
 # Esclerosis Sistémica (Esclerodermia)
 
-## 1. Definición
+## Definición
 
 La esclerosis sistémica es una enfermedad autoinmune grave y compleja. Se caracteriza fisiopatológicamente por la tríada de daño microvascular, disregulación de la inmunidad (tanto innata como adquirida) y una fibrosis generalizada que afecta la piel y múltiples órganos internos. Sir William Osler la describió dramáticamente como una enfermedad donde el paciente queda "encerrado en una piel de acero que se contrae lentamente".
 
-## 2. Epidemiología
+## Epidemiología
 
 * **Incidencia:** Estimada entre 18 a 20 casos por millón de habitantes al año.
 * **Prevalencia:** De 100 a 300 casos por millón de habitantes.
@@ -377,7 +393,7 @@ La esclerosis sistémica es una enfermedad autoinmune grave y compleja. Se carac
 * **Mortalidad:** Es una enfermedad con alta mortalidad, la cual está directamente relacionada con las manifestaciones de la enfermedad, así como con infecciones, neoplasias malignas y eventos cardiovasculares. La tasa de mortalidad normalizada (TNM) va de 1.46 a 7.1.
 * **Supervivencia a 5 años:** Depende del subtipo clínico; la forma cutánea difusa tiene una supervivencia del 84 por ciento, mientras que la forma cutánea limitada alcanza un 93 por ciento.
 
-## 3. Etiología y Patogenia
+## Etiología y Patogenia
 
 El desarrollo de la esclerodermia requiere la interacción de tres componentes etiológicos fundamentales: factores genéticos, modificaciones epigenéticas y exposiciones ambientales.
 
@@ -386,77 +402,91 @@ La cascada patogénica se alimenta de dos procesos paralelos que convergen:
 1. **Lesión Vascular:** Es el evento temprano.
 2. **Inflamación con disregulación inmunológica:** Que, en conjunto con el daño vascular, lleva a la activación de los fibroblastos y la consecuente fibrosis tisular.
 
-## 4. Fisiopatología a Detalle
+## Fisiopatología a Detalle
 
 La enfermedad inicia cuando un detonante ambiental interactúa con la susceptibilidad genética, provocando daño directo a la célula endotelial.
 
 * **Daño Vascular y Vasculopatía:** El daño induce activación endotelial, incremento en la adherencia de leucocitos, oclusión microvascular e hipoxia tisular. La célula endotelial disfuncional secreta factores como el VEGF (Factor de Crecimiento Endotelial Vascular). Clínicamente, esta vasculopatía se manifiesta como Fenómeno de Raynaud, úlceras e hipertensión pulmonar.
 * **Disregulación Inmunológica:** Se produce un reclutamiento de linfocitos T (CD4+ y CD8+), células B y macrófagos, además de la producción de autoanticuerpos específicos. Esta inflamación celular crónica se manifiesta clínicamente como artritis y esclerodactilia.
-* **Cascada Fibrótica:** Factores profibróticos, en especial el TGF-$\beta$ (Factor de Crecimiento Transformante Beta), impulsan la transición mesenquimatosa. Las células endoteliales y los pericitos sufren transdiferenciación celular, convirtiéndose en miofibroblastos y fibroblastos hiperactivos. Estas células sintetizan y depositan de manera descontrolada colágeno y proteínas de matriz, resultando en el endurecimiento de la piel y la fibrosis progresiva de órganos internos y pulmones.
+* **Cascada Fibrótica:** Factores profibróticos, en especial el TGF-β (Factor de Crecimiento Transformante Beta), impulsan la transición mesenquimatosa. Las células endoteliales y los pericitos sufren transdiferenciación celular, convirtiéndose en miofibroblastos y fibroblastos hiperactivos. Estas células sintetizan y depositan de manera descontrolada colágeno y proteínas de matriz, resultando en el endurecimiento de la piel y la fibrosis progresiva de órganos internos y pulmones.
 
-## 5. Clasificación y Subtipos Clínicos
+## Clasificación y Subtipos Clínicos
 
 La enfermedad se clasifica clásicamente según la extensión del compromiso cutáneo:
 
-1. **Enfermedad Cutánea Limitada (Síndrome de CREST):**
+<Accordions type="multiple">
+<Accordion title="Enfermedad Cutánea Limitada (Síndrome de CREST)">
 * Esclerosis cutánea distal (respeta el tronco).
 * Larga evolución previa del Fenómeno de Raynaud.
 * Mayor frecuencia de complicaciones tardías, destacando la Hipertensión Arterial Pulmonar (HAP) y la enfermedad intestinal severa.
 * El acrónimo CREST (Calcinosis, Raynaud, dismotilidad Esofágica, Esclerodactilia, Telangiectasias) se considera un subtipo único dentro de este grupo con evolución patológica propia.
+</Accordion>
 
-
-2. **Enfermedad Cutánea Difusa:**
+<Accordion title="Enfermedad Cutánea Difusa">
 * Esclerosis cutánea extensa que avanza proximal a los codos o rodillas y afecta el tronco.
 * Corta evolución del Fenómeno de Raynaud previo al engrosamiento de la piel.
 * Altísimo riesgo de complicaciones orgánicas tempranas graves como crisis renal esclerodérmica, compromiso cardíaco y fibrosis pulmonar severa.
+</Accordion>
 
-
-3. **Esclerodermia *Sine* Esclerodermia:**
+<Accordion title="Esclerodermia Sine Esclerodermia">
 * Pacientes que presentan Fenómeno de Raynaud, serología típica o alteraciones en la capilaroscopia y daño a órganos internos, pero sin evidencia de esclerosis cutánea.
+</Accordion>
 
-
-4. **Síndromes de Superposición:**
+<Accordion title="Síndromes de Superposición">
 * Se asocia a manifestaciones de otras enfermedades reumatológicas (ej. Enfermedad Mixta del Tejido Conectivo).
+</Accordion>
+</Accordions>
 
+## Cuadro Clínico por Órganos y Sistemas
 
-
-## 6. Cuadro Clínico por Órganos y Sistemas
-
-### 6.1 Fases Cutáneas Clínicas
+### Fases Cutáneas Clínicas
 
 La afectación de la piel evoluciona de manera estereotipada en tres fases:
 
-1. **Fase Edematosa:** Dura varias semanas. Se caracteriza por un edema sin fóvea (que comprime el tejido local), eritema, prurito intenso, dolor neuropático severo y pérdida de anexos cutáneos (pelo y glándulas sudoríparas).
-2. **Fase Fibrótica:** Ocurre usualmente en los primeros 12 a 18 meses. Hay pérdida total de la flexibilidad cutánea y lipodistrofia. Aparecen la "facies en máscara", contracturas en flexión de dedos, muñecas y codos, ulceraciones, y lesiones despigmentadas descritas como "sal y pimienta" acompañadas de múltiples telangiectasias.
-3. **Fase de Recuperación:** Recuperación parcial de la textura, aunque persiste la atrofia en las zonas afectadas. Desaparece el prurito y el dolor.
+<Steps>
+<Step>
+#### Fase Edematosa
+Dura varias semanas. Se caracteriza por un edema sin fóvea (que comprime el tejido local), eritema, prurito intenso, dolor neuropático severo y pérdida de anexos cutáneos (pelo y glándulas sudoríparas).
+</Step>
 
-### 6.2 Vasculopatía: Fenómeno de Raynaud y Úlceras
+<Step>
+#### Fase Fibrótica
+Ocurre usualmente en los primeros 12 a 18 meses. Hay pérdida total de la flexibilidad cutánea y lipodistrofia. Aparecen la "facies en máscara", contracturas en flexión de dedos, muñecas y codos, ulceraciones, y lesiones despigmentadas descritas como "sal y pimienta" acompañadas de múltiples telangiectasias.
+</Step>
+
+<Step>
+#### Fase de Recuperación
+Recuperación parcial de la textura, aunque persiste la atrofia en las zonas afectadas. Desaparece el prurito y el dolor.
+</Step>
+</Steps>
+
+### Vasculopatía: Fenómeno de Raynaud y Úlceras
 
 * El Fenómeno de Raynaud en estos pacientes es una respuesta vascular exagerada (isquémica) al frío o estrés emocional.
 * A diferencia del Raynaud primario, el secundario a esclerodermia presenta inicio a mayor edad, mayor gravedad con fenómenos isquémicos evidentes (gangrena o ulceración digital), capilaroscopia francamente anormal y autoanticuerpos positivos.
 
-### 6.3 Manifestaciones Gastrointestinales
+### Manifestaciones Gastrointestinales
 
 * **Cavidad oral:** Xerostomía, disminución de la apertura oral y dificultad masticatoria.
 * **Esófago:** Es el órgano interno más afectado (90 por ciento de los pacientes presenta disfagia). Se caracteriza por pérdida de la función normal del músculo liso en los dos tercios inferiores (por atrofia), induciendo reflujo gastroesofágico masivo, esofagitis, hemorragia, estenosis y esófago de Barrett.
 * **Estómago:** Gastroparesia grave (distensión, náuseas) y Ectasia Vascular Antral Gástrica (estómago "en sandía"), una causa vital de hemorragia digestiva oculta y anemia.
 * **Intestino:** Dismotilidad, diarrea/estreñimiento por malabsorción, episodios recidivantes de pseudoobstrucción intestinal y desarrollo de divertículos de boca ancha.
 
-### 6.4 Manifestaciones Pulmonares
+### Manifestaciones Pulmonares
 
 Es la causa más importante de morbilidad y mortalidad, causando el deceso en el 50 al 60 por ciento de los casos.
 
 * **Enfermedad Pulmonar Intersticial (EPI):** Es la manifestación pulmonar más frecuente. Es clínicamente significativa en el 60 por ciento de pacientes con la forma difusa y en el 20 por ciento de la forma limitada. Suele ser una complicación temprana (aparece en los primeros 4 a 6 años). El patrón tomográfico e histológico clásico es la Neumonía Intersticial No Específica (NINE), caracterizada por inflamación intersticial y opacidades en vidrio deslustrado que progresan a fibrosis.
 * **Hipertensión Arterial Pulmonar (HAP):** Afecta aproximadamente al 15 por ciento de los pacientes, siendo mucho más prevalente en la forma cutánea limitada. Usualmente es una complicación tardía (se presenta mayor que 5 a 10 años después del inicio). Presentan disnea, fatiga y síncope.
 
-### 6.5 Crisis Renal Esclerodérmica
+### Crisis Renal Esclerodérmica
 
 Es una emergencia médica que afecta del 5 al 10 por ciento de los pacientes con esclerodermia (aunque una diapositiva menciona que se presenta "usualmente en los primeros 2 a 4 años" y curiosamente indica que es "mas frecuente en la forma cutánea limitada", la misma fuente luego detalla que la forma cutánea difusa es un factor de riesgo cardinal).
 
 * **Clínica:** Ocurre una elevación rápida y explosiva de la presión arterial (hipertensión maligna), aunque hasta el 10 por ciento pueden cursar normotensos (lo cual da un peor pronóstico). Se eleva la renina plasmática y la creatinina sérica. Clínicamente se manifiesta con cefalea severa, encefalopatía, edema pulmonar y pérdida visual por retinopatía.
 * **Sospecha:** Debe sospecharse ante falla renal rápida, hipertensión arterial severa o anemia hemolítica microangiopática de inicio súbito.
 
-## 7. Autoanticuerpos Específicos
+## Autoanticuerpos Específicos
 
 Definen perfiles pronósticos muy marcados:
 
@@ -465,84 +495,79 @@ Definen perfiles pronósticos muy marcados:
 * **Anti-RNA polimerasa III:** Define una progresión de esclerosis cutánea rápida y muy agresiva. Entre el 25 al 40 por ciento de estos pacientes desarrollarán crisis renal esclerodérmica. Tienen, curiosamente, un menor riesgo de enfermedad pulmonar intersticial.
 * **Otros:** Anti-U3 RNP (pronóstico desfavorable, afectación de múltiples órganos), Anti-Th/To (limitada, pero con riesgo de HAP grave).
 
-## 8. Diagnóstico y Criterios de Clasificación
+## Diagnóstico y Criterios de Clasificación
 
-### 8.1 Criterios de ACR 1980
+### Criterios de ACR 1980
 
 Históricamente utilizados; tenían alta especificidad pero muy baja sensibilidad, dejando fuera a los pacientes en estadios tempranos y perdiendo hasta al 20 por ciento de aquellos con enfermedad limitada.
 
 * **Criterio Mayor:** Esclerosis cutánea proximal a las articulaciones metacarpofalángicas o metatarsofalángicas.
 * **Criterios Menores (se requerían 2):** Esclerodactilia, cicatrices puntiformes digitales (fositas), o fibrosis pulmonar bibasal.
 
-### 8.2 Criterios ACR/EULAR 2013
+### Criterios ACR/EULAR 2013
 
 Son el estándar actual (sensibilidad 91 por ciento, especificidad 92 por ciento). Se basan en un sistema de puntuación acumulativo donde se clasifica como Esclerosis Sistémica definitiva a quien obtiene una **puntuación total mayor o igual a 9 puntos**.
 
 1. **Criterio Suficiente (9 puntos directos):** Engrosamiento de la piel de los dedos de ambas manos que se extiende proximal a las articulaciones metacarpofalángicas.
 2. Si no se cumple, se suman ítems independientes (se toma la puntuación más alta de cada subgrupo):
-* Engrosamiento cutáneo distal a las MCF: Dedos hinchados (2 pts), Esclerodactilia (4 pts).
-* Lesiones en puntas de los dedos: Úlceras (2 pts), Cicatrices puntiformes (3 pts).
-* Telangiectasias (2 pts).
-* Anomalías en los capilares del pliegue ungueal (2 pts).
-* Enfermedad pulmonar: Hipertensión pulmonar o Enfermedad intersticial (2 pts).
-* Fenómeno de Raynaud (3 pts).
-* Autoanticuerpos relacionados (ACA, Scl-70 o RNA Polimerasa III) (3 pts).
+    * Engrosamiento cutáneo distal a las MCF: Dedos hinchados (2 pts), Esclerodactilia (4 pts).
+    * Lesiones en puntas de los dedos: Úlceras (2 pts), Cicatrices puntiformes (3 pts).
+    * Telangiectasias (2 pts).
+    * Anomalías en los capilares del pliegue ungueal (2 pts).
+    * Enfermedad pulmonar: Hipertensión pulmonar o Enfermedad intersticial (2 pts).
+    * Fenómeno de Raynaud (3 pts).
+    * Autoanticuerpos relacionados (ACA, Scl-70 o RNA Polimerasa III) (3 pts).
 
+## Escalas de Gravedad y Actividad
 
-
-## 9. Escalas de Gravedad y Actividad
-
-### 9.1 Puntaje Cutáneo Modificado de Rodnan (mRSS)
+### Puntaje Cutáneo Modificado de Rodnan (mRSS)
 
 Es el parámetro clínico más importante para cuantificar la extensión y gravedad de la fibrosis cutánea. Actúa como una medida sustitutiva para predecir la afectación de órganos internos.
 
 * **Estructura:** Se evalúa mediante palpación el grosor cutáneo en **17 áreas corporales** distintas.
 * **Niveles de Puntuación (por área):**
-* 0 = Piel normal sin esclerosis.
-* 1 = Esclerosis leve.
-* 2 = Esclerosis moderada.
-* 3 = Esclerosis severa (piel inmóvil).
+    * 0 = Piel normal sin esclerosis.
+    * 1 = Esclerosis leve.
+    * 2 = Esclerosis moderada.
+    * 3 = Esclerosis severa (piel inmóvil).
 
+La puntuación total máxima teórica es de **51 puntos**.
 
-* La puntuación total máxima teórica es de **51 puntos**.
-
-### 9.2 Escala de Gravedad de Medsger
+### Escala de Gravedad de Medsger
 
 A diferencia del Rodnan que evalúa piel, esta escala evalúa la disfunción orgánica sistémica en 9 sistemas (General, Vascular periférico, Piel, Articulaciones/tendones, Músculo, Tubo digestivo, Pulmones, Corazón y Riñones) otorgando un puntaje clínico desde el 0 (Normal), 1 (Leve), 2 (Moderado), 3 (Grave), hasta el 4 (Terminal/Falla orgánica) para cada sistema.
 
-### 9.3 Índices Secundarios
+### Índices Secundarios
 
 * **Índice de actividad de Valentini:** Evalúa cambios recientes en síntomas, VSG y complemento.
 * **Score DETECT:** Algoritmo en 2 pasos para cribado y detección de hipertensión arterial pulmonar en pacientes con más de 3 años de enfermedad y disfunción pulmonar de la capacidad de difusión (DLCO menor que 60 por ciento).
 
-## 10. Tratamiento
+## Tratamiento
 
-### 10.1 Fenómeno de Raynaud y Úlceras
-
+<Tabs items={['Fenómeno de Raynaud y Úlceras', 'Compromiso Cutáneo Temprano', 'Enfermedad Orgánica Específica']}>
+<Tab value="Fenómeno de Raynaud y Úlceras">
 * **No Farmacológico:** Evitar el frío ambiental severo, estrés, el consumo de tabaco y fármacos vasoconstrictores (simpaticomiméticos, betabloqueantes no selectivos).
 * **Tratamiento de Raynaud:**
-* *Primera línea:* Calcioantagonistas dihidropiridínicos (Nifedipino) para disminuir la intensidad y frecuencia de los episodios.
-* *Alternativas:* Inhibidores de fosfodiesterasa 5 (si hay contraindicación al Nifedipino) o Fluoxetina (20 mg al día) como alternativa mejor tolerada.
-* *Refractariedad:* Prostanoides intravenosos (Iloprost a 0.5-3 ng/kg/min por 3 a 5 días) en fallas a la terapia oral.
-
-
+    * *Primera línea:* Calcioantagonistas dihidropiridínicos (Nifedipino) para disminuir la intensidad y frecuencia de los episodios.
+    * *Alternativas:* Inhibidores de fosfodiesterasa 5 (si hay contraindicación al Nifedipino) o Fluoxetina (20 mg al día) como alternativa mejor tolerada.
+    * *Refractariedad:* Prostanoides intravenosos (Iloprost a 0.5-3 ng/kg/min por 3 a 5 días) en fallas a la terapia oral.
 * **Tratamiento de Úlceras Cutáneas Isquémicas:**
-* *Primera Línea:* Iloprost intravenoso (cura la úlcera activa pero no previene nuevas) e Inhibidores de la fosfodiesterasa 5.
-* *Prevención:* Bosentán (antagonista endotelina) se usa para prevenir la aparición de múltiples úlceras en pacientes con enfermedad grave.
+    * *Primera Línea:* Iloprost intravenoso (cura la úlcera activa pero no previene nuevas) e Inhibidores de la fosfodiesterasa 5.
+    * *Prevención:* Bosentán (antagonista endotelina) se usa para prevenir la aparición de múltiples úlceras en pacientes con enfermedad grave.
+</Tab>
 
-
-
-### 10.2 Manejo del Compromiso Cutáneo Temprano
-
+<Tab value="Compromiso Cutáneo Temprano">
 El uso de Metotrexato (15 mg/semana intramuscular, o 10 mg/día vía oral) ha demostrado tener una alta probabilidad (94 por ciento) de mejorar el puntaje de Rodnan (mRSS) en las fases tempranas de la enfermedad difusa, aunque no detiene el daño orgánico interno.
+</Tab>
 
-### 10.3 Enfermedad Orgánica Específica
-
+<Tab value="Enfermedad Orgánica Específica">
 * **Tracto Gastrointestinal:** Tratamiento sintomático de base con Inhibidores de la Bomba de Protones (IBP) para el reflujo grave y agentes procinéticos para la dismotilidad esofágica e intestinal.
 * **Enfermedad Pulmonar Intersticial:** La terapia pilar en enfermedad progresiva extensa es la infusión de Ciclofosfamida (mejora volúmenes pulmonares y calidad de vida). Para pacientes altamente seleccionados con progresión extremadamente rápida y falla multiorgánica inminente, el trasplante de células madre hematopoyéticas es una opción terapéutica.
 * **Crisis Renal Esclerodérmica:** Es el único escenario donde se indica una intervención directa hiperaguda; el tratamiento estándar de oro consiste en el inicio inmediato de Inhibidores de la Enzima Convertidora de Angiotensina (IECAs) a dosis altas (el uso temprano mejora la sobrevida de un 15 a un 76 por ciento al año). No existe evidencia para dar IECAs de forma profiláctica si no hay crisis.
+</Tab>
+</Tabs>
 
-## 11. Factores de Mal Pronóstico
+## Factores de Mal Pronóstico
 
 Existen características clínicas iniciales que predicen una alta morbilidad y rápida progresión fatal:
 
@@ -558,7 +583,7 @@ Existen características clínicas iniciales que predicen una alta morbilidad y 
 
 # Enfermedad Mixta del Tejido Conectivo (EMTC)
 
-## 1. El Concepto de Superposición
+## El Concepto de Superposición
 
 La Enfermedad Mixta del Tejido Conectivo no es una patología con características propias aisladas, sino un **síndrome de superposición**. Se define por la coexistencia clínica de características de al menos dos (y usualmente más) de las siguientes enfermedades autoinmunes:
 
@@ -569,7 +594,7 @@ La Enfermedad Mixta del Tejido Conectivo no es una patología con característic
 
 El punto clave para entender la EMTC es que toma "piezas" clínicas de estas enfermedades y las agrupa bajo un paraguas unificador gracias a un marcador serológico específico.
 
-## 2. Epidemiología
+## Epidemiología
 
 Es una enfermedad rara. Basado en cohortes poblacionales representativas (estudio noruego 1996-2005):
 
@@ -577,14 +602,14 @@ Es una enfermedad rara. Basado en cohortes poblacionales representativas (estudi
 * **Incidencia:** 2.1 casos por millón de habitantes por año.
 * **Sexo:** Abrumador predominio en mujeres (76.9 por ciento de los casos).
 
-## 3. Inmunología y Genética
+## Inmunología y Genética
 
 A diferencia de otras enfermedades reumatológicas que tienen múltiples anticuerpos posibles, la EMTC está anclada a un marcador serológico definitorio:
 
 * **Autoanticuerpo característico:** **Anti-U1-RNP** (también listado como Anti-U1-snRNP o Anti-U1-70KDa).
 * **Asociación Genética:** Los pacientes presentan predisposición genética ligada a los haplotipos **HLA-DRB1*04:01** y **HLA-B*08**.
 
-## 4. Cuadro Clínico
+## Cuadro Clínico
 
 Las manifestaciones clínicas son literalmente el cruce de las patologías base. Las características más definitorias y sus frecuencias son:
 
@@ -595,152 +620,130 @@ Las manifestaciones clínicas son literalmente el cruce de las patologías base.
 * **Dismotilidad e hipomotilidad esofágica:** Tomado directamente de la fisiopatología de la esclerodermia.
 * **Enfermedad pulmonar:** Destacan la Enfermedad Pulmonar Intersticial y la Hipertensión Pulmonar (HTP). Son la causa más importante de mortalidad en esta población.
 
-## 5. Criterios Diagnósticos Clasificatorios
+## Criterios Diagnósticos Clasificatorios
 
-Debido a la naturaleza de "superposición", existen tres grandes conjuntos de criterios diagnósticos. El diagrama de Venn de las diapositivas demuestra que los de **Kasukawa** engloban a la mayor cantidad de pacientes (son los más sensibles), seguidos por los de **Alarcón-Segovia** (muy prácticos clínicamente), y los de **Sharp** (los más estrictos).
+Debido a la naturaleza de "superposición", existen tres grandes conjuntos de criterios diagnósticos. El diagrama de Venn demuestra que los de **Kasukawa** engloban a la mayor cantidad de pacientes (son los más sensibles), seguidos por los de **Alarcón-Segovia** (muy prácticos clínicamente), y los de **Sharp** (los más estrictos).
 
-### A. Criterios de Alarcón-Segovia
-
+<Tabs items={['Alarcón-Segovia', 'Kasukawa', 'Sharp']}>
+<Tab value="Alarcón-Segovia">
 Son los más sencillos de aplicar en la práctica clínica rápida.
 
 * **Criterio Serológico:** Títulos de Anti-RNP mayores a 1:1000.
 * **Hallazgos Clínicos (5 ítems):**
-1. Sinovitis.
-2. Fenómeno de Raynaud.
-3. Edema en las manos.
-4. Miositis.
-5. Acroesclerosis.
-
-
+    1. Sinovitis.
+    2. Fenómeno de Raynaud.
+    3. Edema en las manos.
+    4. Miositis.
+    5. Acroesclerosis.
 * **Diagnóstico:** Se requiere el criterio serológico positivo MÁS 3 o más hallazgos clínicos (con la condición obligatoria de que se incluya sinovitis o miositis).
+</Tab>
 
-### B. Criterios de Kasukawa
-
+<Tab value="Kasukawa">
 Divide los hallazgos en "signos comunes" y "signos mixtos" (separados por enfermedad de origen).
 
 * **Signos Comunes:** Anti-RNP positivo, Raynaud, edema de manos o dedos.
 * **Signos Mixtos:**
-* *De LES:* Poliartritis, eritema facial, leucopenia o trombocitopenia, linfadenopatía, pleuritis o pericarditis.
-* *De Polimiositis:* Patrón miogénico en EMG, debilidad muscular, aumento de enzimas musculares (CPK).
-* *De Esclerodermia:* Fibrosis pulmonar, esclerodactilia, dismotilidad esofágica.
-
-
+    * *De LES:* Poliartritis, eritema facial, leucopenia o trombocitopenia, linfadenopatía, pleuritis o pericarditis.
+    * *De Polimiositis:* Patrón miogénico en EMG, debilidad muscular, aumento de enzimas musculares (CPK).
+    * *De Esclerodermia:* Fibrosis pulmonar, esclerodactilia, dismotilidad esofágica.
 * **Diagnóstico:** Anti-RNP positivo + 1 síntoma común + síntomas de al menos 2 de las 3 categorías de enfermedad (LES, PM, SSc).
+</Tab>
 
-### C. Criterios de Sharp
-
+<Tab value="Sharp">
 Los más exigentes, requieren la exclusión activa de LES puro.
 
 * **Criterios Mayores:**
-1. Afectación pulmonar (DLCO menor que 70 por ciento, HTP, biopsia con lesión vascular proliferativa).
-2. Hipomotilidad esofágica o Raynaud.
-3. Miositis.
-4. Manos hinchadas.
-5. **Anti-Sm negativo** y Anti-U1 RNP mayor que 1:10,000.
-
-
+    1. Afectación pulmonar (DLCO menor que 70 por ciento, HTP, biopsia con lesión vascular proliferativa).
+    2. Hipomotilidad esofágica o Raynaud.
+    3. Miositis.
+    4. Manos hinchadas.
+    5. **Anti-Sm negativo** y Anti-U1 RNP mayor que 1:10,000.
 * **Criterios Menores:** Alopecia, leucopenia, anemia, pleuritis, pericarditis, artritis, neuropatía trigeminal, eritema malar, trombocitopenia, antecedente de manos hinchadas.
 * **Diagnóstico:** Existen dos vías:
-1. Anti-U1-RNP mayor que 1:4000 + 4 criterios mayores.
-2. Anti-U1-RNP mayor que 1:1000 + 2 criterios mayores + 2 criterios menores.
-
-
+    1. Anti-U1-RNP mayor que 1:4000 + 4 criterios mayores.
+    2. Anti-U1-RNP mayor que 1:1000 + 2 criterios mayores + 2 criterios menores.
 * **Criterio de Exclusión Obligatorio:** Si la prueba de anticuerpos Anti-Sm es positiva (lo cual confirmaría Lupus clásico), se excluye el diagnóstico de EMTC bajo esta escala.
+</Tab>
+</Tabs>
 
 ---
 
 # Vasculitis Sistémicas
 
-## 1. Definición y Enfoque General
+## Definición y Enfoque General
 
 * La vasculitis es un proceso patológico caracterizado por la inflamación y necrosis de los vasos sanguíneos.
 * Esta inflamación se asocia a un compromiso directo de la luz vascular (estenosis u oclusión), lo que provoca cambios isquémicos en los tejidos irrigados.
 * Pueden presentarse de forma primaria o ser secundarias a otros procesos.
 * **Sospecha Clínica General:** Se debe sospechar de una vasculitis en pacientes que presentan síntomas sistémicos o constitucionales (fiebre, fatiga, pérdida de peso, artralgias) combinados con evidencia de disfunción orgánica única o multiorgánica.
 
-## 2. Clasificación de Chapel Hill y Características Únicas (Epidemiología)
+## Clasificación de Chapel Hill y Características Únicas (Epidemiología)
 
 El Consenso de Chapel Hill clasifica las vasculitis fundamentalmente por el tamaño del vaso afectado predominante. La edad de inicio y el sexo son claves para diferenciarlas clínicamente.
 
-### A. Vasculitis de Grandes Vasos
-
+<Tabs items={['Grandes Vasos', 'Medianos Vasos', 'Pequeños Vasos']}>
+<Tab value="Grandes Vasos">
 Afectan la aorta y sus ramas principales.
 
 * **Arteritis de Takayasu:**
-* **Lo que la hace única:** Afecta predominantemente a mujeres muy jóvenes (edad media de inicio: 25 años; 88 por ciento son mujeres) y representa el 8 por ciento de los trastornos por vasculitis. Clínicamente se presenta como la "enfermedad sin pulso" debido a estenosis severas (ej. arteria subclavia que termina en "cola de ratón" en la angiografía) con cianosis de extremidades.
-
-
+    * **Lo que la hace única:** Afecta predominantemente a mujeres muy jóvenes (edad media de inicio: 25 años; 88 por ciento son mujeres) y representa el 8 por ciento de los trastornos por vasculitis. Clínicamente se presenta como la "enfermedad sin pulso" debido a estenosis severas (ej. arteria subclavia que termina en "cola de ratón" en la angiografía) con cianosis de extremidades.
 * **Arteritis de Células Gigantes (Temporal):**
-* **Lo que la hace única:** Es la vasculitis más frecuente (26 por ciento de los trastornos) y afecta a un grupo demográfico opuesto a Takayasu: adultos mayores (edad media: 69 años; 75 por ciento mujeres).
+    * **Lo que la hace única:** Es la vasculitis más frecuente (26 por ciento de los trastornos) y afecta a un grupo demográfico opuesto a Takayasu: adultos mayores (edad media: 69 años; 75 por ciento mujeres).
+</Tab>
 
-
-
-### B. Vasculitis de Medianos Vasos
-
+<Tab value="Medianos Vasos">
 Afectan arterias viscerales principales y sus ramas.
 
 * **Poliarteritis Nodosa (PAN):**
-* **Lo que la hace única:** Afecta a adultos de mediana edad (media de 48 años) con un ligero predominio en hombres (solo el 38 por ciento son mujeres). Clínicamente, las lesiones isquémicas en la piel siguen el trayecto vascular, viéndose como úlceras en "quemadura de cigarro".
-
-
+    * **Lo que la hace única:** Afecta a adultos de mediana edad (media de 48 años) con un ligero predominio en hombres (solo el 38 por ciento son mujeres). Clínicamente, las lesiones isquémicas en la piel siguen el trayecto vascular, viéndose como úlceras en "quemadura de cigarro".
 * **Enfermedad de Kawasaki:**
-* **Lo que la hace única:** Es una enfermedad predominantemente infantil. Se distingue por una clínica mucocutánea muy visual: "lengua en fresa", labios agrietados y sangrantes, inyección conjuntival, adenopatía cervical, y eritema/descamación en palmas y plantas.
+    * **Lo que la hace única:** Es una enfermedad predominantemente infantil. Se distingue por una clínica mucocutánea muy visual: "lengua en fresa", labios agrietados y sangrantes, inyección conjuntival, adenopatía cervical, y eritema/descamación en palmas y plantas.
+</Tab>
 
-
-
-### C. Vasculitis de Pequeños Vasos (Inmunocomplejos vs. ANCA)
-
+<Tab value="Pequeños Vasos">
 Afectan arteriolas, capilares y vénulas. Se dividen radicalmente por su mecanismo inmune:
 
-**C.1. Mediadas por Inmunocomplejos:**
-
-* **Vasculitis por IgA (Púrpura de Henoch-Schönlein):**
-* **Lo que la hace única:** Ocurre clásicamente en jóvenes (edad media de 17 años) frecuentemente posterior a una infección respiratoria. Presenta púrpura palpable distintiva.
-
-
+**Mediadas por Inmunocomplejos:**
+* **Vasculitis por IgA (Púrpura de Henoch-Schönlein):** Ocurre clásicamente en jóvenes (edad media de 17 años) frecuentemente posterior a una infección respiratoria. Presenta púrpura palpable distintiva.
 * **Vasculitis Crioglobulinémica:** Asociada a depósitos de inmunocomplejos.
 * **Vasculitis Urticarial Hipocomplementémica:** Asociada a anticuerpos anti-C1q.
 * **Enfermedad Anti-MBG (Goodpasture):** Ataque directo a la membrana basal glomerular.
 
-**C.2. Asociadas a ANCA:**
+**Asociadas a ANCA:**
+* **Granulomatosis con Poliangeítis (GPA / Wegener):** Afecta pacientes alrededor de los 45 años. Se asocia fuertemente al anticuerpo **c-ANCA** (dirigido contra la **Proteinasa 3 o PR3**). Destruye tejido de vías respiratorias creando deformidades ("nariz en silla de montar", perforación del paladar, estenosis subglótica, granulomas orbitarios) y cavitaciones de paredes gruesas en los pulmones.
+* **Poliangeítis Microscópica (MPA):** No forma granulomas. Se asocia al anticuerpo **p-ANCA** (dirigido contra la **Mieloperoxidasa o MPO**).
+* **Granulomatosis Eosinofílica con Poliangeítis (EGPA / Churg-Strauss):** Edad media de 50 años. Es la vasculitis "alérgica"; cursa con asma y eosinofilia masiva, asociada frecuentemente a **p-ANCA / MPO**.
+</Tab>
+</Tabs>
 
-* **Granulomatosis con Poliangeítis (GPA / Wegener):**
-* **Lo que la hace única:** Afecta pacientes alrededor de los 45 años. Se asocia fuertemente al anticuerpo **c-ANCA** (dirigido contra la **Proteinasa 3 o PR3**). Destruye tejido de vías respiratorias creando deformidades ("nariz en silla de montar", perforación del paladar, estenosis subglótica, granulomas orbitarios) y cavitaciones de paredes gruesas en los pulmones.
+## Fisiopatología a Detalle (El origen del daño)
 
-
-* **Poliangeítis Microscópica (MPA):**
-* **Lo que la hace única:** No forma granulomas. Se asocia al anticuerpo **p-ANCA** (dirigido contra la **Mieloperoxidasa o MPO**).
-
-
-* **Granulomatosis Eosinofílica con Poliangeítis (EGPA / Churg-Strauss):**
-* **Lo que la hace única:** Edad media de 50 años. Es la vasculitis "alérgica"; cursa con asma y eosinofilia masiva, asociada frecuentemente a **p-ANCA / MPO**.
-
-
-
-## 3. Fisiopatología a Detalle (El origen del daño)
-
-### A. Grandes Vasos (Inflamación Granulomatosa)
-
+<Tabs items={['Grandes Vasos', 'Medianos Vasos', 'Pequeños Vasos']}>
+<Tab value="Grandes Vasos">
+**(Inflamación Granulomatosa)**
 * El proceso es dirigido por células dendríticas en la adventicia que activan linfocitos T (Th1 y Th17).
 * Se liberan citocinas como IFN-gamma, IL-17, IL-6 e IL-1.
 * Los macrófagos se activan y se fusionan formando células gigantes multinucleadas.
 * Esto genera inflamación granulomatosa de la pared, degradación de elastina y un engrosamiento de la íntima (hiperplasia) que causa estenosis severa e isquemia del tejido diana.
+</Tab>
 
-### B. Medianos Vasos (Inflamación Necrotizante)
-
+<Tab value="Medianos Vasos">
+**(Inflamación Necrotizante)**
 * Infiltrado predominante de células T, macrófagos y neutrófilos.
 * Ocurre una degradación directa de la elastina y colágeno, con necrosis fibrinoide de la pared vascular, lo que predispone a la formación de microaneurismas.
+</Tab>
 
-### C. Pequeños Vasos (El Mecanismo ANCA)
-
+<Tab value="Pequeños Vasos">
+**(El Mecanismo ANCA)**
 El daño de las vasculitis por ANCA tiene un mecanismo molecular preciso:
-
 1. **Factores y "Priming":** Factores genéticos, ambientales o una infección/inflamación desencadenan el "priming" (preparación) del neutrófilo.
 2. **Expresión en superficie:** Este priming provoca que el neutrófilo exprese en su superficie antígenos que normalmente están en su citoplasma (PR3 o MPO).
 3. **Ataque autoinmune:** Células B autorreactivas producen ANCA (Anticuerpos Citoplasmáticos Antineutrófilo) que reconocen y se unen a estos antígenos en el neutrófilo.
 4. **Activación y destrucción:** La unión del ANCA activa violentamente al neutrófilo, induciendo su degranulación y el daño letal a la célula endotelial y al tejido circundante.
+</Tab>
+</Tabs>
 
-## 4. Criterios de Clasificación y Escalas (A Detalle)
+## Criterios de Clasificación y Escalas (A Detalle)
 
 Para clasificar la Granulomatosis Eosinofílica con Poliangeítis (EGPA), el ACR/EULAR utiliza un estricto sistema de puntuación sumativo. **Para clasificar a un paciente con EGPA, la suma de los criterios debe ser mayor o igual a 6 puntos** (esta escala otorga una especificidad del 99 por ciento y una sensibilidad del 85 por ciento).
 
@@ -757,26 +760,32 @@ Para clasificar la Granulomatosis Eosinofílica con Poliangeítis (EGPA), el ACR
 * cANCA o anti-PR3 positivo: **-3 puntos** (Ojo, esto **resta** puntos porque es patognomónico de Wegener, no de EGPA).
 * Hematuria: **-1 punto** (También resta especificidad para EGPA).
 
-## 5. Diagnóstico e Imagen
+## Diagnóstico e Imagen
 
 * **Vasculitis de Grandes Vasos:** Se utiliza el PET-CT para evaluar la actividad inflamatoria. Un paciente con actividad mostrará hipermetabolismo difuso resaltado en el estudio a lo largo de la aorta y grandes vasos (tronco celíaco, mesentérica, arterias ilíacas y femorales). La angiografía mostrará oclusiones o estenosis severas.
 * **Vasculitis de Pequeños Vasos:** La Tomografía Computarizada (TC) de alta resolución en tórax es clave. En GPA (Wegener) se observan áreas parcheadas, vidrio esmerilado y característicos nódulos con cavitación. En EGPA se observan opacidades focales parcheadas en vidrio esmerilado o patrón en árbol en brote.
 * **Inmunofluorescencia Indirecta:** Permite identificar los patrones de ANCA. El **p-ANCA** (perinuclear) rodea el núcleo del neutrófilo y se liga a MPO; el **c-ANCA** (citoplasmático) tiñe el citoplasma difusamente y se liga a PR3.
 
-## 6. Tratamiento Farmacológico General (Enfoque en Vasculitis ANCA)
+## Tratamiento Farmacológico General (Enfoque en Vasculitis ANCA)
 
-El tratamiento de las vasculitis severas se divide estrictamente en dos fases temporales y de agresividad farmacológica:
+El tratamiento de las vasculitis severas se divide estrictamente en fases temporales y de agresividad farmacológica:
 
-1. **Fase de Inducción (0 a 3-6 meses):**
+<Steps>
+<Step>
+#### Fase de Inducción (0 a 3-6 meses)
 * **Objetivo:** Llevar la enfermedad a un estado de remisión clínica temprana.
 * **Fármacos:** Se administran altas dosis iniciales de Glucocorticoides (GCs), usualmente por vía intravenosa, seguidos de dosis orales. Concomitantemente se utilizan fármacos inmunosupresores muy potentes, ya sea Ciclofosfamida (CYC) o Rituximab (RTX).
+</Step>
 
-
-2. **Fase de Mantenimiento (3-6 meses hasta 24-48 meses):**
+<Step>
+#### Fase de Mantenimiento (3-6 meses hasta 24-48 meses)
 * **Objetivo:** Evitar las recaídas (relapse) de la enfermedad a largo plazo.
 * **Fármacos:** Reducción progresiva (tapering) de los glucocorticoides orales. Se sustituye la Ciclofosfamida por agentes de mantenimiento como Azatioprina (AZA), Metotrexato (MTX), Micofenolato Mofetilo (MMF) o dosis espaciadas de Rituximab (RTX).
+</Step>
 
-
-3. **Seguimiento a Largo Plazo (Indefinido):**
+<Step>
+#### Seguimiento a Largo Plazo (Indefinido)
 * El paciente entra en un estado clínico que puede ser de "Remisión con fármacos" o, idealmente, "Remisión sin fármacos".
 * Si los síntomas regresan, se clasifica como una "Recaída" (Relapse), y si la terapia inicial nunca logró controlar los síntomas, se dictamina como "Enfermedad Activa Refractaria".
+</Step>
+</Steps>

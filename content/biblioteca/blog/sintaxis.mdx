@@ -210,12 +210,12 @@ $$
 </Callout>
 
 ```mermaid
-graph LR;
-    A[Sintomatología] --> B{¿Signos de alarma?};
-    B -- Sí --> C[Ingreso a Urgencias / UCI];
-    B -- No --> D[Consulta Externa / Ambulatoria];
-    C --> E[Monitorización Continua];
-    D --> F[Tratamiento Sintomático];
+flowchart LR
+    A["Sintomatología"] --> B{"¿Signos de alarma?"}
+    B -- "Sí" --> C["Ingreso a Urgencias / UCI"]
+    B -- "No" --> D["Consulta Externa / Ambulatoria"]
+    C --> E["Monitorización Continua"]
+    D --> F["Tratamiento Sintomático"]
 ```
 
 ### 3. Visualizaciones D3.js (Lienzos Vectoriales)

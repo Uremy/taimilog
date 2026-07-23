@@ -3,444 +3,376 @@ title: Repaso 3 de Infectología
 description: Perspectiva general del tercer parcial
 ---
 
-Este parcial se divide en dos grandes grupos.
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-## Los Hongos
+Este parcial se divide en tres grandes grupos biológicos:
 
-* **Candidiasis (_Candida spp._):** El oportunista por excelencia. La clave aquí es entender que es parte de la microbiota normal, pero causa desde candidiasis oral-vaginal hasta candidemia invasiva cuando hay alteraciones en las barreras físicas o inmunosupresión.
-  
-* **Histoplasmosis (_Histoplasma capsulatum_):** La micosis endémica clásica asociada a guano de murciélagos y aves (cuevas, exploradores). Su presentación pulmonar puede mimetizar perfectamente a la tuberculosis, formando granulomas, y es definitoria de SIDA en su forma diseminada.
-  
+<Accordions type="multiple">
+<Accordion title="Los Hongos">
+* **Candidiasis (Candida spp.):** El oportunista por excelencia. La clave aquí es entender que es parte de la microbiota normal, pero causa desde candidiasis oral-vaginal hasta candidemia invasiva cuando hay alteraciones en las barreras físicas o inmunosupresión.
+* **Histoplasmosis (Histoplasma capsulatum):** La micosis endémica clásica asociada a guano de murciélagos y aves (cuevas, exploradores). Su presentación pulmonar puede mimetizar perfectamente a la tuberculosis, formando granulomas, y es definitoria de SIDA en su forma diseminada.
+</Accordion>
 
-## Los Protozoarios
-
+<Accordion title="Los Protozoarios">
 Organismos unicelulares que causan algunas de las enfermedades de mayor impacto global. Se dividen clínicamente por cómo y dónde atacan:
-
 * **Los Intestinales:**
-  
   * **Giardiasis:** El parásito de aguas contaminadas. Se adhiere al duodeno y causa un síndrome de malabsorción con esteatorrea (diarrea fétida y grasosa), sin invadir la mucosa.
-    
-  * **Amebiasis (_Entamoeba histolytica_):** A diferencia de Giardia, esta sí invade. Destruye el tejido causando disentería y tiene la una complicación extraintestinal: el absceso hepático amebiano.
-    
+  * **Amebiasis (Entamoeba histolytica):** A diferencia de Giardia, esta sí invade. Destruye el tejido causando disentería y tiene una complicación extraintestinal: el absceso hepático amebiano.
 * **Los Transmitidos por Vectores:**
-  
-  * **Paludismo (Malaria):** Transmitida por el mosquito _Anopheles_. La clave es el ciclo eritrocítico del _Plasmodium_, que causa los clásicos picos febriles cíclicos, anemia hemolítica y esplenomegalia.
-    
+  * **Paludismo (Malaria):** Transmitida por el mosquito *Anopheles*. La clave es el ciclo eritrocítico del *Plasmodium*, que causa los clásicos picos febriles cíclicos, anemia hemolítica y esplenomegalia.
   * **Tripanosomiasis (Enfermedad de Chagas):** Transmitida por la chinche besucona. Lo vital es recordar la fase aguda (Signo de Romaña-Chagoma) y la fase crónica, que destruye los plexos nerviosos causando miocardiopatía dilatada y megasíndromes (megaesófago, megacolon).
-    
+</Accordion>
 
-### Los Helmintos
-
-Estos son los parásitos macroscópicos. La clínica suele depender de la carga parasitaria y, en algunos casos, de su ruta de migración por el cuerpo.
-
+<Accordion title="Los Helmintos">
+Parásitos macroscópicos. La clínica suele depender de la carga parasitaria y, en algunos casos, de su ruta de migración por el cuerpo.
 * **Nemátodos (Gusanos cilíndricos):**
-  
-  * **Ascaris lumbricoides:** El nemátodo intestinal más grande. Su ciclo de Loos es la migración pulmonar que causa Síndrome de Löffler.Tiene riesgo de obstrucción intestinal u oclusión biliar cuando hay ovillos masivos.
-    
-  * **Tricocefalosis (_Trichuris trichiura_):** El gusano látigo. Se enclava en el ciego y colon. En infecciones masivas (frecuente en niños), causa disentería, pujo, tenesmo y el clásico prolapso rectal.
-    
-  * **Enterobiasis (_Enterobius vermicularis_):** El oxiuro. Su ciclo es nocturno y perineal, causando prurito anal intenso. El diagnóstico se hace con la clásica prueba de la cinta adhesiva (Test de Graham), no con coproparasitoscópico.
-    
+  * **Ascaris lumbricoides:** El nemátodo intestinal más grande. Su ciclo de Loos es la migración pulmonar que causa Síndrome de Löffler. Tiene riesgo de obstrucción intestinal u oclusión biliar cuando hay ovillos masivos.
+  * **Tricocefalosis (Trichuris trichiura):** El gusano látigo. Se enclava en el ciego y colon. En infecciones masivas (frecuente en niños), causa disentería, pujo, tenesmo y el clásico prolapso rectal.
+  * **Enterobiasis (Enterobius vermicularis):** El oxiuro. Su ciclo es nocturno y perineal, causando prurito anal intenso. El diagnóstico se hace con la clásica prueba de la cinta adhesiva (Test de Graham), no con coproparasitoscópico.
 * **Céstodos (Tenias):**
-  
-  * **Tenias (_T. solium_ y _T. saginata_):** Transmitidas por carne de cerdo o res mal cocida. Lo más crítico de este tema es diferenciar entre la teniasis (infección intestinal por el gusano adulto) y la **neurocisticercosis** (la grave infección tisular en el cerebro al ingerir directamente los huevos de _T. solium_).
+  * **Tenias (T. solium y T. saginata):** Transmitidas por carne de cerdo o res mal cocida. Lo más crítico es diferenciar entre la teniasis (infección intestinal por el gusano adulto) y la **neurocisticercosis** (la grave infección tisular en el cerebro al ingerir directamente los huevos de *T. solium*).
+</Accordion>
+</Accordions>
 
-* * *
+---
 
-# Candida ssp.
+# Candida spp.
 
 Son **hongos levaduriformes (unicelulares) oportunistas**. En individuos sanos, actúan como **comensales** habituales, formando parte de la microbiota normal del tracto gastrointestinal (desde la boca hasta el recto), el tracto genitourinario femenino y, transitoriamente, la piel. La enfermedad (candidiasis) ocurre cuando hay una disrupción en las barreras anatómicas, desequilibrio de la microbiota o alteraciones en el sistema inmunológico del huésped.
 
-## Epidemiología
+## Epidemiología y Factores de Riesgo
 
-Las especies de _Candida_ son la causa fúngica más común de enfermedad humana y figuran entre los patógenos nosocomiales más frecuentes a nivel mundial (cuarta causa de infecciones del torrente sanguíneo en terapias intensivas).
+Las especies de *Candida* son la causa fúngica más común de enfermedad humana y figuran entre los patógenos nosocomiales más frecuentes a nivel mundial (cuarta causa de infecciones del torrente sanguíneo en terapias intensivas).
 
 * **Grupos etarios:** Presenta un patrón bimodal, con picos en las edades extremas de la vida (neonatos, particularmente prematuros, y adultos mayores), debido a la inmadurez o senescencia inmunológica.
-  
-* **Grupos de riesgo y Factores predisponentes:**
-  
-  * **Inmunosupresión:** VIH/SIDA (especialmente con CD4 menores a 200 cél/microL), neoplasias hematológicas, quimioterapia, uso crónico de corticosteroides.
-    
+* **Grupos de riesgo y predisponentes:**
+  * **Inmunosupresión:** VIH/SIDA (especialmente con CD4 `` `< 200` `` cél/microL), neoplasias hematológicas, quimioterapia, uso crónico de corticosteroides.
   * **Alteración de microbiota:** Uso reciente de antibióticos de amplio espectro.
-    
   * **Ruptura de barreras físicas:** Cirugía abdominal reciente (perforación intestinal), quemaduras graves, presencia de Catéter Venoso Central (CVC).
-    
-  * **Factores metabólicos y nutricionales:** Diabetes mellitus (la hiperglucemia favorece la adherencia fúngica), Nutrición Parenteral Total (NPT - las emulsiones lipídicas favorecen especies como _C. parapsilosis_).
-    
+  * **Factores metabólicos y nutricionales:** Diabetes mellitus (la hiperglucemia favorece la adherencia fúngica), Nutrición Parenteral Total (NPT - las emulsiones lipídicas favorecen especies como *C. parapsilosis*).
   * **Neutropenia prolongada:** Principal riesgo para candidiasis invasiva y hepatoesplénica.
-    
 
-## Microbiología
+## Microbiología y Especies
 
-Se reproducen por gemación (blastoconidias). Su característica distintiva es el **pleomorfismo**: pueden existir como levaduras, pseudohifas y, en el caso de _C. albicans_, hifas verdaderas.
+Se reproducen por gemación (blastoconidias). Su característica distintiva es el **pleomorfismo**: pueden existir como levaduras, pseudohifas y, en el caso de *C. albicans*, hifas verdaderas.
 
-**Especies de importancia clínica:**
-
-1. **_Candida albicans:_** Causa el 50-70% de las infecciones. Forma tubos germinales (hifas verdaderas) a 37°C, clave para su identificación en laboratorio.
-  
-2. **_Candida glabrata:_** Segunda causa más común en adultos. Ojo: **Solo forma levaduras** (no pseudohifas). Tiene resistencia frecuente y a veces intrínseca al fluconazol.
-  
-3. **_Candida krusei:_** **Resistencia intrínseca al fluconazol**. Muy común en pacientes con leucemia que reciben profilaxis con azoles.
-  
-4. **_Candida parapsilosis:_** Afinidad extraordinaria por los plásticos. Es la reina de las infecciones de CVC y se asocia a NPT.
-  
-5. **_Candida tropicalis:_** Altamente virulenta, muy asociada a pacientes neutropénicos.
-  
-6. **_Candida auris:_** Patógeno emergente intrahospitalario. Altamente contagiosa (sobrevive en superficies inertes) y con perfil de **multidrogorresistencia** (frecuentemente resistente a azoles y anfotericina B).
-  
-
-## Factores de virulencia
-
+<Accordions type="multiple">
+<Accordion title="Especies de importancia clínica">
+1. **Candida albicans:** Causa el 50-70% de las infecciones. Forma tubos germinales (hifas verdaderas) a 37°C, clave para su identificación en laboratorio.
+2. **Candida glabrata:** Segunda causa más común en adultos. Ojo: **Solo forma levaduras** (no pseudohifas). Tiene resistencia frecuente y a veces intrínseca al fluconazol.
+3. **Candida krusei:** **Resistencia intrínseca al fluconazol**. Muy común en pacientes con leucemia que reciben profilaxis con azoles.
+4. **Candida parapsilosis:** Afinidad extraordinaria por los plásticos. Es la reina de las infecciones de CVC y se asocia a NPT.
+5. **Candida tropicalis:** Altamente virulenta, muy asociada a pacientes neutropénicos.
+6. **Candida auris:** Patógeno emergente intrahospitalario. Altamente contagiosa (sobrevive en superficies inertes) y con perfil de **multidrogorresistencia** (frecuentemente resistente a azoles y anfotericina B).
+</Accordion>
+<Accordion title="Factores de virulencia">
 * **Transición morfológica (Dimorfismo):** El cambio de forma de levadura a hifa-pseudohifa es fundamental. Las hifas son la forma invasiva que penetra los tejidos epiteliales y endoteliales.
-  
 * **Adhesinas:** Proteínas de superficie que les permiten anclarse a células humanas o a plásticos (catéteres, prótesis).
-  
 * **Enzimas hidrolíticas:** Secretan proteinasas aspárticas y fosfolipasas que degradan las membranas celulares del huésped, facilitando la invasión tisular.
-  
-* **Biopelículas:** Comunidades tridimensionales de hongos envueltas en una matriz extracelular (especialmente en catéteres y válvulas cardíacas). Dentro del biofilm, _Candida_ es virtualmente invulnerable al sistema inmune y es hasta 1000 veces más resistente a los antifúngicos.
-  
+* **Biopelículas:** Comunidades tridimensionales de hongos envueltas en una matriz extracelular (especialmente en catéteres y válvulas cardíacas). Dentro del biofilm, *Candida* es virtualmente invulnerable al sistema inmune y es hasta 1000 veces más resistente a los antifúngicos.
+</Accordion>
+</Accordions>
 
 ## Cuadro Clínico
 
-### A. Candidiasis Mucocutánea
-
+<Tabs items={['Candidiasis Mucocutánea', 'Candidiasis Invasiva / Sistémica']}>
+<Tab value="Candidiasis Mucocutánea">
 * **Orofaringea (Muguet):** Placas blancas seudomembranosas en mucosa oral y lengua que, **al desprenderse con un abatelenguas, dejan una base eritematosa y sangrante**.
-  
 * **Esofágica:** Odinofagia severa y disfagia. Es una enfermedad definitoria de SIDA.
-  
 * **Vulvovaginal:** Prurito intenso, eritema vulvar y secreción vaginal espesa, grumosa (aspecto de requesón), sin mal olor (a diferencia de la vaginosis).
-  
 * **Intertrigo:** Placas eritematosas y maceradas en pliegues cutáneos (submamario, inguinal, axilar) con **lesiones satélite** (pústulas periféricas).
-  
+</Tab>
 
-### B. Candidiasis Invasiva / Sistémica
-
+<Tab value="Candidiasis Invasiva / Sistémica">
 * **Candidemia:** Fiebre de origen desconocido en un paciente de riesgo (ej. en UCI con CVC) que no responde a antibióticos de amplio espectro. Puede evolucionar a choque séptico.
-  
 * **Endoftalmitis por Candida:** Diseminación hematógena al ojo. Lesiones algodonosas, blancas y exudativas en la retina. Puede causar ceguera.
-  
 * **Candidiasis Hepatoesplénica (Diseminada Crónica):** Típica del paciente neutropénico que recupera su cuenta de neutrófilos. Fiebre persistente, dolor en hipocondrio derecho y fosfatasa alcalina muy elevada.
-  
 * **Endocarditis:** Común en usuarios de drogas intravenosas o portadores de válvulas protésicas.
-  
+</Tab>
+</Tabs>
 
 ## Diagnóstico
 
-### Laboratorio
-
+<Tabs items={['Laboratorio', 'Gabinete']}>
+<Tab value="Laboratorio">
 * **Examen directo (KOH al 10%):** De raspados de piel o mucosas. Destruye las células escamosas y permite ver las levaduras y pseudohifas.
-  
-* **Tinción de Gram:** _Candida_ se tiñe intensamente de morado (Gram positiva).
-  
-* **Cultivo:** El gold standard. Crecen en agar Sabouraud. En medios cromogénicos (CHROMagar), las colonias cambian de color según la especie (verde para _albicans_, azul para _tropicalis_), lo que agiliza la identificación.
-  
+* **Tinción de Gram:** *Candida* se tiñe intensamente de morado (Gram positiva).
+* **Cultivo:** El gold standard. Crecen en agar Sabouraud. En medios cromogénicos (CHROMagar), las colonias cambian de color según la especie (verde para *albicans*, azul para *tropicalis*), lo que agiliza la identificación.
 * **Hemocultivos:** Obligatorios en sospecha de candidemia, aunque su sensibilidad es subóptima (50-70%).
-  
 * **Biomarcadores séricos (1,3-Beta-D-Glucano):** Componente de la pared celular fúngica. Es muy sensible para candidiasis invasiva, pero poco específico (puede elevarse en otras micosis o por gasas quirúrgicas/hemodiálisis). Su mayor utilidad es su **alto valor predictivo negativo** (si sale negativo, es casi seguro que no hay candidemia).
-  
+</Tab>
 
-### Gabinete
-
+<Tab value="Gabinete">
 * **Endoscopia (SEDA):** Para confirmar candidiasis esofágica.
-  
-* **Fondo de Ojo:** **Regla de oro de infectología:** _A TODO paciente con candidemia se le DEBE realizar un fondo de ojo dilatado por oftalmología_ para descartar endoftalmitis, ya que esto cambia drásticamente el tiempo de tratamiento.
-  
+* **Fondo de Ojo:** **Regla de oro de infectología:** *A TODO paciente con candidemia se le DEBE realizar un fondo de ojo dilatado por oftalmología* para descartar endoftalmitis, ya que esto cambia drásticamente el tiempo de tratamiento.
 * **Ecocardiograma (preferentemente transesofágico):** En todo paciente con candidemia prolongada para descartar endocarditis.
-  
 * **TAC/RM de Abdomen:** En candidiasis hepatoesplénica, donde se observan clásicas lesiones en "ojo de buey" o "tiro al blanco" (microabscesos fúngicos rodeados de inflamación).
-  
+</Tab>
+</Tabs>
 
 ## Diagnóstico Diferencial
 
 * **Boca:** Leucoplasia vellosa (las placas NO se desprenden al raspar), infección por VHS.
-  
 * **Esófago:** Esofagitis por Citomegalovirus (CMV) o Virus del Herpes Simple (VHS).
-  
-* **Vagina:** Vaginosis bacteriana (_Gardnerella_, secreción maloliente/pescado), Tricomoniasis (secreción espumosa amarillo-verdosa).
-  
+* **Vagina:** Vaginosis bacteriana (*Gardnerella*, secreción maloliente/pescado), Tricomoniasis (secreción espumosa amarillo-verdosa).
 * **Piel (Intertrigo):** Tiñas (dermatofitos), dermatitis de contacto, psoriasis invertida.
-  
 * **Sistémico:** Sepsis bacteriana severa, aspergilosis invasiva.
-  
 
 ## Tratamiento
 
-El tratamiento depende absolutamente de la presentación y la especie.
-
-### Candidiasis Mucocutánea
-
-| **Presentación Clínica** | **Fármaco y Dosis** | **Duración** |
+<Tabs items={['Mucocutánea', 'Invasiva y Sistémica']}>
+<Tab value="Mucocutánea">
+| Presentación Clínica | Fármaco y Dosis | Duración |
 | --- | --- | --- |
 | **Orofaringea (Leve)** | **Nistatina** en suspensión: 400,000 a 600,000 UI vía oral (enjuagar y tragar) 4 veces al día. | 7 a 14 días. |
 | **Orofaringea (Moderada/Severa)** | **Fluconazol:** 100 a 200 mg vía oral cada 24 horas. | 7 a 14 días. |
 | **Esofágica** | **Fluconazol:** 200 a 400 mg vía oral o IV cada 24 horas. | 14 a 21 días. |
 | **Vulvovaginal (No complicada)** | **Fluconazol:** 150 mg vía oral. | Dosis única. |
 | **Vulvovaginal (Recurrente)** | **Fluconazol:** 150 mg vía oral cada 72 horas por 3 dosis, seguido de 150 mg semanales. | 6 meses (terapia de mantenimiento). |
+</Tab>
 
-### Candidiasis Invasiva y Sistémica
-
+<Tab value="Invasiva y Sistémica">
 El tiempo de tratamiento **comienza a contar a partir del primer hemocultivo negativo**, no desde el inicio de los síntomas ni del inicio del antifúngico.
 
-| **Presentación Clínica** | **Fármaco de Elección y Dosis** | **Criterio** |
+| Presentación Clínica | Fármaco de Elección y Dosis | Criterio |
 | --- | --- | --- |
 | **Candidemia (Terapia Empírica Inicial)** | **Caspofungina:** Dosis de carga de 70 mg IV, seguida de 50 mg IV cada 24 horas. | Hasta estabilización clínica y confirmación de especie. |
 | **Candidemia (Alternativas Empíricas)** | **Micafungina:** 100 mg IV cada 24 horas. **Anidulafungina:** Carga de 200 mg IV, luego 100 mg IV cada 24 horas. | Igual al anterior. |
-| **Candidemia (Terapia de Desescalada / Step-down)** | **Fluconazol:** Dosis de carga de 800 mg (o 12 mg/kg) oral/IV, seguida de 400 mg (o 6 mg/kg) cada 24 horas. | **14 días** tras el primer hemocultivo de control negativo. |
-| **Endoftalmitis (Afección macular/vítrea)** | **Anfotericina B liposomal:** 3 a 5 mg/kg IV cada 24 horas (± Flucitosina). _Se requiere inyección intravítrea o vitrectomía frecuentemente_. | 4 a 6 semanas mínimo, hasta la resolución de las lesiones oftalmológicas. |
-| **Endocarditis** | **Anfotericina B liposomal:** 3 a 5 mg/kg IV cada 24 horas (± Flucitosina) o Equinocandina a dosis altas. _Casi siempre requiere recambio valvular_. | Mínimo **6 semanas** post-cirugía. Terapia supresiva crónica con Fluconazol si no es operable. |
+| **Candidemia (Desescalada / Step-down)** | **Fluconazol:** Dosis de carga de 800 mg (o 12 mg/kg) oral/IV, seguida de 400 mg (o 6 mg/kg) cada 24 horas. | **14 días** tras el primer hemocultivo de control negativo. |
+| **Endoftalmitis (Afección macular/vítrea)** | **Anfotericina B liposomal:** 3 a 5 mg/kg IV cada 24 horas (± Flucitosina). *Se requiere inyección intravítrea o vitrectomía frecuentemente*. | 4 a 6 semanas mínimo, hasta la resolución de las lesiones oftalmológicas. |
+| **Endocarditis** | **Anfotericina B liposomal:** 3 a 5 mg/kg IV cada 24 horas (± Flucitosina) o Equinocandina a dosis altas. *Casi siempre requiere recambio valvular*. | Mínimo **6 semanas** post-cirugía. Terapia supresiva crónica con Fluconazol si no es operable. |
+</Tab>
+</Tabs>
 
 ## Profilaxis
 
 * **Profilaxis farmacológica:** Uso de Fluconazol o Posaconazol en pacientes de muy alto riesgo (receptores de trasplante de células madre hematopoyéticas, leucemias en inducción con neutropenia profunda esperada).
-  
 * **Manejo de catéteres:** Retiro temprano de líneas centrales y periféricas innecesarias. Curaciones estériles rigurosas.
-  
 * **Optimización del huésped:** Control glucémico estricto en diabéticos, desescalar antibióticos de amplio espectro tan pronto como sea posible (Antimicrobial Stewardship) y reducir dosis de inmunosupresores si la situación clínica lo permite.
-  
 
-* * *
+---
 
 # Histoplasma capsulatum
 
-Es un **hongo dimorfo térmico**. Esto significa que su morfología cambia dependiendo de la temperatura de su entorno (la mnemotécnica en inglés: _Mold in the cold, Yeast in the beast_). En el medio ambiente (25-30°C) vive como un moho (micelio), pero al ser inhalado y entrar al cuerpo humano (37°C), se transforma en una levadura patógena, convirtiéndose en un **parásito intracelular facultativo** de los macrófagos.
+Es un **hongo dimorfo térmico**. Su morfología cambia dependiendo de la temperatura de su entorno (*Mold in the cold, Yeast in the beast*). En el medio ambiente (25-30°C) vive como un moho (micelio), pero al ser inhalado y entrar al cuerpo humano (37°C), se transforma en una levadura patógena, convirtiéndose en un **parásito intracelular facultativo** de los macrófagos.
 
-## Epidemiología
+## Epidemiología y Microbiología
 
-* **Distribución Geográfica:** Es endémico en el continente americano. Las zonas de mayor prevalencia mundial son los valles de los ríos Ohio y Misisipi en EE. UU., y amplias regiones de América Latina (México, Brasil, Centroamérica).
-  
+* **Distribución Geográfica:** Endémico en el continente americano. Zonas de mayor prevalencia: valles de los ríos Ohio y Misisipi en EE. UU., y amplias regiones de América Latina (México, Brasil, Centroamérica).
 * **Hábitat y Reservorio:** Crece en suelos ricos en nitrógeno, específicamente aquellos contaminados con **guano de aves (gallinas, palomas, estorninos) y murciélagos**.
-  
-* **Grupos de Riesgo (Exposición Ocupacional o Recreativa):** Espeleólogos (exploradores de cuevas), mineros, granjeros (limpiadores de gallineros), trabajadores de la construcción (demolición de edificios antiguos) y arqueólogos.
-  
-* **Edades e Inmunidad:** La infección primaria ocurre a cualquier edad (asintomática en la mayoría). Sin embargo, la **enfermedad diseminada grave** tiene predilección por los extremos de la vida y, críticamente, en pacientes con inmunosupresión celular grave (pacientes con **VIH/SIDA con 'CD4 < 150 cél/microL'**, receptores de trasplantes, o usuarios de anti-TNF alfa).
-  
-
-## Microbiología
-
-* **Fase micelial (saprófita, ambiental):** Produce dos tipos de esporas. Las macroconidias (tuberculadas, de pared gruesa, no infecciosas) y las **microconidias (2-5 micras)**, que son lo suficientemente pequeñas para ser inhaladas y llegar a los alvéolos.
-  
-* **Fase levaduriforme (parasitaria, tisular):** Levaduras pequeñas (2-4 micras) de base estrecha. Sobreviven y se replican _dentro_ de los fagolisosomas de los macrófagos.
-  
+* **Grupos de Riesgo (Exposición Ocupacional o Recreativa):** Espeleólogos (exploradores de cuevas), mineros, granjeros (limpiadores de gallineros), trabajadores de la construcción (demolición) y arqueólogos.
+* **Edades e Inmunidad:** Infección primaria a cualquier edad (asintomática en la mayoría). La **enfermedad diseminada grave** predilecta los extremos de la vida y pacientes con inmunosupresión celular grave (VIH/SIDA con **CD4 `` `< 150` `` cél/microL**, receptores de trasplantes, o usuarios de anti-TNF alfa).
+* **Microbiología:**
+  * **Fase micelial (ambiental):** Produce dos tipos de esporas: macroconidias (tuberculadas, de pared gruesa, no infecciosas) y **microconidias (2-5 micras)**, que son lo suficientemente pequeñas para ser inhaladas y llegar a los alvéolos.
+  * **Fase levaduriforme (tisular):** Levaduras pequeñas (2-4 micras) de base estrecha. Sobreviven y se replican *dentro* de los fagolisosomas de los macrófagos.
 
 ## Fisiopatología
 
-1. **Infección:** Inhalación de microconidias que llegan a los alvéolos.
-  
-2. **Fagocitosis:** Son fagocitadas por los macrófagos alveolares. Lejos de morir, _Histoplasma_ modula el pH del fagolisosoma y se replica en su interior.
-  
-3. **Diseminación:** Los macrófagos infectados viajan por la linfa hacia los ganglios linfáticos hiliares y mediastinales, y luego se diseminan por vía hematógena al **Sistema Reticuloendotelial (SRE): hígado, bazo, médula ósea y ganglios**.
-  
-4. **Inmunidad:** Tras 2-3 semanas, se desarrolla inmunidad celular (Th1). Se forman **granulomas** (caseificantes o no caseificantes) que encapsulan al hongo, los cuales con el tiempo se calcifican.
-  
-5. **Latencia:** Al igual que _Mycobacterium tuberculosis_, el hongo puede permanecer latente en estos granulomas durante décadas y reactivarse si cae la inmunidad.
-  
+<Steps>
+<Step>
+#### Infección
+Inhalación de microconidias que llegan a los alvéolos.
+</Step>
+
+<Step>
+#### Fagocitosis
+Son fagocitadas por los macrófagos alveolares. Lejos de morir, *Histoplasma* modula el pH del fagolisosoma y se replica en su interior.
+</Step>
+
+<Step>
+#### Diseminación
+Los macrófagos infectados viajan por la linfa hacia los ganglios linfáticos hiliares y mediastinales, y luego se diseminan por vía hematógena al **Sistema Reticuloendotelial (SRE): hígado, bazo, médula ósea y ganglios**.
+</Step>
+
+<Step>
+#### Inmunidad
+Tras 2-3 semanas, se desarrolla inmunidad celular (Th1). Se forman **granulomas** (caseificantes o no caseificantes) que encapsulan al hongo, los cuales con el tiempo se calcifican.
+</Step>
+
+<Step>
+#### Latencia
+Al igual que *Mycobacterium tuberculosis*, el hongo puede permanecer latente en estos granulomas durante décadas y reactivarse si cae la inmunidad.
+</Step>
+</Steps>
 
 ## Cuadro Clínico
 
-Depende del estado inmunológico y de la carga del inóculo inhalado.
+<Accordions type="multiple">
+<Accordion title="1. Histoplasmosis Pulmonar Aguda (Asintomática o Leve - `> 90%`)">
+Cuadro seudogripal autolimitado. Puede presentar fiebre, mialgias y tos seca. En jóvenes, la respuesta inmunológica exuberante puede causar **eritema nodoso**, eritema multiforme, o pericarditis.
+</Accordion>
 
-* **1. Histoplasmosis Pulmonar Aguda (Asintomática o Leve - '> 90%'):** Cuadro seudogripal autolimitado. Puede presentar fiebre, mialgias y tos seca. En jóvenes, la respuesta inmunológica exuberante puede causar **eritema nodoso**, eritema multiforme, o pericarditis.
-  
-* **2. Histoplasmosis Pulmonar Crónica:** Típica de hombres mayores, fumadores con EPOC de base. Clínicamente es **indistinguible de la TB pulmonar**: tos productiva, hemoptisis, febrícula nocturna, pérdida de peso y disnea. Progresa con fibrosis y cavitaciones.
-  
-* **3. Histoplasmosis Diseminada Progresiva:** Clásica del paciente con SIDA o inmunosupresión.
-  
-  * Fiebre de origen a determinar, pérdida de peso.
-    
-  * **Hepatoesplenomegalia** y linfadenopatía difusa.
-    
-  * **Úlceras mucocutáneas:** Muy características (úlceras dolorosas en paladar, lengua, encías o laringe).
-    
-  * **Insuficiencia Suprarrenal:** _Histoplasma_ tiene un tropismo por las glándulas suprarrenales, causando necrosis y enfermedad de Addison (hipotensión, hiponatremia, hiperpotasemia, hiperpigmentación).
-    
-  * **Infiltración de médula ósea:** Causando pancytopenia.
-    
-* **4. Mediastinitis Fibrosante (Complicación rara pero fatal):** Reacción fibrótica desmesurada a ganglios linfáticos encapsulados en el mediastino, que atrapa y comprime la vena cava superior, vías aéreas y vasos pulmonares.
-  
+<Accordion title="2. Histoplasmosis Pulmonar Crónica">
+Típica de hombres mayores, fumadores con EPOC de base. Clínicamente es **indistinguible de la TB pulmonar**: tos productiva, hemoptisis, febrícula nocturna, pérdida de peso y disnea. Progresa con fibrosis y cavitaciones.
+</Accordion>
+
+<Accordion title="3. Histoplasmosis Diseminada Progresiva">
+Clásica del paciente con SIDA o inmunosupresión.
+* Fiebre de origen a determinar, pérdida de peso.
+* **Hepatoesplenomegalia** y linfadenopatía difusa.
+* **Úlceras mucocutáneas:** Muy características (úlceras dolorosas en paladar, lengua, encías o laringe).
+* **Insuficiencia Suprarrenal:** *Histoplasma* tiene un tropismo por las glándulas suprarrenales, causando necrosis y enfermedad de Addison (hipotensión, hiponatremia, hiperpotasemia, hiperpigmentación).
+* **Infiltración de médula ósea:** Causando pancitopenia.
+</Accordion>
+
+<Accordion title="4. Mediastinitis Fibrosante (Complicación rara pero fatal)">
+Reacción fibrótica desmesurada a ganglios linfáticos encapsulados en el mediastino, que atrapa y comprime la vena cava superior, vías aéreas y vasos pulmonares.
+</Accordion>
+</Accordions>
 
 ## Diagnóstico
 
-### Laboratorio
-
-* **Detección de Antígeno (EIA) en Orina y Suero:** Es el estudio de mayor rendimiento inicial y el más rápido. Muy alta sensibilidad ('> 90%') en la **enfermedad diseminada**. Sirve también para monitorizar la respuesta al tratamiento (los niveles deben bajar).
-  
+<Tabs items={['Laboratorio', 'Gabinete']}>
+<Tab value="Laboratorio">
+* **Detección de Antígeno (EIA) en Orina y Suero:** Es el estudio de mayor rendimiento inicial y el más rápido. Muy alta sensibilidad (`` `> 90%` ``) en la **enfermedad diseminada**. Sirve también para monitorizar la respuesta al tratamiento (los niveles deben bajar).
 * **Serología (Anticuerpos):** Fijación del complemento e Inmunodifusión (Bandas H y M). Útil en enfermedad pulmonar crónica e inmunocompetentes. Falsa negativa en pacientes con VIH severo.
-  
 * **Cultivo (Gold Standard):** En agar Sabouraud, pero **tarda de 2 a 6 semanas** en crecer. Es diagnóstico definitivo pero poco útil para decisiones clínicas urgentes.
-  
 * **Frotis y Patología:** Tinción de Wright/Giemsa en sangre periférica, médula ósea o biopsias. Se observan los clásicos **macrófagos repletos de pequeñas levaduras intracelulares**. Tinciones de plata (Grocott) o PAS en tejidos muestran granulomas.
-  
+</Tab>
 
-### Gabinete
-
+<Tab value="Gabinete">
 * **Radiografía / TAC de Tórax:**
-  
-  * _Aguda:_ Infiltrados focales o difusos con **linfadenopatía hiliar y mediastinal**.
-    
-  * _Secuela:_ Granulomas calcificados dispersos en "perdigonada" (imagen en _buckshot_ o perdigones de escopeta) y ganglios hiliares calcificados.
-    
-  * _Crónica:_ Infiltrados apicales y **cavitaciones** (idéntico a TB).
-    
+  * *Aguda:* Infiltrados focales o difusos con **linfadenopatía hiliar y mediastinal**.
+  * *Secuela:* Granulomas calcificados dispersos en "perdigonada" (imagen en *buckshot* o perdigones de escopeta) y ganglios hiliares calcificados.
+  * *Crónica:* Infiltrados apicales y **cavitaciones** (idéntico a TB).
+</Tab>
+</Tabs>
 
 ## Diagnóstico Diferencial
 
 * **Tuberculosis (El diferencial obligatorio número 1)**.
-  
 * **Sarcoidosis:** Por la linfadenopatía hiliar bilateral y los granulomas.
-  
 * **Otras micosis endémicas:** Coccidioidomicosis (fiebre del Valle), Paracoccidioidomicosis.
-  
-* **Leishmaniasis visceral (Kala-azar):** Al microscopio, los amastigotes de _Leishmania_ intracelulares pueden confundirse visualmente con _Histoplasma_ (pero el cinetoplasto los diferencia).
-  
+* **Leishmaniasis visceral (Kala-azar):** Al microscopio, los amastigotes de *Leishmania* intracelulares pueden confundirse visualmente con *Histoplasma* (pero el cinetoplasto los diferencia).
 * **Linfoma:** Especialmente en la forma diseminada con hepatoesplenomegalia y adenopatías.
-  
 * **Carcinoma pulmonar:** En la forma pulmonar crónica con masa o cavitación.
-  
 
 ## Tratamiento
 
 El **Itraconazol** requiere un ambiente gástrico ácido para absorberse. No debe darse con inhibidores de la bomba de protones (IBP) ni antiácidos.
 
-| **Forma Clínica** | **Régimen** | **Duración** |
+| Forma Clínica | Régimen | Duración |
 | --- | --- | --- |
 | **Pulmonar Aguda (Leve)** | Usualmente **No requiere tratamiento** fúngico (autolimitada). Observación. | N/A |
 | **Pulmonar Aguda (Moderada a Severa)** | **Itraconazol:** 200 mg vía oral cada 8 horas (TID) por 3 días, seguido de 200 mg cada 12 horas (BID). | **6 a 12 semanas.** (Se pueden usar corticosteroides si hay insuficiencia respiratoria severa). |
 | **Pulmonar Crónica** | **Itraconazol:** 200 mg vía oral cada 8 horas por 3 días, seguido de 200 mg cada 12 o 24 horas. | **12 a 24 meses** (terapia prolongada para evitar recaídas). |
-| **Diseminada Progresiva (Grave, ej. Paciente VIH)** | **1. Inducción:** **Anfotericina B Liposomal:** 3 mg/kg/día IV.**2. Consolidación (Step-down):** Al mejorar clínicamente (1-2 semanas), pasar a **Itraconazol** 200 mg TID por 3 días, luego 200 mg BID. | **Inducción:** 1 a 2 semanas.**Consolidación:** Mínimo **12 meses**, o de por vida si el paciente no recupera su inmunidad (profilaxis secundaria). |
-| **Afección a Sistema Nervioso Central (Meningitis)** | **Anfotericina B Liposomal:** Dosis más alta, **5 mg/kg/día IV** durante 4 a 6 semanas, seguido de Itraconazol. | **≥ 1 año** de consolidación tras finalizar la Anfotericina. |
+| **Diseminada Progresiva (Grave, ej. Paciente VIH)** | **1. Inducción:** **Anfotericina B Liposomal:** 3 mg/kg/día IV.<br/>**2. Consolidación (Step-down):** Al mejorar clínicamente (1-2 semanas), pasar a **Itraconazol** 200 mg TID por 3 días, luego 200 mg BID. | **Inducción:** 1 a 2 semanas.<br/>**Consolidación:** Mínimo **12 meses**, o de por vida si el paciente no recupera su inmunidad (profilaxis secundaria). |
+| **Afección a Sistema Nervioso Central (Meningitis)** | **Anfotericina B Liposomal:** Dosis más alta, **5 mg/kg/día IV** durante 4 a 6 semanas, seguido de Itraconazol. | **`≥ 1 año`** de consolidación tras finalizar la Anfotericina. |
 
 ## Medidas de Prevención
 
 1. **Protección ocupacional:** Uso de **respiradores N95** o equipos de respiración autónoma para trabajadores en alto riesgo (mineros, limpiadores de cuevas, trabajadores agrícolas) cuando haya remoción de tierra con guano o limpieza de edificios abandonados/gallineros.
-  
 2. **Modificación del medio ambiente:** Rociar con agua o soluciones de formaldehído al 3% el suelo o las áreas de trabajo antes de barrer o excavar para evitar la aerosolización de esporas.
-  
-3. **Profilaxis Farmacológica Primaria:** En zonas altamente endémicas, se puede considerar **Itraconazol 200 mg/día** en pacientes con VIH y un recuento de **CD4 '< 150' cél/microL**, hasta que la terapia antirretroviral (TARV) eleve los CD4 por encima de 150 durante al menos 6 meses.
-  
+3. **Profilaxis Farmacológica Primaria:** En zonas altamente endémicas, se puede considerar **Itraconazol 200 mg/día** en pacientes con VIH y un recuento de **CD4 `` `< 150` `` cél/microL**, hasta que la terapia antirretroviral (TARV) eleve los CD4 por encima de 150 durante al menos 6 meses.
 
-* * *
+---
 
 # Giardiasis
 
-Es un **protozoario flagelado** que parasita el tracto digestivo de humanos y otros mamíferos. La especie que infecta a los humanos se conoce indistintamente con tres nombres (son sinónimos en la práctica clínica): **_Giardia lamblia_, _Giardia intestinalis_ o _Giardia duodenalis_**. Es la causa de la giardiasis, una de las enfermedades parasitarias intestinales más comunes en todo el mundo.
+Es un **protozoario flagelado** que parasita el tracto digestivo de humanos y otros mamíferos. La especie que infecta a los humanos se conoce indistintamente con tres nombres (son sinónimos en la práctica clínica): ***Giardia lamblia*, *Giardia intestinalis* o *Giardia duodenalis***. Es la causa de la giardiasis, una de las enfermedades parasitarias intestinales más comunes en todo el mundo.
 
-## Epidemiología
+## Epidemiología y Microbiología
 
 * **Transmisión:** Fecal-oral (ingestión de agua o alimentos contaminados, o contacto directo persona a persona). Es altamente contagiosa porque **el quiste es muy resistente a los niveles estándar de cloración del agua**.
-  
 * **Grupos de Riesgo y Exposiciones Clásicas:**
-  
-  * **Campistas y excursionistas:** Por beber agua de ríos, lagos o arroyos que parecen limpios pero están contaminados por heces de animales (clásicamente, los castores). Por eso en USA se le llama _"Beaver fever"_ (Fiebre del castor).
-    
+  * **Campistas y excursionistas:** Por beber agua de ríos, lagos o arroyos que parecen limpios pero están contaminados por heces de animales (clásicamente, los castores). Por eso en USA se le llama *"Beaver fever"* (Fiebre del castor).
   * **Niños en guarderías:** Y, por consiguiente, sus padres y cuidadores.
-    
   * **Viajeros:** A zonas endémicas (países en vías de desarrollo).
-    
   * **Hombres que tienen sexo con hombres (HSH):** Transmisión a través de prácticas sexuales anales-orales.
-    
 * **Inmunidad:** Pacientes con **deficiencia de IgA secretora** (inmunodeficiencia común variable) o hipogammaglobulinemia tienen un riesgo altísimo de giardiasis crónica y refractaria, ya que la IgA es la principal defensa mucosa contra este parásito.
-  
+* **Estadios morfológicos:**
+  1. **Quiste (Forma infectante y de resistencia):** Ovalado, con 4 núcleos. Puede sobrevivir meses en agua fría. Ingerir tan solo de 10 a 25 quistes es suficiente para causar la enfermedad.
+  2. **Trofozoíto (Forma vegetativa/patógena):** Tiene forma de pera, con 2 núcleos (lo que le da un clásico aspecto de "cara de búho" o "viejito" al microscopio), 4 pares de flagelos para moverse y un **disco suctorio ventral** cóncavo (su arma principal).
 
-## Microbiología y Ciclo Vital
+## Ciclo Vital
 
-El parásito tiene dos estadios morfológicos fundamentales:
+El humano actúa como el **huésped definitivo** (y también sirve como reservorio junto con perros, gatos, castores y ganado). Dado que es un protozoario, su reproducción es **asexual** (por fisión binaria), por lo que no hay huésped intermediario en el sentido estricto.
 
-1. **Quiste (Forma infectante y de resistencia):** Ovalado, con 4 núcleos. Puede sobrevivir meses en agua fría. Ingerir tan solo de 10 a 25 quistes es suficiente para causar la enfermedad.
-  
-2. **Trofozoíto (Forma vegetativa/patógena):** Tiene forma de pera, con 2 núcleos (lo que le da un clásico aspecto de "cara de búho" o "viejito" al microscopio), 4 pares de flagelos para moverse y un **disco suctorio ventral** cóncavo (su arma principal).
-  
+<Steps>
+<Step>
+#### Ingestión
+Se ingieren los **quistes**.
+</Step>
 
-**Ciclo Vital y Tipo de Huésped:**
+<Step>
+#### Excistación
+El ácido del estómago y las enzimas pancreáticas desencadenan la excistación en el duodeno. Un quiste libera dos trofozoítos.
+</Step>
 
-* El humano actúa como el **huésped definitivo** (y también sirve como reservorio junto con perros, gatos, castores y ganado). Dado que es un protozoario, su reproducción es **asexual** (por fisión binaria), por lo que no hay huésped intermediario en el sentido estricto (como ocurre en los helmintos o malaria).
-  
-* **El ciclo:**
-  
-  1. Se ingieren los **quistes**.
-    
-  2. El ácido del estómago y las enzimas pancreáticas desencadenan la **excistación** en el duodeno. Un quiste libera dos trofozoítos.
-    
-  3. Los trofozoítos se adhieren (mediante el disco suctorio) a las microvellosidades de los enterocitos en el **duodeno y yeyuno superior**. Se multiplican por fisión binaria.
-    
-  4. A medida que el contenido intestinal avanza hacia el colon (donde hay menos nutrientes y se absorbe el agua), los trofozoítos sufren **encistamiento**.
-    
-  5. Los quistes (y algunos trofozoítos) se expulsan en las heces.
-    
+<Step>
+#### Adherencia y Multiplicación
+Los trofozoítos se adhieren (mediante el disco suctorio) a las microvellosidades de los enterocitos en el **duodeno y yeyuno superior**. Se multiplican por fisión binaria.
+</Step>
+
+<Step>
+#### Encistamiento
+A medida que el contenido intestinal avanza hacia el colon (donde hay menos nutrientes y se absorbe el agua), los trofozoítos sufren encistamiento.
+</Step>
+
+<Step>
+#### Excreción
+Los quistes (y algunos trofozoítos) se expulsan en las heces.
+</Step>
+</Steps>
 
 ## Fisiopatología
 
 **Giardia NO invade la mucosa** (no produce úlceras profundas ni abscesos como la ameba) y rara vez hay diseminación hematógena.
-
 * **Daño por adherencia:** El disco suctorio se chupa a los enterocitos, causando daño mecánico.
-  
-* Atrofia vellositaria: Esto provoca la pérdida del borde en cepillo, disminuyendo drásticamente la superficie de absorción.
-  
+* **Atrofia vellositaria:** Esto provoca la pérdida del borde en cepillo, disminuyendo drásticamente la superficie de absorción.
 * **Deficiencia de disacaridasas:** Al destruirse el borde en cepillo, se pierden enzimas clave, especialmente la **lactasa**. Esto genera una intolerancia a la lactosa secundaria.
-  
 * **Malabsorción:** Al alterarse la digestión y absorción en el duodeno/yeyuno, las grasas (lípidos) y vitaminas liposolubles (A, D, E, K) no se absorben.
-  
 
 ## Cuadro Clínico
 
 El periodo de incubación es de 1 a 2 semanas.
 
-* **Agudo:**
-  
-  * **Diarrea acuosa que evoluciona a esteatorrea:** Heces grasosas, pastosas, que flotan en el inodoro y son **excesivamente fétidas**.
-    
-  * **NO hay sangre ni moco** en las heces (porque no hay invasión ni inflamación severa). Rara vez hay fiebre alta.
-    
-  * Flatulencia severa, distensión abdominal y **eructos sulfurosos** (sabor u olor a huevo podrido).
-    
-  * Cólicos abdominales y pérdida de peso rápida.
-    
-* **Crónico:**
-  
-  * Pérdida de peso profunda, desnutrición.
-    
-  * En niños, causa un grave **retraso en el crecimiento** (falla para medrar).
-    
-  * _Síndrome post-giardiasis:_ Incluso tras eliminar al parásito, el paciente puede quedar con Síndrome de Intestino Irritable y deficiencia de lactasa por meses.
-    
+<Tabs items={['Agudo', 'Crónico']}>
+<Tab value="Agudo">
+* **Diarrea acuosa que evoluciona a esteatorrea:** Heces grasosas, pastosas, que flotan en el inodoro y son **excesivamente fétidas**.
+* **NO hay sangre ni moco** en las heces (porque no hay invasión ni inflamación severa). Rara vez hay fiebre alta.
+* Flatulencia severa, distensión abdominal y **eructos sulfurosos** (sabor u olor a huevo podrido).
+* Cólicos abdominales y pérdida de peso rápida.
+</Tab>
+
+<Tab value="Crónico">
+* Pérdida de peso profunda, desnutrición.
+* En niños, causa un grave **retraso en el crecimiento** (falla para medrar).
+* *Síndrome post-giardiasis:* Incluso tras eliminar al parásito, el paciente puede quedar con Síndrome de Intestino Irritable y deficiencia de lactasa por meses.
+</Tab>
+</Tabs>
 
 ## Diagnóstico
 
-### Laboratorio
-
-* **Detección de Antígenos en Heces (Enzimoinmunoensayo - EIA / ELISA):** **Es el método de elección**. Tiene una sensibilidad y especificidad altísimas ('> 90-95%').
-  
+<Tabs items={['Laboratorio', 'Gabinete']}>
+<Tab value="Laboratorio">
+* **Detección de Antígenos en Heces (Enzimoinmunoensayo - EIA / ELISA):** **Es el método de elección**. Tiene una sensibilidad y especificidad altísimas (`` `> 90-95%` ``).
 * **Paneles PCR Gastrointestinales:** (Multiplex). Excelentes, rápidos y de altísima sensibilidad, detectan el ADN del parásito.
-  
 * **Coproparasitoscópico (Estudio de Heces de Ovos y Parásitos):** Es el método tradicional, donde se buscan quistes o trofozoítos al microscopio. **Requiere 3 muestras en días distintos**, ya que la eliminación de los quistes es intermitente (sensibilidad de 1 muestra: 50-70%; de 3 muestras: 85-90%).
-  
+</Tab>
 
-### Gabinete
-
+<Tab value="Gabinete">
 Generalmente no se requieren, pero si los laboratorios son negativos y la sospecha clínica es muy alta o hay malabsorción grave:
-
 * **Endoscopia Alta (SEDA) con Aspirado o Biopsia Duodenal:** Se introduce el endoscopio hasta la segunda porción del duodeno. La biopsia mostrará atrofia de vellosidades y se podrán ver los trofozoítos adheridos al epitelio.
-  
 * **Entero-Test (Prueba del hilo):** Se traga una cápsula de gelatina con un hilo absorbente. Se deja horas en el duodeno, se retira y el moco adherido se analiza al microscopio. (Casi en desuso gracias a las PCR y Antígenos).
-  
+</Tab>
+</Tabs>
 
 ## Diagnóstico Diferencial
 
 * **Amebiasis:** Causa diarrea con sangre (disentería) y fiebre, Giardia no.
-  
 * **Criptosporidiosis y Ciclosporiasis:** Otras parasitosis que causan diarrea acuosa prolongada, especialmente en inmunodeprimidos o brotes por alimentos.
-  
 * **Enfermedad Celíaca:** Mimetiza el síndrome de malabsorción crónico y la atrofia vellositaria.
-  
-* **Gastroenteritis Virales:** (Norovirus, Rotavirus). Suelen resolverse rápido (3-5 días) a diferencia de _Giardia_ que se prolonga.
-  
+* **Gastroenteritis Virales:** (Norovirus, Rotavirus). Suelen resolverse rápido (3-5 días) a diferencia de *Giardia* que se prolonga.
 * **Intolerancia a la lactosa primaria.**
-  
 
 ## Tratamiento
 
 Durante el tratamiento y semanas posteriores, se debe indicar al paciente **suspender los lácteos** (dieta libre de lactosa) debido a la deficiencia transitoria de lactasa, de lo contrario la diarrea continuará y parecerá un fallo terapéutico.
 
-| **Fármaco** | **Dosis y Vía de Administración** | **Duración** | **Consideraciones** |
+| Fármaco | Dosis y Vía de Administración | Duración | Consideraciones |
 | --- | --- | --- | --- |
 | **Metronidazol** (1ra línea clásica) | **250 mg** vía oral cada 8 horas (TID). | **5 a 7 días.** | Advertir sobre el efecto Antabuse (reacción disulfiram) con el alcohol y el sabor metálico. |
 | **Tinidazol** (Elección actual por adherencia) | **2 gramos** (4 tabletas de 500 mg) vía oral en dosis única. | **Dosis Única.** | Menos efectos GI adversos. Mismo cuidado con el alcohol (efecto Antabuse). |
@@ -450,1029 +382,855 @@ Durante el tratamiento y semanas posteriores, se debe indicar al paciente **susp
 
 ## Profilaxis
 
-1. **Tratamiento del Agua:** Como los quistes son resistentes al cloro, el agua debe **hervirse** (por al menos 1 minuto a nivel del mar) o purificarse utilizando **filtros de poro ultra fino** ('< 1 micra') recomendados para campistas. El yodo es más efectivo que el cloro, pero requiere mayor tiempo de contacto.
-  
+1. **Tratamiento del Agua:** Como los quistes son resistentes al cloro, el agua debe **hervirse** (por al menos 1 minuto a nivel del mar) o purificarse utilizando **filtros de poro ultra fino** (`` `< 1 micra` ``) recomendados para campistas. El yodo es más efectivo que el cloro, pero requiere mayor tiempo de contacto.
 2. **Higiene:** Lavado de manos estricto tras cambiar pañales o ir al baño, dada la bajísima dosis infectiva.
-  
 3. **Precauciones en viajes:** Evitar consumir agua del grifo sin embotellar, hielos en las bebidas, y vegetales crudos o frutas sin pelar en áreas de alta prevalencia.
-  
 4. **Prácticas sexuales:** Uso de barreras de látex para sexo oral-anal.
-  
 
-* * *
+---
 
 # Amebiasis
 
-Es la infección causada por **_Entamoeba histolytica_**, un protozoario rizópodo (que se mueve por pseudópodos). Es fundamental distinguir clínicamente a _E. histolytica_ (la única patógena) de las amebas comensales morfológicamente idénticas, principalmente **_Entamoeba dispar_** y **_Entamoeba moshkovskii_**, las cuales colonizan el intestino pero no causan enfermedad ni requieren tratamiento.
+Es la infección causada por ***Entamoeba histolytica***, un protozoario rizópodo (que se mueve por pseudópodos). Es fundamental distinguir clínicamente a *E. histolytica* (la única patógena) de las amebas comensales morfológicamente idénticas, principalmente ***Entamoeba dispar*** y ***Entamoeba moshkovskii***, las cuales colonizan el intestino pero no causan enfermedad ni requieren tratamiento.
 
-## Epidemiología
+## Epidemiología y Microbiología
 
 * **Distribución:** Mundial, pero endémica en regiones tropicales y países en vías de desarrollo con saneamiento deficiente (México, India, África subsahariana).
-  
 * **Transmisión:** Fecal-oral (ingesta de agua o alimentos contaminados con heces).
-  
 * **Grupos y Edades:**
-  
   * Puede infectar a cualquier edad, pero la **enfermedad invasiva** (especialmente el absceso hepático) tiene una fuerte predilección por **hombres adultos jóvenes** (relación 10:1 respecto a mujeres).
-    
   * Grupos de alto riesgo: Viajeros a zonas endémicas, residentes de instituciones psiquiátricas/asilos, y hombres que tienen sexo con hombres (transmisión por prácticas anales-orales).
-    
+* **Estadios morfológicos:**
+  1. **Quiste (Forma infectante y de resistencia):** Esférico, con una pared de quitina muy resistente (sobrevive al cloro del agua corriente y a los jugos gástricos). El quiste maduro contiene hasta 4 núcleos.
+  2. **Trofozoíto (Forma vegetativa, móvil e invasiva):** Tiene un solo núcleo con un cariosoma central. Su marca distintiva (patognomónica al microscopio) es la presencia de **eritrocitos fagocitados** en su citoplasma (eritrofagocitosis).
 
-## Microbiología
+## Ciclo Vital
 
-Tiene dos formas principales:
+El humano es el huésped definitivo y principal reservorio.
 
-1. **Quiste (Forma infectante y de resistencia):** Esférico, con una pared de quitina muy resistente (sobrevive al cloro del agua corriente y a los jugos gástricos). El quiste maduro contiene hasta 4 núcleos.
-  
-2. **Trofozoíto (Forma vegetativa, móvil e invasiva):** Tiene un solo núcleo con un cariosoma central. Su marca distintiva (patognomónica al microscopio) es la presencia de **eritrocitos fagocitados** en su citoplasma (eritrofagocitosis).
-  
+<Steps>
+<Step>
+#### Ingestión
+Ingestión de quistes maduros.
+</Step>
 
-**Ciclo Vital (El humano es el huésped definitivo y principal reservorio):**
+<Step>
+#### Excistación
+El ácido estomacal estimula la excistación, que ocurre en el íleon terminal o ciego, liberando 8 trofozoítos por cada quiste.
+</Step>
 
-1. Ingestión de quistes maduros.
-  
-2. El ácido estomacal estimula la excistación, que ocurre en el íleon terminal o ciego, liberando 8 trofozoítos por cada quiste.
-  
-3. Los trofozoítos colonizan la mucosa del ciego y el colon ascendente.
-  
-4. Pueden permanecer como comensales (alimentándose de bacterias), invadir la mucosa (enfermedad clínica), o enquistarse por deshidratación de las heces y ser expulsados al medio ambiente.
-  
+<Step>
+#### Colonización
+Los trofozoítos colonizan la mucosa del ciego y el colon ascendente.
+</Step>
+
+<Step>
+#### Desenlace
+Pueden permanecer como comensales (alimentándose de bacterias), invadir la mucosa (enfermedad clínica), o enquistarse por deshidratación de las heces y ser expulsados al medio ambiente.
+</Step>
+</Steps>
 
 ## Fisiopatología
 
-La virulencia de _E. histolytica_ se basa en su capacidad de adherirse, matar células y destruir la matriz extracelular:
-
+La virulencia de *E. histolytica* se basa en su capacidad de adherirse, matar células y destruir la matriz extracelular:
 * **Adherencia:** Utiliza la **lectina Gal/GalNAc** para anclarse a la mucina intestinal y a las células epiteliales.
-  
-* **Lisis celular dependiente de contacto:** Inyecta péptidos formadores de poros (**amebaporos**) que destruyen la membrana de la célula huésped. Además, realiza _trogocitosis_ (muerde y traga pedazos de la célula huésped viva hasta matarla).
-  
+* **Lisis celular dependiente de contacto:** Inyecta péptidos formadores de poros (**amebaporos**) que destruyen la membrana de la célula huésped. Además, realiza *trogocitosis* (muerde y traga pedazos de la célula huésped viva hasta matarla).
 * **Destrucción tisular:** Secreta **proteasas de cisteína** que degradan el colágeno, la elastina y los anticuerpos (IgA, IgG).
-  
 * **Úlceras en matraz (Botón de camisa):** La ameba penetra la mucosa pero encuentra resistencia en la capa muscular, extendiéndose lateralmente por la submucosa. Esto crea úlceras con un cuello estrecho y una base ancha profunda.
-  
 * **Diseminación hematógena:** Al erosionar los vasos submucosos, los trofozoítos entran a la circulación venosa mesentérica y viajan por el sistema porta directo al hígado.
-  
 
 ## Cuadro Clínico
 
 Aproximadamente el 90% de los infectados son portadores asintomáticos. El 10% desarrolla enfermedad, que se divide en dos síndromes:
 
-### A. Amebiasis Intestinal
-
+<Tabs items={['Amebiasis Intestinal', 'Amebiasis Extraintestinal (AHA)']}>
+<Tab value="Amebiasis Intestinal">
 * **Colitis amebiana aguda (Disentería):** Inicio gradual (de 1 a 3 semanas, a diferencia de la bacteriana que es súbita). Diarrea sanguinolenta, moco, pujo, tenesmo y dolor abdominal tipo cólico. La fiebre está presente en menos del 40% de los casos.
-  
 * **Colitis fulminante (Megacolon tóxico):** Rara pero letal. Dilatación colónica severa, íleo, necrosis y perforación intestinal que lleva a peritonitis. Mayor riesgo en embarazadas, desnutridos y pacientes que reciben corticosteroides erróneamente.
-  
 * **Ameboma:** Una masa de tejido de granulación (inflamatoria) que se forma típicamente en el ciego o colon ascendente. Puede palparse como un tumor y causar obstrucción. Es el gran simulador de un adenocarcinoma de colon.
-  
+</Tab>
 
-### B. Amebiasis Extraintestinal (Absceso Hepático Amebiano - AHA)
-
-* Es la manifestación extraintestinal más común. Típicamente es **único y en el lóbulo derecho** del hígado.
-  
+<Tab value="Amebiasis Extraintestinal (AHA)">
+* **Absceso Hepático Amebiano (AHA):** Es la manifestación extraintestinal más común. Típica en **lóbulo derecho** y única.
 * **Clínica:** Fiebre de alto grado, diaforesis, dolor en hipocondrio derecho que irradia al hombro derecho y hepatomegalia dolorosa.
-  
 * **El líquido del absceso:** Contiene restos de tejido hepático necrosado ("pasta de anchoas" o "salsa de chocolate"). Es estéril a bacterias y los trofozoítos solo están en la pared del absceso, no en el líquido central.
-  
-* **Complicaciones por ruptura:** Puede romperse a cavidad pleural (empyema), pericardio (taponamiento cardíaco - típico de abscesos en lóbulo izquierdo) o peritoneo (abdomen agudo).
-  
+* **Complicaciones por ruptura:** Puede romperse a cavidad pleural (empiema), pericardio (taponamiento cardíaco - típico de abscesos en lóbulo izquierdo) o peritoneo (abdomen agudo).
+</Tab>
+</Tabs>
 
 ## Diagnóstico
 
-### Laboratorio
-
-* **Detección de Antígenos en Heces (EIA):** El examen de elección para enfermedad intestinal. Detecta antígenos específicos y **diferencia _E. histolytica_ de la no patógena _E. dispar_**.
-  
+<Tabs items={['Laboratorio', 'Gabinete']}>
+<Tab value="Laboratorio">
+* **Detección de Antígenos en Heces (EIA):** El examen de elección para enfermedad intestinal. Detecta antígenos específicos y **diferencia *E. histolytica* de la no patógena *E. dispar***.
 * **PCR en heces:** Altamente sensible y específica, estándar de oro actual en países desarrollados.
-  
-* **Serología (Anticuerpos por ELISA / Hemaglutinación):** Es la **piedra angular para el Absceso Hepático** (positiva en '> 90% de los casos). Pierde utilidad en áreas hiperendémicas porque los anticuerpos duran años, haciendo difícil distinguir infección actual de pasada.
-  
+* **Serología (Anticuerpos por ELISA / Hemaglutinación):** Es la **piedra angular para el Absceso Hepático** (positiva en `` `> 90%` `` de los casos). Pierde utilidad en áreas hiperendémicas porque los anticuerpos duran años, haciendo difícil distinguir infección actual de pasada.
 * **Coproparasitoscópico (CPS):** Baja sensibilidad. Para que sea diagnóstico se deben observar **trofozoítos con eritrocitos fagocitados** en heces frescas.
-  
+</Tab>
 
-### Gabinete
-
+<Tab value="Gabinete">
 * **Ultrasonido de hígado:** Para sospecha de absceso hepático. Muestra una lesión redondeada u ovalada, hipoecoica, de márgenes bien definidos, típicamente cerca de la cápsula hepática en el lóbulo derecho.
-  
 * **Tomografía (TAC) Abdominal:** Con contraste, muestra una lesión hipodensa con anillo de realce periférico.
-  
-* **Colonoscopia:** Reservada para diagnóstico diferencial de úlceras o para biopsiar un ameboma. Muestra las clásicas úlceras "en matraz". _Contraindicada en colitis fulminante por altísimo riesgo de perforación._
-  
+* **Colonoscopia:** Reservada para diagnóstico diferencial de úlceras o para biopsiar un ameboma. Muestra las clásicas úlceras "en matraz". *Contraindicada en colitis fulminante por altísimo riesgo de perforación.*
+</Tab>
+</Tabs>
 
 ## Diagnóstico Diferencial
 
-* **Disentería bacteriana:** _Shigella_, _Campylobacter_, _Salmonella_, _E. coli_ enteroinvasiva (ECEI) y enterohemorrágica (ECEH). Suelen tener inicio más agudo y fiebre muy alta.
-  
-* **Enfermedad Inflamatoria Intestinal (EII):** CUCI y Enfermedad de Crohn. _Nunca_ iniciar esteroides en una presunta exacerbación de EII sin descartar antes amebiasis (mediante antígenos o serología), ya que los esteroides causan perforación fatal en amebiasis.
-  
+* **Disentería bacteriana:** *Shigella*, *Campylobacter*, *Salmonella*, *E. coli* enteroinvasiva (ECEI) y enterohemorrágica (ECEH). Suelen tener inicio más agudo y fiebre muy alta.
+* **Enfermedad Inflamatoria Intestinal (EII):** CUCI y Enfermedad de Crohn. *Nunca* iniciar esteroides en una presunta exacerbación de EII sin descartar antes amebiasis (mediante antígenos o serología), ya que los esteroides causan perforación fatal en amebiasis.
 * **Cáncer de colon:** Debe diferenciarse del ameboma mediante biopsia endoscópica o resolución tras terapia amebicida.
-  
 * **Absceso hepático piógeno (Bacteriano):** A diferencia del amebiano, el bacteriano suele ser múltiple, ocurre en pacientes mayores o con patología biliar (colangitis, colecistitis), cursa con ictericia más frecuente y serología amebiana negativa.
-  
 
 ## Tratamiento
 
 El principio de oro para la amebiasis invasiva (disentería o absceso) es que el tratamiento requiere **DOS pasos obligatorios**:
-
 1. Un **agente tisular** para destruir los trofozoítos invasivos en la mucosa o en el hígado.
-  
 2. Un **agente luminal** subsecuente para erradicar los quistes en la luz intestinal y evitar recaídas.
-  
 
-| **Fase del Tratamiento** | **Fármaco y Dosis** | **Duración** | **Comentarios** |
+| Fase del Tratamiento | Fármaco y Dosis | Duración | Comentarios |
 | --- | --- | --- | --- |
 | **1. Agentes Tisulares** (Colitis / Absceso) | **Metronidazol:** 500 a 750 mg vía oral/IV cada 8 horas. | **7 a 10 días.** | Tratamiento de primera línea. Advertir sobre el efecto Antabuse (no alcohol). |
-|     | **Tinidazol:** 2 gramos vía oral cada 24 horas. | **3 días** (para colitis) / **5 días** (para absceso). | Mejor tolerado que el metronidazol y con ciclo más corto. |
-| **2. Agentes Luminales** (Para erradicar quistes _después_ del tisular o como monoterapia en asintomáticos) | **Paromomicina:** 25 a 35 mg/kg/día vía oral, divididos en 3 dosis (cada 8 h). | **7 días.** | Es un aminoglucósido que no se absorbe. Tratamiento de elección luminal. |
-|     | **Furoato de diloxanida:** 500 mg vía oral cada 8 horas. | **10 días.** | Alternativa luminal común en algunos países. |
-|     | **Yodoquinol:** 650 mg vía oral cada 8 horas. | **20 días.** | Contraindicado en alergia al yodo o enfermedad tiroidea. |
+| | **Tinidazol:** 2 gramos vía oral cada 24 horas. | **3 días** (para colitis) / **5 días** (para absceso). | Mejor tolerado que el metronidazol y con ciclo más corto. |
+| **2. Agentes Luminales** (Para erradicar quistes *después* del tisular o como monoterapia en asintomáticos) | **Paromomicina:** 25 a 35 mg/kg/día vía oral, divididos en 3 dosis (cada 8 h). | **7 días.** | Es un aminoglucósido que no se absorbe. Tratamiento de elección luminal. |
+| | **Furoato de diloxanida:** 500 mg vía oral cada 8 horas. | **10 días.** | Alternativa luminal común en algunos países. |
+| | **Yodoquinol:** 650 mg vía oral cada 8 horas. | **20 días.** | Contraindicado en alergia al yodo o enfermedad tiroidea. |
 
-**¿Cuándo se drena un Absceso Hepático Amebiano?**
-
-A diferencia del absceso bacteriano, el absceso amebiano responde excepcionalmente bien solo con tratamiento médico. **El drenaje percutáneo es la excepción**. Sus indicaciones son:
-
-* Riesgo inminente de ruptura (ej. pared hepática muy adelgazada).
-  
-* Ubicación en el lóbulo hepático izquierdo (riesgo de ruptura a pericardio).
-  
-* Diámetro mayor a 10 cm.
-  
-* Falta de respuesta clínica al tratamiento médico tras 3 a 5 días.
-  
+> **¿Cuándo se drena un Absceso Hepático Amebiano?**  
+> A diferencia del absceso bacteriano, el absceso amebiano responde excepcionalmente bien solo con tratamiento médico. **El drenaje percutáneo es la excepción**. Sus indicaciones son:
+> * Riesgo inminente de ruptura (ej. pared hepática muy adelgazada).
+> * Ubicación en el lóbulo hepático izquierdo (riesgo de ruptura a pericardio).
+> * Diámetro mayor a 10 cm.
+> * Falta de respuesta clínica al tratamiento médico tras 3 a 5 días.
 
 ## Profilaxis
 
-1. **Saneamiento de agua:** Al igual que _Giardia_, los quistes de _E. histolytica_ son altamente resistentes a la cloración estándar. El agua debe hervirse o tratarse con filtros de yodo/microfiltración.
-  
+1. **Saneamiento de agua:** Al igual que *Giardia*, los quistes de *E. histolytica* son altamente resistentes a la cloración estándar. El agua debe hervirse o tratarse con filtros de yodo/microfiltración.
 2. **Higiene alimentaria:** Desinfección de frutas y verduras crudas, ya que los quistes pueden sobrevivir en el suelo húmedo y los cultivos fertilizados con heces humanas.
-  
 3. **Higiene personal:** Lavado estricto de manos antes de comer y después de ir al baño, dada la vía de transmisión fecal-oral.
-  
 
-* * *
+---
 
 # Paludismo
 
-Es una enfermedad febril aguda y potencialmente mortal, causada por la infección de protozoarios intraeritrocitarios del género **_Plasmodium_**. Se transmite a través de la picadura de la hembra infectada del mosquito del género **_Anopheles_** (el cual pica predominantemente desde el anochecer hasta el amanecer).
+Es una enfermedad febril aguda y potencialmente mortal, causada por la infección de protozoarios intraeritrocitarios del género ***Plasmodium***. Se transmite a través de la picadura de la hembra infectada del mosquito del género ***Anopheles*** (el cual pica predominantemente desde el anochecer hasta el amanecer).
 
-Existen cinco especies que infectan al ser humano, cada una con un comportamiento clínico distinto:
+## Especies e Importancia Clínica
 
-1. **_Plasmodium falciparum:_** El más agresivo y letal. Responsable de casi todas las complicaciones neurológicas, renales y muertes a nivel mundial.
-  
-2. **_Plasmodium vivax:_** El más ampliamente distribuido a nivel global (**el más común en México** y América Latina). Causa morbilidad severa pero baja mortalidad directa.
-  
-3. **_Plasmodium ovale:_** Clínicamente similar a _P. vivax_, confinado principalmente a África subsahariana.
-  
-4. **_Plasmodium malariae:_** Causa infecciones crónicas (puede persistir décadas en sangre a niveles muy bajos).
-  
-5. **_Plasmodium knowlesi:_** Patógeno de macacos en el sudeste asiático que recientemente se ha reconocido como causa de malaria severa en humanos (una zoonosis).
-  
+1. **Plasmodium falciparum:** El más agresivo y letal. Responsable de casi todas las complicaciones neurológicas, renales y muertes a nivel mundial.
+2. **Plasmodium vivax:** El más ampliamente distribuido a nivel global (**el más común en México** y América Latina). Causa morbilidad severa pero baja mortalidad directa.
+3. **Plasmodium ovale:** Clínicamente similar a *P. vivax*, confinado principalmente a África subsahariana.
+4. **Plasmodium malariae:** Causa infecciones crónicas (puede persistir décadas en sangre a niveles muy bajos).
+5. **Plasmodium knowlesi:** Patógeno de macacos en el sudeste asiático que recientemente se ha reconocido como causa de malaria severa en humanos (una zoonosis).
 
-## Epidemiología
+## Epidemiología y Microbiología
 
 * **Distribución:** Zonas tropicales y subtropicales. El 94% de los casos y muertes ocurren en la Región de África (OMS), seguido del sudeste asiático y la cuenca amazónica.
-  
 * **Grupos y Edades Vulnerables:**
-  
   * **Niños menores de 5 años:** En zonas de alta transmisión (África), son el grupo de mayor mortalidad debido a la falta de inmunidad adquirida.
-    
-  * **Mujeres embarazadas:** El parásito (especialmente _falciparum_) se secuestra en la placenta, causando malaria placentaria, anemia materna severa, bajo peso al nacer y muerte fetal.
-    
+  * **Mujeres embarazadas:** El parásito (especialmente *falciparum*) se secuestra en la placenta, causando malaria placentaria, anemia materna severa, bajo peso al nacer y muerte fetal.
   * **Viajeros no inmunes:** Personas de regiones sin paludismo que viajan a zonas endémicas sin quimioprofilaxis.
-    
-* **Factores de Resistencia Natural:** La evolución ha seleccionado mutaciones en áreas endémicas para proteger contra la malaria: el rasgo de células falciformes (anemia drepanocítica) protege contra _P. falciparum_; la ausencia del antígeno Duffy en los eritrocitos (común en poblaciones de origen africano) hace a los eritrocitos refractarios a la invasión por _P. vivax_.
-  
+* **Factores de Resistencia Natural:** La evolución ha seleccionado mutaciones en áreas endémicas para proteger contra la malaria: el rasgo de células falciformes (anemia drepanocítica) protege contra *P. falciparum*; la ausencia del antígeno Duffy en los eritrocitos (común en poblaciones de origen africano) hace a los eritrocitos refractarios a la invasión por *P. vivax*.
+* **Microbiología de Huéspedes:**
+  * **El Humano es el Huésped INTERMEDIARIO:** Porque en nosotros el parásito se reproduce de forma asexual.
+  * **El Mosquito Anopheles es el Huésped DEFINITIVO:** Porque en él ocurre la reproducción sexual (unión de gametos).
 
-## Microbiología
+## Ciclo Vital en el Humano
 
-* **El Humano es el Huésped INTERMEDIARIO:** Porque en nosotros el parásito se reproduce de forma asexual.
-  
-* **El Mosquito Anopheles es el Huésped DEFINITIVO:** Porque en él ocurre la reproducción sexual (unión de gametos).
-  
+<Steps>
+<Step>
+#### Fase Inoculadora
+El mosquito pica e inyecta **esporozoítos** en la sangre.
+</Step>
 
-**El Ciclo Vital (Fases en el humano):**
+<Step>
+#### Esquizogonia Exoeritrocítica (Fase Hepática)
+En menos de 45 minutos, los esporozoítos invaden los hepatocitos. Se multiplican asexualmente formando **esquizontes tisulares**, los cuales estallan liberando miles de **merozoítos** (esta fase dura de 1 a 2 semanas y es asintomática).
+* *P. vivax y P. ovale* tienen una pseudofase latente. Algunos parásitos en el hígado no se dividen inmediatamente y se quedan dormidos como **hipnozoítos**. Estos pueden despertar meses o años después, causando recaídas.
+</Step>
 
-1. **Fase Inoculadora:** El mosquito pica e inyecta **esporozoítos** en la sangre.
-  
-2. **Esquizogonia Exoeritrocítica (Fase Hepática):** En menos de 45 minutos, los esporozoítos invaden los hepatocitos. Se multiplican asexualmente formando **esquizontes tisulares**, los cuales estallan liberando miles de **merozoítos**. (Esta fase dura de 1 a 2 semanas y es asintomática).
-  
-  * **_P. vivax_ y _P. ovale_** tienen una psudofase latente. Algunos parásitos en el hígado no se dividen inmediatamente y se quedan dormidos como **hipnozoítos**. Estos pueden despertar meses o años después, causando recaídas.
-3. **Esquizogonia Eritrocítica (Fase Sanguínea):** Los merozoítos invaden los glóbulos rojos. Dentro del eritrocito maduran de **trofozoítos** (forma de anillo) a **esquizontes sanguíneos**. El eritrocito estalla (causando la fiebre), liberando más merozoítos para infectar nuevos glóbulos rojos.
-  
-4. **Gametogonia:** Algunos merozoítos se diferencian en formas sexuales masculinas y femeninas (**gametocitos**), que esperan ser ingeridos por otro mosquito para continuar el ciclo.
-  
+<Step>
+#### Esquizogonia Eritrocítica (Fase Sanguínea)
+Los merozoítos invaden los glóbulos rojos. Dentro del eritrocito maduran de **trofozoítos** (forma de anillo) a **esquizontes sanguíneos**. El eritrocito estalla (causando la fiebre), liberando más merozoítos para infectar nuevos glóbulos rojos.
+</Step>
+
+<Step>
+#### Gametogonia
+Algunos merozoítos se diferencian en formas sexuales masculinas y femeninas (**gametocitos**), que esperan ser ingeridos por otro mosquito para continuar el ciclo.
+</Step>
+</Steps>
 
 ## Fisiopatología
 
 * **El Paroxismo Febril:** La ruptura sincronizada de millones de eritrocitos libera merozoítos, desechos celulares y **hemozoína** (el pigmento palúdico). Esto desencadena una liberación masiva de TNF-alfa y citocinas proinflamatorias, causando los picos de fiebre.
-  
 * **Anemia Hemolítica:** Por la destrucción directa de los eritrocitos parasitados y el secuestro/destrucción de eritrocitos sanos en el bazo.
-  
-* **La Letalidad de P. falciparum (Citoadherencia):** A diferencia de otros plasmodios, _P. falciparum_ modifica la membrana del eritrocito expresando proteínas (PfEMP-1) que lo hacen pegajoso.
-  
-  * _Secuestro:_ Los glóbulos rojos infectados se adhieren al endotelio de los capilares y a otros glóbulos rojos (formación de rosetas).
-    
-  * _Microinfartos:_ Obstruyen la microcirculación, llevando a hipoxia tisular severa (causando malaria cerebral, insuficiencia renal aguda y edema pulmonar).
-    
+* **La Letalidad de P. falciparum (Citoadherencia):** A diferencia de otros plasmodios, *P. falciparum* modifica la membrana del eritrocito expresando proteínas (PfEMP-1) que lo hacen pegajoso.
+  * *Secuestro:* Los glóbulos rojos infectados se adhieren al endotelio de los capilares y a otros glóbulos rojos (formación de rosetas).
+  * *Microinfartos:* Obstruyen la microcirculación, llevando a hipoxia tisular severa (causando malaria cerebral, insuficiencia renal aguda y edema pulmonar).
 
 ## Cuadro Clínico
 
 El período de incubación varía de 7 a 30 días.
 
-* **Paludismo No Complicado (El Paroxismo Palúdico):** Se caracteriza por ataques cíclicos que constan de tres fases clásicas:
-  
-  1. **Fase fría:** Escalofríos intensos y temblor incontrolable (dura 1-2 horas).
-    
-  2. **Fase caliente:** Fiebre altísima ('> 40°C'), piel seca, cefalea intensa, mialgias, náuseas (dura 2-6 horas).
-    
-  3. **Fase de defervescencia (sudoración):** Diaforesis profusa y caída de la temperatura. El paciente queda agotado y duerme.
-    
-* _Ciclicidad:_ En _P. vivax, P. ovale_ y _P. falciparum_ los picos febriles son cada 48 horas (Fiebre Terciana). En _P. malariae_ son cada 72 horas (Fiebre Cuartana).
-  
+<Tabs items={['Paludismo No Complicado', 'Paludismo Grave / Complicado']}>
+<Tab value="Paludismo No Complicado">
+Se caracteriza por ataques febriles cíclicos que constan de tres fases clásicas:
+1. **Fase fría:** Escalofríos intensos y temblor incontrolable (dura 1-2 horas).
+2. **Fase caliente:** Fiebre altísima (`` `> 40°C` ``), piel seca, cefalea intensa, mialgias, náuseas (dura 2-6 horas).
+3. **Fase de defervescencia (sudoración):** Diaforesis profusa y caída de la temperatura. El paciente queda agotado y duerme.
+
+* *Ciclicidad:* En *P. vivax, P. ovale* y *P. falciparum* los picos febriles son cada 48 horas (Fiebre Terciana). En *P. malariae* son cada 72 horas (Fiebre Cuartana).
 * **Signos Físicos:** Palidez (anemia), ictericia leve (por hemólisis), y **esplenomegalia** (muy marcada tras varias semanas de infección).
-  
-* **Paludismo Grave/Complicado (Casi exclusivo de _P. falciparum_):**
-  
-  * **Malaria cerebral:** Alteración del estado de alerta, convulsiones, coma.
-    
-  * **Fiebre de las aguas negras:** Hemólisis intravascular masiva que causa hemoglobinuria (orina color coñac/negra) y daño renal agudo.
-    
-  * **Síndrome de Dificultad Respiratoria Aguda (SDRA):** Edema pulmonar no cardiogénico.
-    
-  * **Alteraciones metabólicas:** Hipoglucemia severa, acidosis láctica profunda.
-    
+</Tab>
 
-## Diagnóstico
+<Tab value="Paludismo Grave / Complicado">
+Casi exclusivo de *P. falciparum*:
+* **Malaria cerebral:** Alteración del estado de alerta, convulsiones, coma.
+* **Fiebre de las aguas negras:** Hemólisis intravascular masiva que causa hemoglobinuria (orina color coñac/negra) y daño renal agudo.
+* **Síndrome de Dificultad Respiratoria Aguda (SDRA):** Edema pulmonar no cardiogénico.
+* **Alteraciones metabólicas:** Hipoglucemia severa, acidosis láctica profunda.
+</Tab>
+</Tabs>
 
-### Laboratorio
+## Diagnóstico y Diferencial
 
-* **Frotis de sangre periférica y Gota Gruesa (Tinción de Giemsa/Wright):** Es el **Gold Standard** (Estándar de Oro).
-  
-  * _Gota gruesa:_ Concentra los eritrocitos. Tiene muy **alta sensibilidad** para detectar si el parásito está presente.
-    
-  * _Frotis fino:_ Mantiene la morfología celular intacta. Sirve para **identificar la especie** (ej. ver los trofozoítos en forma de "auriculares" múltiples de _falciparum_ o los gametocitos en forma de "plátano").
-    
-  * _Regla de MI:_ Si la sospecha es alta y la primera gota gruesa es negativa, se debe **repetir cada 12-24 horas por al menos 3 veces** antes de descartar el diagnóstico.
-    
-* **Pruebas de Diagnóstico Rápido (PDR):** Tiras reactivas inmunocromatográficas que detectan antígenos en 15 minutos (ej. HRP-2 exclusivo para _P. falciparum_ o pLDH para las demás especies). Fundamentales en urgencias.
-  
-* **Biología Molecular (PCR):** La más sensible, detecta infecciones con muy baja parasitemia, pero no está disponible en la mayoría de zonas endémicas.
-  
-* **Alteraciones en Bioquímica:** Anemia normocítica normocrómica, reticulocitos altos, trombocitopenia (casi universal), hiperbilirrubinemia indirecta (patrón hemolítico) y DHL elevada.
-  
-
-## Diagnóstico Diferencial
-
-* **Dengue:** Comparte epidemiología. Cursa con dolor retroocular y mialgias/artralgias intensas ("fiebre rompehuesos"), pero no suele dar patrón hemolítico ni fiebre tan rítmica.
-  
-* **Fiebre Tifoidea:** Fiebre prolongada en escalera, disociación esfigmotérmica (Signo de Faget) y manchas rosadas.
-  
-* **Leptospirosis:** Ictericia, dolor intenso en pantorrillas y sufusión conjuntival (ojos muy rojos sin secreción).
-  
-* **Babesiosis:** Enfermedad transmitida por garrapatas que también infecta eritrocitos. Al frotis, los parásitos forman una clásica "Cruz de Malta".
-  
-* **Sepsis o Meningitis bacteriana:** En los casos de malaria cerebral o choque.
-  
+* **Laboratorio:**
+  * **Frotis de sangre periférica y Gota Gruesa (Tinción de Giemsa/Wright):** Es el **Gold Standard** (Estándar de Oro).
+    * *Gota gruesa:* Concentra los eritrocitos. Tiene muy **alta sensibilidad** para detectar si el parásito está presente.
+    * *Frotis fino:* Mantiene la morfología celular intacta. Sirve para **identificar la especie** (ej. ver los trofozoítos en forma de "auriculares" múltiples de *falciparum* o los gametocitos en forma de "plátano").
+    * *Regla de oro:* Si la sospecha es alta y la primera gota gruesa es negativa, se debe **repetir cada 12-24 horas por al menos 3 veces** antes de descartar el diagnóstico.
+  * **Pruebas de Diagnóstico Rápido (PDR):** Tiras reactivas inmunocromatográficas que detectan antígenos en 15 minutos (ej. HRP-2 exclusivo para *P. falciparum* o pLDH para las demás especies). Fundamentales en urgencias.
+  * **Biología Molecular (PCR):** La más sensible, detecta infecciones con muy baja parasitemia, pero no está disponible en la mayoría de zonas endémicas.
+  * **Alteraciones en Bioquímica:** Anemia normocítica normocrómica, reticulocitos altos, trombocitopenia (casi universal), hiperbilirrubinemia indirecta (patrón hemolítico) y DHL elevada.
+* **Diagnóstico Diferencial:**
+  * **Dengue:** Comparte epidemiología. Cursa con dolor retroocular y mialgias/artralgias intensas ("fiebre rompehuesos"), pero no suele dar patrón hemolítico ni fiebre tan rítmica.
+  * **Fiebre Tifoidea:** Fiebre prolongada en escalera, disociación esfigmotérmica (Signo de Faget) y manchas rosadas.
+  * **Leptospirosis:** Ictericia, dolor intenso en pantorrillas y sufusión conjuntival (ojos muy rojos sin secreción).
+  * **Babesiosis:** Enfermedad transmitida por garrapatas que también infecta eritrocitos. Al frotis, los parásitos forman una clásica "Cruz de Malta".
+  * **Sepsis o Meningitis bacteriana:** En los casos de malaria cerebral o choque.
 
 ## Tratamiento
 
 El manejo depende de la especie, la gravedad y la zona geográfica.
 
-| **Especie / Gravedad** | **Fármaco y Dosis** | **Duración** |
+| Especie / Gravedad | Fármaco y Dosis | Duración |
 | --- | --- | --- |
-| **_P. vivax, P. ovale_** (Áreas sensibles, ej. México) | **Cloroquina:** Dosis total de 25 mg base/kg repartida en 3 días (Ej. 1000 mg stat, 500 mg a las 6h, 500 mg al día 2, 500 mg al día 3). | **Elimina las formas sanguíneas** (Termina el ataque agudo). |
-| **_P. vivax, P. ovale_** (**Cura Radical**) | **Primaquina:** 15 a 30 mg base vía oral, una vez al día. | **14 días.** **Obligatorio para erradicar hipnozoítos** hepáticos y evitar recaídas. |
-| **_P. falciparum_ (No complicado)** | **TCA (Terapias Combinadas con Artemisinina):** Ej. **Arteméter-Lumefantrina (Coartem)**. Adultos: 4 tabletas iniciales, 4 a las 8 horas, y luego 4 tabletas cada 12 horas. | **3 días.** Las artemisininas actúan muy rápido y la lumefantrina evita la resistencia. |
-| **Paludismo Grave / Complicado** (Cualquier especie) | **Artesunato IV:** 2.4 mg/kg IV a las 0, 12 y 24 horas, y luego 1 vez al día. _Alternativa si no hay Artesunato:_ Quinina IV. | Hasta que el paciente tolere la vía oral. Luego hacer "Step-down" con un curso completo de TCA oral por 3 días. |
+| **P. vivax, P. ovale** (Áreas sensibles, ej. México) | **Cloroquina:** Dosis total de 25 mg base/kg repartida en 3 días (Ej. 1000 mg stat, 500 mg a las 6h, 500 mg al día 2, 500 mg al día 3). | **Elimina las formas sanguíneas** (Termina el ataque agudo). |
+| **P. vivax, P. ovale** (**Cura Radical**) | **Primaquina:** 15 a 30 mg base vía oral, una vez al día. | **14 días.** **Obligatorio para erradicar hipnozoítos** hepáticos y evitar recaídas. |
+| **P. falciparum (No complicado)** | **TCA (Terapias Combinadas con Artemisinina):** Ej. **Arteméter-Lumefantrina (Coartem)**. Adultos: 4 tabletas iniciales, 4 a las 8 horas, y luego 4 tabletas cada 12 horas. | **3 días.** Las artemisininas actúan muy rápido y la lumefantrina evita la resistencia. |
+| **Paludismo Grave / Complicado** (Cualquier especie) | **Artesunato IV:** 2.4 mg/kg IV a las 0, 12 y 24 horas, y luego 1 vez al día. *Alternativa si no hay Artesunato:* Quinina IV. | Hasta que el paciente tolere la vía oral. Luego hacer "Step-down" con un curso completo de TCA oral por 3 días. |
 
-## Profilaxis y consideraciones
+## Profilaxis y Consideraciones
 
-### Deficiencia de G6PD
-
+<Accordions type="multiple">
+<Accordion title="Deficiencia de G6PD y Caja Negra Farmacológica">
 Esta es una de las interacciones fisiopatológicas más temidas:
 
-La **Primaquina** (y la nueva Tafenoquina), que son los _únicos_ fármacos capaces de erradicar los hipnozoítos hepáticos de _vivax_ y _ovale_, son fármacos altamente oxidantes. Si un paciente tiene **Deficiencia de Glucosa-6-Fosfato Deshidrogenasa (G6PD)**, sus eritrocitos no pueden manejar el estrés oxidativo. Administrar Primaquina a estos pacientes causará una **crisis hemolítica masiva y potencialmente letal**.
+La **Primaquina** (y la nueva Tafenoquina), que son los *únicos* fármacos capaces de erradicar los hipnozoítos hepáticos de *vivax* y *ovale*, son fármacos altamente oxidantes. Si un paciente tiene **Deficiencia de Glucosa-6-Fosfato Deshidrogenasa (G6PD)**, sus eritrocitos no pueden manejar el estrés oxidativo. Administrar Primaquina a estos pacientes causará una **crisis hemolítica masiva y potencialmente letal**.
 
 **Siempre** se debe solicitar una prueba de niveles de G6PD antes de prescribir Primaquina para la cura radical. En pacientes deficientes, la primaquina está contraindicada a dosis estándar.
 
 La **Mefloquina** (usada a menudo como quimioprofilaxis para viajeros) tiene una famosa "caja negra" ("Black Box Warning") de la FDA debido a que puede desencadenar **efectos neuropsiquiátricos graves** (ansiedad, paranoia, alucinaciones, ideación suicida). Contraindicada en personas con antecedentes de depresión o epilepsia.
+</Accordion>
 
-### Medidas de Prevención y Profilaxis
-
+<Accordion title="Medidas de Prevención">
 1. **Control Vectorial:** Es la estrategia número 1 a nivel poblacional. Uso de **Mosquiteros Tratados con Insecticida (MTI)** alrededor de las camas y Rociado Intradomiciliario de Acción Residual (IRS).
-  
 2. **Repelentes:** Aplicación cutánea de DEET o Icaridina, y ropa tratada con permetrina.
-  
-3. **Quimioprofilaxis para Viajeros:** Debe iniciarse _antes_ de llegar a la zona, continuar durante la estancia y _semanas después_ de salir (para matar parásitos que salgan del hígado). Fármacos comunes:
-  
-  * Atovacuona-Proguanil (Malarone)
-    
-  * Doxiciclina (Cuidado: fotosensibilidad).
-    
-  * Mefloquina.
-    
-4. **Vacunación:** Existen vacunas recientes (RTS,S/AS01 y R21/Matrix-M). **Precaución conceptual:** Estas vacunas _no son esterilizantes_ (tienen una eficacia parcial del 30-75% para prevenir malaria grave y su inmunidad decae con los meses). Se usan en programas pediátricos en el África subsahariana y **no están indicadas para viajeros**. No sustituyen el control vectorial ni los profilácticos.
-  
+3. **Quimioprofilaxis para Viajeros:** Debe iniciarse *antes* de llegar a la zona, continuar durante la estancia y *semanas después* de salir (para matar parásitos que salgan del hígado). Fármacos comunes: Atovacuona-Proguanil (Malarone), Doxiciclina o Mefloquina.
+4. **Vacunación:** Existen vacunas recientes (RTS,S/AS01 y R21/Matrix-M). **Precaución conceptual:** Estas vacunas *no son esterilizantes* (tienen una eficacia parcial del 30-75% para prevenir malaria grave y su inmunidad decae con los meses). Se usan en programas pediátricos en el África subsahariana y **no están indicadas para viajeros**. No sustituyen el control vectorial ni los profilácticos.
+</Accordion>
+</Accordions>
 
-* * *
+---
 
-# Triposomiasis
+# Tripanosomiasis (Enfermedad de Chagas)
 
-Es una zoonosis y enfermedad parasitaria sistémica crónica causada por el protozoario hemoflagelado **_Trypanosoma cruzi_**. Se transmite predominantemente a través del contacto con las heces infectadas de insectos reductídeos (conocidos comúnmente como chinches besuconas, vinchucas o chinches picudas).
+Es una zoonosis y enfermedad parasitaria sistémica crónica causada por el protozoario hemoflagelado ***Trypanosoma cruzi***. Se transmite predominantemente a través del contacto con las heces infectadas de insectos reductídeos (conocidos comúnmente como chinches besuconas, vinchucas o chinches picudas).
 
-## Epidemiología
+## Epidemiología y Microbiología
 
 * **Distribución:** Endémica en América Latina (desde el sur de Estados Unidos hasta Argentina). México cuenta con zonas de alta endemicidad, especialmente en estados del sur, centro y vertiente del Golfo.
-  
-* **Grupos de Riesgo:**
-  
-  * Poblaciones en zonas rurales o periurbanas marginadas.
-    
-  * Habitantes de viviendas con paredes de adobe, techos de paja o grietas (el hábitat perfecto para que anide la chinche).
-    
+* **Grupos de Riesgo:** Poblaciones en zonas rurales o periurbanas marginadas, en viviendas con paredes de adobe, techos de paja o grietas (hábitat perfecto de la chinche).
 * **Edades:** La infección primaria (fase aguda) ocurre típicamente en la **infancia**, mientras que las complicaciones letales de la fase crónica suelen manifestarse en **adultos jóvenes o de mediana edad (30 a 50 años)**.
-  
-* **Otras vías de transmisión (no vectoriales):** Transfusión sanguínea, transmisión congénita (vía transplacentaria, causando prematurez y hepatoesplenomegalia en el neonato), trasplante de órganos y transmisión oral (ingesta de jugos artesanales, como el de açaí o caña, contaminados con heces del vector).
-  
+* **Otras vías de transmisión:** Transfusión sanguínea, transmisión congénita (transplacentaria, causando prematurez y hepatoesplenomegalia), trasplante de órganos y transmisión oral (ingesta de jugos artesanales como açaí o caña, contaminados con heces del vector).
+* **Estadios Morfológicos:**
+  1. **Tripomastigote metacíclico:** Es la **forma infectante**. Se encuentra en las heces de la chinche. No se multiplica.
+  2. **Amastigote:** Es la **forma replicativa intracelular** en el humano. De forma redondeada, sin flagelo libre. Se reproduce en el tejido muscular y nervioso.
+  3. **Tripomastigote sanguíneo:** Es la forma circulante en la sangre humana (la que diagnosticas en el frotis) y la que infecta a la chinche cuando esta pica.
+  4. **Epimastigote:** Forma replicativa dentro del intestino del insecto vector.
 
-## Microbiología y Ciclo Vital
+## Ciclo Vital
 
 A diferencia de otros parásitos, aquí **la reproducción es predominantemente asexual en ambos huéspedes**. Por convención, el mamífero (humano, perro, tlacuache) es el huésped vertebrado-reservorio, y el insecto es el huésped invertebrado-vector.
 
-**Estadios Morfológicos Clave:**
+<Steps>
+<Step>
+#### Picadura y Defecación
+La chinche besucona pica a una persona (usualmente de noche, cerca de los ojos o la boca). Al estar ingurgitada de sangre, **defeca cerca de la herida**.
+</Step>
 
-1. **Tripomastigote metacíclico:** Es la **forma infectante**. Se encuentra en las heces de la chinche. No se multiplica.
-  
-2. **Amastigote:** Es la **forma replicativa intracelular** en el humano. De forma redondeada, sin flagelo libre. Se reproduce en el tejido muscular y nervioso.
-  
-3. **Tripomastigote sanguíneo:** Es la forma circulante en la sangre humana (la que diagnosticas en el frotis) y la que infecta a la chinche cuando esta pica.
-  
-4. **Epimastigote:** Forma replicativa dentro del intestino del insecto vector.
-  
+<Step>
+#### Inoculación
+El humano, al rascarse, introduce las heces (con tripomastigotes metacíclicos) en la herida o en las mucosas (ej. conjuntiva).
+</Step>
 
-**El Ciclo Vital:**
+<Step>
+#### Replicación Intracelular
+El parásito invade las células cercanas, se transforma en amastigote y se replica masivamente por fisión binaria intracelular hasta que la célula estalla.
+</Step>
 
-1. La chinche besucona pica a una persona (usualmente de noche, cerca de los ojos o la boca). Al estar ingurgitada de sangre, **defeca cerca de la herida**.
-  
-2. El humano, al rascarse, introduce las heces (con tripomastigotes metacíclicos) en la herida o en las mucosas (ej. conjuntiva).
-  
-3. El parásito invade las células cercanas, se transforma en amastigote y se replica masivamente por fisión binaria intracelular hasta que la célula estalla.
-  
-4. Se liberan nuevos tripomastigotes a la sangre, diseminándose e invadiendo nuevos tejidos (principalmente miocardio y tubo digestivo).
-  
+<Step>
+#### Diseminación
+Se liberan nuevos tripomastigotes a la sangre, diseminándose e invadiendo nuevos tejidos (principalmente miocardio y tubo digestivo).
+</Step>
+</Steps>
 
 ## Fisiopatología
 
-El tropismo de _T. cruzi_ y la respuesta inmunológica del huésped son los que dictan el daño irreversible:
-
+El tropismo de *T. cruzi* y la respuesta inmunológica del huésped son los que dictan el daño irreversible:
 * **Tropismo Celular:** Tiene una afinidad abrumadora por las células del **músculo estriado miocárdico**, músculo liso y las **células gliales/neuronales**.
-  
 * **Destrucción del Sistema Nervioso Autónomo:** Esta es la piedra angular de los "megasíndromes". La inflamación crónica y una probable reacción de mimetismo molecular (autoinmunidad) provocan la **denervación de los plexos mientéricos (de Auerbach) y submucosos (de Meissner)**. Al perder la inervación parasimpática, el órgano pierde su peristaltismo, se dilata masivamente y sus esfínteres no se relajan (similar a la fisiopatología de la acalasia primaria).
-  
 * **Daño Cardíaco:** Se produce una miocarditis crónica fibrosante. El tejido de conducción eléctrico es reemplazado por fibrosis, y el miocardio se debilita, dilatando las cavidades (especialmente el ventrículo izquierdo) y formando **aneurismas apicales** característicos, que son focos de trombos.
-  
 
-## Cuadro Clínico
+## Cuadro Clínico (Fases Evolutivas)
 
-Se divide en tres fases temporalmente distintas:
-
-### A. Fase Aguda (1 a 2 meses)
-
+<Steps>
+<Step>
+#### Fase Aguda (1 a 2 meses)
 Usualmente asintomática (90%). Cuando hay síntomas, predomina la clínica en el sitio de inoculación:
-
 * **Chagoma de inoculación:** Nódulo eritematoso, indurado y doloroso en la piel.
-  
 * **Signo de Romaña:** Patognomónico. Es un **edema bipalpebral unilateral**, indoloro, violáceo, con conjuntivitis y adenopatía preauricular satélite (ocurre cuando la inoculación fue en la mucosa ocular).
-  
-* _Síntomas sistémicos:_ Fiebre prolongada, linfadenopatía generalizada, hepatoesplenomegalia. En casos graves (< 1%), miocarditis aguda o meningoencefalitis (fatal).
-  
+* *Síntomas sistémicos:* Fiebre prolongada, linfadenopatía generalizada, hepatoesplenomegalia. En casos graves (`` `< 1%` ``), miocarditis aguda o meningoencefalitis (fatal).
+</Step>
 
-### B. Fase Indeterminada (Latente)
-
+<Step>
+#### Fase Indeterminada (Latente)
 * Comienza cuando desaparecen los síntomas agudos. Puede durar de 10 a 30 años, o toda la vida (70% de los pacientes nunca salen de esta fase).
-  
 * Se caracteriza por: **Asintomático + Serología positiva + Electrocardiograma y Radiografías completamente normales.**
-  
+</Step>
 
-### C. Fase Crónica (Sintomática - 30% de los pacientes)
-
+<Step>
+#### Fase Crónica Sintomática (30% de los pacientes)
 * **Cardiopatía Chagásica:** La causa más común de muerte. Falla cardíaca derecha o biventricular, arritmias ventriculares letales y tromboembolismos (EVC isquémico por trombo desprendido del aneurisma apical).
-  
 * **Afección Digestiva:**
-  
   * **Megaesófago:** Disfagia progresiva (primero a líquidos, luego sólidos), regurgitación, pérdida de peso, dolor torácico.
-    
   * **Megacolon:** Estreñimiento crónico severo (pacientes que evacuan cada 15-20 días), formación de fecalomas enormes, dolor abdominal y alto riesgo de **vólvulo sigmoideo**.
-    
+</Step>
+</Steps>
 
 ## Diagnóstico
 
-El abordaje diagnóstico cambia radicalmente según la fase.
-
-### Laboratorio
-
+<Tabs items={['Laboratorio', 'Gabinete']}>
+<Tab value="Laboratorio">
 * **En Fase Aguda (Alta parasitemia):** Búsqueda DIRECTA del parásito.
-  
   * Frotis de sangre periférica o gota gruesa (poco sensible).
-    
   * **Microhematocrito o Método de Strout:** Técnicas de concentración que centrifugan la sangre para observar los tripomastigotes móviles.
-    
   * PCR (Reacción en Cadena de la Polimerasa) para ADN del parásito.
-    
 * **En Fase Crónica (Baja parasitemia, alta respuesta inmune):** Búsqueda INDIRECTA (Anticuerpos).
-  
   * **Serología (Regla estricta):** Se requieren **dos pruebas serológicas positivas con principios técnicos diferentes** (ej. ELISA + Inmunofluorescencia Indirecta [IFI] o Hemaglutinación Indirecta [HAI]) para confirmar el diagnóstico crónico.
+</Tab>
 
-### Gabinete
-
+<Tab value="Gabinete">
 * **Electrocardiograma (EKG):** El hallazgo más temprano y clásico es el **Bloqueo Completo de Rama Derecha (BCRD)** asociado a **Hemibloqueo Anterior Izquierdo (HBAI)**.
-  
 * **Ecocardiograma Transtorácico:** Evalúa la FEVI (Fracción de Eyección), disfunción diastólica y busca el característico adelgazamiento y **aneurisma del ápex del ventrículo izquierdo**.
-  
 * **Estudios Contrastados:** Esofagograma con bario y Enema baritado para diagnosticar y estadificar el megaesófago y megacolon.
-  
+</Tab>
+</Tabs>
 
 ## Diagnóstico Diferencial
 
 * **Fase Aguda:** Celulitis periorbitaria (falso Signo de Romaña), Mononucleosis Infecciosa, Toxoplasmosis aguda, Leishmaniasis visceral.
-  
 * **Fase Crónica Cardíaca:** Miocardiopatía isquémica, miocardiopatía dilatada idiopática, otras causas de arritmias o bloqueos de rama.
-  
 * **Fase Crónica Digestiva:** Acalasia primaria idiopática, Enfermedad de Hirschsprung (aunque es de diagnóstico pediátrico), cáncer de esófago o colon (causantes de obstrucción/disfagia), megacolon tóxico.
-  
 
 ## Tratamiento Integral
 
-El tratamiento antiparasitario es **curativo en la fase aguda**, y su eficacia disminuye drásticamente en la fase crónica (aunque se administra en pacientes '< 50' años con fase indeterminada o crónica temprana para frenar la progresión). **No revierte el daño neurológico ni cardíaco ya establecido**.
+El tratamiento antiparasitario es **curativo en la fase aguda**, y su eficacia disminuye drásticamente en la fase crónica (aunque se administra en pacientes `` `< 50 años` `` con fase indeterminada o crónica temprana para frenar la progresión). **No revierte el daño neurológico ni cardíaco ya establecido**.
 
-| **Fármaco (Antiparasitario)** | **Dosis en Adultos** | **Duración** | **Comentarios y Efectos Adversos Clave** |
+| Fármaco (Antiparasitario) | Dosis en Adultos | Duración | Comentarios y Efectos Adversos Clave |
 | --- | --- | --- | --- |
 | **Benznidazol** (Primera línea) | **5 a 7 mg/kg/día** vía oral, divididos en 2 tomas diarias. | **60 días.** | **Efectos adversos muy frecuentes:** Dermatitis alérgica severa (requiere suspender en ocasiones), **neuropatía periférica** (polineuropatía sensitiva) y supresión de médula ósea. |
 | **Nifurtimox** (Segunda línea) | **8 a 10 mg/kg/día** vía oral, divididos en 3 tomas diarias (cada 8 h). | **60 a 90 días.** | **Efectos adversos intolerables en muchos:** Anorexia severa, pérdida de peso, toxicidad neurológica (temblores, insomnio, convulsiones) y gastrointestinal. |
 
 **Tratamiento de Soporte Clínico (Fase Crónica):**
-
 * **Corazón:** Fármacos para insuficiencia cardíaca (IECA, Beta-bloqueadores, Espironolactona). Amiodarona para las arritmias ventriculares. **Marcapasos** definitivo para los bloqueos AV de alto grado o bradicardia sintomática. Anticoagulación si hay aneurisma apical.
-  
 * **Megaesófago:** Inyecciones de toxina botulínica, dilatación neumática del cardias o miotomía de Heller (cirugía).
-  
 * **Megacolon:** Dieta alta en fibra, laxantes osmóticos, desimpactación manual de fecalomas. En casos graves o vólvulos recurrentes: Resección colónica (sigmoidectomía).
-  
 
 ## Profilaxis
 
 No existe vacuna contra la Enfermedad de Chagas. La prevención se centra en el control del vector y las vías secundarias:
-
 1. **Mejoramiento de la vivienda:** Sustituir techos de palma, pisos de tierra y paredes de adobe por materiales sólidos (cemento, yeso), eliminando las grietas donde se esconde la chinche.
-  
 2. **Control Químico:** Fumigación periódica con insecticidas de acción residual en zonas endémicas.
-  
 3. **Seguridad Sanguínea:** Tamizaje serológico **obligatorio al 100%** de los donadores de sangre y órganos en toda América Latina.
-  
 4. **Higiene Alimentaria:** Hervir o pasteurizar jugos artesanales y mantener buenas prácticas agrícolas en zonas donde el vector es prevalente para evitar brotes de transmisión oral (que suelen ser agudos, severos y en conglomerados).
-  
 
-* * *
+---
 
 # Ascariasis
 
-Es la helmintiasis humana más frecuente a nivel mundial, causada por la infección del nemátodo **_Ascaris lumbricoides_**. Es un gusano cilíndrico, no segmentado, de un tamaño considerable: los machos miden de 15 a 30 cm (y tienen la cola curva) y las hembras (las más grandes) pueden medir hasta 35-40 cm de longitud.
+Es la helmintiasis humana más frecuente a nivel mundial, causada por la infección del nemátodo ***Ascaris lumbricoides***. Es un gusano cilíndrico, no segmentado, de un tamaño considerable: los machos miden de 15 a 30 cm (y tienen la cola curva) y las hembras (las más grandes) pueden medir hasta 35-40 cm de longitud.
 
-## Epidemiología
+## Epidemiología y Microbiología
 
-* **Distribución:** Afecta a más de 1,000 millones de personas en el mundo. Predomina en climas tropicales y subtropicales cálidos y húmedos (las condiciones ideales para que el huevo madure en la tierra). Es una **geohelmintiasis** (helmintiasis transmitida por el suelo).
-  
+* **Distribución:** Afecta a más de 1,000 millones de personas en el mundo. Predomina en climas tropicales y subtropicales cálidos y húmedos. Es una **geohelmintiasis** (helmintiasis transmitida por el suelo).
 * **Transmisión:** Fecal-oral. Se adquiere por la ingestión de **huevos larvados (embrionados)** presentes en agua, alimentos (vegetales mal lavados regados con aguas negras) o tierra contaminada.
-  
-* **Grupos y Edades:**
-  
-  * La prevalencia máxima e intensidad de infección se da en **niños de 2 a 10 años**. La geofagia (pica o comer tierra) y los malos hábitos higiénicos (jugar en tierra contaminada y llevarse las manos a la boca) son los principales factores.
-    
-  * Los adultos en áreas endémicas suelen tener cargas parasitarias más bajas gracias a la inmunidad parcial adquirida.
-    
+* **Grupos y Edades:** Prevalencia máxima en **niños de 2 a 10 años**. La geofagia (comer tierra) y los malos hábitos higiénicos son los principales factores.
+* **Huésped:** El ser humano es el **huésped definitivo y el único huésped natural**.
 
-## Microbiología
+## Ciclo Vital (El famoso Ciclo de Loos)
 
-* **Tipo de Huésped:** El ser humano es el **huésped definitivo y el único huésped natural**. No hay huéspedes intermediarios ni reservorios animales (_Ascaris suum_ infecta a los cerdos pero rara vez al humano).
+<Steps>
+<Step>
+#### Ingestión
+El humano ingiere el huevo infectante (que contiene una larva L2).
+</Step>
 
-**El Ciclo Vital (El famoso Ciclo de Loos):**
+<Step>
+#### Eclosión Intestinal
+Los jugos gástricos y duodenales deshacen la cubierta del huevo. La larva emerge en el intestino delgado.
+</Step>
 
-1. **Ingestión:** El humano ingiere el huevo infectante (que contiene una larva L2).
-  
-2. **Eclosión intestinal:** Los jugos gástricos y duodenales deshacen la cubierta del huevo. La larva emerge en el intestino delgado.
-  
-3. **Migración tisular (Ciclo de Loos):** La larva _no_ se queda en el intestino. Penetra la mucosa intestinal, entra a la circulación portal y llega al hígado. Luego, vía vena cava inferior, llega al corazón derecho y de ahí **a la circulación pulmonar**.
-  
-4. **Maduración alveolar:** La larva rompe el capilar pulmonar y entra al espacio alveolar (aquí muda a larva L3 y L4).
-  
-5. **Ascenso y deglución:** La larva asciende por el árbol bronquial hasta la tráquea y la epiglotis. Provoca el reflejo de la tos, es expectorada y **vuelve a ser deglutida** por el paciente.
-  
-6. **Desarrollo final:** Al regresar al intestino delgado (yeyuno), madura hasta convertirse en el gusano adulto en unos 2 meses. La hembra adulta puede poner la asombrosa cantidad de **200,000 huevos diarios**, los cuales salen en las heces (no embrionados, por lo que no son directamente infectantes al momento de salir).
-  
+<Step>
+#### Migración Tisular
+La larva *no* se queda en el intestino. Penetra la mucosa intestinal, entra a la circulación portal y llega al hígado. Luego, vía vena cava inferior, llega al corazón derecho y de ahí **a la circulación pulmonar**.
+</Step>
+
+<Step>
+#### Maduración Alveolar
+La larva rompe el capilar pulmonar y entra al espacio alveolar (aquí muda a larva L3 y L4).
+</Step>
+
+<Step>
+#### Ascenso y Deglución
+La larva asciende por el árbol bronquial hasta la tráquea y la epiglotis. Provoca el reflejo de la tos, es expectorada y **vuelve a ser deglutida** por el paciente.
+</Step>
+
+<Step>
+#### Desarrollo Final
+Al regresar al intestino delgado (yeyuno), madura hasta convertirse en el gusano adulto en unos 2 meses. La hembra adulta puede poner la asombrosa cantidad de **200,000 huevos diarios**, los cuales salen en las heces (no embrionados, por lo que no son directamente infectantes al momento de salir).
+</Step>
+</Steps>
 
 ## Fisiopatología
 
-* **Fase Pulmonar (Inmunológica):** El paso de las larvas por los alvéolos rompe capilares (microhemorragias) y desencadena una intensa respuesta inmunológica mediada por IgE, mastocitos y, sobre todo, **eosinófilos**.
-  
-* **Fase Intestinal (Mecánica y Expoliatriz):** Los gusanos adultos _no_ se adhieren a la mucosa intestinal (no tienen dientes ni discos suctorios). Su supervivencia depende de su gran musculatura, **nadando constantemente en contra del peristaltismo** para mantenerse en el yeyuno. Consumen los nutrientes del huésped, causando desnutrición en cargas masivas.
-  
-* **Migración Errática:** _Ascaris_ es un gusano muy nervioso. Ante estímulos que alteran su ambiente, el gusano huye y busca pequeños orificios. Esto lo lleva a meterse a la vía biliar, al conducto pancreático, al apéndice o a subir hacia el estómago y salir por la boca o la nariz.
-  
+<Tabs items={['Fase Pulmonar', 'Fase Intestinal', 'Migración Errática']}>
+<Tab value="Fase Pulmonar">
+**(Inmunológica)** El paso de las larvas por los alvéolos rompe capilares (microhemorragias) y desencadena una intensa respuesta inmunológica mediada por IgE, mastocitos y, sobre todo, **eosinófilos**.
+</Tab>
+
+<Tab value="Fase Intestinal">
+**(Mecánica y Expoliatriz)** Los gusanos adultos *no* se adhieren a la mucosa intestinal (no tienen dientes ni discos suctorios). Su supervivencia depende de su gran musculatura, **nadando constantemente en contra del peristaltismo** para mantenerse en el yeyuno. Consumen los nutrientes del huésped, causando desnutrición en cargas masivas.
+</Tab>
+
+<Tab value="Migración Errática">
+*Ascaris* es un gusano muy nervioso. Ante estímulos que alteran su ambiente (ej. fiebre, anestesia, o antiparasitarios tomados de forma incorrecta), el gusano huye y busca pequeños orificios. Esto lo lleva a meterse a la vía biliar, al conducto pancreático, al apéndice o a subir hacia el estómago y salir por la boca o la nariz.
+</Tab>
+</Tabs>
 
 ## Cuadro Clínico
 
-### A. Fase Pulmonar (Síndrome de Löffler)
-
+<Tabs items={['Fase Pulmonar (Löffler)', 'Fase Intestinal', 'Complicaciones Graves']}>
+<Tab value="Fase Pulmonar (Löffler)">
 Ocurre entre 1 y 2 semanas después de la ingestión masiva de huevos.
-
 * Neumonitis eosinofílica transitoria.
-  
 * Tos seca, sibilancias (simula una crisis asmática o hiperreactividad bronquial).
-  
 * Fiebre de bajo grado, hemoptisis ocasional.
-  
+</Tab>
 
-### B. Fase Intestinal (Crónica)
-
+<Tab value="Fase Intestinal">
 * **Cargas leves:** Generalmente asintomáticos o dolor abdominal vago.
-  
-* **Cargas masivas (especialmente en niños):** Dolor tipo cólico, distensión abdominal, anorexia, desnutrición, retraso del crecimiento.
-  
+* **Cargas masivas (niños):** Dolor tipo cólico, distensión abdominal, anorexia, desnutrición, retraso del crecimiento.
+</Tab>
 
-### C. Complicaciones Graves (Urgencias Médicas)
-
+<Tab value="Complicaciones Graves">
+Urgencias médicas quirúrgicas:
 * **Obstrucción Intestinal:** Un ovillo masivo de áscaris obstruye la luz, clásicamente en la válvula ileocecal. Da un cuadro de abdomen agudo, vómitos de contenido fecaloide y ausencia de canalización de gases.
-  
 * **Ascariasis Biliar y Pancreática:** El gusano adulto entra por el ámpula de Vater. Causa **cólico biliar severo**, colangitis supurativa, ictericia obstructiva o pancreatitis aguda.
-  
 * **Apendicitis por Ascaris:** Obstrucción de la luz apendicular por el gusano adulto.
-  
+</Tab>
+</Tabs>
 
 ## Diagnóstico
 
-### Laboratorio
-
+<Tabs items={['Laboratorio', 'Gabinete']}>
+<Tab value="Laboratorio">
 * **Coproparasitoscópico (CPS) Directo:** Examen de elección. Identifica los **huevos mamelonados** (tienen una cubierta externa gruesa y rugosa teñida de color café por la bilis).
-  
-* **Biometría Hemática:** La **eosinofilia** solo está presente y elevada durante el paso pulmonar o Síndrome de Löffler, En la fase intestinal crónica, los eosinófilos suelen ser normales.
-  
+* **Biometría Hemática:** La **eosinofilia** solo está presente y elevada durante el paso pulmonar o Síndrome de Löffler. En la fase intestinal crónica, los eosinófilos suelen ser normales.
 * **Observación directa:** Expulsión visible de los gusanos enteros por el recto, boca o nariz (diagnóstico irrefutable).
-  
+</Tab>
 
-### Gabinete
-
+<Tab value="Gabinete">
 * **Radiografía simple de abdomen:** En caso de obstrucción intestinal, se observan niveles hidroaéreos. A veces se puede ver la silueta del ovillo de gusanos (signo del migajón de pan o remolino) o el aire dentro del tracto digestivo del propio gusano frente al contraste (signo del puro).
-  
 * **Ultrasonido de hígado y vías biliares:** Altamente sensible para la ascariasis biliar. Se observa una estructura tubular ecogénica dentro de los conductos biliares, con un centro anecoico (el tracto digestivo del gusano), conocido como el **Signo del carril de tren o Signo del espagueti**.
-  
-* **CPRE (Colangiopancreatografía Retrógrada Endoscópica):** Sirve como método diagnóstico y terapéutico de elección si el gusano está en la vía biliar.
-  
+* **CPRE:** Método diagnóstico y terapéutico de elección si el gusano está en la vía biliar.
+</Tab>
+</Tabs>
 
-## Diagnóstico diferencial
+## Diagnóstico Diferencial
 
-* **Fase Pulmonar:** Asma bronquial, neumonía atípica viral o por micoplasma, tuberculosis pulmonar, paso pulmonar de otros helmintos (_Strongyloides stercoralis_, uncinarias).
-  
+* **Fase Pulmonar:** Asma bronquial, neumonía atípica viral o por micoplasma, tuberculosis pulmonar, paso pulmonar de otros helmintos (*Strongyloides stercoralis*, uncinarias).
 * **Fase Intestinal:** Dispepsia, otras parasitosis (Giardiasis).
-  
 * **Complicaciones Biliares:** Coledocolitiasis (la presentación es idéntica al cólico biliar por litos), colangiocarcinoma, estenosis biliar benigna.
-  
 * **Obstrucción Intestinal:** Invaginación intestinal (muy común en el mismo grupo de edad pediátrico), vólvulo, bridas postquirúrgicas, apendicitis aguda purulenta.
-  
 
 ## Tratamiento
 
-Si el paciente está coinfectado con varios helmintos y uno de ellos es _Ascaris_, **siempre se debe tratar a _Ascaris_ primero**. Usar otros fármacos puede irritar a _Ascaris_ y provocar una migración errática hacia vías biliares.
+Si el paciente está coinfectado con varios helmintos y uno de ellos es *Ascaris*, **siempre se debe tratar a *Ascaris* primero**. Usar otros fármacos puede irritar a *Ascaris* y provocar una migración errática hacia vías biliares.
 
-| **Condición Clínica** | **Fármaco y Dosis** | **Comentarios** |
+| Condición Clínica | Fármaco y Dosis | Comentarios |
 | --- | --- | --- |
 | **Ascariasis Intestinal No Complicada** | **Albendazol:** 400 mg vía oral, **dosis única**. | Tratamiento de elección. Son inhibidores de los microtúbulos del parásito. Contraindicado en el 1er trimestre del embarazo. |
-|     | **Mebendazol:** 100 mg vía oral cada 12 horas por 3 días, o 500 mg dosis única. | Alternativa altamente eficaz. Mismo mecanismo que el albendazol. |
-|     | **Pamoato de Pirantel:** 11 mg/kg (máximo 1 gramo) vía oral, dosis única. | Causa bloqueo neuromuscular despolarizante (parálisis espástica del gusano). Es la **elección en mujeres embarazadas**. |
-| **Obstrucción Intestinal Parcial / Suboclusión** | **Manejo Conservador:** Ayuno, sonda nasogástrica (descompresión), hidratación IV. | Una vez desobstruido (12-24h), se administra Piperazina o un antihelmíntico suave, NO se debe dar dosis altas de albendazol iniciales porque la muerte masiva de gusanos consolida el ovillo y perfora el intestino. |
+| | **Mebendazol:** 100 mg vía oral cada 12 horas por 3 días, o 500 mg dosis única. | Alternativa altamente eficaz. Mismo mecanismo que el albendazol. |
+| | **Pamoato de Pirantel:** 11 mg/kg (máximo 1 gramo) vía oral, dosis única. | Causa bloqueo neuromuscular despolarizante (parálisis espástica del gusano). Es la **elección en mujeres embarazadas**. |
+| **Obstrucción Intestinal Parcial / Suboclusión** | **Manejo Conservador:** Ayuno, sonda nasogástrica (descompresión), hidratación IV. | Una vez desobstruido (12-24h), se administra Piperazina o un antihelmíntico suave. NO se debe dar dosis altas de albendazol iniciales porque la muerte masiva de gusanos consolida el ovillo y perfora el intestino. |
 | **Ascariasis Biliar** | **CPRE (Colangiopancreatografía):** Para extracción endoscópica mecánica del gusano. | Seguida de Albendazol cuando el paciente esté estable para matar al resto en el intestino. |
 | **Obstrucción Total / Perforación** | **Laparotomía exploradora:** Enterotomía (cortar el intestino, extraer los gusanos manualmente) y cierre. | Tratamiento de urgencia absoluta. |
 
 ## Profilaxis
 
-1. **Saneamiento básico y letaminas:** Eliminación adecuada de las heces humanas (evitar el fecalismo al aire libre).
-  
-2. **Manejo del suelo:** Restringir estrictamente el uso de heces humanas no tratadas (aguas negras) como fertilizante agrícola (una práctica que mantiene vivo el ciclo).
-  
+1. **Saneamiento básico y letrinas:** Eliminación adecuada de las heces humanas (evitar el fecalismo al aire libre).
+2. **Manejo del suelo:** Restringir estrictamente el uso de heces humanas no tratadas (aguas negras) como fertilizante para la agricultura (una práctica que mantiene vivo el ciclo).
 3. **Higiene alimentaria:** Lavado vigoroso, pelado y cocción de los vegetales cultivados a ras de suelo.
-  
 4. **Campañas de Desparasitación Masiva:** La OMS recomienda la administración de Albendazol dosis única 1 o 2 veces al año a todos los niños de edad preescolar y escolar en zonas altamente endémicas, para reducir la carga de morbilidad y prevenir obstrucciones.
-  
 
-* * *
+---
 
-# Teniasis
+# Teniasis y Cisticercosis
 
 Infecciones provocadas por los helmintos pertenecientes a la clase de los **céstodos**. Son gusanos aplanados dorsoventralmente, segmentados y hermafroditas.
-
-Morfológicamente, tienen tres partes:
-
-* **Escólex (Cabeza):** El órgano de fijación.
-  
-  * _T. solium:_ Tiene 4 ventosas y un **rostelo con doble corona de ganchos** (está "armada").
-    
-  * _T. saginata:_ Tiene 4 ventosas, pero **no tiene ganchos** (inerme).
-    
+Morfológicamente tienen tres partes:
+* **Escólex (Cabeza):** El órgano de fijación. *T. solium* tiene 4 ventosas y un **rostelo con doble corona de ganchos** (está "armada"). *T. saginata* tiene 4 ventosas, pero **no tiene ganchos** (inerme).
 * **Cuello:** Zona de crecimiento.
-  
-* **Estróbilo:** El cuerpo del gusano, formado por segmentos llamados **proglótides**. _T. saginata_ puede medir hasta 10 metros, mientras que _T. solium_ suele medir entre 2 y 4 metros.
-  
+* **Estróbilo:** El cuerpo del gusano, formado por segmentos llamados **proglótides**. *T. saginata* puede medir hasta 10 metros; *T. solium* entre 2 y 4 metros.
 
-## Epidemiología
+## Epidemiología y Ciclos Vitales
 
-* **Distribución:** Mundial, pero altamente endémica en países en vías de desarrollo (América Latina, África Subsahariana, Asia) donde existe pobreza, mal saneamiento y cría de cerdos en traspatio (deambulación libre).
-  
-* **Transmisión de la Teniasis:** Carnivorismo. Ingerir carne cruda o mal cocida de res (_T. saginata_) o de cerdo (_T. solium_) que contenga los cisticercos (las larvas enquistadas en el músculo del animal).
-  
-* **Transmisión de la Cisticercosis Humana:** Fecal-oral. Ingerir alimentos o agua contaminada con **huevos de _T. solium_** provenientes de las heces de un portador humano del gusano adulto. Ocurre a menudo por **autoinfección** (el portador de la tenia se traga sus propios huevos por mala higiene de manos).
-  
+* **Transmisión de la Teniasis (Carnivorismo):** Ingerir carne cruda o mal cocida de res (*T. saginata*) o de cerdo (*T. solium*) que contenga los cisticercos (las larvas enquistadas en el músculo del animal).
+* **Transmisión de la Cisticercosis Humana (Fecal-oral):** Ingerir alimentos o agua contaminada con **huevos de *T. solium*** provenientes de las heces de un portador humano del gusano adulto. Ocurre a menudo por **autoinfección** (el portador de la tenia se traga sus propios huevos por mala higiene de manos).
 
-## Microbiología
-
-### A. Ciclo de la Teniasis (Infección Intestinal)
-
-* **Huésped Definitivo (El único):** El ser humano (es el único animal donde el gusano madura a su forma adulta y produce huevos).
-  
-* **Huésped Intermediario:** El ganado vacuno (_T. saginata_) o el cerdo (_T. solium_).
-  
+<Tabs items={['Ciclo Teniasis', 'Ciclo Cisticercosis Humana']}>
+<Tab value="Ciclo Teniasis">
+**(Infección Intestinal)**
+* **Huésped Definitivo (El único):** El ser humano.
+* **Huésped Intermediario:** El ganado vacuno (*T. saginata*) o el cerdo (*T. solium*).
 * **Ciclo:** El humano come carne de res/cerdo con el cisticerco vivo. En el estómago, el escólex se libera, se adhiere a la mucosa del intestino delgado (yeyuno) y comienza a crecer formándose el gusano adulto. Tras unos meses, las proglótides grávidas (llenas de huevos) se desprenden y salen en las heces.
-  
+</Tab>
 
-### B. Ciclo de la Cisticercosis Humana (Infección Tisular - _Solo T. solium_)
-
+<Tab value="Ciclo Cisticercosis Humana">
+**(Infección Tisular - Solo por *T. solium*)**
 * **Huésped Intermediario Accidental:** **El ser humano.**
-  
-* **Ciclo:** El humano ingiere agua o alimentos contaminados con _huevos_ de _T. solium_. En el estómago, el huevo eclosiona liberando la oncosfera (embrión hexacanto), que penetra la pared intestinal, entra al torrente sanguíneo y se disemina, enquistándose principalmente en el **Sistema Nervioso Central (Neurocisticercosis)**, ojos y músculo estriado.
-  
-
-Taenia saginata NO causa cisticercosis en humanos. Ingerir huevos de _T. saginata_ no produce enfermedad tisular.
+* **Ciclo:** El humano ingiere agua o alimentos contaminados con *huevos* de *T. solium*. En el estómago, el huevo eclosiona liberando la oncosfera (embrión hexacanto), que penetra la pared intestinal, entra al torrente sanguíneo y se disemina, enquistándose principalmente en el **Sistema Nervioso Central (Neurocisticercosis)**, ojos y músculo estriado.
+* **Regla estricta:** Taenia saginata NO causa cisticercosis en humanos. Ingerir huevos de *T. saginata* no produce enfermedad tisular.
+</Tab>
+</Tabs>
 
 ## Fisiopatología
 
-* **Fisiopatología de la Teniasis:** Es puramente local y leve. El escólex anclado causa una inflamación microscópica. El gusano se alimenta absorbiendo nutrientes de la luz intestinal a través de su tegumento (no tienen tracto digestivo).
-  
-* **Fisiopatología de la Neurocisticercosis (NCC):** El daño depende de la ubicación del quiste y, crucialmente, de la **respuesta inflamatoria del huésped**. El cisticerco pasa por 4 estadios fisiopatológicos en el cerebro:
-  
-  1. **Vesicular:** El parásito está vivo y viable. Evasión inmune activa. Hay **nula o escasa inflamación** en el tejido cerebral circundante.
-    
-  2. **Coloidal:** El parásito comienza a morir (por degeneración natural o por tratamiento). Se rompe la barrera hematoencefálica y hay una **masiva respuesta inflamatoria del huésped**. Se genera un edema perilesional severo. _Esta es la fase más sintomática (crisis convulsivas)._
-    
-  3. **Nodular Granular:** El quiste se retrae y es reemplazado por tejido linfoide y macrófagos.
-    
-  4. **Calcificado:** El parásito está completamente muerto y convertido en un nódulo de calcio sólido. Ya no hay edema, pero la cicatriz cerebral funge como un **foco epileptogénico crónico**.
-    
+* **Teniasis:** Puramente local y leve. El escólex anclado causa inflamación microscópica. El gusano se alimenta absorbiendo nutrientes de la luz intestinal a través de su tegumento (no tienen tracto digestivo).
+* **Neurocisticercosis (NCC):** El daño depende de la ubicación del quiste y, crucialmente, de la **respuesta inflamatoria del huésped**. El cisticerco pasa por 4 estadios en el cerebro:
+
+<Steps>
+<Step>
+#### 1. Vesicular
+El parásito está vivo y viable. Evasión inmune activa. Hay **nula o escasa inflamación** en el tejido cerebral circundante.
+</Step>
+
+<Step>
+#### 2. Coloidal
+El parásito comienza a morir (por degeneración natural o por tratamiento). Se rompe la barrera hematoencefálica y hay una **masiva respuesta inflamatoria del huésped**. Se genera un edema perilesional severo. *Esta es la fase más sintomática (crisis convulsivas).*
+</Step>
+
+<Step>
+#### 3. Nodular Granular
+El quiste se retrae y es reemplazado por tejido linfoide y macrófagos.
+</Step>
+
+<Step>
+#### 4. Calcificado
+El parásito está completamente muerto y convertido en un nódulo de calcio sólido. Ya no hay edema, pero la cicatriz cerebral funge como un **foco epileptogénico crónico**.
+</Step>
+</Steps>
 
 ## Cuadro Clínico
 
-### A. Teniasis
-
+<Tabs items={['Teniasis', 'Neurocisticercosis']}>
+<Tab value="Teniasis">
 * Generalmente asintomática.
-  
 * El dato cardinal es la expulsión espontánea de segmentos del gusano (proglótides) que el paciente reporta ver como fideos que se mueven en las heces o en la ropa interior.
-  
 * Ocasionalmente: dolor abdominal leve, náuseas, pérdida de peso o prurito anal.
-  
+</Tab>
 
-### B. Neurocisticercosis (La presentación estelar de _T. solium_)
-
+<Tab value="Neurocisticercosis">
+La presentación estelar de *T. solium*:
 * **Parenquimatosa (La más común):**
-  
   * **Crisis convulsivas** (Es la causa número 1 de epilepsia de inicio tardío en adultos en zonas endémicas).
-    
   * Cefalea, déficits neurológicos focales.
-    
 * **Extraparenquimatosa (Subaracnoidea / Intraventricular):**
-  
   * Hipertensión intracraneal (Cefalea severa, vómitos en proyectil, papiledema).
-    
   * Hidrocefalia obstructiva (por quistes en el 4to ventrículo).
-    
   * Aracnoiditis o meningitis aséptica crónica.
-    
 * **Cisticercosis Ocular:** Quistes en el espacio subretiniano o vítreo, causando disminución progresiva de la agudeza visual.
-  
+</Tab>
+</Tabs>
 
-## Diagnóstico
+## Diagnóstico y Diferencial
 
-### Teniasis (Laboratorio)
+<Tabs items={['Diagnóstico Teniasis', 'Diagnóstico NCC', 'Diagnóstico Diferencial']}>
+<Tab value="Diagnóstico Teniasis">
+* **Coproparasitoscópico:** Permite ver los huevos de *Taenia spp.* Los huevos de ***T. solium* y *T. saginata* son idénticos al microscopio**, no se puede dar especie solo por el huevo.
+* **Tamizaje de proglótides grávidas:** Se inyecta tinta china en el poro genital para contar las ramas uterinas. *T. saginata* tiene `` `> 15 ramas` `` principales (muy ramificada); *T. solium* tiene `` `< 13 ramas` ``.
+</Tab>
 
-* **Coproparasitoscópico:** Permite ver los huevos de _Taenia spp._ (son esféricos con una gruesa cubierta radiada). Los huevos de **T. solium_ y _T. saginata_ son idénticos al microscopio**, no se puede dar especie solo por el huevo.
-  
-* **Tamizaje de proglótides grávidas:** Si se recupera un segmento, se inyecta tinta china en el poro genital para contar las ramas uterinas. _T. saginata_ tiene > 15 ramas principales (muy ramificada); _T. solium_ tiene < 13 ramas.
-  
+<Tab value="Diagnóstico NCC">
+* **Resonancia Magnética (RM) del Encéfalo:** El Gold Standard absoluto. En fase vesicular es patognomónico el signo del **Punto en el hoyo** (quiste lleno de líquido con un nódulo hiperintenso excéntrico que corresponde al escólex).
+* **Tomografía Axial Computarizada (TAC) simple:** Superior a la RM *solo* para detectar **cisticercos calcificados**.
+* **Inmunoblot (Western blot) en suero o LCR:** La prueba serológica de elección para confirmación.
+* **Fondo de Ojo (Obligatorio):** Todo paciente con NCC debe ser evaluado por oftalmología para **descartar cisticercos oculares ANTES de iniciar tratamiento médico**.
+</Tab>
 
-### Neurocisticercosis (Gabinete y Laboratorio)
-
-* **Resonancia Magnética (RM) del Encéfalo:** El Gold Standard absoluto. Muestra el estadio del quiste. En fase vesicular es patognomónico el signo del **Punto en el hoyo** (un quiste lleno de líquido con un nódulo hiperintenso excéntrico que corresponde al escólex del parásito).
-  
-* **Tomografía Axial Computarizada (TAC) simple:** Es superior a la RM _solo_ para detectar **cisticercos calcificados**.
-  
-* **Inmunoblot (Western blot) en suero o LCR:** La prueba serológica de elección para confirmación, con altísima especificidad.
-  
-* **Fondo de Ojo (Obligatorio):** Todo paciente diagnosticado con NCC debe ser evaluado por oftalmología para **descartar cisticercos oculares ANTES de iniciar tratamiento médico**.
-  
-
-## Diagnóstico Diferencial
-
-* **Teniasis:** Difilobotriasis (infección por la tenia del pescado _Diphyllobothrium latum_ que causa deficiencia de Vitamina B12).
-  
+<Tab value="Diagnóstico Diferencial">
+* **Teniasis:** Difilobotriasis (infección por la tenia del pescado *Diphyllobothrium latum* que causa deficiencia de Vitamina B12).
 * **Neurocisticercosis:**
-  
   * Tuberculoma cerebral (altamente confundible en RM).
-    
   * Absceso cerebral bacteriano.
-    
   * Toxoplasmosis cerebral (muy común en VIH, la NCC no se asocia al VIH).
-    
   * Neoplasias primarias (gliomas) o metástasis cerebrales.
-    
+</Tab>
+</Tabs>
 
 ## Tratamiento
 
-### A. Tratamiento de la Teniasis (El gusano intestinal)
-
+<Tabs items={['Teniasis (Intestinal)', 'Neurocisticercosis (Tisular)']}>
+<Tab value="Teniasis (Intestinal)">
 * **Praziquantel:** 5 a 10 mg/kg vía oral, **dosis única**. Causa entrada masiva de calcio al tegumento del gusano, provocando parálisis tetánica y desprendimiento del escólex.
-  
 * **Alternativa:** Albendazol 400 mg diarios por 3 días o Niclosamida (difícil de conseguir hoy en día).
-  
+</Tab>
 
-### B. Tratamiento de la Neurocisticercosis (Alta Complejidad)
-
+<Tab value="Neurocisticercosis (Tisular)">
 ¡Matar al parásito puede matar al paciente! Destruir los quistes de golpe genera una inflamación masiva (fase coloidal yatrogénica) que causa edema cerebral agudo letal.
 
-_Contraindicaciones absolutas para fármacos antiparasitarios:_ Cisticercosis Ocular, Encefalitis Cisticercósica (edema masivo con múltiples quistes).
+*Contraindicaciones absolutas para fármacos antiparasitarios:* Cisticercosis Ocular, Encefalitis Cisticercósica (edema masivo con múltiples quistes).
 
 **Régimen para NCC parenquimatosa viable:**
-
-1. **Manejo Sintomático (Día 0):** Antiepilepticos (ej. Fenitoína, Levetiracetam) para detener convulsiones.
-  
-2. **Antiinflamatorio (Día 1):** **Dexametasona** 0.1 mg/kg/día o Prednisona. _Debe iniciarse antes o junto con el antiparasitario para mitigar el edema secundario a la muerte del quiste._
-  
+1. **Manejo Sintomático (Día 0):** Antiepilépticos (ej. Fenitoína, Levetiracetam) para detener convulsiones.
+2. **Antiinflamatorio (Día 1):** **Dexametasona** 0.1 mg/kg/día o Prednisona. *Debe iniciarse antes o junto con el antiparasitario para mitigar el edema secundario a la muerte del quiste.*
 3. **Terapia Antiparasitaria Dirigida:**
-  
-  * _Si hay 1 o 2 quistes viables:_ **Albendazol** 15 mg/kg/día dividido en dos dosis, por **10 a 14 días**. (El Albendazol penetra mejor la BHE que el Praziquantel).
-    
-  * _Si hay múltiples quistes viables ('> 2'):_ Terapia Dual: **Albendazol** (15 mg/kg/día) + **Praziquantel** (50 mg/kg/día), por **10 a 14 días**.
-    
+   * *Si hay 1 o 2 quistes viables:* **Albendazol** 15 mg/kg/día dividido en dos dosis, por **10 a 14 días**. (El Albendazol penetra mejor la BHE que el Praziquantel).
+   * *Si hay múltiples quistes viables (`` `> 2` ``):* Terapia Dual: **Albendazol** (15 mg/kg/día) + **Praziquantel** (50 mg/kg/día), por **10 a 14 días**.
 
-_Tratamiento de las complicaciones y otras formas:_
-
+**Otras complicaciones:**
 * **Quistes intraventriculares:** Tratamiento neuroquirúrgico **endoscópico** (resección del quiste) antes del manejo médico.
-  
 * **Hidrocefalia:** Colocación de derivación ventriculoperitoneal (Válvula de Pudenz).
-  
 * **Quistes Calcificados (únicamente):** NO se da Albendazol ni Praziquantel porque el parásito ya está muerto. Solo se da tratamiento antiepiléptico de por vida si generan crisis.
-  
+</Tab>
+</Tabs>
 
 ## Profilaxis
 
 1. **Inspección Veterinaria (Teniasis):** Inspección minuciosa de la carne de res y cerdo en los rastros/mataderos para decomisar canales con cisticercosis (carne "granizada").
-  
 2. **Preparación de Alimentos:** La cocción de la carne a más de 65°C o la congelación a -20°C por varios días inactiva los cisticercos de la carne.
-  
 3. **Prevención de la Cisticercosis (Saneamiento):** Como la cisticercosis es transmitida por heces humanas, la piedra angular es el lavado de manos estricto tras ir al baño y antes de manipular alimentos.
-  
 4. **Búsqueda y tratamiento de contactos:** Todo paciente diagnosticado con Neurocisticercosis requiere investigación familiar; a sus convivientes se les debe realizar un estudio coproparasitoscópico, ya que es altamente probable que algún miembro del núcleo familiar sea el portador de la tenia intestinal que está diseminando los huevos.
-  
 
-* * *
+---
 
 # Tricocefalosis
 
-Es la infección intestinal causada por el nemátodo **_Trichuris trichiura_**. Coloquialmente se le conoce como el **gusano látigo** (whipworm en inglés) debido a su morfología sumamente peculiar: tiene un tercio anterior sumamente delgado y filiforme (como la cuerda del látigo) y dos tercios posteriores gruesos y carnosos (como el mango del látigo). Mide aproximadamente de 3 a 5 cm de longitud.
+Es la infección intestinal causada por el nemátodo ***Trichuris trichiura***. Coloquialmente se le conoce como el **gusano látigo** (*whipworm* en inglés) debido a su morfología sumamente peculiar: tiene un tercio anterior sumamente delgado y filiforme (como la cuerda del látigo) y dos tercios posteriores gruesos y carnosos (como el mango del látigo). Mide aproximadamente de 3 a 5 cm de longitud.
 
-## Epidemiología
+## Epidemiología y Microbiología
 
-* **Naturaleza:** Al igual que _Ascaris lumbricoides_, es una **geohelmintiasis** (helmintiasis transmitida por el contacto con la tierra).
-  
-* **Distribución:** Es la segunda helmintiasis más común a nivel mundial. Predomina en regiones tropicales y subtropicales cálidas, húmedas y sombreadas, con deficiente disposición de excretas (fecalismo al aire libre).
-  
+* **Naturaleza:** Al igual que *Ascaris lumbricoides*, es una **geohelmintiasis** (helmintiasis transmitida por el contacto con la tierra).
+* **Distribución:** Segunda helmintiasis más común a nivel mundial. Predomina en regiones tropicales y subtropicales cálidas, húmedas y sombreadas, con deficiente disposición de excretas (fecalismo al aire libre).
 * **Grupos y Edades:**
-  
-  * La infección más severa y sintomática se concentra casi exclusivamente en **niños de edad preescolar y escolar (2 a 15 años)**, debido a la exposición a tierra contaminada (jugar en el suelo, geofagia) y menor inmunidad.
-    
-  * En adultos, la infección suele ser crónica y de carga parasitaria leve, a menudo descubierta como un hallazgo incidental en una colonoscopia o por anemia ferropénica refractaria.
-    
+  * La infección más severa y sintomática se concentra casi exclusivamente en **niños de edad preescolar y escolar (2 a 15 años)**, debido a la exposición a tierra contaminada y menor inmunidad.
+  * En adultos, la infección suele ser crónica y de carga parasitaria leve, a menudo descubierta como hallazgo incidental en colonoscopia o por anemia ferropénica refractaria.
+* **El Huevo:** Es inconfundible al microscopio. Tiene forma de barril, de limón o de balón de fútbol americano, con **dos tapones mucosos (hialinos) en los polos**.
+* **Huésped:** El ser humano es el **huésped definitivo y el único huésped natural**.
 
-## Microbiología
+## Ciclo Vital
 
-* **El Huevo (Clave de Diagnóstico):** Es inconfundible al microscopio. Tiene forma de barril, de limón o de balón de fútbol americano, con **dos tapones mucosos (hialinos) en los polos**.
-  
-* **Tipo de Huésped:** El ser humano es el **huésped definitivo y el único huésped natural**.
-  
+<Steps>
+<Step>
+#### Excreción
+Los huevos no embrionados (inmaduros) salen en las heces.
+</Step>
 
-**El Ciclo Vital:**
+<Step>
+#### Maduración en la Tierra
+En el suelo cálido y húmedo, el huevo desarrolla una larva (se embriona) en unas 2 a 4 semanas, volviéndose la forma infectante.
+</Step>
 
-1. **Excreción:** Los huevos no embrionados (inmaduros) salen en las heces.
-  
-2. **Maduración en la tierra:** En el suelo cálido y húmedo, el huevo desarrolla una larva (se embriona) en unas 2 a 4 semanas, volviéndose la forma infectante.
-  
-3. **Ingestión:** El humano traga los huevos embrionados (vía fecal-oral, alimentos/manos sucias).
-  
-4. **Eclosión y Migración Intestinal Local:** Las larvas eclosionan en el intestino delgado y sufren varias mudas. Posteriormente, descienden a su hábitat definitivo: **el ciego y el colon ascendente**.
-  
-5. **Anclaje y Maduración:** La porción anterior delgada (el látigo) actúa como una aguja, penetrando y tejiéndose _dentro_ de la mucosa epitelial (en las criptas de Lieberkühn) del ciego. Allí maduran hasta adultos y comienzan a poner huevos (de 3,000 a 10,000 diarios).
-  
+<Step>
+#### Ingestión
+El humano traga los huevos embrionados (vía fecal-oral, alimentos/manos sucias).
+</Step>
+
+<Step>
+#### Eclosión y Migración Intestinal
+Las larvas eclosionan en el intestino delgado y sufren varias mudas. Posteriormente, descienden a su hábitat definitivo: **el ciego y el colon ascendente**.
+</Step>
+
+<Step>
+#### Anclaje y Maduración
+La porción anterior delgada (el látigo) actúa como una aguja, penetrando y tejiéndose *dentro* de la mucosa epitelial (en las criptas de Lieberkühn) del ciego. Allí maduran hasta adultos y comienzan a poner huevos (3,000 a 10,000 diarios).
+</Step>
+</Steps>
 
 ## Fisiopatología
 
-El daño de _Trichuris_ es crónico, sumamente mecánico y expoliatriz:
-
+El daño de *Trichuris* es crónico, sumamente mecánico y expoliatriz:
 * **Traumatismo e Inflamación Local:** La penetración del extremo anterior en la mucosa colónica causa microtraumatismos continuos, edema, friabilidad e infiltrado inflamatorio crónico (macrófagos y eosinófilos locales).
-  
-* **Hemorragia Capilar Continua:** El gusano se alimenta de sangre y de las secreciones tisulares. Cada _Trichuris_ extrae aproximadamente **0.005 mL de sangre por día**. En cargas parasitarias masivas, esta pérdida de sangre capilar constante y microscópica supera la capacidad de absorción de hierro, llevando a una **anemia ferropénica severa** (microcítica hipocrómica).
-  
-* **Alteración del Tono Rectal:** La inflamación severa de la mucosa en todo el colon (pancolitis por _Trichuris_) estimula excesivamente los reflejos de defecación, causando espasmos crónicos del esfínter y debilidad de los músculos elevadores del ano.
-  
+* **Hemorragia Capilar Continua:** El gusano se alimenta de sangre y de las secreciones tisulares. Cada *Trichuris* extrae aproximadamente **0.005 mL de sangre por día**. En cargas parasitarias masivas, esta pérdida supera la capacidad de absorción de hierro, llevando a una **anemia ferropénica severa** (microcítica hipocrómica).
+* **Alteración del Tono Rectal:** La inflamación severa de la mucosa en todo el colon (pancolitis por *Trichuris*) estimula excesivamente los reflejos de defecación, causando espasmos crónicos del esfínter y debilidad de los músculos elevadores del ano.
 
 ## Cuadro Clínico
 
 La intensidad de los síntomas es directamente proporcional a la carga parasitaria.
 
-* **Infección Leve (< 100 gusanos):** Usualmente asintomática.
-  
+<Tabs items={['Leve / Moderada', 'Severa (Disentérica)']}>
+<Tab value="Leve / Moderada">
+* **Infección Leve (`` `< 100 gusanos` ``):** Usualmente asintomática.
 * **Infección Moderada:** Dolor abdominal tipo cólico en fosa ilíaca derecha (simulando apendicitis, ya que residen en el ciego), episodios de diarrea intermitente y desnutrición subclínica.
-  
-* **Infección Severa (Síndrome Disentérico por _Trichuris_):**
-  
-  * Disentería crónica.
-    
-  * Pujo y tenesmo intenso.
-    
-  * **Prolapso Rectal:** La mucosa rectal evertida por el pujo constante a menudo se observa _tapizada_ de pequeños gusanos blanquecinos adheridos a ella (con aspecto de coco rallado).
-    
-  * Retraso en el crecimiento, deterioro cognitivo y acropaquia por desnutrición e hipoxia crónica en casos severos y prolongados.
-    
+</Tab>
 
-## Diagnóstico
+<Tab value="Severa (Disentérica)">
+Síndrome Disentérico por *Trichuris*:
+* Disentería crónica.
+* Pujo y tenesmo intenso.
+* **Prolapso Rectal:** La mucosa rectal evertida por el pujo constante a menudo se observa *tapizada* de pequeños gusanos blanquecinos adheridos a ella (aspecto de coco rallado).
+* Retraso en el crecimiento, deterioro cognitivo y acropaquia por desnutrición e hipoxia crónica en casos severos y prolongados.
+</Tab>
+</Tabs>
 
-### Laboratorio
+## Diagnóstico y Diferencial
 
-* **Coproparasitoscópico (CPS) Cuantitativo (Técnica de Kato-Katz):** Es el pilar. Se observan los clásicos **huevos en forma de barril con tapones polares**. Es útil contar la cantidad de huevos por gramo de heces para estimar la carga parasitaria y predecir el riesgo clínico.
-  
-* **Biometría Hemática:** Eosinofilia moderada (5-10%, no tan alta como en _Ascaris_ en fase pulmonar). Anemia microcítica hipocrómica (ferropénica).
-  
-* **Perfil de Hierro:** Ferritina disminuida, hierro sérico bajo, capacidad de fijación alta.
-  
+<Tabs items={['Diagnóstico', 'Diagnóstico Diferencial']}>
+<Tab value="Diagnóstico">
+* **Laboratorio:**
+  * **Coproparasitoscópico (CPS) Cuantitativo (Técnica de Kato-Katz):** Es el pilar. Se observan los clásicos **huevos en forma de barril con tapones polares**. Útil contar huevos por gramo de heces para estimar la carga parasitaria.
+  * **Biometría Hemática:** Eosinofilia moderada (5-10%, no tan alta como en *Ascaris*). Anemia microcítica hipocrómica (ferropénica).
+  * **Perfil de Hierro:** Ferritina disminuida, hierro sérico bajo, capacidad de fijación alta.
+* **Gabinete:**
+  * **Colonoscopia / Rectosigmoidoscopia:** Se observa una mucosa edematosa, hiperémica, friable, con múltiples **gusanos filiformes anclados** (como si la mucosa estuviera "cosida"). En infecciones masivas se le describe como "mucosa de coco rallado" (*coconut cake mucosa*).
+</Tab>
 
-### Gabinete e Instrumentación
-
-* **Colonoscopia / Rectosigmoidoscopia:**
-  
-  * Es el estándar de oro visual, a menudo utilizado en adultos donde no se sospechaba la infección.
-    
-  * Se observa una mucosa edematosa, hiperémica, friable, con múltiples **gusanos filiformes anclados** (como si la mucosa estuviera "cosida"). En infecciones masivas se le describe como "mucosa de coco rallado" (coconut cake mucosa).
-    
-
-## Diagnóstico Diferencial
-
-* **Amebiasis Intestinal (_E. histolytica_):** Cursa con disentería, pero rara vez causa prolapso rectal.
-  
+<Tab value="Diagnóstico Diferencial">
+* **Amebiasis Intestinal (*E. histolytica*):** Cursa con disentería, pero rara vez causa prolapso rectal.
 * **Shigelosis:** Infección bacteriana aguda con fiebre alta, a diferencia del curso insidioso y crónico de la tricocefalosis.
-  
 * **Enfermedad Inflamatoria Intestinal (CUCI y Crohn):** Un diagnóstico diferencial crítico en adultos y adolescentes que se presentan con diarrea sanguinolenta crónica y anemia antes de hacer una colonoscopia.
-  
 * **Otras causas de Prolapso Rectal en Niños:** Fibrosis Quística, pólipos rectales juveniles, desnutrición severa (Kwashiorkor).
-  
+</Tab>
+</Tabs>
 
 ## Tratamiento
 
-_Trichuris trichiura_ es **mucho más resistente a los antihelmínticos de dosis única**. Su ubicación profunda anclada en el moco colónico lo protege. Por tanto, las infecciones moderadas y severas **requieren regímenes de 3 días consecutivos** para lograr la curación.
+*Trichuris trichiura* es **mucho más resistente a los antihelmínticos de dosis única**. Su ubicación profunda anclada en el moco colónico lo protege. Por tanto, las infecciones moderadas y severas **requieren regímenes de 3 días consecutivos** para lograr la curación.
 
-| **Fármaco** | **Dosis** | **Duración** | **Regimen** |
+| Fármaco | Dosis | Duración | Régimen |
 | --- | --- | --- | --- |
 | **Albendazol** (1ra línea) | **400 mg** vía oral cada 24 horas. | **3 días continuos.** | Para cargas severas, el régimen de 3 días eleva la tasa de curación del 40% (si fuera 1 dosis) a casi el 90%. |
 | **Mebendazol** (Alternativa muy eficaz) | **100 mg** vía oral cada 12 horas (BID), **o** 500 mg dosis única. | **3 días continuos** (para la dosis de 100 mg). | Excelente actividad luminal en colon contra geohelmintos. |
 | **Ivermectina** (Terapia adyuvante) | **200 mcg/kg** vía oral cada 24 horas. | **3 días continuos.** | Es altamente eficaz. Se puede combinar con Albendazol en casos de tricocefalosis refractaria masiva o síndrome disentérico. |
 
 **Tratamiento de Soporte:**
-
 * **Hierro:** Suplementación con sulfato ferroso oral para corregir la anemia.
-  
 * **Manejo del Prolapso Rectal:** Generalmente **no es quirúrgico**. La reducción se hace manualmente en Urgencias (con guantes, lubricante suave e hidrófilo, aplicando presión firme pero gentil). Una vez erradicado el parásito y eliminada la inflamación, el prolapso no suele recidivar.
-  
 
 ## Profilaxis
 
-Al ser una geohelmintiasis transmitida por la tierra, las medidas son epidemiológicamente idénticas a las de _Ascaris_:
-
+Al ser una geohelmintiasis transmitida por la tierra, las medidas son epidemiológicamente idénticas a las de *Ascaris*:
 1. **Saneamiento básico (Infraestructura de WASH):** Uso de letrinas adecuadas y prohibición absoluta del fecalismo al aire libre.
-  
 2. **Tratamiento del Agua y Tierra:** Evitar el uso de heces humanas no compostadas como fertilizante para la agricultura.
-  
 3. **Higiene Alimentaria y Personal:** Lavado riguroso de verduras crudas y frutas, y fomentar el lavado de manos con jabón en niños después de jugar en la tierra y antes de comer.
-  
 4. **Desparasitación Masiva (Profilaxis poblacional):** Programas de la OMS con Albendazol/Mebendazol anual o semestral en comunidades endémicas para cortar la cadena de transmisión de huevos.
-  
 
-* * *
+---
 
 # Enterobiasis (Oxiuriasis)
 
-Es la infección intestinal causada por el nemátodo **_Enterobius vermicularis_** (coloquialmente conocido como oxiuro o "pinworm" en inglés). Son gusanos cilíndricos, pequeños y blanquecinos, con aspecto de "hilos de algodón". La hembra mide alrededor de 1 cm y tiene el extremo posterior afilado (como un alfiler), mientras que el macho es más pequeño (2-5 mm) y tiene el extremo curvo.
+Es la infección intestinal causada por el nemátodo ***Enterobius vermicularis*** (coloquialmente conocido como oxiuro o *pinworm* en inglés). Son gusanos cilíndricos, pequeños y blanquecinos, con aspecto de "hilos de algodón". La hembra mide alrededor de 1 cm y tiene el extremo posterior afilado (como un alfiler), mientras que el macho es más pequeño (2-5 mm) y tiene el extremo curvo.
 
-## Epidemiología
+## Epidemiología y Microbiología
 
 * **Distribución:** Cosmopolita. No requiere condiciones climáticas de suelo específicas porque los huevos se transmiten directamente de persona a persona o a través de fómites.
-  
 * **Grupos y Edades:**
-  
   * Afecta predominantemente a **niños en edad escolar y preescolar (5 a 14 años)**.
-    
   * Altamente contagioso en conglomerados (guarderías, internados, asilos, orfanatos).
-    
   * **Regla epidemiológica de oro:** Si un niño en la casa tiene enterobiasis, es casi seguro que el **resto de la familia** también esté infectada.
-    
-
-## Microbiología
-
 * **El Huevo:** Es translúcido, ovalado y asimétrico (aplanado de un lado, semejante a una letra "D").
-  
-* **Tipo de Huésped:** El ser humano es el **huésped definitivo y el único huésped natural**.
-  
+* **Huésped:** El ser humano es el **huésped definitivo y el único huésped natural**.
 
-**El Ciclo Vital (Altamente especializado en el contagio rápido):**
+## Ciclo Vital (Altamente especializado en el contagio rápido)
 
-1. **Ingestión/Inhalación:** El humano ingiere (o inhala, ya que son muy ligeros y flotan en el polvo) los huevos embrionados.
-  
-2. **Eclosión:** Las larvas eclosionan en el intestino delgado y migran hacia el intestino grueso.
-  
-3. **Maduración:** Los gusanos maduran en el ciego y el apéndice (su hábitat principal). Se alimentan del contenido intestinal, **sin invadir la mucosa**.
-  
-4. **Migración Nocturna:** Las hembras grávidas (llenas de huevos) migran desde el colon, atraviesan el esfínter anal y **depositan sus huevos en los pliegues perianales y perineales**, predominantemente durante la noche. Una hembra puede poner hasta 10,000 huevos. Tras la ovoposición, la hembra muere.
-  
-5. **Maduración ultrarrápida:** Los huevos maduran y se vuelven infectantes en apenas **4 a 6 horas** a la temperatura corporal normal en la piel.
-  
-6. **Vías de Autoinfección:**
-  
-  * _Autoinfección exógena (Mano-boca):_ El niño se rasca el ano por la noche y se lleva los huevos en las uñas a la boca.
-    
-  * _Retroinfección:_ Los huevos eclosionan directamente en la piel perianal y las larvas reptan de regreso por el esfínter anal hacia el colon.
-    
+<Steps>
+<Step>
+#### Ingestión/Inhalación
+El humano ingiere (o inhala, ya que son muy ligeros y flotan en el polvo) los huevos embrionados.
+</Step>
+
+<Step>
+#### Eclosión
+Las larvas eclosionan en el intestino delgado y migran hacia el intestino grueso.
+</Step>
+
+<Step>
+#### Maduración
+Los gusanos maduran en el ciego y el apéndice (su hábitat principal). Se alimentan del contenido intestinal, **sin invadir la mucosa**.
+</Step>
+
+<Step>
+#### Migración Nocturna
+Las hembras grávidas (llenas de huevos) migran desde el colon, atraviesan el esfínter anal y **depositan sus huevos en los pliegues perianales y perineales**, predominantemente durante la noche. Una hembra puede poner hasta 10,000 huevos. Tras la ovoposición, la hembra muere.
+</Step>
+
+<Step>
+#### Maduración Ultrarrápida
+Los huevos maduran y se vuelven infectantes en apenas **4 a 6 horas** a la temperatura corporal normal en la piel.
+</Step>
+
+<Step>
+#### Vías de Autoinfección
+* *Autoinfección exógena (Mano-boca):* El niño se rasca el ano por la noche y se lleva los huevos en las uñas a la boca.
+* *Retroinfección:* Los huevos eclosionan directamente en la piel perianal y las larvas reptan de regreso por el esfínter anal hacia el colon.
+</Step>
+</Steps>
 
 ## Fisiopatología
 
-Como _Enterobius_ no invade tejidos ni migra por el torrente sanguíneo, **no produce eosinofilia sistémica** ni daño estructural primario al intestino. Su fisiopatología es irritativa y mecánica:
-
+Como *Enterobius* no invade tejidos ni migra por el torrente sanguíneo, **no produce eosinofilia sistémica** ni daño estructural primario al intestino. Su fisiopatología es irritativa y mecánica:
 * **Irritación Perianal:** Las secreciones de la hembra al depositar los huevos son altamente irritantes e inducen una respuesta alérgica local, causando un prurito intenso.
-  
 * **Microtraumatismos:** El rascado crónico destruye la barrera cutánea, favoreciendo infecciones bacterianas secundarias (impétigo perianal).
-  
 * **Migración Ectópica:** Al salir por el ano, las hembras pueden desorientarse y migrar hacia la vulva, vagina, útero y trompas de Falopio, causando inflamación granulomatosa en estos órganos. También pueden introducirse a la luz del apéndice, siendo una causa parasitaria reconocida de apendicitis aguda, especialmente en niños.
-  
 
 ## Cuadro Clínico
 
 Aproximadamente un tercio de las infecciones son asintomáticas (generalmente en adultos).
-
 * **Síntoma Cardinal:** **Prurito anal de predominio nocturno**.
-  
 * **Trastornos del sueño:** Debido al prurito, los pacientes presentan insomnio, irritabilidad diurna, pesadillas y, clásicamente descrito (aunque el mecanismo exacto se debate), **bruxismo nocturno** (rechinar de dientes) y **enuresis** (orinarse en la cama).
-  
 * **Manifestaciones Ectópicas (en niñas y mujeres):** Vulvovaginitis inespecífica, leucorrea, prurito vulvar. En casos raros, granulomas pélvicos o salpingitis que pueden simular un cuadro de enfermedad pélvica inflamatoria (EPI).
-  
 * **Gastrointestinales:** Dolor abdominal en fosa ilíaca derecha, anorexia ocasional.
-  
 
-## Diagnóstico
+## Diagnóstico y Diferencial
 
-El estudio Coproparasitoscópico (CPS) NO SIRVE para diagnosticar enterobiasis (sensibilidad < 5%), ya que los huevos se depositan en la piel, no en la materia fecal.
+El estudio Coproparasitoscópico (CPS) NO SIRVE para diagnosticar enterobiasis (sensibilidad `` `< 5%` ``), ya que los huevos se depositan en la piel, no en la materia fecal.
 
-### Laboratorio
-
-* **Prueba de Graham (Test de la Cinta Adhesiva Transparente / Scotch tape test):** Es el **estándar de oro**.
-  
-  * Se aplica un trozo de cinta adhesiva transparente (no opaca) sobre los pliegues perianales, se retira y se pega sobre un portaobjetos para observarlo al microscopio en búsqueda de los clásicos huevos en forma de "D".
-    
-  * Debe realizarse **a primera hora de la mañana**, apenas el paciente despierte, _antes_ de que defeque y _antes_ de que se bañe.
-    
-  * Una sola prueba tiene una sensibilidad del 50%. Se deben realizar pruebas consecutivas durante **3 a 5 días** para alcanzar una sensibilidad a > 90%.
-    
-* **Visualización Directa:** Los padres a menudo reportan ver los gusanos vivos (como hilitos blancos que se mueven) en los márgenes del ano del niño durante la noche, o sobre la superficie de las heces recién emitidas.
-  
-* **Biometría Hemática:** Normal. Como se mencionó, _no hay eosinofilia_.
-  
-
-## Diagnóstico Diferencial
-
-* **Prurito anal inespecífico:** Por mala higiene, uso de jabones irritantes, ropa interior ajustada o alergia al papel higiénico.
-  
-* **Dermatitis del pañal / Intertrigo candidiásico:** Presenta lesiones satélite y eritema maculado, el prurito no es exclusivamente nocturno.
-  
-* **Enfermedad Hemorroidal o Fisuras Anales:** Más común en adultos.
-  
-* **Infecciones Genitourinarias (en niñas):** Infección de vías urinarias (que causa enuresis), vulvovaginitis bacteriana o por _Candida_, o sospecha de abuso sexual (por el eritema y escoriaciones en el área genital).
-  
+* **Diagnóstico:**
+  * **Prueba de Graham (Test de la Cinta Adhesiva Transparente / Scotch tape test):** Es el **estándar de oro**. Se aplica cinta adhesiva transparente sobre pliegues perianales, se retira y se pega en un portaobjetos para buscar huevos en forma de "D". Debe realizarse **a primera hora de la mañana**, apenas el paciente despierte, *antes* de defecar o bañarse. Realizar consecutivamente **3 a 5 días** para alcanzar una sensibilidad de `` `> 90%` ``.
+  * **Visualización Directa:** Los padres reportan ver los gusanos vivos (como hilitos blancos que se mueven) en márgenes del ano del niño por la noche, o sobre heces recién emitidas.
+  * **Biometría Hemática:** Normal. _No hay eosinofilia_.
+* **Diagnóstico Diferencial:**
+  * **Prurito anal inespecífico:** Por mala higiene, jabones irritantes, ropa ajustada o alergia al papel higiénico.
+  * **Dermatitis del pañal / Intertrigo candidiásico:** Presenta lesiones satélite y eritema maculado, el prurito no es exclusivamente nocturno.
+  * **Enfermedad Hemorroidal o Fisuras Anales:** Más común en adultos.
+  * **Infecciones Genitourinarias (en niñas):** Infección de vías urinarias (que causa enuresis), vulvovaginitis bacteriana o por *Candida*, o sospecha de abuso sexual (por el eritema y escoriaciones en el área genital).
 
 ## Tratamiento
 
-**El tratamiento es FAMILIAR (simultáneo a todos los convivientes)** y SIEMPRE requiere una **segunda dosis a las 2 semanas**. Los antihelmínticos matan al gusano adulto, pero _no son ovicidas_ (no destruyen los huevos). La dosis repetida a los 14 días erradica a los nuevos gusanos que eclosionaron de los huevos que sobrevivieron a la primera toma.
+**El tratamiento es FAMILIAR (simultáneo a todos los convivientes)** y SIEMPRE requiere una **segunda dosis a las 2 semanas**. Los antihelmínticos matan al gusano adulto, pero *no son ovicidas* (no destruyen los huevos). La dosis repetida a los 14 días erradica a los nuevos gusanos que eclosionaron de los huevos que sobrevivieron a la primera toma.
 
-| **Fármaco** | **Dosis** | **Esquema** |
+| Fármaco | Dosis | Esquema |
 | --- | --- | --- |
 | **Albendazol** | **400 mg** vía oral. | Dosis única hoy. **Repetir exactamente la misma dosis en 2 semanas.** |
 | **Mebendazol** | **100 mg** vía oral. | Dosis única hoy. **Repetir en 2 semanas.** (Ideal para niños por su presentación en jarabe/suspensión). |
@@ -1481,11 +1239,7 @@ El estudio Coproparasitoscópico (CPS) NO SIRVE para diagnosticar enterobiasis (
 ## Profilaxis
 
 Si no se acompaña de medidas ambientales estrictas, la reinfección es casi garantizada. Durante el inicio del tratamiento se debe instruir a la familia a:
-
 1. **Higiene del sueño:** Lavar toda la ropa de cama (sábanas, cobijas), pijamas y toallas con **agua caliente** el mismo día que se toma el medicamento.
-  
 2. **No sacudir las sábanas:** Al hacer la cama, las sábanas no deben sacudirse, ya que esto aerosoliza los huevos por toda la habitación, permitiendo que sean inhalados.
-  
 3. **Cuidado de uñas:** Mantener las uñas de las manos cortas y limpias para evitar que los huevos se acumulen y perpetúen la autoinfección.
-  
 4. **Baño matutino:** El baño de ducha (no de tina) por las mañanas ayuda a lavar mecánicamente gran parte de los huevos depositados durante la noche.

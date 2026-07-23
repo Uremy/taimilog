@@ -1,11 +1,20 @@
-import { sourceBiblioteca, getBibliotecaPageImage } from '@/lib/source';
-import { DocsPage, DocsBody, DocsDescription, DocsTitle, PageLastUpdate } from 'fumadocs-ui/layouts/notebook/page';
-import { notFound, redirect } from 'next/navigation';
-import { getMDXComponents } from '@/mdx-components';
-import { createRelativeLink } from 'fumadocs-ui/mdx';
 import type { Metadata } from 'next';
+import { notFound, redirect } from 'next/navigation';
+
+import {
+  DocsBody,
+  DocsDescription,
+  DocsPage,
+  DocsTitle,
+  PageLastUpdate,
+} from 'fumadocs-ui/layouts/notebook/page';
+import { createRelativeLink } from 'fumadocs-ui/mdx';
+
 import Comments from '@/components/Comments';
 import { PageFooter } from '@/components/PageFooter';
+import { Mermaid } from '@/components/mdx/mermaid';
+import { getBibliotecaPageImage, sourceBiblioteca } from '@/lib/source';
+import { getMDXComponents } from '@/mdx-components';
 
 export default async function Page(props: { params: Promise<{ slug?: string[] }> }) {
   const params = await props.params;
@@ -20,41 +29,41 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
   const MDX = page.data.body;
   const lastModified = page.data.lastModified ? new Date(page.data.lastModified) : undefined;
 
-  // Lista de rutas exactas donde los comentarios estaran deshabilitados
+  // Rutas sin sección de comentarios
   const disabledCommentsUrls = [
     '/biblioteca/blog',
     '/biblioteca/escritos',
-    '/biblioteca/bookmarks'
+    '/biblioteca/bookmarks',
   ];
 
-  // Verifica si la URL actual NO esta en la lista negra (coincidencia exacta, no hereda a subrutas)
   const showComments = !disabledCommentsUrls.includes(page.url);
 
   return (
-    <DocsPage 
-      toc={page.data.toc} 
+    <DocsPage
+      toc={page.data.toc}
       full={page.data.full}
       tableOfContent={{ style: 'clerk', enabled: true }}
-      footer={{ enabled: false }} // Mantenemos apagado el footer automatico de Fumadocs
+      footer={{ enabled: false }}
       breadcrumb={{ enabled: true }}
     >
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
+
       <DocsBody>
-        <MDX components={getMDXComponents({
-           a: createRelativeLink(sourceBiblioteca, page),
-        })} />
+        <MDX
+          components={getMDXComponents({
+            a: createRelativeLink(sourceBiblioteca, page),
+            Mermaid,
+          })}
+        />
         {lastModified && (
-           <div className="mt-8 text-sm text-muted-foreground">
-             <PageLastUpdate date={lastModified} />
-           </div>
+          <div className="mt-8 text-sm text-muted-foreground">
+            <PageLastUpdate date={lastModified} />
+          </div>
         )}
       </DocsBody>
 
-      {/* Navegacion manual infalible (Sin dependencias ocultas del CLI) */}
       <PageFooter url={page.url} pageTree={sourceBiblioteca.pageTree} />
-
-      {/* Comentarios de Giscus renderizados condicionalmente */}
       {showComments && <Comments />}
     </DocsPage>
   );
@@ -64,9 +73,11 @@ export async function generateStaticParams() {
   return sourceBiblioteca.generateParams();
 }
 
-export async function generateMetadata(props: { params: Promise<{ slug?: string[] }> }): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ slug?: string[] }>;
+}): Promise<Metadata> {
   const params = await props.params;
-  
+
   if (!params.slug) {
     return {
       title: 'Biblioteca',

@@ -1,4 +1,3 @@
-// Importamos las dos colecciones que definimos
 import { medicina, biblioteca } from 'fumadocs-mdx:collections/server';
 import { type InferPageType, loader } from 'fumadocs-core/source';
 import { lucideIconsPlugin } from 'fumadocs-core/source/lucide-icons';
@@ -26,7 +25,7 @@ export function getPageImage(page: InferPageType<typeof source>) {
   };
 }
 
-// 👇 4. NUEVO: Helper para imágenes OG - Biblioteca
+// 4. Helper para imágenes OG - Biblioteca
 export function getBibliotecaPageImage(page: InferPageType<typeof sourceBiblioteca>) {
   const segments = [...page.slugs, 'image.png'];
   return {
@@ -38,7 +37,5 @@ export function getBibliotecaPageImage(page: InferPageType<typeof sourceBibliote
 // 5. Helper para texto LLM
 export async function getLLMText(page: InferPageType<typeof source>) {
   const processed = await page.data.getText('processed');
-  return `# ${page.data.title}
-
-${processed}`;
+  return `# ${page.data.title}\n\n${processed}`;
 }

@@ -1,45 +1,65 @@
-# taimilog
+# Taimilog
 
-This is a Next.js application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+> **Jardín digital, apuntes de medicina y contemplaciones.**
 
-Run development server:
+Taimilog es un espacio digital personal y evolutivo dedicado a sistematizar el aprendizaje en el camino por la medicina, así como a albergar ensayos y escritos independientes. 
+
+Funciona como un segundo cerebro público donde las ideas germinan y crecen orgánicamente. Está construido sobre una arquitectura estática ultrarrápida y orientada al rendimiento, priorizando la lectura profunda sin distracciones ni latencia.
+
+---
+
+## 🛠️ Stack Tecnológico
+
+* **Framework:** [Next.js 15](https://nextjs.org/) (App Router, SSG & Edge Runtime)
+* **Gestor de Contenido / Docs:** [Fumadocs](https://fumadocs.dev/) (Framework Mode con MDX)
+* **Estilos:** [Tailwind CSS v4](https://tailwindcss.com/)
+* **Lenguaje:** TypeScript
+
+---
+
+## 📂 Estructura del Proyecto
+
+El repositorio está dividido en dos grandes colecciones de conocimiento gestionadas de forma independiente:
+
+| Ruta / Carpeta | Descripción |
+| :--- | :--- |
+| `app/(home)` | Portada principal, telemetría de interfaz y manifiesto. |
+| `app/medicina` | **Sistema 01:** Apuntes clínicos y resúmenes de la carrera de Medicina (ciencias básicas y clínicas). |
+| `app/biblioteca` | **Sistema 02:** El jardín digital (ensayos, blog, reflexiones literarias y marcadores). |
+| `app/og` | Enrutador unificado para la generación estática de tarjetas sociales (Open Graph) por colección. |
+| `content/` | Archivos fuente en formato `.mdx` organizados por semestre, materia y sección. |
+| `lib/source.ts` | Adaptador de contenido y configuración de *loaders* para las colecciones en Fumadocs. |
+
+---
+
+## 🚀 Desarrollo Local
+
+Asegúrate de tener instalado **Node.js** (v20 o superior). Clona el repositorio y ejecuta el servidor de desarrollo con tu gestor de paquetes preferido:
 
 ```bash
+# Instalar dependencias
+npm install
+# o
+pnpm install
+
+# Iniciar servidor local
 npm run dev
-# or
+# o
 pnpm dev
-# or
-yarn dev
 ```
 
-Open http://localhost:3000 with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el resultado en tiempo real. 
 
-## Explore
+### Comando de Compilación (Producción)
 
-In the project, you can see:
+Para validar el pre-renderizado estático (SSG), la generación de índices de búsqueda y las imágenes OG:
 
-- `lib/source.ts`: Code for content source adapter, [`loader()`](https://fumadocs.dev/docs/headless/source-api) provides the interface to access your content.
-- `lib/layout.shared.tsx`: Shared options for layouts, optional but preferred to keep.
+```bash
+npm run build
+```
 
-| Route                     | Description                                            |
-| ------------------------- | ------------------------------------------------------ |
-| `app/(home)`              | The route group for your landing page and other pages. |
-| `app/docs`                | The documentation layout and pages.                    |
-| `app/api/search/route.ts` | The Route Handler for search.                          |
+---
 
-### Fumadocs MDX
+## 📜 Licencia
 
-A `source.config.ts` config file has been included, you can customise different options like frontmatter schema.
-
-Read the [Introduction](https://fumadocs.dev/docs/mdx) for further details.
-
-## Learn More
-
-To learn more about Next.js and Fumadocs, take a look at the following
-resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Fumadocs](https://fumadocs.dev) - learn about Fumadocs
+El código fuente es de libre referencia para propósitos educativos y de arquitectura web. Los apuntes clínicos y ensayos son de autoría personal.

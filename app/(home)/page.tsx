@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Atkinson_Hyperlegible, Unbounded } from 'next/font/google';
-import Image from 'next/image';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 
@@ -29,6 +28,7 @@ import {
   SiYoutube as Youtube,
 } from 'react-icons/si';
 
+import { ProfileAvatar } from '@/components/profile-avatar';
 import { QuoteClient } from '@/components/quote-client';
 import { quotes } from '@/lib/quotes';
 
@@ -48,8 +48,6 @@ export const metadata: Metadata = {
     images: '/og/home',
   },
 };
-
-const AVATAR_SIZE = 140;
 
 const unbounded = Unbounded({
   subsets: ['latin'],
@@ -143,54 +141,9 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Avatar con borde fantasma desplazado */}
+          {/* Avatar Interactivo que abre el CV */}
           <div className="lg:col-span-4 flex flex-col justify-end pt-4 sm:pt-0">
-            <div className="relative">
-              <div
-                aria-hidden="true"
-                className={`absolute -bottom-2 -right-2 w-full h-full border border-fd-foreground/15 ${NOTCH_LG} hidden sm:block`}
-              />
-              <div
-                className={`relative bg-fd-card border border-fd-border p-3.5 sm:p-5 group transition-all duration-500 hover:border-fd-foreground/40 ${NOTCH_LG} ${GLOW_HOVER}`}
-              >
-                <CornerMarks />
-                <div className="flex items-center gap-3.5 sm:gap-5">
-                  <div className="relative w-16 h-16 sm:w-24 sm:h-24 shrink-0 overflow-hidden bg-fd-muted border border-fd-border">
-                    <Image
-                      src="/avatar.webp"
-                      alt="Uremy — Señora Herta"
-                      width={AVATAR_SIZE}
-                      height={AVATAR_SIZE}
-                      className="object-cover w-full h-full grayscale contrast-125 transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
-                      priority
-                      unoptimized
-                    />
-                    <div className="absolute inset-0 bg-fd-primary/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-end p-1 font-mono text-[8px] text-fd-foreground uppercase tracking-tighter bg-[linear-gradient(to_bottom,transparent_80%,rgba(0,0,0,0.6)_100%)]">
-                      <span>[HERTA_SYS]</span>
-                    </div>
-                  </div>
-                  <div className="space-y-1">
-                    <div className="font-mono text-[9px] sm:text-[10px] tracking-widest text-fd-muted-foreground uppercase flex items-center justify-between">
-                      <span>FIG. 01 — AVATAR</span>
-                      <span className="text-[9px] text-fd-primary font-bold opacity-0 group-hover:opacity-100 transition-opacity">
-                        ✦ INT_MAX
-                      </span>
-                    </div>
-                    <h3
-                      className={`${fontDisplay} text-base sm:text-lg font-bold tracking-tight text-fd-foreground leading-snug flex items-center gap-1.5`}
-                    >
-                      Madam Herta
-                      <span className="text-[10px] font-mono text-fd-primary font-normal hidden group-hover:inline-block transition-all">
-                        {"// マダム"}
-                      </span>
-                    </h3>
-                    <p className="font-mono text-[11px] sm:text-xs text-fd-muted-foreground line-clamp-2 italic">
-                      &quot;An unrivaled genius. An inimitable beauty.&quot;
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ProfileAvatar />
           </div>
         </section>
 

@@ -34,7 +34,7 @@ export default function Comments() {
         reactionsEnabled="1"
         emitMetadata="0"
         inputPosition="top"
-        theme={giscusTheme} // 👈 ¡Tus estilos personalizados en acción!
+        theme={giscusTheme}
         lang="es"
         loading="lazy"
       />

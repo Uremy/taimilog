@@ -1,5 +1,5 @@
 /* =========================================================
-   Giscus - Light theme transparente y con bordes sutiles
+   Giscus - Light theme sólido y con bordes sutiles para Taimilog
    ========================================================= */
 
 /* 1. Normalización universal: Suaviza TODAS las líneas divisorias,
@@ -33,7 +33,7 @@ a:hover {
   color: hsl(345 60% 28%) !important;
 }
 
-/* 4. Bordes sutiles y translúcidos para tarjetas y contenedores */
+/* 4. Bordes sutiles para tarjetas y contenedores */
 .gsc-comment,
 .gsc-comment-box,
 .gsc-timeline,
@@ -43,9 +43,9 @@ a:hover {
   border-radius: 0.5rem !important;
 }
 
-/* 5. Área de texto y pestañas */
+/* 5. Área de texto y pestañas (Fondo blanco sólido para evitar empastes) */
 .gsc-comment-box-textarea {
-  background-color: rgba(255, 255, 255, 0.8) !important;
+  background-color: #ffffff !important;
   color: hsl(240 10% 15%) !important;
   border-color: rgba(0, 0, 0, 0.12) !important;
   border-radius: 0.5rem !important;
@@ -69,12 +69,13 @@ a:hover {
   background-color: hsl(345 60% 28%) !important;
 }
 
-/* 7. Reacciones y menús emergentes */
+/* 7. Reacciones y menús emergentes (Fondo 100% sólido con sombra elegante) */
 .gsc-reactions-menu,
 .gsc-social-reaction-summary-item {
-  background-color: rgba(255, 255, 255, 0.9) !important;
+  background-color: #ffffff !important;
   border-color: rgba(0, 0, 0, 0.12) !important;
   border-radius: 0.5rem !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* 8. Botones de ordenamiento (Antiguo/Nuevo) y Pestañas (Escribir/Previsualizar) */
@@ -86,18 +87,6 @@ a:hover {
   background-color: transparent !important;
 }
 
-/* Estado seleccionado -> Solo el texto iluminado con granate, sin caja de fondo */
-.gsc-sorting button[aria-selected="true"],
-.gsc-sorting-button[aria-selected="true"],
-.gsc-sorting button.selected,
-.gsc-sorting-button.selected,
-.gsc-comment-box-tabs button[aria-selected="true"] {
-  color: hsl(345 60% 35%) !important; /* Tu granate */
-  border-color: rgba(0, 0, 0, 0.12) !important; /* Mantiene el borde sutil normal */
-  background-color: transparent !important; /* Elimina el fondo tintado */
-  font-weight: 600 !important; /* Un poco más de peso para que el color destaque */
-}
-
 /* Estado seleccionado -> Iluminado con granate y fondo tintado sutil */
 .gsc-sorting button[aria-selected="true"],
 .gsc-sorting-button[aria-selected="true"],
@@ -107,5 +96,5 @@ a:hover {
   color: hsl(345 60% 35%) !important;
   border-color: hsl(345 60% 35%) !important;
   background-color: hsl(345 60% 35% / 0.1) !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
 }

@@ -14,13 +14,11 @@ import {
 } from 'fumadocs-ui/components/dialog/search';
 import { useDocsSearch } from 'fumadocs-core/search/client';
 import { useState } from 'react';
-// 👇 Importamos el Popover para hacer el menú desplegable
 import { Popover, PopoverContent, PopoverTrigger } from 'fumadocs-ui/components/ui/popover';
 import { ChevronDown, Filter } from 'lucide-react'; // Agregué Filter para el icono
 import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 import { cn } from '@/lib/cn'; // Asegúrate que esta ruta a 'cn' sea correcta (a veces es lib/cn)
 
-// 👇 1. Definimos tus etiquetas aquí
 const filterItems = [
   {
     name: 'Todo',
@@ -58,7 +56,6 @@ export default function CustomSearchDialog(props: SharedProps) {
   const [open, setOpen] = useState(false);
   const [tag, setTag] = useState<string | undefined>();
   
-  // 👇 2. Usamos tu configuración de búsqueda local (no orama-cloud)
   const { search, setSearch, query } = useDocsSearch({
     type: 'fetch',
     tag,

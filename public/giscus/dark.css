@@ -1,5 +1,5 @@
 /* =========================================================
-   Giscus - Dark theme transparente y estilizado para Taimilog
+   Giscus - Dark theme sólido y estilizado para Taimilog
    ========================================================= */
 
 /* 1. Normalización universal: Suaviza TODAS las líneas divisorias,
@@ -43,9 +43,9 @@ a:hover {
   border-radius: 0.5rem !important;
 }
 
-/* 5. Área de texto y pestañas */
+/* 5. Área de texto y pestañas (Fondo gris/pizarra sólido) */
 .gsc-comment-box-textarea {
-  background-color: hsl(240 10% 12% / 0.8) !important;
+  background-color: hsl(240 10% 12%) !important;
   color: hsl(240 5% 90%) !important;
   border-color: hsl(240 5% 20%) !important;
   border-radius: 0.5rem !important;
@@ -69,12 +69,13 @@ a:hover {
   background-color: hsl(345 70% 38%) !important;
 }
 
-/* 7. Reacciones y menús emergentes */
+/* 7. Reacciones y menús emergentes (Fondo oscuro 100% sólido y sombra profunda) */
 .gsc-reactions-menu,
 .gsc-social-reaction-summary-item {
-  background-color: hsl(240 10% 12% / 0.9) !important;
-  border-color: hsl(240 5% 20%) !important;
+  background-color: hsl(240 10% 14%) !important;
+  border-color: hsl(240 5% 22%) !important;
   border-radius: 0.5rem !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45) !important;
 }
 
 /* 8. Botones de ordenamiento (Antiguo/Nuevo) y Pestañas (Escribir/Previsualizar) */
@@ -86,18 +87,6 @@ a:hover {
   background-color: transparent !important;
 }
 
-/* Estado seleccionado -> Solo el texto iluminado con rosa luminoso, sin caja de fondo */
-.gsc-sorting button[aria-selected="true"],
-.gsc-sorting-button[aria-selected="true"],
-.gsc-sorting button.selected,
-.gsc-sorting-button.selected,
-.gsc-comment-box-tabs button[aria-selected="true"] {
-  color: hsl(345 80% 65%) !important; /* Tu rosa luminoso */
-  border-color: hsl(240 5% 20%) !important; /* Mantiene el borde sutil normal */
-  background-color: transparent !important; /* Elimina el fondo tintado */
-  font-weight: 600 !important; /* Un poco más de peso para que el color destaque */
-}
-
 /* Estado seleccionado -> Iluminado con rosa luminoso y fondo tintado sutil */
 .gsc-sorting button[aria-selected="true"],
 .gsc-sorting-button[aria-selected="true"],
@@ -107,5 +96,5 @@ a:hover {
   color: hsl(345 80% 65%) !important;
   border-color: hsl(345 80% 65%) !important;
   background-color: hsl(345 80% 65% / 0.15) !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
 }

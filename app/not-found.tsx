@@ -7,9 +7,7 @@ import {
   Fingerprint, 
   Radio, 
   Cpu,
-  Activity,
-  Terminal,
-  Compass
+  Activity
 } from 'lucide-react';
 
 /** Cortes de esquina reutilizables — lenguaje "blueprint / avant-garde" */
@@ -32,151 +30,143 @@ export default function NotFound() {
         <div className="absolute left-0 right-0 h-px bg-fd-primary/30 animate-[scan_6s_linear_infinite]" />
       </div>
 
-      {/* Contenedor Principal (Consola NERV 3 Niveles) */}
-      <div className="max-w-[1360px] w-full mx-auto my-auto py-6 space-y-6 sm:space-y-8">
+      {/* Contenedor Principal en Grilla (Layout basado en tu boceto) */}
+      <div className="max-w-[1360px] w-full mx-auto my-auto py-6 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
         
-        {/* NIVEL 1: CABECERA DE ALERTA (Abarca el 100% del ancho) */}
-        <div className="space-y-4 border-b border-fd-border/60 pb-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-fd-muted border border-fd-border font-mono text-[11px] sm:text-xs text-fd-muted-foreground uppercase tracking-[0.2em] select-none">
-            <AlertTriangle className="w-3.5 h-3.5 text-fd-primary animate-pulse" />
-            <span>SYS_ALERT &#47;&#47; VECTOR_NOT_FOUND</span>
-            <span className="text-fd-primary border-l border-fd-border/60 pl-2 font-bold">ERR: 404</span>
-          </div>
-
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <h1 className="font-[family-name:var(--font-display)] text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-[0.85] text-fd-foreground select-none">
-              Vacío <span className="text-fd-primary font-normal">404</span>
-            </h1>
-            
-            <p className="font-mono text-xs sm:text-sm text-fd-muted-foreground uppercase tracking-widest flex items-center gap-2 pb-1">
-              <Radio className="w-3.5 h-3.5 text-fd-primary animate-spin" />
-              <span>COORDENADA PERDIDA EN EL MAR DE ESTRELLAS ( ◎ _ ◎ ;)</span>
-            </p>
-          </div>
-        </div>
-
-        {/* NIVEL 2: GRILLA SIMÉTRICA (Ambas tarjetas alineadas con misma altura) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
+        {/* =========================================================
+            COLUMNA IZQUIERDA (5 bloques): Imagen 1:1 + Metadata
+            ========================================================= */}
+        <div className="lg:col-span-5 flex flex-col gap-4 sm:gap-6 order-2 lg:order-1">
           
-          {/* TARJETA IZQUIERDA (7 bloques): Diagnóstico Ontológico */}
-          <div className={`lg:col-span-7 flex flex-col justify-between bg-fd-card border border-fd-border p-6 sm:p-8 space-y-6 ${NOTCH_LG} ${GLOW_HOVER} transition-shadow duration-500`}>
+          {/* Bloque Superior: Imagen en Ratio 1:1 estricto */}
+          <div className={`relative w-full aspect-square bg-fd-muted border border-fd-border overflow-hidden group transition-all duration-500 hover:border-fd-foreground/40 ${NOTCH_LG} ${GLOW_HOVER}`}>
             <CornerMarks />
             
-            <div className="space-y-4">
-              <div className="flex items-center justify-between font-mono text-[10px] sm:text-[11px] text-fd-muted-foreground uppercase tracking-widest border-b border-fd-border/60 pb-2.5">
-                <span className="flex items-center gap-1.5 text-fd-foreground font-semibold">
-                  <Fingerprint className="w-3.5 h-3.5 text-fd-primary" /> DIAGNÓSTICO ONTOLÓGICO
-                </span>
-                <span>REF: SPINOZA_LOG</span>
-              </div>
-
-              <div className="space-y-3 font-[family-name:var(--font-body)] text-sm sm:text-base font-light leading-relaxed text-fd-muted-foreground">
-                <p>
-                  La naturaleza aborrece el vacío, pero el nodo o apunte que estás intentando consultar simplemente <strong className="text-fd-foreground font-semibold">no existe</strong> dentro de la arquitectura actual de Taimilog.
-                </p>
-                <p className="font-mono text-xs text-fd-foreground/80 bg-fd-muted/50 p-3.5 border-l-2 border-fd-primary italic leading-relaxed">
-                  &quot;Incluso un genio inigualable como la Señora Herta no puede indexar un pensamiento que jamás ha germinado en el jardín.&quot;
-                </p>
-              </div>
-            </div>
-
-            <div className="pt-3 flex items-center justify-between font-mono text-[9px] sm:text-[10px] text-fd-muted-foreground uppercase tracking-wider border-t border-fd-border/40">
-              <span>STATUS: DESVIACIÓN DE RUTA</span>
-              <span className="text-fd-primary font-semibold">ENLACE CADUCO</span>
+            <Image
+              src="/herta404.webp"
+              alt="Madam Herta — Error 404"
+              fill
+              className="object-cover grayscale contrast-125 transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+              priority
+            />
+            
+            <div className="absolute inset-0 bg-fd-primary/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-end p-3 font-mono text-xs text-fd-foreground uppercase tracking-tighter bg-[linear-gradient(to_bottom,transparent_70%,rgba(0,0,0,0.8)_100%)]">
+              <span>[LOST_SYS]</span>
             </div>
           </div>
 
-          {/* TARJETA DERECHA (5 bloques): Lore y Telemetría de Herta */}
-          <div className={`lg:col-span-5 flex flex-col justify-between bg-fd-card border border-fd-border p-6 sm:p-8 space-y-6 group transition-all duration-500 hover:border-fd-foreground/40 ${NOTCH_LG} ${GLOW_HOVER}`}>
-            <CornerMarks />
-            
-            <div className="space-y-4">
-              <div className="flex items-center justify-between font-mono text-[10px] sm:text-[11px] text-fd-muted-foreground uppercase tracking-widest border-b border-fd-border/60 pb-2.5">
+          {/* Bloque Inferior: Telemetría y Lore */}
+          <div className={`bg-fd-card border border-fd-border p-5 flex flex-col justify-between flex-1 space-y-4 ${NOTCH_SM}`}>
+            <div>
+              <div className="flex items-center justify-between font-mono text-[10px] text-fd-muted-foreground uppercase tracking-widest border-b border-fd-border/60 pb-2 mb-3">
                 <span className="flex items-center gap-1.5 text-fd-foreground font-semibold">
                   <Activity className="w-3.5 h-3.5 text-fd-primary animate-pulse" /> NÚCLEO AVATAR
                 </span>
                 <span className="text-fd-primary font-bold">✦ DISCONNECTED</span>
               </div>
-              
-              <div className="flex items-center gap-5 pt-1">
-                {/* Imagen herta404.webp */}
-                <div className="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 overflow-hidden bg-fd-muted border border-fd-border">
-                  <Image
-                    src="/herta404.webp"
-                    alt="Madam Herta — Error 404"
-                    width={140}
-                    height={140}
-                    className="object-cover w-full h-full grayscale contrast-125 transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-fd-primary/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-end p-1 font-mono text-[8px] text-fd-foreground uppercase tracking-tighter bg-[linear-gradient(to_bottom,transparent_70%,rgba(0,0,0,0.8)_100%)]">
-                    <span>[LOST_SYS]</span>
-                  </div>
-                </div>
 
-                {/* Info técnica de Herta */}
-                <div className="space-y-1 min-w-0 flex-1">
-                  <div className="font-mono text-[9px] text-fd-muted-foreground uppercase tracking-widest">
-                    FIG. 404 &#47;&#47; HERTA_SYS
-                  </div>
-                  <h3 className="font-[family-name:var(--font-display)] text-lg sm:text-xl font-bold tracking-tight text-fd-foreground leading-snug truncate">
-                    Madam Herta
-                  </h3>
-                  <p className="font-mono text-[11px] text-fd-muted-foreground italic line-clamp-2">
-                    &quot;An unrivaled genius... who cannot find this page.&quot;
-                  </p>
+              <div className="space-y-1">
+                <div className="font-mono text-[9px] text-fd-muted-foreground uppercase tracking-widest">
+                  FIG. 404 &#47;&#47; HERTA_SYS
                 </div>
-              </div>
-
-              {/* Lista de telemetría extra para equilibrar la densidad visual con la tarjeta izquierda */}
-              <div className="space-y-1.5 pt-2 font-mono text-[10px] text-fd-muted-foreground/80 bg-fd-muted/30 p-3 border border-fd-border/50">
-                <div className="flex justify-between">
-                  <span>PROTOCOLO:</span>
-                  <span className="text-fd-foreground">BÚSQUEDA PROFUNDA</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>SECTOR:</span>
-                  <span className="text-fd-foreground">ESTACIÓN ESPACIAL // 00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>RESPUESTA:</span>
-                  <span className="text-fd-primary font-semibold">404 NOT FOUND</span>
-                </div>
+                <h3 className="font-[family-name:var(--font-display)] text-xl sm:text-2xl font-bold tracking-tight text-fd-foreground leading-snug">
+                  Madam Herta
+                </h3>
+                <p className="font-mono text-[11px] text-fd-muted-foreground italic leading-relaxed pt-1 border-l-2 border-fd-primary pl-3 bg-fd-muted/30 py-1.5 mt-2">
+                  &quot;An unrivaled genius... who cannot find the page you are looking for.&quot;
+                </p>
               </div>
             </div>
-
-            <div className="pt-3 flex items-center justify-between font-mono text-[9px] sm:text-[10px] text-fd-muted-foreground uppercase tracking-wider border-t border-fd-border/40">
-              <span>ESTADO: RECALCULANDO RUTA</span>
+            
+            <div className="pt-2 flex items-center justify-between font-mono text-[9px] text-fd-muted-foreground uppercase tracking-wider border-t border-fd-border/40">
+              <span>ESTADO: RECALCULANDO</span>
               <span>( ╥﹏╥)</span>
             </div>
           </div>
 
         </div>
 
-        {/* NIVEL 3: BARRA DE COMANDO DE RECUPERACIÓN (Ancla horizontal inferior) */}
-        <div className={`bg-fd-card/60 border border-fd-border p-4 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 backdrop-blur-md ${NOTCH_SM}`}>
-          <div className="font-mono text-xs text-fd-muted-foreground uppercase tracking-widest flex items-center gap-2">
-            <Terminal className="w-4 h-4 text-fd-primary" />
-            <span className="text-fd-foreground font-semibold">VECTORES DE ESCAPE DISPONIBLES:</span>
+        {/* =========================================================
+            COLUMNA DERECHA (7 bloques): Títulos, Diagnóstico y Botones
+            ========================================================= */}
+        <div className="lg:col-span-7 flex flex-col gap-6 sm:gap-8 justify-between order-1 lg:order-2">
+          
+          {/* Cabecera del Error */}
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-fd-muted border border-fd-border font-mono text-[11px] sm:text-xs text-fd-muted-foreground uppercase tracking-[0.2em] select-none">
+              <AlertTriangle className="w-3.5 h-3.5 text-fd-primary animate-pulse" />
+              <span>SYS_ALERT &#47;&#47; VECTOR_NOT_FOUND</span>
+              <span className="text-fd-primary border-l border-fd-border/60 pl-2 font-bold">ERR: 404</span>
+            </div>
+
+            <h1 className="font-[family-name:var(--font-display)] text-6xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-black uppercase tracking-tighter leading-[0.85] text-fd-foreground select-none">
+              Vacío <span className="text-fd-primary font-normal">404</span>
+            </h1>
+            
+            <p className="font-mono text-xs sm:text-sm text-fd-muted-foreground uppercase tracking-widest flex items-center gap-2">
+              <Radio className="w-3.5 h-3.5 text-fd-primary animate-spin" />
+              <span>COORDENADA PERDIDA EN EL MAR DE ESTRELLAS ( ◎ _ ◎ ;)</span>
+            </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+          {/* Tarjeta de Diagnóstico Ontológico (SIN VACÍOS) */}
+          <div className={`relative flex-1 bg-fd-card border border-fd-border p-6 sm:p-8 flex flex-col justify-between space-y-6 ${NOTCH_LG} ${GLOW_HOVER} transition-shadow duration-500`}>
+            <CornerMarks />
+            
+            <div className="flex items-center justify-between font-mono text-[10px] sm:text-[11px] text-fd-muted-foreground uppercase tracking-widest border-b border-fd-border/60 pb-2.5">
+              <span className="flex items-center gap-1.5 text-fd-foreground font-semibold">
+                <Fingerprint className="w-3.5 h-3.5 text-fd-primary" /> DIAGNÓSTICO ONTOLÓGICO
+              </span>
+              <span>REF: SPINOZA_LOG</span>
+            </div>
+
+            {/* Bloque de texto repartido uniformemente para llenar el espacio */}
+            <div className="space-y-4 font-[family-name:var(--font-body)] text-sm sm:text-base md:text-lg font-light leading-relaxed text-fd-muted-foreground flex-1 flex flex-col justify-around my-2">
+              <p>
+                La naturaleza aborrece el vacío, pero el nodo o apunte que estás intentando consultar simplemente <strong className="text-fd-foreground font-semibold">no existe</strong> dentro de la arquitectura actual de Taimilog.
+              </p>
+              
+              {/* Nueva cita para ocupar el espacio central con elegancia técnica */}
+              <div className="font-mono text-xs text-fd-foreground/90 bg-fd-muted/40 p-3.5 border-l-2 border-fd-primary italic">
+                &quot;Incluso un genio inigualable como la Señora Herta no puede indexar un pensamiento que jamás ha germinado en el jardín.&quot;
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-[10px] text-fd-muted-foreground/80 uppercase tracking-widest pt-2">
+                <div className="bg-fd-muted/30 p-3 border border-fd-border/50 flex justify-between items-center">
+                  <span>PROTOCOLO:</span>
+                  <span className="text-fd-foreground font-medium">BÚSQUEDA PROFUNDA</span>
+                </div>
+                <div className="bg-fd-muted/30 p-3 border border-fd-border/50 flex justify-between items-center">
+                  <span>RESPUESTA:</span>
+                  <span className="text-fd-primary font-semibold">404 NOT FOUND</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-3 flex items-center justify-between font-mono text-[10px] text-fd-muted-foreground uppercase tracking-wider border-t border-fd-border/40">
+              <span>STATUS: DESVIACIÓN DE RUTA</span>
+              <span className="text-fd-primary font-semibold">ENLACE CADUCO</span>
+            </div>
+          </div>
+
+          {/* Botones de Acción */}
+          <div className="flex flex-col sm:flex-row items-center gap-4 w-full">
             <Link
               href="/"
-              className="w-full sm:w-auto px-6 py-2.5 bg-fd-primary text-fd-primary-foreground font-mono text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+              className="w-full sm:flex-1 px-6 py-4 bg-fd-primary text-fd-primary-foreground font-mono text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
             >
-              <ArrowLeft className="w-3.5 h-3.5" /> Volver al Inicio
+              <ArrowLeft className="w-4 h-4" /> Volver al Inicio
             </Link>
 
             <Link
               href="/biblioteca/blog"
-              className="w-full sm:w-auto px-6 py-2.5 bg-fd-card border border-fd-border text-fd-foreground font-mono text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 hover:bg-fd-muted transition-colors"
+              className="w-full sm:flex-1 px-6 py-4 bg-fd-card border border-fd-border text-fd-foreground font-mono text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 hover:bg-fd-muted transition-colors"
             >
-              <BookOpenText className="w-3.5 h-3.5 text-fd-primary" /> Explorar la Biblioteca
+              <BookOpenText className="w-4 h-4 text-fd-primary" /> Explorar la Biblioteca
             </Link>
           </div>
-        </div>
 
+        </div>
       </div>
 
       {/* Footer Técnico de Terminal */}

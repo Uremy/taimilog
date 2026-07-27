@@ -71,7 +71,10 @@ a:hover {
 
 /* 7. Reacciones y menús emergentes (Fondo oscuro 100% sólido y sombra profunda) */
 .gsc-reactions-menu,
-.gsc-social-reaction-summary-item {
+.gsc-social-reaction-summary-item,
+.gsc-reactions-menu .gsc-emoji-button,
+[class*="ReactionButton"],
+[class*="reactions-menu"] {
   background-color: hsl(240 10% 14%) !important;
   border-color: hsl(240 5% 22%) !important;
   border-radius: 0.5rem !important;

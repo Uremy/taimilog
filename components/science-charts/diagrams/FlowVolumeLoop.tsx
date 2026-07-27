@@ -21,15 +21,13 @@ export function FlowVolumeLoop({
   return (
     <ScienceChart
       domainX={[0, 6]}     
-      domainY={[-10, 10]} // SIMETRÍA PERFECTA: Ahora el 0 está en el 50% exacto de la altura
+      domainY={[-10, 10]}
       height={height}
       minWidth={420}
       title={`Espirometría: ${data.label}`}
       subtitle="Curva Flujo-Volumen (Espiración positiva / Inspiración negativa)"
     >
       <Axis orientation="bottom" atZero ticks={[0, 1, 2, 3, 4, 5, 6]} label="Volumen (L)" />
-      
-      {/* Ticks limpios hasta +-8 para dejar margen de respiración arriba y abajo */}
       <Axis orientation="left" ticks={[-8, -6, -4, -2, 0, 2, 4, 6, 8]} label="Flujo (L/s)" />
 
       {comparisonData && (
@@ -43,15 +41,17 @@ export function FlowVolumeLoop({
         />
       )}
 
+      {/* Relleno corregido: line cerrada, sin area/y0 */}
       <Curve
         data={data.points}
         x={(d) => d.volume}
         y={(d) => d.flow}
-        y0={0}
-        type="area"
+        type="line"
         curve="closed"
-        className="fill-fd-primary/5 dark:fill-fd-primary/10 transition-colors"
+        className="fill-fd-primary/5 dark:fill-fd-primary/10 stroke-none transition-colors"
       />
+
+      {/* Contorno */}
       <Curve
         data={data.points}
         x={(d) => d.volume}

@@ -15,27 +15,30 @@ export interface SpirometryCurveData {
 
 /**
  * Curva normal de referencia (Lazo cerrado)
+ * Nota: Se omite el punto (0,0) final para que curveCatmullRomClosed 
+ * calcule correctamente el vector tangente al cerrar el ciclo.
  */
 export const normalSpirometry: SpirometryCurveData = {
   id: 'normal',
   label: 'Patrón Normal',
-  pef: { volume: 1.2, flow: 8.5, label: 'PEF (8.5 L/s)' },
+  pef: { volume: 0.4, flow: 8.5, label: 'PEF (8.5 L/s)' }, // ~8% de FVC, dentro de norma
   fvc: 5.0,
   points: [
-    { volume: 0.0, flow: 0.0 },  // Inicio de espiración (TLC)
-    { volume: 0.5, flow: 6.0 },  // Subida rápida
-    { volume: 1.2, flow: 8.5 },  // Pico Espiratorio (PEF)
-    { volume: 2.5, flow: 5.5 },  // Descenso lineal normal (FEF 25-75)
-    { volume: 4.0, flow: 2.5 },
-    { volume: 5.0, flow: 0.0 },  // Fin de espiración (RV / FVC alcanzada)
-    { volume: 3.5, flow: -4.5 }, // Inspiración máxima (lazo inferior)
+    { volume: 0.0, flow: 0.0 },
+    { volume: 0.15, flow: 5.5 },
+    { volume: 0.4, flow: 8.5 },   // PEF
+    { volume: 1.2, flow: 6.8 },
+    { volume: 2.5, flow: 4.5 },
+    { volume: 4.0, flow: 1.8 },
+    { volume: 5.0, flow: 0.0 },
+    { volume: 3.5, flow: -4.5 },
     { volume: 1.5, flow: -5.0 },
-    { volume: 0.0, flow: 0.0 },  // Cierre del ciclo en TLC
-  ],
+    { volume: 0.3, flow: -1.5 },  // ← punto de transición suave antes de cerrar
+  ]
 };
 
 /**
- * Patrón Obstructivo (Ej. EPOC / Asma) - Nota el colapso temprano del flujo ("concavidad")
+ * Patrón Obstructivo (Ej. EPOC / Asma) - Colapso temprano del flujo ("concavidad")
  */
 export const obstructiveSpirometry: SpirometryCurveData = {
   id: 'obstructive',
@@ -49,6 +52,5 @@ export const obstructiveSpirometry: SpirometryCurveData = {
     { volume: 3.0, flow: 1.0 },
     { volume: 4.2, flow: 0.0 },  // FVC ligeramente reducida o normal
     { volume: 2.5, flow: -3.0 }, // Lazo inspiratorio conservado
-    { volume: 0.0, flow: 0.0 },
   ],
 };

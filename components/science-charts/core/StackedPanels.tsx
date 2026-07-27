@@ -12,21 +12,24 @@ export interface StackedPanelsProps {
 export function StackedPanels({ gap = 24, children }: StackedPanelsProps) {
   let currentTop = 0;
 
-  // Filtramos solo los elementos válidos para evitar errores tipográficos en React
   const validChildren = React.Children.toArray(children).filter(React.isValidElement);
 
   return (
     <>
       {validChildren.map((child, index) => {
-        const childElement = child as ReactElement<PanelProps>;
-        const height = childElement.props.height || 100;
+        const childElement = child as ReactElement<PanelProps & { label?: string; id?: string }>;
+        
+        // 1. CORRECCIÓN LÓGICA: ?? respeta el 0 como altura válida (paneles colapsados)
+        const height = childElement.props.height ?? 100;
         const topOffset = currentTop;
         
-        // Sumamos la altura de este panel más el espacio (gap) para el siguiente
         currentTop += height + gap;
 
+        // 2. KEY ESTABLE Y SIN 'ANY': Priorizamos la key nativa, luego id/label de props, y al final index
+        const stableKey = childElement.key ?? childElement.props.id ?? childElement.props.label ?? `panel-${index}`;
+
         return React.cloneElement(childElement, {
-          key: index,
+          key: stableKey,
           top: topOffset,
         });
       })}

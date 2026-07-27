@@ -1,3 +1,4 @@
+// components/science-charts/core/Panel.tsx
 'use client';
 
 import type { ReactNode } from 'react';
@@ -14,18 +15,27 @@ export interface PanelProps {
 export function Panel({ domainY, height, top = 0, children }: PanelProps) {
   const parentContext = useChartContext();
   
-  // Creamos una escala Y local para este panel, usando SOLO la altura de este panel
+  // GUARDA DE GEOMETRÍA: Prevención de dominios invertidos por error de tipeo o alturas nulas/negativas
+  if (process.env.NODE_ENV !== 'production') {
+    if (height <= 0) {
+      console.warn(`[Panel] height inválido: ${height}px. Se esperaba un valor estrictamente positivo.`);
+    }
+    if (domainY[0] === domainY[1]) {
+      console.warn(`[Panel] domainY plano [${domainY.join(', ')}]. Esto causará una división por cero en la escala.`);
+    }
+  }
+
+  // Escala Y local, acotada exclusivamente a la altura de este panel
   const localYScale = createLinearScale({
     domain: domainY,
-    range: [height, 0], // El piso del panel es height, el techo es 0
+    range: [Math.max(0, height), 0],
   });
 
-  // El nuevo contexto hereda todo del padre (xScale, ancho, etc.), pero sobrescribe yScale y altura
+  // Heredamos las dimensiones globales del lienzo (svgWidth/svgHeight) y solo redefinimos el área útil local
   const panelContext = {
     ...parentContext,
     yScale: localYScale,
-    boundedHeight: height,
-    height: height,
+    boundedHeight: Math.max(0, height),
   };
 
   return (

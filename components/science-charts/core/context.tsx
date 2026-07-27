@@ -1,17 +1,20 @@
 // components/science-charts/core/context.tsx
 import { createContext, useContext, type ReactNode } from 'react';
-import type { AxisScale } from '@visx/axis'; // 1. IMPORTAMOS EL TIPO OFICIAL DE VISX
+import type { ScaleLinear, ScaleTime, ScaleLogarithmic } from 'd3-scale';
 import type { ChartMargins } from '../hooks/useChartDimensions';
 
+export type AnyContinuousScale =
+  | ScaleLinear<number, number>
+  | ScaleTime<number, number>
+  | ScaleLogarithmic<number, number>;
+
 export interface ChartContextValue {
-  // 2. REEMPLAZAMOS EL (value: any) => number POR AxisScale<number>
-  // Esto le dice a TypeScript que la escala incluye .domain(), .range(), .ticks(), etc.
-  xScale: AxisScale<number>;
-  yScale: AxisScale<number>;
-  width: number;
-  height: number;
-  boundedWidth: number;
-  boundedHeight: number;
+  xScale: AnyContinuousScale;
+  yScale: AnyContinuousScale;
+  svgWidth: number;      // Ancho total medido del contenedor/SVG
+  svgHeight: number;     // Alto total medido del contenedor/SVG
+  boundedWidth: number;  // Ancho útil de dibujo (restando márgenes)
+  boundedHeight: number; // Alto útil de dibujo (restando márgenes o altura de panel)
   margin: ChartMargins;
 }
 

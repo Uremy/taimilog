@@ -9,16 +9,16 @@ export interface PhaseBandProps {
   end: number;
   label?: string;
   className?: string;
-  labelY?: number; // NUEVO: Permite cambiar el piso vertical del texto
+  labelY?: number;
 }
 
 export interface EventLineProps {
   x: number;
   label?: string;
   className?: string;
-  labelY?: number;                              // NUEVO: Altura del texto del evento
-  textAnchor?: 'start' | 'middle' | 'end';      // NUEVO: Hacia dónde crece el texto
-  dx?: number;                                  // NUEVO: Separación horizontal de la línea
+  labelY?: number;
+  textAnchor?: 'start' | 'middle' | 'end';
+  dx?: number;
 }
 
 export interface MarkerProps {
@@ -39,6 +39,13 @@ export function PhaseBand({
 }: PhaseBandProps) {
   const { xScale, boundedHeight } = useChartContext();
 
+  // GUARDA CIENTÍFICA: Detección de intervalos invertidos (ej. error en límites de sístole/diástole)
+  if (process.env.NODE_ENV !== 'production' && start > end) {
+    console.warn(
+      `[PhaseBand] Intervalo invertido: start (${start}) > end (${end}). La banda se renderizará colapsada para evitar geometrías negativas.`
+    );
+  }
+
   const x1 = xScale(start) ?? 0;
   const x2 = xScale(end) ?? 0;
   const width = Math.max(0, x2 - x1);
@@ -49,7 +56,7 @@ export function PhaseBand({
       {label && (
         <text
           x={x1 + width / 2}
-          y={labelY} // Usamos la altura dinámica (Piso 1 o Piso 2)
+          y={labelY}
           textAnchor="middle"
           className="text-[10px] font-mono fill-neutral-600 dark:fill-neutral-300 uppercase tracking-wider select-none font-semibold opacity-90 group-hover:opacity-100"
         >
@@ -78,9 +85,9 @@ export function EventLine({
       <line x1={xPos} y1={0} x2={xPos} y2={boundedHeight} className={className} />
       {label && (
         <text
-          x={xPos + dx}        // Separación dinámica hacia izquierda (-4) o derecha (+4)
-          y={labelY}           // Altura dinámica (Piso 3)
-          textAnchor={textAnchor} // Dirección de escritura opuesta
+          x={xPos + dx}
+          y={labelY}
+          textAnchor={textAnchor}
           className="text-[11px] font-sans fill-rose-600 dark:fill-rose-400 font-medium select-none"
         >
           {label}
@@ -105,8 +112,19 @@ export function Marker({
 
   return (
     <g className="group" transform={`translate(${xPos}, ${yPos})`}>
-      <circle r={6} className={`${className} transition-transform group-hover:scale-125`} />
-      <circle r={3} className="fill-white dark:fill-neutral-900 pointer-events-none" />
+      {type === 'intersection' ? (
+        /* GEOMETRÍA DE INTERSECCIÓN: Diamante clínico para eventos de cruce valvular o umbrales */
+        <g className="transition-transform group-hover:scale-125">
+          <polygon points="-6,0 0,-6 6,0 0,6" className={className} />
+          <circle r={2} className="fill-white dark:fill-neutral-900 pointer-events-none" />
+        </g>
+      ) : (
+        /* GEOMETRÍA ESTÁNDAR: Punto de medición continua */
+        <>
+          <circle r={6} className={`${className} transition-transform group-hover:scale-125`} />
+          <circle r={3} className="fill-white dark:fill-neutral-900 pointer-events-none" />
+        </>
+      )}
       {label && (
         <text
           x={0}

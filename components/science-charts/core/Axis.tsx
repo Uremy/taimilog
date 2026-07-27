@@ -10,7 +10,7 @@ export interface AxisProps {
   ticks?: number[];
   numTicks?: number;
   label?: string;
-  tickFormat?: (value: any, index: number) => string;
+  tickFormat?: (value: number, index: number) => string;
   hideLine?: boolean;
   hideTicks?: boolean;
   atZero?: boolean;
@@ -28,16 +28,26 @@ export function Axis({
 }: AxisProps) {
   const { xScale, yScale, boundedWidth, boundedHeight } = useChartContext();
 
-  const zeroYPosition = yScale(0);
+  // 1. GUARDA CIENTÍFICA: Verificamos si el 0 real pertenece al intervalo de la escala Y
+  const domain = yScale.domain().map(Number);
+  const zeroInDomain = Math.min(...domain) <= 0 && Math.max(...domain) >= 0;
+  
+  if (atZero && !zeroInDomain && process.env.NODE_ENV !== 'production') {
+    console.warn(
+      `[Axis] atZero=true pero 0 no está en el dominio Y [${domain.join(', ')}]. El eje se anclará al borde inferior para evitar una falsa lectura geométrica.`
+    );
+  }
 
-  const defaultTickFormat = (val: any) => {
+  const zeroYPosition = zeroInDomain ? yScale(0) : boundedHeight;
+
+  // 2. DISCIPLINA DE FORMATO: Retorno estrictamente string
+  const defaultTickFormat = (val: number) => {
     if (orientation === 'bottom' && atZero && Number(val) === 0) {
       return '';
     }
-    return val;
+    return String(val);
   };
 
-  // 1. BASE TIPOGRÁFICA PURA: Cero lógica condicional aquí, solo diseño coherente.
   const commonProps = {
     stroke: hideLine ? 'transparent' : chartTheme.axis,
     tickStroke: hideTicks ? 'transparent' : chartTheme.axis,
@@ -45,7 +55,7 @@ export function Axis({
     tickValues: ticks,
     numTicks,
     label,
-    tickFormat: tickFormat || defaultTickFormat,
+    tickFormat: (val: any, idx: number) => (tickFormat ? tickFormat(Number(val), idx) : defaultTickFormat(Number(val))),
     tickLabelProps: () => ({
       fill: 'currentColor',
       fontSize: 11,
@@ -65,34 +75,31 @@ export function Axis({
     },
   };
 
-  // 2. ESPECIALIZACIÓN POR CASO: Extendemos labelProps solo donde se necesita.
   switch (orientation) {
     case 'bottom':
       return (
         <AxisBottom
-          scale={xScale}
+          scale={xScale as any}
           top={atZero ? zeroYPosition : boundedHeight}
           labelOffset={atZero ? 12 : 28}
           {...commonProps}
           labelProps={{
             ...commonProps.labelProps,
-            // Si está en cero, alineamos al extremo derecho y flotamos 10px arriba de la línea
             ...(atZero && { textAnchor: 'end' as const, x: boundedWidth, y: -10 }),
           }}
         />
       );
     case 'top':
-      return <AxisTop scale={xScale} top={0} labelOffset={20} {...commonProps} />;
+      return <AxisTop scale={xScale as any} top={0} labelOffset={20} {...commonProps} />;
     case 'left':
       return (
         <AxisLeft
-          scale={yScale}
+          scale={yScale as any}
           left={0}
           labelOffset={42}
           {...commonProps}
           labelProps={{
             ...commonProps.labelProps,
-            // Tu ajuste de centro vertical para texto rotado -90°
             x: -boundedHeight / 2,
           }}
         />
@@ -100,13 +107,12 @@ export function Axis({
     case 'right':
       return (
         <AxisRight
-          scale={yScale}
+          scale={yScale as any}
           left={boundedWidth}
           labelOffset={42}
           {...commonProps}
           labelProps={{
             ...commonProps.labelProps,
-            // Tu ajuste de centro vertical para texto rotado -90°
             x: -boundedHeight / 2,
           }}
         />

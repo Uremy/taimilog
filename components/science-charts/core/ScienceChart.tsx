@@ -2,10 +2,11 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { createLinearScale } from './scales';
+import { createLinearScale, createTimeScale, createLogScale } from './scales';
 import { ChartProvider } from './context';
 import { ResponsiveSVG, ChartCanvas } from './ResponsiveSVG';
 import type { ChartMargins } from '../hooks/useChartDimensions';
+import type { AnyContinuousScale } from './context';
 
 const DEFAULT_MARGINS: ChartMargins = {
   top: 28,
@@ -14,20 +15,48 @@ const DEFAULT_MARGINS: ChartMargins = {
   left: 60,
 };
 
+export type ScaleType = 'linear' | 'time' | 'log';
+
 export interface ScienceChartProps {
-  domainX: [number, number];
+  domainX: [number, number] | [Date, Date];
   domainY?: [number, number];
+  scaleTypeX?: ScaleType;
+  scaleTypeY?: ScaleType;
+  clampX?: boolean;
+  clampY?: boolean;
   margin?: Partial<ChartMargins>;
   height?: number;
   minWidth?: number;
-  title?: string;    // Nueva propiedad para el título de la figura
-  subtitle?: string; // Nueva propiedad para descripción o leyenda clínica
+  title?: string;
+  subtitle?: string;
   children: ReactNode;
+}
+
+// Helper interno para instanciar la escala correcta de D3 según el tipo declarado
+function buildScale(
+  type: ScaleType, 
+  domain: [number, number] | [Date, Date], 
+  range: [number, number], 
+  clamp?: boolean
+): AnyContinuousScale {
+  switch (type) {
+    case 'time':
+      return createTimeScale({ domain: domain as [Date, Date], range, clamp });
+    case 'log':
+      return createLogScale({ domain: domain as [number, number], range, clamp });
+    case 'linear':
+    default:
+      return createLinearScale({ domain: domain as [number, number], range, clamp });
+  }
 }
 
 export function ScienceChart({ 
   domainX, 
   domainY = [0, 100], 
+  scaleTypeX = 'linear',
+  scaleTypeY = 'linear',
+  clampX = true,
+  clampY = true,
   margin: customMargin = {}, 
   height = 280, 
   minWidth = 480,
@@ -40,7 +69,7 @@ export function ScienceChart({
   return (
     <div className="w-full font-sans my-6 select-none block">
       
-      {/* CAPA EDITORIAL: Título y subtítulo centrados por defecto */}
+      {/* CAPA EDITORIAL: Título y subtítulo centrados */}
       {(title || subtitle) && (
         <div className="text-center mb-4 px-4">
           {title && (
@@ -62,12 +91,12 @@ export function ScienceChart({
           const boundedWidth = Math.max(0, width - margin.left - margin.right);
           const boundedHeight = Math.max(0, measuredHeight - margin.top - margin.bottom);
 
-          const xScale = createLinearScale({ domain: domainX, range: [0, boundedWidth] });
-          const yScale = createLinearScale({ domain: domainY, range: [boundedHeight, 0] });
+          const xScale = buildScale(scaleTypeX, domainX, [0, boundedWidth], clampX);
+          const yScale = buildScale(scaleTypeY, domainY, [boundedHeight, 0], clampY);
 
           const contextValue = {
-            width,
-            height: measuredHeight,
+            svgWidth: width,
+            svgHeight: measuredHeight,
             boundedWidth,
             boundedHeight,
             margin,

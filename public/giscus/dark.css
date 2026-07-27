@@ -1,103 +1,87 @@
-/* =========================================================
-   Giscus - Dark theme sólido y estilizado para Taimilog
-   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-/* 1. Normalización universal: Suaviza TODAS las líneas divisorias,
-      separadores (hr), botones secundarios, badges y contenedores */
-*,
-*::before,
-*::after,
-hr {
-  border-color: hsl(240 5% 20%) !important;
+main {
+  /* --- 1. PALETA BASE --- */
+  --primary-default: 243, 87, 131; /* hsl(345 80% 65%) - Rosa luminoso */
+  --bg-default: 27, 27, 33;        /* hsl(240 10% 12%) - Pizarra profundo */
+  
+  /* --- 2. SUPERFICIES Y CONTENEDORES --- */
+  --color-canvas-default: transparent;
+  --color-canvas-subtle: transparent;
+  --color-canvas-inset: #1b1b21;       /* Textarea y cajas de entrada */
+  --color-canvas-overlay: #202027;     /* Menús emergentes (100% sólido) */
+
+  /* --- 3. TIPOGRAFÍA Y TEXTOS --- */
+  --color-fg-default: #e5e5e6;         /* Texto principal */
+  --color-fg-muted: #b0b0b4;           /* Texto secundario */
+  --color-fg-subtle: #7a7a80;
+
+  /* --- 4. BORDES Y SEPARADORES --- */
+  --color-border-default: #303033;
+  --color-border-muted: #303033;
+  --color-neutral-muted: rgba(48, 48, 51, 0.6);
+
+  /* --- 5. ACENTOS, ENLACES Y ESTADOS ACTIVOS --- */
+  --color-accent-fg: #f35783;
+  --color-accent-emphasis: #c32252;
+  --color-accent-muted: rgba(var(--primary-default), 0.4);
+  --color-accent-subtle: rgba(var(--primary-default), 0.15);
+
+  /* --- 6. BOTONES GENERALES Y SECUNDARIOS --- */
+  --color-btn-text: #e5e5e6;
+  --color-btn-bg: transparent;
+  --color-btn-border: #303033;
+  --color-btn-hover-bg: rgba(255, 255, 255, 0.05);
+  --color-btn-hover-border: #404044;
+  --color-btn-active-bg: rgba(var(--primary-default), 0.2);
+  --color-btn-selected-bg: rgba(var(--primary-default), 0.15);
+
+  /* --- 7. BOTÓN PRINCIPAL --- */
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-bg: #c32252;
+  --color-btn-primary-border: #a41d45;
+  --color-btn-primary-hover-bg: #a41d45;
+  --color-btn-primary-hover-border: #8b183a;
+  --color-btn-primary-disabled-text: rgba(255, 255, 255, 0.5);
+  --color-btn-primary-disabled-bg: rgba(195, 34, 82, 0.4);
+  --color-btn-primary-disabled-border: transparent;
+
+  /* --- 8. PESTAÑAS Y CONTROLES SEGMENTADOS --- */
+  --color-segmented-control-bg: #1b1b21;
+  --color-segmented-control-button-bg: #202027;
+  --color-segmented-control-button-selected-border: #f35783;
+
+  /* --- 9. SYNTAX HIGHLIGHTING --- */
+  --color-prettylights-syntax-comment: #7a7a80;
+  --color-prettylights-syntax-constant: #79c0ff;
+  --color-prettylights-syntax-entity: #d2a8ff;
+  --color-prettylights-syntax-keyword: #ff7b72;
+  --color-prettylights-syntax-string: #a5d6ff;
+  --color-prettylights-syntax-variable: #ffa657;
+  --color-prettylights-syntax-markup-heading: #1f6feb;
+
+  /* --- 10. SOMBRAS Y REACCIONES --- */
+  --color-primer-shadow-inset: 0 1px 0 rgba(27, 27, 33, 1);
+  --color-scale-gray-1: rgba(255, 255, 255, 0.05);
+  --color-scale-blue-1: rgba(var(--primary-default), 0.15);
+  --color-social-reaction-bg-hover: var(--color-scale-gray-1);
+  --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-1);
 }
 
-/* 2. Fondo principal y tipografía */
-.gsc-homepage-bg {
-  background-color: transparent !important;
+/* Aplicación global en el iframe de Giscus */
+main {
+  font-family: 'Atkinson Hyperlegible', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-body {
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
-  color: hsl(240 5% 90%);
-  background-color: transparent !important;
+main .pagination-loader-container {
+  background-image: url("https://github.com/images/modules/pulls/progressive-disclosure-line.svg");
 }
 
-/* 3. Enlaces y acentos -> Rosa luminoso para dark mode */
-a,
-.gsc-comment-author,
-.gsc-reactions-count {
-  color: hsl(345 80% 65%) !important;
+main .gsc-loading-image {
+  background-image: url("https://github.githubassets.com/images/mona-loading-default.gif");
 }
 
-a:hover {
-  color: hsl(345 80% 72%) !important;
-}
-
-/* 4. Bordes unificados y discretos para tarjetas y contenedores */
-.gsc-comment,
-.gsc-comment-box,
-.gsc-timeline,
-.gsc-reply-box {
-  background-color: transparent !important;
-  border-color: hsl(240 5% 20%) !important;
-  border-radius: 0.5rem !important;
-}
-
-/* 5. Área de texto y pestañas (Fondo gris/pizarra sólido) */
-.gsc-comment-box-textarea {
-  background-color: hsl(240 10% 12%) !important;
-  color: hsl(240 5% 90%) !important;
-  border-color: hsl(240 5% 20%) !important;
-  border-radius: 0.5rem !important;
-  font-family: 'Manrope', sans-serif !important;
-}
-
-.gsc-comment-box-tabs .gsc-comment-box-tabs-mask {
-  border-color: hsl(240 5% 20%) !important;
-}
-
-/* 6. Botón principal (Comentar / Cargar más) */
-.gsc-comment-box-buttons button.btn-primary,
-.gsc-loading-image + button {
-  background-color: hsl(345 70% 45%) !important;
-  border-color: hsl(345 70% 40%) !important;
-  color: #ffffff !important;
-  border-radius: 0.5rem !important;
-}
-
-.gsc-comment-box-buttons button.btn-primary:hover {
-  background-color: hsl(345 70% 38%) !important;
-}
-
-/* 7. Reacciones y menús emergentes (Fondo oscuro 100% sólido y sombra profunda) */
 .gsc-reactions-menu,
-.gsc-social-reaction-summary-item,
-.gsc-reactions-menu .gsc-emoji-button,
-[class*="ReactionButton"],
-[class*="reactions-menu"] {
-  background-color: hsl(240 10% 14%) !important;
-  border-color: hsl(240 5% 22%) !important;
-  border-radius: 0.5rem !important;
+.gsc-social-reaction-summary-item {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45) !important;
-}
-
-/* 8. Botones de ordenamiento (Antiguo/Nuevo) y Pestañas (Escribir/Previsualizar) */
-.gsc-sorting button,
-.gsc-sorting-button,
-.gsc-comment-box-tabs button {
-  font-weight: 500 !important; 
-  color: hsl(240 5% 70%) !important;
-  background-color: transparent !important;
-}
-
-/* Estado seleccionado -> Iluminado con rosa luminoso y fondo tintado sutil */
-.gsc-sorting button[aria-selected="true"],
-.gsc-sorting-button[aria-selected="true"],
-.gsc-sorting button.selected,
-.gsc-sorting-button.selected,
-.gsc-comment-box-tabs button[aria-selected="true"] {
-  color: hsl(345 80% 65%) !important;
-  border-color: hsl(345 80% 65%) !important;
-  background-color: hsl(345 80% 65% / 0.15) !important;
-  font-weight: 600 !important;
 }

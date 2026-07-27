@@ -1,103 +1,86 @@
-/* =========================================================
-   Giscus - Light theme sólido y con bordes sutiles para Taimilog
-   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-/* 1. Normalización universal: Suaviza TODAS las líneas divisorias,
-      separadores (hr), botones secundarios, badges y contenedores */
-*,
-*::before,
-*::after,
-hr {
-  border-color: rgba(0, 0, 0, 0.12) !important;
+main {
+  /* --- 1. PALETA BASE --- */
+  --primary-default: 143, 36, 64;  /* hsl(345 60% 35%) - Granate */
+  --bg-default: 255, 255, 255;     /* #ffffff - Blanco sólido */
+
+  /* --- 2. SUPERFICIES Y CONTENEDORES --- */
+  --color-canvas-default: transparent;
+  --color-canvas-subtle: transparent;
+  --color-canvas-inset: #ffffff;       /* Textarea 100% blanco */
+  --color-canvas-overlay: #ffffff;     /* Menús sólidos */
+
+  /* --- 3. TIPOGRAFÍA Y TEXTOS --- */
+  --color-fg-default: #23232a;         /* Texto principal */
+  --color-fg-muted: #5c5c66;           /* Texto secundario */
+  --color-fg-subtle: #8c8c96;
+
+  /* --- 4. BORDES Y SEPARADORES --- */
+  --color-border-default: rgba(0, 0, 0, 0.12);
+  --color-border-muted: rgba(0, 0, 0, 0.08);
+  --color-neutral-muted: rgba(0, 0, 0, 0.08);
+
+  /* --- 5. ACENTOS, ENLACES Y ESTADOS ACTIVOS --- */
+  --color-accent-fg: #8f2440;
+  --color-accent-emphasis: #8f2440;
+  --color-accent-muted: rgba(var(--primary-default), 0.4);
+  --color-accent-subtle: rgba(var(--primary-default), 0.1);
+
+  /* --- 6. BOTONES GENERALES Y SECUNDARIOS --- */
+  --color-btn-text: #23232a;
+  --color-btn-bg: transparent;
+  --color-btn-border: rgba(0, 0, 0, 0.12);
+  --color-btn-hover-bg: rgba(0, 0, 0, 0.04);
+  --color-btn-hover-border: rgba(0, 0, 0, 0.2);
+  --color-btn-active-bg: rgba(var(--primary-default), 0.15);
+  --color-btn-selected-bg: rgba(var(--primary-default), 0.1);
+
+  /* --- 7. BOTÓN PRINCIPAL --- */
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-bg: #8f2440;
+  --color-btn-primary-border: #721d33;
+  --color-btn-primary-hover-bg: #721d33;
+  --color-btn-primary-hover-border: #571627;
+  --color-btn-primary-disabled-text: rgba(255, 255, 255, 0.7);
+  --color-btn-primary-disabled-bg: rgba(143, 36, 64, 0.5);
+  --color-btn-primary-disabled-border: transparent;
+
+  /* --- 8. PESTAÑAS Y CONTROLES SEGMENTADOS --- */
+  --color-segmented-control-bg: #f4f4f6;
+  --color-segmented-control-button-bg: #ffffff;
+  --color-segmented-control-button-selected-border: #8f2440;
+
+  /* --- 9. SYNTAX HIGHLIGHTING --- */
+  --color-prettylights-syntax-comment: #5c5c66;
+  --color-prettylights-syntax-constant: #0550ae;
+  --color-prettylights-syntax-entity: #8250df;
+  --color-prettylights-syntax-keyword: #cf222e;
+  --color-prettylights-syntax-string: #0a3069;
+  --color-prettylights-syntax-variable: #953800;
+  --color-prettylights-syntax-markup-heading: #0550ae;
+
+  /* --- 10. SOMBRAS Y REACCIONES --- */
+  --color-primer-shadow-inset: 0 1px 0 rgba(255, 255, 255, 1);
+  --color-scale-gray-1: rgba(0, 0, 0, 0.04);
+  --color-scale-blue-1: rgba(var(--primary-default), 0.1);
+  --color-social-reaction-bg-hover: var(--color-scale-gray-1);
+  --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-1);
 }
 
-/* 2. Fondo principal y tipografía */
-.gsc-homepage-bg {
-  background-color: transparent !important;
+main {
+  font-family: 'Atkinson Hyperlegible', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-body {
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
-  color: hsl(240 10% 15%);
-  background-color: transparent !important;
+main .pagination-loader-container {
+  background-image: url("https://github.com/images/modules/pulls/progressive-disclosure-line.svg");
 }
 
-/* 3. Enlaces y acentos -> Granate */
-a,
-.gsc-comment-author,
-.gsc-reactions-count {
-  color: hsl(345 60% 35%) !important;
+main .gsc-loading-image {
+  background-image: url("https://github.githubassets.com/images/mona-loading-default.gif");
 }
 
-a:hover {
-  color: hsl(345 60% 28%) !important;
-}
-
-/* 4. Bordes sutiles para tarjetas y contenedores */
-.gsc-comment,
-.gsc-comment-box,
-.gsc-timeline,
-.gsc-reply-box {
-  background-color: transparent !important;
-  border-color: rgba(0, 0, 0, 0.12) !important;
-  border-radius: 0.5rem !important;
-}
-
-/* 5. Área de texto y pestañas (Fondo blanco sólido para evitar empastes) */
-.gsc-comment-box-textarea {
-  background-color: #ffffff !important;
-  color: hsl(240 10% 15%) !important;
-  border-color: rgba(0, 0, 0, 0.12) !important;
-  border-radius: 0.5rem !important;
-  font-family: 'Manrope', sans-serif !important;
-}
-
-.gsc-comment-box-tabs .gsc-comment-box-tabs-mask {
-  border-color: rgba(0, 0, 0, 0.12) !important;
-}
-
-/* 6. Botón principal (Comentar / Cargar más) */
-.gsc-comment-box-buttons button.btn-primary,
-.gsc-loading-image + button {
-  background-color: hsl(345 60% 35%) !important;
-  border-color: hsl(345 60% 30%) !important;
-  color: #ffffff !important;
-  border-radius: 0.5rem !important;
-}
-
-.gsc-comment-box-buttons button.btn-primary:hover {
-  background-color: hsl(345 60% 28%) !important;
-}
-
-/* 7. Reacciones y menús emergentes (Fondo 100% sólido con sombra elegante) */
 .gsc-reactions-menu,
-.gsc-social-reaction-summary-item,
-.gsc-reactions-menu .gsc-emoji-button,
-[class*="ReactionButton"],
-[class*="reactions-menu"] {
-  background-color: #ffffff !important;
-  border-color: rgba(0, 0, 0, 0.12) !important;
-  border-radius: 0.5rem !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
-}
-
-/* 8. Botones de ordenamiento (Antiguo/Nuevo) y Pestañas (Escribir/Previsualizar) */
-.gsc-sorting button,
-.gsc-sorting-button,
-.gsc-comment-box-tabs button {
-  font-weight: 500 !important;
-  color: hsl(240 10% 40%) !important;
-  background-color: transparent !important;
-}
-
-/* Estado seleccionado -> Iluminado con granate y fondo tintado sutil */
-.gsc-sorting button[aria-selected="true"],
-.gsc-sorting-button[aria-selected="true"],
-.gsc-sorting button.selected,
-.gsc-sorting-button.selected,
-.gsc-comment-box-tabs button[aria-selected="true"] {
-  color: hsl(345 60% 35%) !important;
-  border-color: hsl(345 60% 35%) !important;
-  background-color: hsl(345 60% 35% / 0.1) !important;
-  font-weight: 600 !important;
+.gsc-social-reaction-summary-item {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
 }

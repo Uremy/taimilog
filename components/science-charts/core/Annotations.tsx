@@ -29,6 +29,15 @@ export interface MarkerProps {
   type?: 'circle' | 'intersection';
 }
 
+export interface CurveEndLabelProps {
+  x: number;
+  y: number;
+  label: string;
+  angle?: number;
+  className?: string;
+  textAnchor?: 'start' | 'middle' | 'end';
+}
+
 // --- 1. PHASE BAND ---
 export function PhaseBand({
   start,
@@ -131,6 +140,101 @@ export function Marker({
           y={-12}
           textAnchor="middle"
           className="text-xs font-mono fill-neutral-800 dark:fill-neutral-200 font-semibold select-none drop-shadow-sm"
+        >
+          {label}
+        </text>
+      )}
+    </g>
+  );
+}
+
+// --- 4. CURVE END LABEL ---
+export interface CurveEndLabelProps {
+  x: number;
+  y: number;
+  label: string;
+  angle?: number;
+  className?: string;
+  textAnchor?: 'start' | 'middle' | 'end';
+  dx?: number;
+  dy?: number;
+}
+
+export function CurveEndLabel({
+  x,
+  y,
+  label,
+  angle = 0,
+  className = 'text-[11px] font-sans fill-neutral-600 dark:fill-neutral-400 font-medium select-none',
+  textAnchor = 'start',
+  dx = 0,
+  dy = 0,
+}: CurveEndLabelProps) {
+  const { xScale, yScale } = useChartContext();
+
+  if (process.env.NODE_ENV !== 'production') {
+    const [xMin, xMax] = xScale.domain();
+    const [yMin, yMax] = yScale.domain();
+    
+    if (x < xMin || x > xMax || y < yMin || y > yMax) {
+      console.warn(
+        `[CurveEndLabel] Coordenadas fuera de dominio: x=${x} [${xMin}, ${xMax}], y=${y} [${yMin}, ${yMax}]`
+      );
+    }
+  }
+
+  const xPos = xScale(x) ?? 0;
+  const yPos = yScale(y) ?? 0;
+
+  return (
+    <g 
+      className="group transition-transform" 
+      transform={`translate(${xPos}, ${yPos}) rotate(${angle})`}
+    >
+      <text
+        x={0}
+        y={0}
+        dx={dx}
+        dy={dy}
+        textAnchor={textAnchor}
+        dominantBaseline="middle"
+        className={className}
+      >
+        {label}
+      </text>
+    </g>
+  );
+}
+
+export interface HorizontalEventLineProps {
+  y: number;
+  label?: string;
+  className?: string;
+  labelX?: number;
+  textAnchor?: 'start' | 'middle' | 'end';
+  dy?: number;
+}
+
+export function HorizontalEventLine({
+  y,
+  label,
+  className = 'stroke-rose-500/50 dark:stroke-rose-400/50 stroke-dashed stroke-1',
+  labelX = 8,
+  textAnchor = 'start',
+  dy = -6,
+}: HorizontalEventLineProps) {
+  const { yScale, boundedWidth } = useChartContext();
+  const yPos = yScale(y) ?? 0;
+
+  return (
+    <g className="group">
+      <line x1={0} y1={yPos} x2={boundedWidth} y2={yPos} className={className} />
+      {label && (
+        <text
+          x={labelX}
+          y={yPos + dy}
+          textAnchor={textAnchor}
+          className="text-[11px] font-sans fill-rose-600 dark:fill-rose-400 font-medium select-none"
         >
           {label}
         </text>

@@ -28,7 +28,6 @@ export function Axis({
 }: AxisProps) {
   const { xScale, yScale, boundedWidth, boundedHeight } = useChartContext();
 
-  // 1. GUARDA CIENTÍFICA: Verificamos si el 0 real pertenece al intervalo de la escala Y
   const domain = yScale.domain().map(Number);
   const zeroInDomain = Math.min(...domain) <= 0 && Math.max(...domain) >= 0;
   
@@ -40,7 +39,6 @@ export function Axis({
 
   const zeroYPosition = zeroInDomain ? yScale(0) : boundedHeight;
 
-  // 2. DISCIPLINA DE FORMATO: Retorno estrictamente string
   const defaultTickFormat = (val: number) => {
     if (orientation === 'bottom' && atZero && Number(val) === 0) {
       return '';
@@ -61,7 +59,8 @@ export function Axis({
       fontSize: 11,
       fontFamily: 'var(--font-mono, monospace)',
       textAnchor: orientation === 'left' ? ('end' as const) : orientation === 'right' ? ('start' as const) : ('middle' as const),
-      dy: orientation === 'bottom' ? '0.25em' : '0.33em',
+      // Inyectamos el valor negativo para tirar del texto hacia arriba en el eje superior
+      dy: orientation === 'bottom' ? '0.25em' : orientation === 'top' ? '-0.25em' : '0.33em',
       dx: orientation === 'left' ? '-0.25em' : orientation === 'right' ? '0.25em' : '0em',
       className: 'text-neutral-600 dark:text-neutral-400',
     }),
@@ -90,7 +89,8 @@ export function Axis({
         />
       );
     case 'top':
-      return <AxisTop scale={xScale as any} top={0} labelOffset={20} {...commonProps} />;
+      // Elevamos el labelOffset a 28 para simetría con el eje inferior
+      return <AxisTop scale={xScale as any} top={0} labelOffset={28} {...commonProps} />;
     case 'left':
       return (
         <AxisLeft

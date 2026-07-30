@@ -29,10 +29,11 @@ export interface ScienceChartProps {
   minWidth?: number;
   title?: string;
   subtitle?: string;
+  badge?: string;
+  legend?: ReactNode;
   children: ReactNode;
 }
 
-// Helper interno para instanciar la escala correcta de D3 según el tipo declarado
 function buildScale(
   type: ScaleType, 
   domain: [number, number] | [Date, Date], 
@@ -62,57 +63,76 @@ export function ScienceChart({
   minWidth = 480,
   title,
   subtitle,
+  badge = 'D3.js',
+  legend,
   children 
 }: ScienceChartProps) {
   const margin: ChartMargins = { ...DEFAULT_MARGINS, ...customMargin };
 
   return (
-    <div className="w-full font-sans my-6 select-none block">
+    <figure className="not-prose my-8 overflow-hidden rounded-[var(--radius)] border border-fd-border bg-fd-card">
       
-      {/* CAPA EDITORIAL: Título y subtítulo centrados */}
       {(title || subtitle) && (
-        <div className="text-center mb-4 px-4">
-          {title && (
-            <h4 className="text-sm font-mono font-semibold text-fd-foreground tracking-wide">
-              {title}
-            </h4>
-          )}
-          {subtitle && (
-            <p className="text-xs font-mono text-fd-muted-foreground mt-1">
-              {subtitle}
-            </p>
-          )}
-        </div>
+        <figcaption className="flex items-center justify-between border-b border-fd-border/60 bg-fd-accent/40 px-4 py-2">
+          <div className="flex flex-col">
+            {title && (
+              <span className="font-mono text-[11px] uppercase tracking-widest text-fd-accent-foreground">
+                {title}
+              </span>
+            )}
+            {subtitle && (
+              <span className="text-xs font-sans text-fd-muted-foreground mt-0.5">
+                {subtitle}
+              </span>
+            )}
+          </div>
+          <span
+            className="rounded-full px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-fd-primary-foreground"
+            style={{
+              backgroundColor: `color-mix(in oklch, var(--color-fd-primary) 30%, transparent)`,
+            }}
+            aria-hidden
+          >
+            {badge}
+          </span>
+        </figcaption>
       )}
 
-      {/* CAPA VECTORIAL: Lienzo D3 con scroll responsivo */}
-      <ResponsiveSVG height={height} minWidth={minWidth}>
-        {({ width, height: measuredHeight }) => {
-          const boundedWidth = Math.max(0, width - margin.left - margin.right);
-          const boundedHeight = Math.max(0, measuredHeight - margin.top - margin.bottom);
+      <div className="w-full font-sans select-none block p-4">
+        <ResponsiveSVG height={height} minWidth={minWidth}>
+          {({ width, height: measuredHeight }) => {
+            const boundedWidth = Math.max(0, width - margin.left - margin.right);
+            const boundedHeight = Math.max(0, measuredHeight - margin.top - margin.bottom);
 
-          const xScale = buildScale(scaleTypeX, domainX, [0, boundedWidth], clampX);
-          const yScale = buildScale(scaleTypeY, domainY, [boundedHeight, 0], clampY);
+            const xScale = buildScale(scaleTypeX, domainX, [0, boundedWidth], clampX);
+            const yScale = buildScale(scaleTypeY, domainY, [boundedHeight, 0], clampY);
 
-          const contextValue = {
-            svgWidth: width,
-            svgHeight: measuredHeight,
-            boundedWidth,
-            boundedHeight,
-            margin,
-            xScale,
-            yScale,
-          };
+            const contextValue = {
+              svgWidth: width,
+              svgHeight: measuredHeight,
+              boundedWidth,
+              boundedHeight,
+              margin,
+              xScale,
+              yScale,
+            };
 
-          return (
-            <ChartProvider value={contextValue}>
-              <ChartCanvas margin={margin}>
-                {children}
-              </ChartCanvas>
-            </ChartProvider>
-          );
-        }}
-      </ResponsiveSVG>
-    </div>
+            return (
+              <ChartProvider value={contextValue}>
+                <ChartCanvas margin={margin}>
+                  {children}
+                </ChartCanvas>
+              </ChartProvider>
+            );
+          }}
+        </ResponsiveSVG>
+      </div>
+
+      {legend && (
+        <div className="border-t border-fd-border/60 bg-fd-card p-4 md:px-6">
+          {legend}
+        </div>
+      )}
+    </figure>
   );
 }

@@ -25,7 +25,7 @@ function GridLayer({ curve }: { curve: typeof acidBaseGridCurves[0] }) {
         y={(d) => d.hco3}
         className={`fill-none ${curve.theme.stroke} ${curve.theme.strokeWidth || ''}`}
       />
-<CurveEndLabel
+      <CurveEndLabel
         x={point.pH}
         y={point.hco3}
         label={curve.label}
@@ -42,46 +42,40 @@ function GridLayer({ curve }: { curve: typeof acidBaseGridCurves[0] }) {
 export function AcidBaseMapChart() {
   const patient = { pH: 7.537, hco3: 42 };
 
-  // 1. Definimos las marcas deseadas para el eje de [H+] en nmol/L
   const hTicks = [100, 90, 80, 70, 60, 50, 40, 30, 20];
-  
-  // 2. Proyectamos inversamente esos valores al dominio lineal del pH
   const hTicksInPh = hTicks.map((h) => 9 - Math.log10(h));
 
   return (
-    <div className="p-4 border border-fd-border rounded-lg bg-fd-card my-6">
-      <ScienceChart
-        domainX={[7.0, 7.8]}
-        domainY={[0, 60]}
-        height={480}
-        minWidth={500}
-        scaleTypeX="linear"
-        scaleTypeY="linear"
-        margin={{ top: 60, right: 60, bottom: 70, left: 60 }}
-      >
-        {/* Ejes X (Inferior y Superior) */}
-        <Axis orientation="bottom" label="pH Arterial" numTicks={8} />
-        <Axis 
-          orientation="top" 
-          ticks={hTicksInPh} 
-          tickFormat={(val) => Math.round(Math.pow(10, 9 - val)).toString()} 
-          label="[H⁺] (nmol/L)" 
-        />
-        
-        {/* Eje Y */}
-        <Axis orientation="left" label="HCO₃⁻ (mEq/L)" numTicks={12} />
+    <ScienceChart
+      domainX={[7.0, 7.8]}
+      domainY={[0, 60]}
+      height={480}
+      minWidth={500}
+      scaleTypeX="linear"
+      scaleTypeY="linear"
+      margin={{ top: 60, right: 60, bottom: 70, left: 60 }}
+      title="Mapa Ácido-Base"
+      subtitle="Evaluación del estado metabólico y respiratorio"
+      badge="Fisiología"
+    >
+      <Axis orientation="bottom" label="pH Arterial" numTicks={8} />
+      <Axis 
+        orientation="top" 
+        ticks={hTicksInPh} 
+        tickFormat={(val) => Math.round(Math.pow(10, 9 - val)).toString()} 
+        label="[H⁺] (nmol/L)" 
+      />
+      
+      <Axis orientation="left" label="HCO₃⁻ (mEq/L)" numTicks={12} />
 
-        {/* Rejilla topográfica de fondo */}
-        {acidBaseGridCurves.map((curve) => (
-          <GridLayer key={curve.id} curve={curve} />
-        ))}
+      {acidBaseGridCurves.map((curve) => (
+        <GridLayer key={curve.id} curve={curve} />
+      ))}
 
-        {/* Crosshair del paciente */}
-        <HorizontalEventLine y={patient.hco3} label={`${patient.hco3}`} />
-        <EventLine x={patient.pH} label={`${patient.pH}`} dx={6} />
-        <Marker x={patient.pH} y={patient.hco3} type="intersection" className="fill-rose-500" />
-        
-      </ScienceChart>
-    </div>
+      <HorizontalEventLine y={patient.hco3} label={`${patient.hco3}`} />
+      <EventLine x={patient.pH} label={`${patient.pH}`} dx={6} />
+      <Marker x={patient.pH} y={patient.hco3} type="intersection" className="fill-rose-500" />
+      
+    </ScienceChart>
   );
 }

@@ -5,24 +5,27 @@ import { createContext, useContext, type ReactNode } from 'react';
 import type { ScaleLinear, ScaleTime, ScaleLogarithmic, ScaleBand } from 'd3-scale';
 import type { ChartMargins } from '../hooks/useChartDimensions';
 
-// Escalas continuas matemáticas estándar
 export type AnyContinuousScale =
   | ScaleLinear<number, number>
   | ScaleTime<number, number>
   | ScaleLogarithmic<number, number>;
 
-// Unión completa soportada en el eje horizontal
-export type AnyXScale = AnyContinuousScale | ScaleBand<string>;
+// Definimos la escala invocable permitiendo cualquier tipo de entrada de dominio
+export type AnyChartScale = (AnyContinuousScale | ScaleBand<string>) & {
+  (value: any): number | undefined;
+  domain(): any[];
+  range(): any[];
+};
 
 export interface ChartContextValue {
-  xScale: AnyXScale;
+  xScale: AnyChartScale;
   yScale: AnyContinuousScale;
-  svgWidth: number;      // Ancho total medido del contenedor/SVG
-  svgHeight: number;     // Alto total medido del contenedor/SVG
-  boundedWidth: number;  // Ancho útil de dibujo (restando márgenes)
-  boundedHeight: number; // Alto útil de dibujo (restando márgenes o altura del panel actual)
+  svgWidth: number;
+  svgHeight: number;
+  boundedWidth: number;
+  boundedHeight: number;
   margin: ChartMargins;
-  panelIndex?: number;   // Índice contextual en layouts apilados (Wiggers, EEG, multicanal)
+  panelIndex?: number;
 }
 
 const ChartContext = createContext<ChartContextValue | null>(null);

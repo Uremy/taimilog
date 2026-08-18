@@ -7,23 +7,44 @@ import type { ChartMargins } from '../hooks/useChartDimensions';
 
 export interface ResponsiveSVGProps {
   height: number;
-  minWidth?: number; // Nuevo prop para fijar el límite de compresión
+  minWidth?: number;
+  debounceTime?: number;
   children: (dimensions: { width: number; height: number }) => ReactNode;
   className?: string;
 }
 
-export function ResponsiveSVG({ height, minWidth = 480, children, className = '' }: ResponsiveSVGProps) {
+export function ResponsiveSVG({
+  height,
+  minWidth = 480,
+  debounceTime = 50,
+  children,
+  className = '',
+}: ResponsiveSVGProps) {
   return (
-    /* 1. Contenedor exterior: Permite el scroll horizontal con overflow-x-auto nativo de Tailwind */
     <div className={`w-full overflow-x-auto pb-2 ${className}`}>
-      
-      <div style={{ width: '100%', minWidth, height }} className="relative select-none">
-        <ParentSize>
+      <div
+        style={{ width: '100%', minWidth, height }}
+        className="relative select-none"
+      >
+        <ParentSize debounceTime={debounceTime}>
           {({ width }) => {
-            if (width === 0) return null;
-            
+            if (width === 0) {
+              return (
+                <div
+                  style={{ width: '100%', height }}
+                  className="animate-pulse bg-fd-muted/20 rounded"
+                  aria-hidden
+                />
+              );
+            }
+
             return (
-              <svg width={width} height={height} className="overflow-visible block">
+              <svg
+                width={width}
+                height={height}
+                role="img"
+                className="overflow-visible block"
+              >
                 {children({ width, height })}
               </svg>
             );
@@ -34,6 +55,12 @@ export function ResponsiveSVG({ height, minWidth = 480, children, className = ''
   );
 }
 
-export function ChartCanvas({ margin, children }: { margin: ChartMargins; children: ReactNode }) {
+export function ChartCanvas({
+  margin,
+  children,
+}: {
+  margin: ChartMargins;
+  children: ReactNode;
+}) {
   return <g transform={`translate(${margin.left}, ${margin.top})`}>{children}</g>;
 }

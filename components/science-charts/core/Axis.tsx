@@ -28,19 +28,17 @@ export function Axis({
 }: AxisProps) {
   const { xScale, yScale, boundedWidth, boundedHeight } = useChartContext();
 
-  const domain = yScale.domain().map(Number);
-  const zeroInDomain = Math.min(...domain) <= 0 && Math.max(...domain) >= 0;
-  
-  if (atZero && !zeroInDomain && process.env.NODE_ENV !== 'production') {
-    console.warn(
-      `[Axis] atZero=true pero 0 no está en el dominio Y [${domain.join(', ')}]. El eje se anclará al borde inferior para evitar una falsa lectura geométrica.`
-    );
-  }
+  const xDomain = xScale.domain().map(Number);
+  const yDomain = yScale.domain().map(Number);
 
-  const zeroYPosition = zeroInDomain ? yScale(0) : boundedHeight;
+  const zeroInXDomain = Math.min(...xDomain) <= 0 && Math.max(...xDomain) >= 0;
+  const zeroInYDomain = Math.min(...yDomain) <= 0 && Math.max(...yDomain) >= 0;
+
+  const zeroYPos = zeroInYDomain ? (yScale(0) ?? boundedHeight) : boundedHeight;
+  const zeroXPos = zeroInXDomain ? (xScale(0) ?? 0) : 0;
 
   const defaultTickFormat = (val: number) => {
-    if (orientation === 'bottom' && atZero && Number(val) === 0) {
+    if (atZero && Number(val) === 0) {
       return '';
     }
     return String(val);
@@ -49,28 +47,33 @@ export function Axis({
   const commonProps = {
     stroke: hideLine ? 'transparent' : chartTheme.axis,
     tickStroke: hideTicks ? 'transparent' : chartTheme.axis,
-    tickLength: 6,
+    tickLength: 5,
     tickValues: ticks,
     numTicks,
     label,
-    tickFormat: (val: any, idx: number) => (tickFormat ? tickFormat(Number(val), idx) : defaultTickFormat(Number(val))),
+    tickFormat: (val: any, idx: number) =>
+      tickFormat ? tickFormat(Number(val), idx) : defaultTickFormat(Number(val)),
     tickLabelProps: () => ({
       fill: 'currentColor',
-      fontSize: 11,
+      fontSize: 10,
       fontFamily: 'var(--font-mono, monospace)',
-      textAnchor: orientation === 'left' ? ('end' as const) : orientation === 'right' ? ('start' as const) : ('middle' as const),
-      // Inyectamos el valor negativo para tirar del texto hacia arriba en el eje superior
+      textAnchor:
+        orientation === 'left'
+          ? ('end' as const)
+          : orientation === 'right'
+            ? ('start' as const)
+            : ('middle' as const),
       dy: orientation === 'bottom' ? '0.25em' : orientation === 'top' ? '-0.25em' : '0.33em',
-      dx: orientation === 'left' ? '-0.25em' : orientation === 'right' ? '0.25em' : '0em',
-      className: 'text-neutral-600 dark:text-neutral-400',
+      dx: orientation === 'left' ? '-0.3em' : orientation === 'right' ? '0.3em' : '0em',
+      className: 'text-neutral-500 dark:text-neutral-400 font-medium select-none',
     }),
     labelProps: {
       fill: 'currentColor',
-      fontSize: 12,
+      fontSize: 11,
       fontFamily: 'var(--font-sans, sans-serif)',
-      fontWeight: 500,
+      fontWeight: 600,
       textAnchor: 'middle' as const,
-      className: 'text-neutral-800 dark:text-neutral-200',
+      className: 'text-neutral-800 dark:text-neutral-200 select-none tracking-tight',
     },
   };
 
@@ -79,28 +82,29 @@ export function Axis({
       return (
         <AxisBottom
           scale={xScale as any}
-          top={atZero ? zeroYPosition : boundedHeight}
-          labelOffset={atZero ? 12 : 28}
+          top={atZero ? zeroYPos : boundedHeight}
+          labelOffset={atZero ? 14 : 26}
           {...commonProps}
           labelProps={{
             ...commonProps.labelProps,
-            ...(atZero && { textAnchor: 'end' as const, x: boundedWidth, y: -10 }),
+            ...(atZero && { textAnchor: 'end' as const, x: boundedWidth, y: -8 }),
           }}
         />
       );
     case 'top':
-      // Elevamos el labelOffset a 28 para simetría con el eje inferior
-      return <AxisTop scale={xScale as any} top={0} labelOffset={28} {...commonProps} />;
+      return <AxisTop scale={xScale as any} top={0} labelOffset={24} {...commonProps} />;
     case 'left':
       return (
         <AxisLeft
           scale={yScale as any}
-          left={0}
-          labelOffset={42}
+          left={atZero ? zeroXPos : 0}
+          labelOffset={atZero ? 14 : 38}
           {...commonProps}
           labelProps={{
             ...commonProps.labelProps,
-            x: -boundedHeight / 2,
+            ...(atZero
+              ? { textAnchor: 'start' as const, y: 10, x: 8 }
+              : { x: -boundedHeight / 2 }),
           }}
         />
       );
@@ -109,7 +113,7 @@ export function Axis({
         <AxisRight
           scale={yScale as any}
           left={boundedWidth}
-          labelOffset={42}
+          labelOffset={38}
           {...commonProps}
           labelProps={{
             ...commonProps.labelProps,

@@ -12,6 +12,7 @@ export interface CurveProps<T> {
   type?: 'line' | 'area';
   curve?: CurveType;
   className?: string;
+  defined?: (d: T) => boolean;
 }
 
 export function Curve<T>({
@@ -21,11 +22,11 @@ export function Curve<T>({
   y0,
   type = 'line',
   curve = 'monotone',
-  className = 'stroke-fd-primary stroke-2 fill-none',
+  className = 'stroke-rose-500 dark:stroke-rose-400 stroke-2 fill-none',
+  defined,
 }: CurveProps<T>) {
   const { xScale, yScale, boundedHeight } = useChartContext();
 
-  // GUARDA DE MONOTONICIDAD: Verificación de orden cartesiano en desarrollo
   if (process.env.NODE_ENV !== 'production' && curve === 'monotone' && data.length > 1) {
     let isSorted = true;
     for (let i = 0; i < data.length - 1; i++) {
@@ -36,22 +37,21 @@ export function Curve<T>({
     }
     if (!isSorted) {
       console.warn(
-        `[Curve] Se especificó curve="monotone", pero el dataset no está estrictamente ordenado de menor a mayor en el eje X. Esto producirá oscilaciones o lazos visuales erráticos en D3.`
+        `[Curve] curve="monotone" requiere un dataset ordenado ascendentemente en X. Si estás graficando un bucle cerrado (P-V o espirometría), usa curve="catmullRomClosed" o curve="natural".`
       );
     }
   }
 
-  // BLINDAJE TS: Garantizamos que la proyección retorne un número válido para d3-shape
   const scaledX = (d: T) => xScale(x(d)) ?? 0;
   const scaledY = (d: T) => yScale(y(d)) ?? 0;
 
   if (type === 'area') {
-    // Si y0 no se provee o cae fuera, el área se ancla al piso del área de dibujo activa
-    const scaledY0 = typeof y0 === 'number'
-      ? (yScale(y0) ?? boundedHeight)
-      : typeof y0 === 'function'
-        ? (d: T) => yScale(y0(d)) ?? boundedHeight
-        : boundedHeight;
+    const scaledY0 =
+      typeof y0 === 'number'
+        ? (yScale(y0) ?? boundedHeight)
+        : typeof y0 === 'function'
+          ? (d: T) => yScale(y0(d)) ?? boundedHeight
+          : (boundedHeight as number);
 
     const pathString = createAreaPath({
       data,
@@ -59,6 +59,7 @@ export function Curve<T>({
       y0: scaledY0,
       y1: scaledY,
       curve,
+      defined,
     });
 
     return <path d={pathString || ''} className={className} />;
@@ -69,6 +70,7 @@ export function Curve<T>({
     x: scaledX,
     y: scaledY,
     curve,
+    defined,
   });
 
   return <path d={pathString || ''} className={className} />;

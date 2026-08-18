@@ -6,7 +6,7 @@ import { Axis } from '../core/Axis';
 import { Curve } from '../core/Curve';
 import { Panel } from '../core/Panel';
 import { StackedPanels } from '../core/StackedPanels';
-import { PhaseBand, EventLine } from '../core/Annotations';
+import { PhaseBand, EventLine, HorizontalEventLine } from '../core/Annotations';
 import { textbookWiggersDataTwoCycles } from './data/wiggers';
 
 export interface WiggersDiagramProps {
@@ -14,13 +14,18 @@ export interface WiggersDiagramProps {
   height?: number;
 }
 
-export function WiggersDiagram({ data = textbookWiggersDataTwoCycles, height = 660 }: WiggersDiagramProps) {
+export function WiggersDiagram({
+  data = textbookWiggersDataTwoCycles,
+  height = 640,
+}: WiggersDiagramProps) {
   const maxTime = data.timeseries[data.timeseries.length - 1]?.time || 1.6;
-  const timeTicks = Array.from({ length: Math.round(maxTime / 0.2) + 1 }, (_, i) => Number((i * 0.2).toFixed(1)));
+  const timeTicks = Array.from(
+    { length: Math.round(maxTime / 0.2) + 1 },
+    (_, i) => Number((i * 0.2).toFixed(1))
+  );
 
   const clinicalLegend = (
     <div className="text-xs text-fd-muted-foreground space-y-4">
-      
       <div className="pb-3 border-b border-fd-border/50 flex flex-wrap gap-x-6 gap-y-2 items-center justify-start font-medium">
         <span className="text-fd-foreground font-semibold">Canales:</span>
         <div className="flex items-center gap-1.5">
@@ -37,7 +42,7 @@ export function WiggersDiagram({ data = textbookWiggersDataTwoCycles, height = 6
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block shrink-0" />
-          <span className="text-emerald-600 dark:text-emerald-400">Volumen (130/50 mL)</span>
+          <span className="text-emerald-600 dark:text-emerald-400">Volumen Ventricular</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full bg-violet-500 inline-block shrink-0" />
@@ -98,8 +103,8 @@ export function WiggersDiagram({ data = textbookWiggersDataTwoCycles, height = 6
                 S1
               </span>
               <div>
-                <strong className="text-fd-foreground block">Primer Ruido ("Lub")</strong>
-                <span>Cierre abrupto de las válvulas auriculoventriculares (mitral/tricuspídea) al inicio de sístole.</span>
+                <strong className="text-fd-foreground block">Primer Ruido (&quot;Lub&quot;)</strong>
+                <span>Cierre abrupto de válvulas AV (mitral/tricúspide) al inicio de la sístole.</span>
               </div>
             </div>
             <div className="flex items-start gap-2">
@@ -107,8 +112,8 @@ export function WiggersDiagram({ data = textbookWiggersDataTwoCycles, height = 6
                 S2
               </span>
               <div>
-                <strong className="text-fd-foreground block">Segundo Ruido ("Dub")</strong>
-                <span>Cierre de válvulas semilunares (aorta/pulmonar) en incisura dícrota. Breve y de alta frecuencia.</span>
+                <strong className="text-fd-foreground block">Segundo Ruido (&quot;Dub&quot;)</strong>
+                <span>Cierre de semilunares (aórtica/pulmonar) en la incisura dícrota.</span>
               </div>
             </div>
             <div className="flex items-start gap-2">
@@ -116,8 +121,8 @@ export function WiggersDiagram({ data = textbookWiggersDataTwoCycles, height = 6
                 S3 / S4
               </span>
               <div>
-                <strong className="text-fd-foreground block">Ruidos Diastólicos (Sutiles)</strong>
-                <span><strong>S3:</strong> Desaceleración del llenado pasivo rápido. <strong>S4:</strong> Vibración por impacto del flujo de la sístole auricular.</span>
+                <strong className="text-fd-foreground block">Ruidos Diastólicos</strong>
+                <span><strong>S3:</strong> Desaceleración del llenado pasivo rápido. <strong>S4:</strong> Impacto por sístole auricular activa.</span>
               </div>
             </div>
           </div>
@@ -128,43 +133,46 @@ export function WiggersDiagram({ data = textbookWiggersDataTwoCycles, height = 6
 
   return (
     <ScienceChart
-      domainX={[0, maxTime]} 
+      domainX={[0, maxTime]}
       height={height}
-      minWidth={640}    
+      minWidth={640}
+      margin={{ top: 28, right: 24, bottom: 44, left: 64 }}
       title="Diagrama de Wiggers: Ciclo Cardíaco Izquierdo"
-      subtitle="Sincronización total: Hemodinámica, Volumen, ECG y Fonocardiograma (2 Ciclos)"
+      subtitle="Sincronización fisiológica: Presiones intracavitarias, Volumen, ECG y Fonocardiograma"
       badge="Cardiología"
       legend={clinicalLegend}
     >
       {data.phases.map((phase, idx) => (
         <PhaseBand
-          key={idx}
+          key={`phase-${idx}`}
           start={phase.start}
           end={phase.end}
           label={phase.code}
           labelY={16}
-          className={idx % 2 === 0 
-            ? 'fill-neutral-500 dark:fill-neutral-400 opacity-[0.04]' 
-            : 'fill-neutral-500 dark:fill-neutral-400 opacity-[0.09]'}
+          className={
+            idx % 2 === 0
+              ? 'fill-neutral-500/5 dark:fill-neutral-400/5'
+              : 'fill-neutral-500/10 dark:fill-neutral-400/10'
+          }
         />
       ))}
 
       {data.events.map((ev, idx) => (
         <EventLine
-          key={idx}
+          key={`event-${idx}`}
           x={ev.time}
           label={ev.code}
           labelY={32}
-          textAnchor={idx % 2 === 0 ? 'end' : 'start'} 
-          dx={idx % 2 === 0 ? -4 : 4}                      
-          className="stroke-rose-500/70 dark:stroke-rose-400/70 stroke-dashed stroke-1"
+          textAnchor={idx % 2 === 0 ? 'end' : 'start'}
+          dx={idx % 2 === 0 ? -4 : 4}
+          className="stroke-rose-500/70 dark:stroke-rose-400/70 stroke-dasharray-[3,3] stroke-1"
         />
       ))}
 
       <StackedPanels gap={24}>
-        <Panel domainY={[0, 160]} height={180} top={0}>
+        {/* Panel 1: Presiones Intracavitarias y Aórtica */}
+        <Panel domainY={[0, 160]} height={180}>
           <Axis orientation="left" ticks={[0, 40, 80, 120]} label="Presión (mmHg)" />
-          
           <Curve
             data={data.timeseries}
             x={(d) => d.time}
@@ -188,9 +196,9 @@ export function WiggersDiagram({ data = textbookWiggersDataTwoCycles, height = 6
           />
         </Panel>
 
-        <Panel domainY={[40, 150]} height={120} top={0}>
+        {/* Panel 2: Volumen Ventricular Izquierdo */}
+        <Panel domainY={[40, 150]} height={120}>
           <Axis orientation="left" ticks={[50, 90, 130]} label="Volumen (mL)" />
-          
           <Curve
             data={data.timeseries}
             x={(d) => d.time}
@@ -209,15 +217,12 @@ export function WiggersDiagram({ data = textbookWiggersDataTwoCycles, height = 6
           />
         </Panel>
 
-        <Panel domainY={[-0.6, 1.8]} height={100} top={0}>
+        {/* Panel 3: Electrocardiograma */}
+        <Panel domainY={[-0.6, 1.8]} height={100}>
           <Axis orientation="left" ticks={[-0.5, 0, 1.5]} label="ECG (mV)" />
-          
-          <Curve
-            data={[{ time: 0, ecg: 0 }, { time: maxTime, ecg: 0 }]}
-            x={(d) => d.time}
-            y={(d) => d.ecg}
-            curve="linear"
-            className="stroke-neutral-300 dark:stroke-neutral-700 stroke-1 stroke-dashed fill-none"
+          <HorizontalEventLine
+            y={0}
+            className="stroke-neutral-300 dark:stroke-neutral-700 stroke-1 stroke-dasharray-[2,2]"
           />
           <Curve
             data={data.timeseries}
@@ -228,15 +233,12 @@ export function WiggersDiagram({ data = textbookWiggersDataTwoCycles, height = 6
           />
         </Panel>
 
-        <Panel domainY={[-1.2, 1.2]} height={80} top={0}>
+        {/* Panel 4: Fonocardiograma */}
+        <Panel domainY={[-1.2, 1.2]} height={80}>
           <Axis orientation="left" ticks={[-1, 0, 1]} label="PCG (S1-S4)" />
-          
-          <Curve
-            data={[{ time: 0, pcg: 0 }, { time: maxTime, pcg: 0 }]}
-            x={(d) => d.time}
-            y={(d) => d.pcg}
-            curve="linear"
-            className="stroke-neutral-300 dark:stroke-neutral-700 stroke-1 stroke-dashed fill-none"
+          <HorizontalEventLine
+            y={0}
+            className="stroke-neutral-300 dark:stroke-neutral-700 stroke-1 stroke-dasharray-[2,2]"
           />
           <Curve
             data={data.timeseries}
@@ -248,10 +250,10 @@ export function WiggersDiagram({ data = textbookWiggersDataTwoCycles, height = 6
         </Panel>
       </StackedPanels>
 
-      <Axis 
-        orientation="bottom" 
-        ticks={timeTicks} 
-        label="Tiempo (s)" 
+      <Axis
+        orientation="bottom"
+        ticks={timeTicks}
+        label="Tiempo (s)"
       />
     </ScienceChart>
   );

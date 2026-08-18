@@ -1,7 +1,6 @@
 // components/science-charts/core/Annotations.tsx
 'use client';
 
-import type { ReactNode } from 'react';
 import { useChartContext } from './context';
 
 export interface PhaseBandProps {
@@ -67,7 +66,7 @@ export interface IntervalBracketProps {
   textOffset?: number;
 }
 
-// --- 1. PHASE BAND (Vertical: Fases temporales o ciclos) ---
+// --- 1. PHASE BAND ---
 export function PhaseBand({
   start,
   end,
@@ -77,8 +76,8 @@ export function PhaseBand({
 }: PhaseBandProps) {
   const { xScale, boundedHeight } = useChartContext();
 
-  const px1 = xScale(start) ?? 0;
-  const px2 = xScale(end) ?? 0;
+  const px1 = (xScale as (val: any) => number | undefined)(start) ?? 0;
+  const px2 = (xScale as (val: any) => number | undefined)(end) ?? 0;
 
   const left = Math.min(px1, px2);
   const width = Math.abs(px2 - px1);
@@ -100,7 +99,7 @@ export function PhaseBand({
   );
 }
 
-// --- 2. RANGE BAND (Horizontal: Ventanas terapéuticas o rangos normales) ---
+// --- 2. RANGE BAND ---
 export function RangeBand({
   min,
   max,
@@ -110,8 +109,8 @@ export function RangeBand({
 }: RangeBandProps) {
   const { yScale, boundedWidth } = useChartContext();
 
-  const py1 = yScale(min) ?? 0;
-  const py2 = yScale(max) ?? 0;
+  const py1 = (yScale as (val: any) => number | undefined)(min) ?? 0;
+  const py2 = (yScale as (val: any) => number | undefined)(max) ?? 0;
 
   const top = Math.min(py1, py2);
   const height = Math.abs(py2 - py1);
@@ -133,7 +132,7 @@ export function RangeBand({
   );
 }
 
-// --- 3. EVENT LINE (Línea vertical) ---
+// --- 3. EVENT LINE ---
 export function EventLine({
   x,
   label,
@@ -143,7 +142,7 @@ export function EventLine({
   dx = 4,
 }: EventLineProps) {
   const { xScale, boundedHeight } = useChartContext();
-  const xPos = xScale(x) ?? 0;
+  const xPos = (xScale as (val: any) => number | undefined)(x) ?? 0;
 
   return (
     <g className="group">
@@ -162,7 +161,7 @@ export function EventLine({
   );
 }
 
-// --- 4. HORIZONTAL EVENT LINE (Línea horizontal) ---
+// --- 4. HORIZONTAL EVENT LINE ---
 export function HorizontalEventLine({
   y,
   label,
@@ -172,7 +171,7 @@ export function HorizontalEventLine({
   dy = -6,
 }: HorizontalEventLineProps) {
   const { yScale, boundedWidth } = useChartContext();
-  const yPos = yScale(y) ?? 0;
+  const yPos = (yScale as (val: any) => number | undefined)(y) ?? 0;
 
   return (
     <g className="group">
@@ -191,7 +190,7 @@ export function HorizontalEventLine({
   );
 }
 
-// --- 5. MARKER (Puntos notables, intersecciones y censuras) ---
+// --- 5. MARKER ---
 export function Marker({
   x,
   y,
@@ -201,8 +200,8 @@ export function Marker({
 }: MarkerProps) {
   const { xScale, yScale } = useChartContext();
 
-  const xPos = xScale(x) ?? 0;
-  const yPos = yScale(y) ?? 0;
+  const xPos = (xScale as (val: any) => number | undefined)(x) ?? 0;
+  const yPos = (yScale as (val: any) => number | undefined)(y) ?? 0;
 
   return (
     <g className="group" transform={`translate(${xPos}, ${yPos})`}>
@@ -257,8 +256,8 @@ export function CurveEndLabel({
 }: CurveEndLabelProps) {
   const { xScale, yScale } = useChartContext();
 
-  const xPos = xScale(x) ?? 0;
-  const yPos = yScale(y) ?? 0;
+  const xPos = (xScale as (val: any) => number | undefined)(x) ?? 0;
+  const yPos = (yScale as (val: any) => number | undefined)(y) ?? 0;
 
   return (
     <g
@@ -280,7 +279,7 @@ export function CurveEndLabel({
   );
 }
 
-// --- 7. INTERVAL BRACKET (Corchetes de intervalos: PR, QT, FEV1) ---
+// --- 7. INTERVAL BRACKET ---
 export function IntervalBracket({
   start,
   end,
@@ -292,9 +291,9 @@ export function IntervalBracket({
 }: IntervalBracketProps) {
   const { xScale, yScale } = useChartContext();
 
-  const px1 = xScale(start) ?? 0;
-  const px2 = xScale(end) ?? 0;
-  const py = yScale(y) ?? 0;
+  const px1 = (xScale as (val: any) => number | undefined)(start) ?? 0;
+  const px2 = (xScale as (val: any) => number | undefined)(end) ?? 0;
+  const py = (yScale as (val: any) => number | undefined)(y) ?? 0;
 
   const left = Math.min(px1, px2);
   const right = Math.max(px1, px2);

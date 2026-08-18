@@ -5,10 +5,7 @@ description: Página interna para auditar la calidad visual de las gráficas D3 
 
 import { 
   SandboxChart, 
-  WiggersDiagram, 
-  AcidBaseMapChart
-} from '@/components/science-charts';
-import { 
+  WiggersDiagram,
   FlowVolumeLoop, 
   normalSpirometry, 
   obstructiveSpirometry 
@@ -33,13 +30,3 @@ Cuando existe resistencia en la respiración, el flujo desciende de manera cónc
 Evaluación de presiones y volúmenes ventriculares a través del tiempo:
 
 <WiggersDiagram />
-
----
-
-### Nomogramas de Equilibrio Ácido-Base
-
-Para el análisis rápido de la gasometría arterial, validamos la generación matemática de isobaras y la rotación trigonométrica de sus etiquetas, asegurando que la tipografía se alinee perfectamente a la pendiente sin importar la relación de aspecto del contenedor.
-
-#### Diagrama del estado ácido-Base
-
-<AcidBaseMapChart />
